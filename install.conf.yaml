@@ -63,6 +63,10 @@
 - pipsi:
     file: python/requirements-pipsi.txt
 
+- shell:
+  - [nvim +PluginInstall +qall, Installing vim plugins]
+
 # These links should be created after everything is installed:
 - shell:
   - [brew cleanup, Cleaning up]
+
