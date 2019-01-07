@@ -11,7 +11,7 @@
 
 # GPG agent:
 PATH="/usr/local/opt/gpg-agent/bin:$PATH"
-
+PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 export PATH
 
 # === General ===
@@ -23,4 +23,32 @@ export HOMEBREW_NO_ANALYTICS=1  # disables statistics that brew collects
 
 # nvm:
 export NVM_DIR="$HOME/.nvm"
-source "/usr/local/opt/nvm/nvm.sh"
+# source "/usr/local/opt/nvm/nvm.sh"
+
+# === FZF ===
+
+export FZF_DEFAULT_OPTS='--height 40% --border'
+export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'
+export FZF_ALT_C_COMMAND='blsd'
+
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# === SSH KEY ===
+
+export SSH_KEY_PATH="~/.ssh/dsa_id"
+
+# === JAVA ===
+
+export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home"
+
+# === GO ===
+
+export GOPATH=$HOME/go
+
+# === Neovim ===
+# Neovim true color support
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+# Neovim cursor shape support
+export NVIM_TUI_ENABLE_CURSOR_SHAPE=1

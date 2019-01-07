@@ -23,18 +23,6 @@ We are using `dotbot` to handle any installations. Steps:
 
 I am using `zsh` with `oh-my-zsh` as a main shell.
 
-## Infrastructure
-
-I try to containerize everything.
-So `docker` is my main development and deployment tool.
-You can install it from its [official site](https://docs.docker.com/docker-for-mac/) (`brew` [version](https://github.com/Homebrew/homebrew-core/blob/master/Formula/docker.rb) is also an option).
-
-However, I also use several databases and other services locally:
-
-- `postgresql` (with `postgis`)
-- `mysql`
-- `redis`
-
 
 ## Local configuration
 

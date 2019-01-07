@@ -7,8 +7,6 @@
   - [mkdir -p ~/.config/nvim, Creating nvim folders]
   - [mkdir -p ~/.config/nvim/ultisnips, Creating nvim folders]
   - [mkdir -p ~/.config/oni, Creating oni folders]
-  - [if ! hash bundle 2>/dev/null; then gem install bundler; fi, Installing Bundler]
-  - [bundle install ./ruby/Gemfile, Installing system gems from Gemfile]
 
 - link:
     # Terminal:
@@ -16,6 +14,7 @@
       path: shell
       create: true
     ~/.shell_env: config/shell_env
+    ~/.profile: config/profile
     ~/.bash_profile: config/bash_profile
     ~/.bashrc: config/bashrc
     ~/.zshrc: config/zshrc
@@ -23,34 +22,34 @@
 
     # Git:
     ~/.gitconfig: config/gitconfig
-    ~/.gitignore_global: config/gitignore
+    ~/.gitignore: config/gitignore
+    ~/.gitignore_global: config/gitignore_global
 
     # Editors:
     ~/.editorconfig: config/editorconfig
 
     # Neovim
     ~/.config/nvim/init.vim: config/init.vim
-    ~/.config/nvim/commands.vim: config/commands.vim
-    ~/.config/nvim/config.vim: config/config.vim
-    ~/.config/nvim/functions.vim: config/functions.vim
-    ~/.config/nvim/keymap.vim: config/keymap.vim
-    ~/.config/nvim/macros.vim: config/macros.vim
-    ~/.config/nvim/plugins.vim: config/plugins.vim
+    ~/.config/nvim/commands.vim: config/nvim/commands.vim
+    ~/.config/nvim/config.vim: config/nvim/config.vim
+    ~/.config/nvim/functions.vim: config/nvim/functions.vim
+    ~/.config/nvim/keymap.vim: config/nvim/keymap.vim
+    ~/.config/nvim/macros.vim: config/nvim/macros.vim
+    ~/.config/nvim/plugins.vim: config/nvim/plugins.vim
 
-    ~/.config/nvim/ultisnips/30secondsofcode.snippets: config/ultisnips/30secondsofcode.snippets
-    ~/.config/nvim/ultisnips/html.snippets: config/ultisnips/html.snippets
-    ~/.config/nvim/ultisnips/javascript.snippets: config/ultisnips/javascript.snippets
-    ~/.config/nvim/ultisnips/typescript.snippets: config/ultisnips/typescript.snippets
-    ~/.config/nvim/ultisnips/typescriptreact.snippets: config/ultisnips/typescriptreact.snippets
+    ~/.config/nvim/ultisnips/30secondsofcode.snippets: config/nvim/ultisnips/30secondsofcode.snippets
+    ~/.config/nvim/ultisnips/html.snippets: config/nvim/ultisnips/html.snippets
+    ~/.config/nvim/ultisnips/javascript.snippets: config/nvim/ultisnips/javascript.snippets
+    ~/.config/nvim/ultisnips/typescript.snippets: config/nvim/ultisnips/typescript.snippets
+    ~/.config/nvim/ultisnips/typescriptreact.snippets: config/nvim/ultisnips/typescriptreact.snippets
 
     # Oni
     ~/.config/oni/config.js: config/oni/config.js
     ~/.config/oni/config.tsx: config/oni/config.tsx
     ~/.config/oni/tsconfig.json: config/oni/tsconfig.json
 
-- brewfile:
-    file: Brewfile
-    no-upgrage: true
+- shell:
+  - [brew bundle, Installing Homebrew formulas from Brewfile]
 
 - pip:
     file: python/requirements.txt
@@ -62,6 +61,10 @@
 
 - pipsi:
     file: python/requirements-pipsi.txt
+
+- shell:
+  - [if ! hash bundle 2>/dev/null; then gem install bundler; fi, Installing Bundler]
+  - [bundle install, Installing system gems from Gemfile]
 
 - shell:
   - [nvim +PluginInstall +qall, Installing vim plugins]

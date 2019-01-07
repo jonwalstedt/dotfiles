@@ -28,9 +28,9 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 let NERDTreeShowLineNumbers=1
 let loaded_netrwPlugin=1
 let NERDTreeRespectWildIgnore=1
+let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.map$[[file]]']
 let g:NERDTreeNodeDelimiter = "\u00a0"
-
 "Toggle NERDTree
 map <C-b> :NERDTreeToggle<CR>
 
@@ -39,7 +39,15 @@ map <leader>r :NERDTreeFind<cr>
 " }}}
 " Ale {{{
 Plug 'w0rp/ale'
+let g:ale_fixers = {
+\   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['tslint', 'prettier'],
+\   'css': ['prettier'],
+\}
 let g:ale_sign_column_always = 1
+let g:ale_linters_explicit = 1
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
 " }}}
 " BufSurf (navigate file history) {{{
 Plug 'ton/vim-bufsurf'

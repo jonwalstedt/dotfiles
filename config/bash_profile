@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
-source ~/.profile
+source $HOME/.profile
+
+PATH="/usr/local/bin:$PATH"
+
+# Added by install_latest_perl_osx.pl
+[ -r $HOME/.bashrc ] && source $HOME/.bashrc
 
 # global:
 PATH="/usr/local/bin:$PATH"
