@@ -1,0 +1,47 @@
+[core]
+    excludesfile = /Users/jonwalstedt/.gitignore_global
+[user]
+    email = jon.walstedt@svt.se
+    name = Jon Wålstedt
+[commit]
+    template = /Users/jonwalstedt/.stCommitMsg
+[credential]
+    helper = osxkeychain
+[pager]
+    diff = diff-so-fancy | less --tabs=1,5 -R
+    show = diff-so-fancy | less --tabs=1,5 -R
+[push]
+    default = simple
+[core]
+    pager = diff-so-fancy | less --tabs=4 -RFX
+[color]
+    ui = true
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[alias]
+    st = status -sb
+    ci = commit
+    co = checkout
+    s = status
+    b = branch
+    hist = log --graph --oneline --decorate --date=relative --all
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=relative
+    la = log --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all --date=relative
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    list-commit = diff-tree --no-commit-id --name-only -r
+    surec = submodule update --recursive
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = red bold 52
+    newNormal = green bold
+    newHighlight = green bold 22
+[color "diff"]
+    meta = 227
+    frag = magenta bold
+    commit = 227 bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse

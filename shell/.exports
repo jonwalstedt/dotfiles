@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+# `exports` is used to provide custom variables.
+#
+# This file is used as a part of `.shell_env`
+
+
+# === Path modifications ===
+
+# These lines should be the first ones
+
+# GPG agent:
+PATH="/usr/local/opt/gpg-agent/bin:$PATH"
+
+export PATH
+
+# === General ===
+
+# Homebrew:
+export HOMEBREW_NO_ANALYTICS=1  # disables statistics that brew collects
+
+# === Version managers ===
+
+# nvm:
+export NVM_DIR="$HOME/.nvm"
+source "/usr/local/opt/nvm/nvm.sh"

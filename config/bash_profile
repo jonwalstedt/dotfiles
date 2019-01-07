@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+source ~/.profile
+
+# global:
+PATH="/usr/local/bin:$PATH"
+

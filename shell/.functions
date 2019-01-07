@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# `.functions` provides helper functions for shell.
+#
+# This file is used as a part of `.shell_env`
+
+git-dowloadfolder () {
+  # Downloads folder from git repository.
+  url="$1"
+  svn checkout ${url/tree\/master/trunk}
+}
+
+
+transfer () {
+  # Transfers text file as sharable link.
+  # See https://transfer.sh/
+  if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
+tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile;
+}
+
+
+mk () {
+  # Create a new directory and enter it
+  mkdir -p "$@" && cd "$@"
+}
+
+
+cdf () {
+  # cd into whatever is the forefront Finder window.
+  local path=$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')
+  echo "$path"
+  cd "$path"
+}

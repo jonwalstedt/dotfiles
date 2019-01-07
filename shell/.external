@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+# `external.sh` handles all external tools.
+#
+# This file is used as a part of `.shell_env`
+
+# === fzf ===
+# https://github.com/junegunn/fzf
+
+export FZF_DEFAULT_OPTS='--height 40% --border'
+export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'
+
+# brew install --HEAD https://raw.githubusercontent.com/junegunn/blsd/master/blsd.rb
+export FZF_ALT_C_COMMAND='blsd'
+
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if [[ ! "$PATH" == */usr/local/opt/fzf/bin* ]]; then
+  export PATH="$PATH:/usr/local/opt/fzf/bin"
+fi
+
+# Auto-completion
+[[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+
+# Setting ag as the default source for fzf
+export FZF_DEFAULT_COMMAND='ag -g ""'
+
+# To apply the command to CTRL-T as well
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+_fzf_compgen_path() {
+  ag -g "" "$1"
+}
+

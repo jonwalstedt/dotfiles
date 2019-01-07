@@ -1,0 +1,4 @@
+mercurial
+readline
+pipsi
+neovim
