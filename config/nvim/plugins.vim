@@ -59,13 +59,12 @@ Plug 'ChrisPenner/vim-committed'
 let g:committed_min_time_threshold = 10
 let g:committed_lines_threshold = 15
 "}}}
-" Airline {{{
-Plug 'vim-airline/vim-airline'
 "}}}
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
+"Plug 'vim-scripts/auto-pairs-gentle'
 "}}}
 " Completion {{{
 " Supertab {{{
@@ -194,13 +193,16 @@ Plug 'vim-scripts/ingo-library'
 Plug 'vim-scripts/PatternsOnText'
 " }}}
 " Language / Syntax / Themes {{{
-" Gruvbox {{{
+" Themes {{{
 Plug 'morhetz/gruvbox'
+Plug 'whatyouhide/vim-gotham'
+Plug 'dracula/vim'
+Plug 'joshdick/onedark.vim'
+Plug 'ayu-theme/ayu-vim'
+let ayucolor="dark"
 "}}}
-Plug 'vim-airline/vim-airline-themes'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'dracula/vim'
 Plug 'jonwalstedt/minimalgrey'
 Plug 'ujihisa/neco-look'
 Plug 'mustache/vim-mustache-handlebars'
@@ -210,7 +212,6 @@ Plug 'jonwalstedt/vim-myhelp'
 " }}}
 call plug#end()
 
-colorscheme gruvbox
-let g:airline_theme='minimalist'
+colorscheme onedark
 
 " vim:foldmethod=marker:foldlevel=0
