@@ -25,6 +25,9 @@ export HOMEBREW_NO_ANALYTICS=1  # disables statistics that brew collects
 export NVM_DIR="$HOME/.nvm"
 # source "/usr/local/opt/nvm/nvm.sh"
 
+# jenv:
+export PATH="$HOME/.jenv/bin:$PATH"
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 # === FZF ===
 
 export FZF_DEFAULT_OPTS='--height 40% --border'
@@ -33,14 +36,13 @@ export FZF_ALT_C_COMMAND='blsd'
 
 # To apply the command to CTRL-T as well
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # === SSH KEY ===
 
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # === JAVA ===
 
-export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_162.jdk/Contents/Home"
+# export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home"
 
 # === GO ===
 

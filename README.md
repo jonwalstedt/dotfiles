@@ -23,7 +23,6 @@ We are using `dotbot` to handle any installations. Steps:
 
 I am using `zsh` with `oh-my-zsh` as a main shell.
 
-
 ## Local configuration
 
 Some of the used tools requires local configuration. Such as `git` with username and email.
