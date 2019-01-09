@@ -11,6 +11,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 nnoremap <C-p> :FZF<cr>
 nnoremap <C-t> :Buffers<cr>
 nnoremap <C-s> :Ag<cr>
+nnoremap `r :History:<cr>
 " }}}
 " GitGutter {{{
 Plug 'airblade/vim-gitgutter'
