@@ -96,6 +96,9 @@ set inccommand=nosplit                          " Shows the effects of a command
 " Splits {{{
 set splitright                                  " Open vertical splits to the right
 set splitbelow                                  " Open horizontal splits below
+set diffopt+=vertical                           " Open diff in vertical split
+set diffopt+=indent-heuristic
+set diffopt+=algorithm:patience
 "}}}
 " Rulers (rulers of 80) {{{
 if exists('+colorcolumn')
