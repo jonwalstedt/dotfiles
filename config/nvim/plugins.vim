@@ -68,7 +68,15 @@ Plug 'tpope/vim-repeat'
 "Plug 'vim-scripts/auto-pairs-gentle'
 " Git Fugitive {{{
 Plug 'tpope/vim-fugitive'
-nnoremap <localleader><space> :Gstatus<cr>
+function! ToggleGStatus()
+    if buflisted(bufname('.git/index'))
+        bd .git/index
+    else
+        Gstatus
+    endif
+endfunction
+command ToggleGStatus :call ToggleGStatus()
+nmap <localleader><space> :ToggleGStatus<cr>
 
 "}}}
 "}}}
