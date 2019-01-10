@@ -11,7 +11,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 nnoremap <C-p> :FZF<cr>
 nnoremap <C-t> :Buffers<cr>
 nnoremap <C-s> :Ag<cr>
-nnoremap `r :History:<cr>
+nnoremap <localleader>p :History:<cr>
 " }}}
 " GitGutter {{{
 Plug 'airblade/vim-gitgutter'
@@ -61,11 +61,16 @@ let g:committed_min_time_threshold = 10
 let g:committed_lines_threshold = 15
 "}}}
 "}}}
+Plug 'kana/vim-submode'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-fugitive'
 "Plug 'vim-scripts/auto-pairs-gentle'
+" Git Fugitive {{{
+Plug 'tpope/vim-fugitive'
+nnoremap <localleader><space> :Gstatus<cr>
+
+"}}}
 "}}}
 " Completion {{{
 " Supertab {{{
@@ -146,7 +151,7 @@ function! s:config_easyfuzzymotion(...) abort
   \ }), get(a:, 1, {}))
 endfunction
 
-noremap <silent><expr> `/ incsearch#go(<SID>config_easyfuzzymotion())
+noremap <silent><expr> <localleader>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 nmap <leader>w <Plug>(easymotion-overwin-w)
 "nmap <Leader>f <Plug>(easymotion-overwin-f)
@@ -164,10 +169,10 @@ omap <C-space> <plug>(easymotion-bd-t2)
 vmap <C-space> <plug>(easymotion-bd-t2)
 
 "JKLH motions: Line motions
-map `l <Plug>(easymotion-lineforward)
-map `j <Plug>(easymotion-j)
-map `k <Plug>(easymotion-k)
-map `h <Plug>(easymotion-linebackward)
+map <localleader>l <Plug>(easymotion-lineforward)
+map <localleader>j <Plug>(easymotion-j)
+map <localleader>k <Plug>(easymotion-k)
+map <localleader>h <Plug>(easymotion-linebackward)
 
 " }}}
 " Sneak {{{
@@ -214,5 +219,10 @@ Plug 'jonwalstedt/vim-myhelp'
 call plug#end()
 
 colorscheme onedark
+
+call submode#enter_with('grow/shrink', 'n', '', '<leader>0', ':exe "vertical resize +15"<cr>')
+call submode#enter_with('grow/shrink', 'n', '', '<leader>9', ':exe "vertical resize -15"<cr>')
+call submode#map('grow/shrink', 'n', '', '0', ':exe "vertical resize +15"<cr>')
+call submode#map('grow/shrink', 'n', '', '9', ':exe "vertical resize -15"<cr>')
 
 " vim:foldmethod=marker:foldlevel=0

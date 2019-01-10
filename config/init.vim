@@ -2,7 +2,8 @@
 silent! so .vimlocal
 
 " Use \ as Leader key (default).
-" let mapleader = "\"
+let mapleader = "\\"
+let maplocalleader = "`"
 
 " Cheatsheet see:
 " https://bitbucket.org/Jonwalstedt/vim-cheatsheet/src/master/README.md

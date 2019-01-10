@@ -22,17 +22,13 @@ nnoremap <esc>^[ <esc>^[
 " Search for visually selected word with //
 vnoremap // y/<C-R>"<CR>
 
-" Resize Split
-map <silent> <Leader>0 :exe "vertical resize +15"<CR>
-map <silent> <Leader>9 :exe "vertical resize -15"<CR>
-
 " Highlight word under cursor without moving the cursor
 nnoremap * *``
 nnoremap # #``
 
 " Shift enter and alt enter in normal mode to add new line above or below
-nmap <S-Enter> O<Esc>j
-nmap <A-Enter> o<Esc>k
+nnoremap <localleader><Enter> O<Esc>j
+nnoremap <A-Enter> o<Esc>k
 
 " Split panes" (create with :vs)
 nnoremap <C-L> <C-W><C-L>
