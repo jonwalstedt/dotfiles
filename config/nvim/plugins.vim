@@ -76,8 +76,6 @@ function! ToggleGStatus()
     endif
 endfunction
 command ToggleGStatus :call ToggleGStatus()
-nmap <localleader><space> :ToggleGStatus<cr>
-
 "}}}
 "}}}
 " Completion {{{
@@ -233,4 +231,6 @@ call submode#enter_with('grow/shrink', 'n', '', '<leader>9', ':exe "vertical res
 call submode#map('grow/shrink', 'n', '', '0', ':exe "vertical resize +15"<cr>')
 call submode#map('grow/shrink', 'n', '', '9', ':exe "vertical resize -15"<cr>')
 
+call submode#enter_with('gitstatus', 'n', '', '<localleader><space>', ':ToggleGStatus<cr>')
+call submode#map('gitstatus', 'n', '', '<space>', ':ToggleGStatus<cr>')
 " vim:foldmethod=marker:foldlevel=0
