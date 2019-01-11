@@ -66,16 +66,33 @@ Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 "Plug 'vim-scripts/auto-pairs-gentle'
-" Git Fugitive {{{
+" Git  {{{
+" Vim Fugitive {{{
 Plug 'tpope/vim-fugitive'
 function! ToggleGStatus()
-    if buflisted(bufname('.git/index'))
-        bd .git/index
-    else
-        Gstatus
-    endif
+  if buflisted(bufname('.git/index'))
+    bd .git/index
+  else
+    Gstatus
+  endif
 endfunction
 command ToggleGStatus :call ToggleGStatus()
+"}}}
+" Twiggy  {{{
+" https://vimawesome.com/plugin/twiggy
+Plug 'sodapopcan/vim-twiggy'
+function! ToggleTwiggy()
+  if buflisted(bufname('.git/index'))
+    bd .git/branches
+  else
+    Twiggy
+  endif
+endfunction
+command ToggleTwiggy :call ToggleTwiggy()
+"}}}
+" gv.vim  {{{
+Plug 'junegunn/gv.vim'
+"}}}
 "}}}
 "}}}
 " Completion {{{
@@ -233,4 +250,7 @@ call submode#map('grow/shrink', 'n', '', '9', ':exe "vertical resize -15"<cr>')
 
 call submode#enter_with('gitstatus', 'n', '', '<localleader><space>', ':ToggleGStatus<cr>')
 call submode#map('gitstatus', 'n', '', '<space>', ':ToggleGStatus<cr>')
+
+call submode#enter_with('gitbranches', 'n', '', '<localleader>b', ':ToggleTwiggy<cr>')
+call submode#map('gitbranches', 'n', '', 'b', ':ToggleTwiggy<cr>')
 " vim:foldmethod=marker:foldlevel=0
