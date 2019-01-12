@@ -65,6 +65,7 @@ Plug 'kana/vim-submode'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
+Plug 'ludovicchabant/vim-gutentags'
 "Plug 'vim-scripts/auto-pairs-gentle'
 " Git  {{{
 " Vim Fugitive {{{

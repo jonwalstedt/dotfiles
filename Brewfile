@@ -10,7 +10,6 @@ brew "blsd", args: ["HEAD"]
 brew "brew-cask-completion"
 brew "cmake"
 brew "coreutils"
-brew "ctags"
 brew "curl", args: ["with-openssl"]
 brew "diff-pdf"
 brew "diff-so-fancy"
@@ -49,6 +48,7 @@ brew "python3"
 brew "python@2"
 brew "ruby"
 brew "the_silver_searcher"
+brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]
 brew "watchman"
 brew "wget"
 brew "wxmac"

@@ -3,7 +3,10 @@
 - shell:
   - [sh macos, Setting up osx]
   - [git submodule update --init --recursive, Installing submodules]
-  - [sh pre-install.sh, Running pre installation script]
+  -
+    command: echo Running pre installation script && sh pre-install.sh
+    stdout: true
+
   - [mkdir -p ~/.config/nvim, Creating nvim folders]
   - [mkdir -p ~/.config/nvim/ultisnips, Creating nvim folders]
   - [mkdir -p ~/.config/oni, Creating oni folders]
@@ -49,7 +52,9 @@
     ~/.config/oni/tsconfig.json: config/oni/tsconfig.json
 
 - shell:
-  - [brew bundle, Installing Homebrew formulas from Brewfile]
+  -
+    command: echo Installing Homebrew formulas from Brewfile && brew bundle
+    stdout: true
 
 - pip:
     file: python/requirements.txt
@@ -67,7 +72,9 @@
   - [bundle install, Installing system gems from Gemfile]
 
 - shell:
-  - [nvim +PluginInstall +qall, Installing vim plugins]
+  -
+    command: echo Installing vim plugins && nvim +PluginInstall +qall
+    stdout: true
 
 # These links should be created after everything is installed:
 - shell:
