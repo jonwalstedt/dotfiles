@@ -52,8 +52,6 @@ let g:ale_completion_enabled = 1
 " }}}
 " BufSurf (navigate file history) {{{
 Plug 'ton/vim-bufsurf'
-nnoremap <leader>f :BufSurfBack<CR>
-nnoremap <leader>j :BufSurfForward<CR>
 " }}}
 " Vim-Commited {{{
 Plug 'ChrisPenner/vim-committed'
@@ -243,15 +241,3 @@ Plug 'jonwalstedt/vim-myhelp'
 call plug#end()
 
 colorscheme onedark
-
-call submode#enter_with('grow/shrink', 'n', '', '<leader>0', ':exe "vertical resize +15"<cr>')
-call submode#enter_with('grow/shrink', 'n', '', '<leader>9', ':exe "vertical resize -15"<cr>')
-call submode#map('grow/shrink', 'n', '', '0', ':exe "vertical resize +15"<cr>')
-call submode#map('grow/shrink', 'n', '', '9', ':exe "vertical resize -15"<cr>')
-
-call submode#enter_with('gitstatus', 'n', '', '<localleader><space>', ':ToggleGStatus<cr>')
-call submode#map('gitstatus', 'n', '', '<space>', ':ToggleGStatus<cr>')
-
-call submode#enter_with('gitbranches', 'n', '', '<localleader>b', ':ToggleTwiggy<cr>')
-call submode#map('gitbranches', 'n', '', 'b', ':ToggleTwiggy<cr>')
-" vim:foldmethod=marker:foldlevel=0

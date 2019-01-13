@@ -4,6 +4,10 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 let g:ruby_host_prog = 'rvm system do neovim-ruby-host'
 
 filetype plugin indent on
+set path=.,,**
+set suffixesadd=.js,.jsx,.ts,.tsx               " Add suffix when looking for imported files
+set exrc                                        " Look for project specific settings in /project/.nvimrc
+set secure                                      " Prevetn :autocmd unless owned by me
 set spelllang=en_gb
 set mouse=a                                     " Enable mouse.
 set lazyredraw                                  " Only redraw when needed

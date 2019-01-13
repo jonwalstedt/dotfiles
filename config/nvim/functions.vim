@@ -51,4 +51,18 @@ augroup BWCCreateDir
     autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 "}}}
+" Load node modules{{{
+function! LoadMainNodeModule(fname)
+    let nodeModules = "./node_modules/"
+    let packageJsonPath = nodeModules . a:fname . "/package.json"
+
+    if filereadable(packageJsonPath)
+        return nodeModules . a:fname . "/" . json_decode(join(readfile(packageJsonPath))).main
+    else
+        return nodeModules . a:fname
+    endif
+endfunction
+
+set includeexpr=LoadMainNodeModule(v:fname)
+"}}}
 " vim:foldmethod=marker:foldlevel=0
