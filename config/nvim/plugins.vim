@@ -1,3 +1,12 @@
+" Bootstrap Plug
+let autoload_plug_path = stdpath('data') . '/site/autoload/plug.vim'
+if !filereadable(autoload_plug_path)
+  silent execute '!curl -fLo ' . autoload_plug_path . '  --create-dirs
+      \ "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+unlet autoload_plug_path
+
 " Plugins
 call plug#begin('~/.nvim/plugged')
 " Interface {{{
@@ -22,21 +31,22 @@ hi GitGutterChangeLine guifg=#ffffff guibg=lightseablue gui=NONE
 hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
 hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
 " }}}
-" NERDTree {{{
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-" enable line numbers
-let NERDTreeShowLineNumbers=1
-let loaded_netrwPlugin=1
-let NERDTreeRespectWildIgnore=1
-let NERDTreeShowHidden=1
-let NERDTreeIgnore=['\.map$[[file]]']
-let g:NERDTreeNodeDelimiter = "\u00a0"
-"Toggle NERDTree
-map <C-b> :NERDTreeToggle<CR>
-
-"Show current file in nerdtree
-map <leader>r :NERDTreeFind<cr>
+Plug 'tpope/vim-vinegar'
+" " NERDTree {{{
+" Plug 'scrooloose/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+" " enable line numbers
+" let NERDTreeShowLineNumbers=1
+" let loaded_netrwPlugin=1
+" let NERDTreeRespectWildIgnore=1
+" let NERDTreeShowHidden=1
+" let NERDTreeIgnore=['\.map$[[file]]']
+" let g:NERDTreeNodeDelimiter = "\u00a0"
+" "Toggle NERDTree
+" map <C-b> :NERDTreeToggle<CR>
+"
+" "Show current file in nerdtree
+" map <leader>r :NERDTreeFind<cr>
 " }}}
 " Ale {{{
 Plug 'w0rp/ale'

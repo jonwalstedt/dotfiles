@@ -39,7 +39,15 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " go to tag
-nmap <C-]> <leader>gd
+nmap <leader>gd <C-]>
+
+" netrw
+" opens netrw in the current window
+nmap <localleader>e :Explore<cr>
+" opens netrw in a horizontal split
+nmap <localleader>x :Sexplore<cr>
+" opens netrw in a vertical split
+nmap <localleader>v :Vexplore<cr>
 
 " Sumodes
 " Resize splits

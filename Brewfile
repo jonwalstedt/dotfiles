@@ -35,7 +35,7 @@ brew "libtool"
 brew "mariadb"
 brew "minio-mc"
 brew "mongodb"
-brew "neovim"
+brew "neovim", args: ["HEAD"]
 brew "node"
 brew "nvm"
 brew "openssl@1.1"

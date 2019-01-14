@@ -56,6 +56,11 @@
     command: echo Installing Homebrew formulas from Brewfile && brew bundle
     stdout: true
 
+- shell:
+  -
+    command: echo Installing FZF keybindings && $(brew --prefix)/opt/fzf/install
+    stdout: true
+
 - pip:
     file: python/requirements.txt
     binary: /usr/local/opt/python/libexec/bin/pip
@@ -73,7 +78,7 @@
 
 - shell:
   -
-    command: echo Installing vim plugins && nvim +PluginInstall +qall
+    command: echo Installing vim plugins && nvim +'PlugInstall --sync' +qa
     stdout: true
 
 # These links should be created after everything is installed:
