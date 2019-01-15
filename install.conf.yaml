@@ -7,8 +7,6 @@
     command: echo Running pre installation script && sh pre-install.sh
     stdout: true
 
-  - [mkdir -p ~/.config/nvim, Creating nvim folders]
-  - [mkdir -p ~/.config/nvim/ultisnips, Creating nvim folders]
   - [mkdir -p ~/.config/oni, Creating oni folders]
 
 - link:
@@ -32,19 +30,7 @@
     ~/.editorconfig: config/editorconfig
 
     # Neovim
-    ~/.config/nvim/init.vim: config/init.vim
-    ~/.config/nvim/commands.vim: config/nvim/commands.vim
-    ~/.config/nvim/config.vim: config/nvim/config.vim
-    ~/.config/nvim/functions.vim: config/nvim/functions.vim
-    ~/.config/nvim/keymap.vim: config/nvim/keymap.vim
-    ~/.config/nvim/macros.vim: config/nvim/macros.vim
-    ~/.config/nvim/plugins.vim: config/nvim/plugins.vim
-
-    ~/.config/nvim/ultisnips/30secondsofcode.snippets: config/nvim/ultisnips/30secondsofcode.snippets
-    ~/.config/nvim/ultisnips/html.snippets: config/nvim/ultisnips/html.snippets
-    ~/.config/nvim/ultisnips/javascript.snippets: config/nvim/ultisnips/javascript.snippets
-    ~/.config/nvim/ultisnips/typescript.snippets: config/nvim/ultisnips/typescript.snippets
-    ~/.config/nvim/ultisnips/typescriptreact.snippets: config/nvim/ultisnips/typescriptreact.snippets
+    ~/.config/nvim: config/nvim
 
     # Oni
     ~/.config/oni/config.js: config/oni/config.js
