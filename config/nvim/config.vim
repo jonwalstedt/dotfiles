@@ -116,7 +116,7 @@ let g:submode_timeout = 0                           " Disable submode timeouts:
 let g:submode_keep_leaving_key = 1                  " Don't consume submode-leaving key
 " }}}
 " Netrw {{{
-let g:netrw_liststyle = 3
+let g:netrw_liststyle = 4
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
