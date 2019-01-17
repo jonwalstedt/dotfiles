@@ -117,6 +117,10 @@ let g:submode_keep_leaving_key = 1                  " Don't consume submode-leav
 " }}}
 " Netrw {{{
 let g:netrw_liststyle = 4
+let g:netrw_preview=1
+let g:netrw_alto=0
+let g:netrw_winsize=50
+let g:netrw_keepdir=0
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0

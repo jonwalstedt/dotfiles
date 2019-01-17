@@ -46,6 +46,7 @@ brew "poppler"
 brew "python"
 brew "python3"
 brew "python@2"
+brew "redis"
 brew "ruby"
 brew "the_silver_searcher"
 brew "universal-ctags/universal-ctags/universal-ctags", args: ["HEAD"]

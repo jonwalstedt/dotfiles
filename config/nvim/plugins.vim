@@ -32,7 +32,8 @@ hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
 hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
 " }}}
 Plug 'tpope/vim-vinegar'
-" " NERDTree {{{
+
+" NERDTree {{{
 " Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 " " enable line numbers
@@ -251,3 +252,5 @@ Plug 'jonwalstedt/vim-myhelp'
 call plug#end()
 
 colorscheme onedark
+
+" vim:foldmethod=marker:foldlevel=0
