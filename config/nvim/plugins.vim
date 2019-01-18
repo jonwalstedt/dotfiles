@@ -22,33 +22,6 @@ nnoremap <C-t> :Buffers<cr>
 nnoremap <C-s> :Ag<cr>
 nnoremap <localleader>p :History:<cr>
 " }}}
-" GitGutter {{{
-Plug 'airblade/vim-gitgutter'
-"disable keybindings (causes delay on mapped easymotion keys)
-let g:gitgutter_map_keys = 0
-hi GitGutterAddLine guifg=white guibg=springgreen4 gui=NONE
-hi GitGutterChangeLine guifg=#ffffff guibg=lightseablue gui=NONE
-hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
-hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
-" }}}
-Plug 'tpope/vim-vinegar'
-
-" NERDTree {{{
-" Plug 'scrooloose/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-" " enable line numbers
-" let NERDTreeShowLineNumbers=1
-" let loaded_netrwPlugin=1
-" let NERDTreeRespectWildIgnore=1
-" let NERDTreeShowHidden=1
-" let NERDTreeIgnore=['\.map$[[file]]']
-" let g:NERDTreeNodeDelimiter = "\u00a0"
-" "Toggle NERDTree
-" map <C-b> :NERDTreeToggle<CR>
-"
-" "Show current file in nerdtree
-" map <leader>r :NERDTreeFind<cr>
-" }}}
 " Ale {{{
 Plug 'w0rp/ale'
 let g:ale_fixers = {
@@ -64,19 +37,23 @@ let g:ale_completion_enabled = 1
 " BufSurf (navigate file history) {{{
 Plug 'ton/vim-bufsurf'
 " }}}
-" Vim-Commited {{{
-Plug 'ChrisPenner/vim-committed'
-let g:committed_min_time_threshold = 10
-let g:committed_lines_threshold = 15
-"}}}
+Plug 'tpope/vim-vinegar'
 "}}}
 Plug 'kana/vim-submode'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 Plug 'ludovicchabant/vim-gutentags'
-"Plug 'vim-scripts/auto-pairs-gentle'
 " Git  {{{
+" GitGutter {{{
+Plug 'airblade/vim-gitgutter'
+"disable keybindings (causes delay on mapped easymotion keys)
+let g:gitgutter_map_keys = 0
+hi GitGutterAddLine guifg=white guibg=springgreen4 gui=NONE
+hi GitGutterChangeLine guifg=#ffffff guibg=lightseablue gui=NONE
+hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
+hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
+" }}}
 " Vim Fugitive {{{
 Plug 'tpope/vim-fugitive'
 function! ToggleGStatus()
@@ -103,22 +80,16 @@ command ToggleTwiggy :call ToggleTwiggy()
 " gv.vim  {{{
 Plug 'junegunn/gv.vim'
 "}}}
+" Vim-Commited {{{
+Plug 'ChrisPenner/vim-committed'
+let g:committed_min_time_threshold = 10
+let g:committed_lines_threshold = 15
 "}}}
 "}}}
 " Completion {{{
 " Supertab {{{
 Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = '<C-n>'
-" }}}
-" Neosnippet / not used for now but is probably faster than utltisnps {{{
-" Plug 'Shougo/neosnippet.vim'
-" Plug 'Shougo/neosnippet-snippets'
-" imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"      \ "\<Plug>(neosnippet_expand_or_jump)"
-"      \: pumvisible() ? "\<C-n>" : "\<TAB>"
-" smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
-"      \ "\<Plug>(neosnippet_expand_or_jump)"
-"      \: "\<TAB>"
 " }}}
 " Ultisnips {{{
 Plug 'sirver/ultisnips'
