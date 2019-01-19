@@ -37,7 +37,48 @@ let g:ale_completion_enabled = 1
 " BufSurf (navigate file history) {{{
 Plug 'ton/vim-bufsurf'
 " }}}
-Plug 'tpope/vim-vinegar'
+"Plug 'tpope/vim-vinegar'
+
+" Vaffle {{{
+Plug 'cocopon/vaffle.vim'
+let g:vaffle_use_default_mappings=0
+
+function! s:customize_vaffle_mappings() abort
+  " Keep netrw keybindings
+  nmap <silent> <buffer> <C--> <Plug>(vaffle-open-root)
+  nmap <silent> <buffer> - <Plug>(vaffle-open-parent)
+
+  nmap <silent> <buffer> <CR> <Plug>(vaffle-open-current)
+
+  nmap <silent> <buffer> * <Plug>(vaffle-toggle-all)
+  nmap <silent> <buffer> . <Plug>(vaffle-toggle-hidden)
+  nmap <silent> <buffer> <Space> <Plug>(vaffle-toggle-current)
+  vmap <silent> <buffer> <Space> <Plug>(vaffle-toggle-current)
+
+  nmap <silent> <buffer> <C-CR> <Plug>(vaffle-open-selected)
+  nmap <silent> <buffer> D <Plug>(vaffle-delete-selected)
+  nmap <silent> <buffer> R <Plug>(vaffle-rename-selected)
+  nmap <silent> <buffer> m <Plug>(vaffle-move-selected)
+  nmap <silent> <buffer> v <Plug>(vaffle-open-selected-vsplit)
+
+  nmap <silent> <buffer> <C-l> <Plug>(vaffle-refresh)
+
+  nmap <silent> <buffer> d <Plug>(vaffle-mkdir)
+  nmap <silent> <buffer> % <Plug>(vaffle-new-file)
+  nmap <silent> <buffer> x <Plug>(vaffle-fill-cmdline)
+
+  nmap <silent> <buffer> <BS> <Plug>(vaffle-quit)
+  nmap <silent> <buffer> q <Plug>(vaffle-quit)
+endfunction
+
+augroup vimrc_vaffle
+  autocmd!
+  autocmd FileType vaffle call s:customize_vaffle_mappings()
+augroup END
+
+nnoremap <silent> - :Vaffle %:h<CR>
+
+"}}}
 "}}}
 Plug 'kana/vim-submode'
 Plug 'Konfekt/FastFold'
