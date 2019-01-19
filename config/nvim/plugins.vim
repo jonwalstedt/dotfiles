@@ -42,6 +42,7 @@ Plug 'ton/vim-bufsurf'
 " Vaffle {{{
 Plug 'cocopon/vaffle.vim'
 let g:vaffle_use_default_mappings=0
+let g:vaffle_show_hidden_files=1
 
 function! s:customize_vaffle_mappings() abort
   " Keep netrw keybindings
