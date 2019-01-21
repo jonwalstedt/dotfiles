@@ -68,7 +68,6 @@ function! s:customize_vaffle_mappings() abort
   nmap <silent> <buffer> % <Plug>(vaffle-new-file)
   nmap <silent> <buffer> x <Plug>(vaffle-fill-cmdline)
 
-  nmap <silent> <buffer> <BS> <Plug>(vaffle-quit)
   nmap <silent> <buffer> q <Plug>(vaffle-quit)
 endfunction
 
