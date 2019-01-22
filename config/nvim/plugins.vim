@@ -38,6 +38,7 @@ let g:ale_completion_enabled = 1
 Plug 'ton/vim-bufsurf'
 " }}}
 "Plug 'tpope/vim-vinegar'
+Plug 'dbakker/vim-projectroot'
 
 " Vaffle {{{
 Plug 'cocopon/vaffle.vim'
@@ -46,7 +47,7 @@ let g:vaffle_show_hidden_files=1
 
 function! s:customize_vaffle_mappings() abort
   " Keep netrw keybindings
-  nmap <silent> <buffer> <C--> <Plug>(vaffle-open-root)
+  nmap <silent> + :ProjectRootExe Vaffle<cr>
   nmap <silent> <buffer> - <Plug>(vaffle-open-parent)
 
   nmap <silent> <buffer> <CR> <Plug>(vaffle-open-current)
