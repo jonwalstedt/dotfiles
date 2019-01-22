@@ -83,6 +83,7 @@ nnoremap <silent> - :Vaffle %:h<CR>
 Plug 'kana/vim-submode'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'ludovicchabant/vim-gutentags'
 " Git  {{{
@@ -232,8 +233,8 @@ xmap s <Plug>Sneak_s
 xmap S <Plug>Sneak_S
 
 " operator-pending-mode
-omap s <Plug>Sneak_s
-omap S <Plug>Sneak_S
+omap z <Plug>Sneak_s
+omap Z <Plug>Sneak_S
 "}}}
 Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
