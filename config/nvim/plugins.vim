@@ -54,10 +54,9 @@ function! s:customize_vaffle_mappings() abort
 
   nmap <silent> <buffer> * <Plug>(vaffle-toggle-all)
   nmap <silent> <buffer> . <Plug>(vaffle-toggle-hidden)
-  nmap <silent> <buffer> <Space> <Plug>(vaffle-toggle-current)
-  vmap <silent> <buffer> <Space> <Plug>(vaffle-toggle-current)
+  nmap <silent> <buffer> <C-space> <Plug>(vaffle-toggle-current)
+  vmap <silent> <buffer> <C-space> <Plug>(vaffle-toggle-current)
 
-  nmap <silent> <buffer> <C-CR> <Plug>(vaffle-open-selected)
   nmap <silent> <buffer> D <Plug>(vaffle-delete-selected)
   nmap <silent> <buffer> R <Plug>(vaffle-rename-selected)
   nmap <silent> <buffer> m <Plug>(vaffle-move-selected)
