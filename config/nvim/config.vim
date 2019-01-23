@@ -24,6 +24,7 @@ set tildeop                                     " Enable ~ operator.
 set timeoutlen=800                              " Timeout Leader after 400 ms.
 set updatetime=100                              " Set update time to 100 ms.
 set virtualedit=block                           " Enable virtualedit when in Visual Block mode.
+set confirm                                      " Prompt for unsaved buffers on quit
 
 " Remove highlighted line for unfocused buffer
 augroup BgHighlight
