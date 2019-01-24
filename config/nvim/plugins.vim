@@ -256,7 +256,6 @@ let ayucolor="dark"
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'jonwalstedt/minimalgrey'
-Plug 'ujihisa/neco-look'
 Plug 'mustache/vim-mustache-handlebars'
 " }}}
 " Help {{{
