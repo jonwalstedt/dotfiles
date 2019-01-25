@@ -13,13 +13,14 @@ call plug#begin('~/.nvim/plugged')
 " FZF Fuzzyfinder {{{
 Plug 'junegunn/fzf', { 'dir': $XDG_DATA_HOME . '/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
-
+command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 nnoremap <C-p> :FZF<cr>
 nnoremap <C-t> :Buffers<cr>
 nnoremap <C-s> :Ag<cr>
+inoremap <C-space> <esc>:Snippets<cr>
 nnoremap <localleader>p :History:<cr>
 " }}}
 " Ale {{{
@@ -137,7 +138,6 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 Plug 'sirver/ultisnips'
 
 let g:UltiSnipsExpandTrigger = '<Tab>'
-let g:UltiSnipsListSnippets = '<C-Tab>'
 let g:UltiSnipsJumpForwardTrigger = '<C-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 let g:UltiSnipsSnippetsDir = $HOME.'/.config/nvim/ultisnips'
@@ -158,12 +158,11 @@ let g:deoplete#omni#functions.javascript = [
 \]
 
 let g:deoplete#sources = {}
-let g:deoplete#sources['javascript.js'] = ['buffer', 'file', 'ultisnips', 'ternjs']
-let g:deoplete#sources['javascript.jsx'] = ['buffer', 'file', 'ultisnips', 'ternjs']
+let g:deoplete#sources['javascript.js'] = ['ultisnips', 'buffer', 'file', 'ternjs']
+let g:deoplete#sources['javascript.jsx'] = ['ultisnips', 'buffer', 'file', 'ternjs']
+let g:deoplete#sources['javascript.ts'] = ['ultisnips', 'buffer', 'file', 'ternjs']
+let g:deoplete#sources['javascript.tsx'] = ['ultisnips', 'buffer', 'file', 'ternjs']
 
-" use tab to forward cycle
-inoremap <silent><expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-inoremap <silent><expr><s-tab> pumvisible() ? "\<c-p>" : "\<s-tab>"
 "}}}
 " }}}
 " Motions / Search {{{
