@@ -160,8 +160,6 @@ let g:deoplete#omni#functions.javascript = [
 let g:deoplete#sources = {}
 let g:deoplete#sources['javascript.js'] = ['ultisnips', 'buffer', 'file', 'ternjs']
 let g:deoplete#sources['javascript.jsx'] = ['ultisnips', 'buffer', 'file', 'ternjs']
-let g:deoplete#sources['javascript.ts'] = ['ultisnips', 'buffer', 'file', 'ternjs']
-let g:deoplete#sources['javascript.tsx'] = ['ultisnips', 'buffer', 'file', 'ternjs']
 
 "}}}
 " }}}
@@ -262,6 +260,7 @@ Plug 'jonwalstedt/vim-myhelp'
 " }}}
 call plug#end()
 
+call deoplete#custom#option('ignore_sources', {'_': ['tag']})
 colorscheme onedark
 
 " vim:foldmethod=marker:foldlevel=0
