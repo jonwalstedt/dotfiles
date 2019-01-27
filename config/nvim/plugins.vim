@@ -63,7 +63,7 @@ function! s:customize_vaffle_mappings() abort
   nmap <silent> <buffer> m <Plug>(vaffle-move-selected)
   nmap <silent> <buffer> v <Plug>(vaffle-open-selected-vsplit)
 
-  nmap <silent> <buffer> <C-l> <Plug>(vaffle-refresh)
+  nmap <silent> <buffer> <leader>r <Plug>(vaffle-refresh)
 
   nmap <silent> <buffer> d <Plug>(vaffle-mkdir)
   nmap <silent> <buffer> % <Plug>(vaffle-new-file)
@@ -86,7 +86,13 @@ Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+" Gutentags {{{
 Plug 'ludovicchabant/vim-gutentags'
+" Gutentags throws errors when saving git commit messages, as a workaround
+" gutentags is disabled.
+au FileType gitcommit,gitrebase let g:gutentags_enabled=0
+" }}}
+
 " Git  {{{
 " GitGutter {{{
 Plug 'airblade/vim-gitgutter'
@@ -250,7 +256,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 let ayucolor="dark"
 "}}}
-Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'HerringtonDarkholme/yats.vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'jonwalstedt/minimalgrey'
 Plug 'mustache/vim-mustache-handlebars'
