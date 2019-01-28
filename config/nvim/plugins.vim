@@ -45,6 +45,7 @@ Plug 'dbakker/vim-projectroot'
 Plug 'cocopon/vaffle.vim'
 let g:vaffle_use_default_mappings=0
 let g:vaffle_show_hidden_files=1
+let g:vaffle_force_delete=1
 
 function! s:customize_vaffle_mappings() abort
   " Keep netrw keybindings
@@ -256,8 +257,8 @@ Plug 'joshdick/onedark.vim'
 Plug 'ayu-theme/ayu-vim'
 let ayucolor="dark"
 "}}}
-" Plug 'HerringtonDarkholme/yats.vim'
-Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'leafgarland/typescript-vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'jonwalstedt/minimalgrey'
 Plug 'mustache/vim-mustache-handlebars'
