@@ -14,7 +14,7 @@ set lazyredraw                                  " Only redraw when needed
 set nostartofline                               " Do not jump to first character with page commands.
 set showmatch                                   " Highlight matching [{()}]
 set completeopt=longest,menuone,preview
-set clipboard=unnamed                           " Use the clipboard register
+set clipboard=unnamedplus                           " Use the clipboard register
 "set list "set listchars=eol:¶,tab:>=,trail:.
 set list
 set listchars=nbsp:¬,tab:>-,extends:»,precedes:«,trail:•
