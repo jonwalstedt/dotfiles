@@ -56,6 +56,7 @@ brew "wxmac"
 brew "yarn"
 brew "zsh"
 brew 'git-lfs'
+cask "keycastr"
 cask "docker-toolbox"
 cask "iterm2"
 cask "java"
