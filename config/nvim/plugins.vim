@@ -71,6 +71,7 @@ function! s:customize_vaffle_mappings() abort
   nmap <silent> <buffer> x <Plug>(vaffle-fill-cmdline)
 
   nmap <silent> <buffer> q <Plug>(vaffle-quit)
+  nmap <silent> <buffer> <BS> <Plug>(vaffle-quit)
 endfunction
 
 augroup vimrc_vaffle
