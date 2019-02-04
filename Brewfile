@@ -39,6 +39,7 @@ brew "mongodb"
 brew "neovim", args: ["HEAD"]
 brew "node"
 brew "nvm"
+brew "nnn"
 brew "openssl@1.1"
 brew "perl"
 brew "pipenv"

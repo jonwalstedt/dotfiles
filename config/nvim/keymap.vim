@@ -13,7 +13,7 @@ nmap <silent> <Leader>th :sp term://zsh<CR>
 
 " Escape to exit to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
-tnoremap jj <C-\><C-n>
+" tnoremap jj <C-\><C-n>
 
 " Escape to clear highlighting in normal mode
 nnoremap <silent> <esc> :noh<return><esc>

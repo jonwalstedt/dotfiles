@@ -32,3 +32,7 @@ _fzf_compgen_path() {
   ag -g "" "$1"
 }
 
+
+# NNN
+export NNN_USE_EDITOR=1
+export NNN_SHOW_HIDDEN=1

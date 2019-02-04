@@ -38,48 +38,49 @@ let g:ale_completion_enabled = 1
 " BufSurf (navigate file history) {{{
 Plug 'ton/vim-bufsurf'
 " }}}
-"Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 Plug 'dbakker/vim-projectroot'
-
+Plug 'mcchrish/nnn.vim'
+nnoremap - :NnnPicker '%:p:h'<CR>
 " Vaffle {{{
-Plug 'cocopon/vaffle.vim'
-let g:vaffle_use_default_mappings=0
-let g:vaffle_show_hidden_files=1
-let g:vaffle_force_delete=1
-
-function! s:customize_vaffle_mappings() abort
-  " Keep netrw keybindings
-  nmap <silent> + :ProjectRootExe Vaffle<cr>
-  nmap <silent> <buffer> - <Plug>(vaffle-open-parent)
-
-  nmap <silent> <buffer> <CR> <Plug>(vaffle-open-current)
-
-  nmap <silent> <buffer> * <Plug>(vaffle-toggle-all)
-  nmap <silent> <buffer> . <Plug>(vaffle-toggle-hidden)
-  nmap <silent> <buffer> <C-space> <Plug>(vaffle-toggle-current)
-  vmap <silent> <buffer> <C-space> <Plug>(vaffle-toggle-current)
-
-  nmap <silent> <buffer> D <Plug>(vaffle-delete-selected)
-  nmap <silent> <buffer> R <Plug>(vaffle-rename-selected)
-  nmap <silent> <buffer> m <Plug>(vaffle-move-selected)
-  nmap <silent> <buffer> v <Plug>(vaffle-open-selected-vsplit)
-
-  nmap <silent> <buffer> <leader>r <Plug>(vaffle-refresh)
-
-  nmap <silent> <buffer> d <Plug>(vaffle-mkdir)
-  nmap <silent> <buffer> % <Plug>(vaffle-new-file)
-  nmap <silent> <buffer> x <Plug>(vaffle-fill-cmdline)
-
-  nmap <silent> <buffer> q <Plug>(vaffle-quit)
-  nmap <silent> <buffer> <BS> <Plug>(vaffle-quit)
-endfunction
-
-augroup vimrc_vaffle
-  autocmd!
-  autocmd FileType vaffle call s:customize_vaffle_mappings()
-augroup END
-
-nnoremap <silent> - :Vaffle %:h<CR>
+" Plug 'cocopon/vaffle.vim'
+" let g:vaffle_use_default_mappings=0
+" let g:vaffle_show_hidden_files=1
+" let g:vaffle_force_delete=1
+"
+" function! s:customize_vaffle_mappings() abort
+"   " Keep netrw keybindings
+"   nmap <silent> + :ProjectRootExe Vaffle<cr>
+"   nmap <silent> <buffer> - <Plug>(vaffle-open-parent)
+"
+"   nmap <silent> <buffer> <CR> <Plug>(vaffle-open-current)
+"
+"   nmap <silent> <buffer> * <Plug>(vaffle-toggle-all)
+"   nmap <silent> <buffer> . <Plug>(vaffle-toggle-hidden)
+"   nmap <silent> <buffer> <C-space> <Plug>(vaffle-toggle-current)
+"   vmap <silent> <buffer> <C-space> <Plug>(vaffle-toggle-current)
+"
+"   nmap <silent> <buffer> D <Plug>(vaffle-delete-selected)
+"   nmap <silent> <buffer> R <Plug>(vaffle-rename-selected)
+"   nmap <silent> <buffer> m <Plug>(vaffle-move-selected)
+"   nmap <silent> <buffer> v <Plug>(vaffle-open-selected-vsplit)
+"
+"   nmap <silent> <buffer> <leader>r <Plug>(vaffle-refresh)
+"
+"   nmap <silent> <buffer> d <Plug>(vaffle-mkdir)
+"   nmap <silent> <buffer> % <Plug>(vaffle-new-file)
+"   nmap <silent> <buffer> x <Plug>(vaffle-fill-cmdline)
+"
+"   nmap <silent> <buffer> q <Plug>(vaffle-quit)
+"   nmap <silent> <buffer> <BS> <Plug>(vaffle-quit)
+" endfunction
+"
+" augroup vimrc_vaffle
+"   autocmd!
+"   autocmd FileType vaffle call s:customize_vaffle_mappings()
+" augroup END
+"
+" nnoremap <silent> - :Vaffle %:h<CR>
 
 "}}}
 "}}}
@@ -259,7 +260,6 @@ Plug 'ayu-theme/ayu-vim'
 let ayucolor="dark"
 "}}}
 Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'leafgarland/typescript-vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'jonwalstedt/minimalgrey'
 Plug 'mustache/vim-mustache-handlebars'
