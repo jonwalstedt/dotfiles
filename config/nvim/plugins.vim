@@ -38,10 +38,17 @@ let g:ale_completion_enabled = 1
 " BufSurf (navigate file history) {{{
 Plug 'ton/vim-bufsurf'
 " }}}
-Plug 'tpope/vim-vinegar'
+" Plug 'tpope/vim-vinegar'
 Plug 'dbakker/vim-projectroot'
 Plug 'mcchrish/nnn.vim'
+
+let $NNN_USE_EDITOR=1
+let $NNN_SHOW_HIDDEN=1
+let $DISABLE_FILE_OPEN_ON_NAV=1
+
+nnoremap <leader>n :NnnPicker '%:p:h'<CR>
 nnoremap - :NnnPicker '%:p:h'<CR>
+
 " Vaffle {{{
 " Plug 'cocopon/vaffle.vim'
 " let g:vaffle_use_default_mappings=0
