@@ -46,8 +46,12 @@ let $NNN_USE_EDITOR=1
 let $NNN_SHOW_HIDDEN=1
 let $DISABLE_FILE_OPEN_ON_NAV=1
 
-nnoremap <leader>n :NnnPicker '%:p:h'<CR>
+nnoremap <leader>h :NnnPicker '%:p:h'<CR>
 nnoremap - :NnnPicker '%:p:h'<CR>
+let g:nnn#action = {
+      \ '<c-t>': 'tab split',
+      \ '<c-x>': 'split',
+      \ '<c-v>': 'vsplit' }
 
 " Vaffle {{{
 " Plug 'cocopon/vaffle.vim'
@@ -270,6 +274,7 @@ Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'jonwalstedt/minimalgrey'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'hail2u/vim-css3-syntax'
 " }}}
 " Help {{{
 Plug 'jonwalstedt/vim-myhelp'
