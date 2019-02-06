@@ -7,6 +7,8 @@ if !filereadable(autoload_plug_path)
 endif
 unlet autoload_plug_path
 
+packadd! matchit
+
 " Plugins
 call plug#begin('~/.nvim/plugged')
 " Interface {{{

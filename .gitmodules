@@ -7,3 +7,6 @@
 [submodule "mac-cli"]
   path = mac-cli
   url = https://github.com/guarinogabriel/Mac-CLI.git
+[submodule "config/nvim/pack/dist/opt/matchit"]
+	path = config/nvim/pack/dist/opt/matchit
+	url = https://github.com/chrisbra/matchit.git
