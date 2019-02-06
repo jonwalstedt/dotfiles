@@ -5,8 +5,8 @@ silent! so .vimlocal
 let mapleader = "\\"
 let maplocalleader = "`"
 
-" Cheatsheet see:
-" https://bitbucket.org/Jonwalstedt/vim-cheatsheet/src/master/README.md
+" Helpfiles can be found here
+" https://github.com/jonwalstedt/vim-myhelp
 
 source $HOME/.config/nvim/functions.vim
 source $HOME/.config/nvim/commands.vim
