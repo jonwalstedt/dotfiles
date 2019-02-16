@@ -112,10 +112,6 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 "}}}
-" Submode {{{
-let g:submode_timeout = 0                           " Disable submode timeouts:
-let g:submode_keep_leaving_key = 1                  " Don't consume submode-leaving key
-" }}}
 " Netrw {{{
 let g:netrw_liststyle = 4
 let g:netrw_preview=1

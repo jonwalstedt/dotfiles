@@ -11,7 +11,6 @@ packadd! matchit
 
 " Plugins
 call plug#begin('~/.nvim/plugged')
-" Interface {{{
 " FZF Fuzzyfinder {{{
 Plug 'junegunn/fzf', { 'dir': $XDG_DATA_HOME . '/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -32,16 +31,17 @@ let g:ale_fixers = {
 \   'typescript': ['tslint', 'prettier'],
 \   'css': ['prettier'],
 \}
+
+let g:ale_pattern_options = {
+\ '.css$': {'ale_linters': [], 'ale_fixers': []},
+\}
+
 let g:ale_sign_column_always = 1
 let g:ale_linters_explicit = 1
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 " }}}
-" BufSurf (navigate file history) {{{
-Plug 'ton/vim-bufsurf'
-" }}}
-" Plug 'tpope/vim-vinegar'
-Plug 'dbakker/vim-projectroot'
+" NNN {{{
 Plug 'mcchrish/nnn.vim'
 
 let $NNN_USE_EDITOR=1
@@ -54,7 +54,7 @@ let g:nnn#action = {
       \ '<c-t>': 'tab split',
       \ '<c-x>': 'split',
       \ '<c-v>': 'vsplit' }
-
+" }}}
 " Vaffle {{{
 " Plug 'cocopon/vaffle.vim'
 " let g:vaffle_use_default_mappings=0
@@ -96,20 +96,23 @@ let g:nnn#action = {
 " nnoremap <silent> - :Vaffle %:h<CR>
 
 "}}}
-"}}}
+" Submode {{{
 Plug 'kana/vim-submode'
+let g:submode_timeout = 0                           " Disable submode timeouts:
+let g:submode_keep_leaving_key = 1                  " Don't consume submode-leaving key
+" }}}
+Plug 'ton/vim-bufsurf'
+Plug 'dbakker/vim-projectroot'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+
 " Gutentags {{{
 Plug 'ludovicchabant/vim-gutentags'
 " Gutentags throws errors when saving git commit messages, as a workaround
 " gutentags is disabled.
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 " }}}
-
-" Git  {{{
 " GitGutter {{{
 Plug 'airblade/vim-gitgutter'
 "disable keybindings (causes delay on mapped easymotion keys)
@@ -146,12 +149,10 @@ command ToggleTwiggy :call ToggleTwiggy()
 Plug 'junegunn/gv.vim'
 "}}}
 " Vim-Commited {{{
-Plug 'ChrisPenner/vim-committed'
-let g:committed_min_time_threshold = 10
-let g:committed_lines_threshold = 15
+"Plug 'ChrisPenner/vim-committed'
+"let g:committed_min_time_threshold = 10
+"let g:committed_lines_threshold = 15
 "}}}
-"}}}
-" Completion {{{
 " Supertab {{{
 Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = '<C-n>'
@@ -169,6 +170,7 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips']
 Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
 let g:tern#command = ['tern']
 " }}}
+
 " Deoplete {{{
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
@@ -184,8 +186,17 @@ let g:deoplete#sources['javascript.js'] = ['ultisnips', 'buffer', 'file', 'ternj
 let g:deoplete#sources['javascript.jsx'] = ['ultisnips', 'buffer', 'file', 'ternjs']
 
 "}}}
+" Emmet {{{
+Plug 'mattn/emmet-vim'
+let g:user_emmet_settings = {
+\  'javascript' : {
+\      'extends' : 'jsx',
+\  },
+\  'typescript' : {
+\      'extends' : 'jsx',
+\  },
+\}
 " }}}
-" Motions / Search {{{
 "EasyMotion {{{
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
@@ -252,8 +263,8 @@ xmap s <Plug>Sneak_s
 xmap S <Plug>Sneak_S
 
 " operator-pending-mode
-omap z <Plug>Sneak_s
-omap Z <Plug>Sneak_S
+omap s <Plug>Sneak_s
+omap S <Plug>Sneak_S
 "}}}
 Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
@@ -262,22 +273,15 @@ Plug 'bronson/vim-visual-star-search'
 Plug 'vim-scripts/ExtractMatches'
 Plug 'vim-scripts/ingo-library'
 Plug 'vim-scripts/PatternsOnText'
-" }}}
-" Language / Syntax / Themes {{{
-" Themes {{{
+
 Plug 'morhetz/gruvbox'
-Plug 'whatyouhide/vim-gotham'
-Plug 'dracula/vim'
 Plug 'joshdick/onedark.vim'
-Plug 'ayu-theme/ayu-vim'
-let ayucolor="dark"
-"}}}
+Plug 'jonwalstedt/minimalgrey'
+
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-Plug 'jonwalstedt/minimalgrey'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'hail2u/vim-css3-syntax'
-" }}}
 " Help {{{
 Plug 'jonwalstedt/vim-myhelp'
 " }}}
@@ -285,5 +289,26 @@ call plug#end()
 
 call deoplete#custom#option('ignore_sources', {'_': ['tag']})
 colorscheme onedark
+
+" Sumodes
+" Resize splits
+call submode#enter_with('grow/shrink', 'n', '', '<leader>0', ':exe "vertical resize +15"<cr>')
+call submode#enter_with('grow/shrink', 'n', '', '<leader>9', ':exe "vertical resize -15"<cr>')
+call submode#map('grow/shrink', 'n', '', '0', ':exe "vertical resize +15"<cr>')
+call submode#map('grow/shrink', 'n', '', '9', ':exe "vertical resize -15"<cr>')
+
+" Fugitive (toggle git status panel)
+call submode#enter_with('gitstatus', 'n', '', '<localleader><space>', ':ToggleGStatus<cr>')
+call submode#map('gitstatus', 'n', '', '<space>', ':ToggleGStatus<cr>')
+
+" Twiggy (toggle twiggy panel)
+call submode#enter_with('gitbranches', 'n', '', '<localleader>b', ':ToggleTwiggy<cr>')
+call submode#map('gitbranches', 'n', '', 'b', ':ToggleTwiggy<cr>')
+
+" BufSurf
+call submode#enter_with('bufsurff', 'n', '', '<leader>j', ':BufSurfForward<cr>')
+call submode#map('bufsurff', 'n', '', 'j', ':BufSurfForward<cr>')
+call submode#enter_with('bufsurfback', 'n', '', '<leader>f', ':BufSurfBack<cr>')
+call submode#map('bufsurfback', 'n', '', 'f', ':BufSurfBack<cr>')
 
 " vim:foldmethod=marker:foldlevel=0

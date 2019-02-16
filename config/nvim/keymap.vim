@@ -3,6 +3,7 @@ nmap <leader><cr> :redraw!<CR>
 
 " Map jj to escape
 inoremap jj <Esc>
+inoremap jk <Esc>:w<cr>
 
 " Go to previous file with backspace
 nnoremap <BS> <c-^>
@@ -25,6 +26,9 @@ vnoremap // y/<C-R>"<CR>
 " Highlight word under cursor without moving the cursor
 nnoremap * *``
 nnoremap # #``
+
+" bind K to grep word under cursor
+nnoremap <leader>r :grep -r <C-R><C-W> ./src<CR><CR>:copen<CR><CR>
 
 " Split panes" (create with :vs)
 nnoremap <C-L> <C-W><C-L>
@@ -49,24 +53,4 @@ nmap <localleader>x :Sexplore<cr>
 " opens netrw in a vertical split
 nmap <localleader>v :Vexplore<cr>
 
-" Sumodes
-" Resize splits
-call submode#enter_with('grow/shrink', 'n', '', '<leader>0', ':exe "vertical resize +15"<cr>')
-call submode#enter_with('grow/shrink', 'n', '', '<leader>9', ':exe "vertical resize -15"<cr>')
-call submode#map('grow/shrink', 'n', '', '0', ':exe "vertical resize +15"<cr>')
-call submode#map('grow/shrink', 'n', '', '9', ':exe "vertical resize -15"<cr>')
-
-" Fugitive (toggle git status panel)
-call submode#enter_with('gitstatus', 'n', '', '<localleader><space>', ':ToggleGStatus<cr>')
-call submode#map('gitstatus', 'n', '', '<space>', ':ToggleGStatus<cr>')
-
-" Twiggy (toggle twiggy panel)
-call submode#enter_with('gitbranches', 'n', '', '<localleader>b', ':ToggleTwiggy<cr>')
-call submode#map('gitbranches', 'n', '', 'b', ':ToggleTwiggy<cr>')
-
-" BufSurf
-call submode#enter_with('bufsurff', 'n', '', '<leader>j', ':BufSurfForward<cr>')
-call submode#map('bufsurff', 'n', '', 'j', ':BufSurfForward<cr>')
-call submode#enter_with('bufsurfback', 'n', '', '<leader>f', ':BufSurfBack<cr>')
-call submode#map('bufsurfback', 'n', '', 'f', ':BufSurfBack<cr>')
 " vim:foldmethod=marker:foldlevel=0
