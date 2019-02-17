@@ -23,11 +23,11 @@ nnoremap <esc>^[ <esc>^[
 " Search for visually selected word with //
 vnoremap // y/<C-R>"<CR>
 
-" Highlight word under cursor without moving the cursor
+" Search word under cursor without moving the cursor
 nnoremap * *``
 nnoremap # #``
 
-" bind K to grep word under cursor
+" grep word under cursor and populate quickfix window
 nnoremap <leader>r :grep -r <C-R><C-W> ./src<CR><CR>:copen<CR><CR>
 
 " Split panes" (create with :vs)
