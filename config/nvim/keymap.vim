@@ -21,7 +21,7 @@ nnoremap <silent> <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 
 " Search for visually selected word with //
-vnoremap // y/<C-R>"<CR>
+vnoremap // y/<C-R>"<CR>``
 
 " Search word under cursor without moving the cursor
 nnoremap * *``
