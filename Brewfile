@@ -5,6 +5,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 brew "autoconf"
 brew "automake"
+brew "asciinema"
 brew "bash-completion"
 brew "blsd", args: ["HEAD"]
 brew "brew-cask-completion"
