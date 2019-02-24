@@ -106,6 +106,7 @@ Plug 'dbakker/vim-projectroot'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
 
 " Gutentags {{{
 Plug 'ludovicchabant/vim-gutentags'
