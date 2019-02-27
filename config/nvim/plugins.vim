@@ -52,8 +52,9 @@ nnoremap <leader>h :NnnPicker '%:p:h'<CR>
 nnoremap - :NnnPicker '%:p:h'<CR>
 let g:nnn#action = {
       \ '<c-t>': 'tab split',
-      \ '<c-x>': 'split',
-      \ '<c-v>': 'vsplit' }
+      \ '<localleader>t': 'tab split',
+      \ '<localleader>x': 'split',
+      \ '<localleader>v': 'vsplit' }
 " }}}
 " Vaffle {{{
 " Plug 'cocopon/vaffle.vim'
@@ -101,8 +102,11 @@ Plug 'kana/vim-submode'
 let g:submode_timeout = 0                           " Disable submode timeouts:
 let g:submode_keep_leaving_key = 1                  " Don't consume submode-leaving key
 " }}}
-Plug 'ton/vim-bufsurf'
+" ProjectRoot {{{
 Plug 'dbakker/vim-projectroot'
+nnoremap <silent> <localleader>r :ProjectRootCD<CR>
+" }}}
+Plug 'ton/vim-bufsurf'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
@@ -230,10 +234,10 @@ endfunction
 
 noremap <silent><expr> <localleader>/ incsearch#go(<SID>config_easyfuzzymotion())
 
-nmap <leader>w <Plug>(easymotion-overwin-w)
+nmap <leader>w <plug>(easymotion-overwin-w)
 "nmap <Leader>f <Plug>(easymotion-overwin-f)
 "map <Leader><space> <Plug>(easymotion-bd-f)
-nmap <space> <Plug>(easymotion-overwin-f2)
+nmap <space> <plug>(easymotion-overwin-f2)
 omap <space> <plug>(easymotion-bd-f2)
 vmap <space> <plug>(easymotion-bd-f2)
 
