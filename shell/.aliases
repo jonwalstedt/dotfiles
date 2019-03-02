@@ -34,6 +34,7 @@ alias vps='ssh jonwalstedt@128.199.54.176'
 
 # Neovim
 alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
+alias v.='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim .'
 alias vl='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim -u ~/.config/nvim/init-light.vim'
 alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias sim='NVIM_TUI_ENABLE_TRUE_COLOR=1 sudo nvim'
