@@ -39,3 +39,4 @@ alias vl='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim -u ~/.config/nvim/init-light.vim'
 alias vim='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias sim='NVIM_TUI_ENABLE_TRUE_COLOR=1 sudo nvim'
 
+alias th='cat ~/repos/dev-tools/terminal/terminal-cheatsheet/README.md'
