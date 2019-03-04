@@ -24,23 +24,6 @@ nnoremap <C-s> :Ag<cr>
 inoremap <C-space> <esc>:Snippets<cr>
 nnoremap <localleader>p :History:<cr>
 " }}}
-" Ale {{{
-Plug 'w0rp/ale'
-let g:ale_fixers = {
-\   'javascript': ['eslint', 'prettier'],
-\   'typescript': ['tslint', 'prettier'],
-\   'css': ['prettier'],
-\}
-
-let g:ale_pattern_options = {
-\ '.css$': {'ale_linters': [], 'ale_fixers': []},
-\}
-
-let g:ale_sign_column_always = 1
-let g:ale_linters_explicit = 1
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-" }}}
 " NNN {{{
 Plug 'mcchrish/nnn.vim'
 
@@ -56,47 +39,6 @@ let g:nnn#action = {
       \ '<localleader>x': 'split',
       \ '<localleader>v': 'vsplit' }
 " }}}
-" Vaffle {{{
-" Plug 'cocopon/vaffle.vim'
-" let g:vaffle_use_default_mappings=0
-" let g:vaffle_show_hidden_files=1
-" let g:vaffle_force_delete=1
-"
-" function! s:customize_vaffle_mappings() abort
-"   " Keep netrw keybindings
-"   nmap <silent> + :ProjectRootExe Vaffle<cr>
-"   nmap <silent> <buffer> - <Plug>(vaffle-open-parent)
-"
-"   nmap <silent> <buffer> <CR> <Plug>(vaffle-open-current)
-"
-"   nmap <silent> <buffer> * <Plug>(vaffle-toggle-all)
-"   nmap <silent> <buffer> . <Plug>(vaffle-toggle-hidden)
-"   nmap <silent> <buffer> <C-space> <Plug>(vaffle-toggle-current)
-"   vmap <silent> <buffer> <C-space> <Plug>(vaffle-toggle-current)
-"
-"   nmap <silent> <buffer> D <Plug>(vaffle-delete-selected)
-"   nmap <silent> <buffer> R <Plug>(vaffle-rename-selected)
-"   nmap <silent> <buffer> m <Plug>(vaffle-move-selected)
-"   nmap <silent> <buffer> v <Plug>(vaffle-open-selected-vsplit)
-"
-"   nmap <silent> <buffer> <leader>r <Plug>(vaffle-refresh)
-"
-"   nmap <silent> <buffer> d <Plug>(vaffle-mkdir)
-"   nmap <silent> <buffer> % <Plug>(vaffle-new-file)
-"   nmap <silent> <buffer> x <Plug>(vaffle-fill-cmdline)
-"
-"   nmap <silent> <buffer> q <Plug>(vaffle-quit)
-"   nmap <silent> <buffer> <BS> <Plug>(vaffle-quit)
-" endfunction
-"
-" augroup vimrc_vaffle
-"   autocmd!
-"   autocmd FileType vaffle call s:customize_vaffle_mappings()
-" augroup END
-"
-" nnoremap <silent> - :Vaffle %:h<CR>
-
-"}}}
 " Submode {{{
 Plug 'kana/vim-submode'
 let g:submode_timeout = 0                           " Disable submode timeouts:
@@ -165,31 +107,11 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 " Ultisnips {{{
 Plug 'sirver/ultisnips'
 
-let g:UltiSnipsExpandTrigger = '<Tab>'
-let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-let g:UltiSnipsSnippetsDir = $HOME.'/.config/nvim/ultisnips'
-let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips']
-"}}}
-" Tern {{{
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'] }
-let g:tern#command = ['tern']
-" }}}
-
-" Deoplete {{{
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-  \ 'jspc#omni'
-\]
-
-let g:deoplete#sources = {}
-let g:deoplete#sources['javascript.js'] = ['ultisnips', 'buffer', 'file', 'ternjs']
-let g:deoplete#sources['javascript.jsx'] = ['ultisnips', 'buffer', 'file', 'ternjs']
-
+" let g:UltiSnipsExpandTrigger = '<Tab>'
+" let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+" let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+" let g:UltiSnipsSnippetsDir = $HOME.'/.config/nvim/ultisnips'
+" let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips']
 "}}}
 " Emmet {{{
 Plug 'mattn/emmet-vim'
@@ -234,9 +156,6 @@ endfunction
 
 noremap <silent><expr> <localleader>/ incsearch#go(<SID>config_easyfuzzymotion())
 
-nmap <leader>w <plug>(easymotion-overwin-w)
-"nmap <Leader>f <Plug>(easymotion-overwin-f)
-"map <Leader><space> <Plug>(easymotion-bd-f)
 nmap <space> <plug>(easymotion-overwin-f2)
 omap <space> <plug>(easymotion-bd-f2)
 vmap <space> <plug>(easymotion-bd-f2)
@@ -244,10 +163,6 @@ vmap <space> <plug>(easymotion-bd-f2)
 nmap <Leader><space> <plug>(easymotion-bd-f)
 omap <Leader><space> <plug>(easymotion-bd-f)
 vmap <Leader><space> <plug>(easymotion-bd-f)
-
-nmap <C-space> <plug>(easymotion-bd-t2)
-omap <C-space> <plug>(easymotion-bd-t2)
-vmap <C-space> <plug>(easymotion-bd-t2)
 
 "JKLH motions: Line motions
 map <localleader>l <Plug>(easymotion-lineforward)
@@ -271,6 +186,99 @@ xmap S <Plug>Sneak_S
 omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
 "}}}
+" Coc {{{
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[c` and `]c` for navigate diagnostics
+nmap <silent> [c <Plug>(coc-diagnostic-prev)
+nmap <silent> ]c <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K for show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if &filetype == 'vim'
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for format selected region
+vmap <localleader>f  <Plug>(coc-format-selected)
+nmap <localleader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+vmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use `:Format` for format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` for fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <leader>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <localleader>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <localleader>q  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <localleader>w  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <localleader>e  :<C-u>CocListResume<CR>
+
+" }}}
 Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
 
@@ -284,7 +292,6 @@ Plug 'joshdick/onedark.vim'
 Plug 'jonwalstedt/minimalgrey'
 
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'hail2u/vim-css3-syntax'
 " Help {{{
@@ -292,7 +299,6 @@ Plug 'jonwalstedt/vim-myhelp'
 " }}}
 call plug#end()
 
-call deoplete#custom#option('ignore_sources', {'_': ['tag']})
 colorscheme onedark
 
 " Sumodes
@@ -316,4 +322,5 @@ call submode#map('bufsurff', 'n', '', 'j', ':BufSurfForward<cr>')
 call submode#enter_with('bufsurfback', 'n', '', '<leader>f', ':BufSurfBack<cr>')
 call submode#map('bufsurfback', 'n', '', 'f', ':BufSurfBack<cr>')
 
+call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint')
 " vim:foldmethod=marker:foldlevel=0

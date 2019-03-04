@@ -22,9 +22,11 @@ set ruler                                       " Show the cursor position all t
 set showcmd                                     " Display incomplete commands.
 set tildeop                                     " Enable ~ operator.
 set timeoutlen=800                              " Timeout Leader after 400 ms.
-set updatetime=100                              " Set update time to 100 ms.
+set updatetime=300                              " If this many milliseconds nothing is typed the swap file will be written to disk - Also used for CursorHold
 set virtualedit=block                           " Enable virtualedit when in Visual Block mode.
 set hidden                                      " Allow for unsaved changes when switchin buffers (use confirm if you want to be prompted for save)
+set cmdheight=2                                 " Better display for messages
+set shortmess+=c                                " don't give ins-completion-menu messages.
 
 " Remove highlighted line for unfocused buffer
 augroup BgHighlight
