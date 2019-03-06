@@ -27,6 +27,9 @@ vnoremap // y/<C-R>"<CR>``
 nnoremap * *``
 nnoremap # #``
 
+nmap n nzz
+nmap N Nzz
+
 " grep word under cursor and populate quickfix window
 nnoremap <leader>r :grep -r <C-R><C-W> ./src<CR><CR>:copen<CR><CR>
 
