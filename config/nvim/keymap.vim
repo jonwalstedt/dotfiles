@@ -53,4 +53,7 @@ nmap <localleader>x :Sexplore<cr>
 " opens netrw in a vertical split
 nmap <localleader>v :Vexplore<cr>
 
+"Easily edit the macro stored at register q
+nnoremap <leader>q :<c-u><c-r><c-r>='let @q = '. string(getreg('q'))<cr><c-f><left>
+
 " vim:foldmethod=marker:foldlevel=0

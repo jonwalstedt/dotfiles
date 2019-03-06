@@ -160,10 +160,6 @@ nmap <space> <plug>(easymotion-overwin-f2)
 omap <space> <plug>(easymotion-bd-f2)
 vmap <space> <plug>(easymotion-bd-f2)
 
-nmap <Leader><space> <plug>(easymotion-bd-f)
-omap <Leader><space> <plug>(easymotion-bd-f)
-vmap <Leader><space> <plug>(easymotion-bd-f)
-
 "JKLH motions: Line motions
 map <localleader>l <Plug>(easymotion-lineforward)
 map <localleader>j <Plug>(easymotion-j)
