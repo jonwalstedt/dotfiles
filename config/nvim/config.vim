@@ -10,7 +10,7 @@ set exrc                                        " Look for project specific sett
 set secure                                      " Prevetn :autocmd unless owned by me
 set spelllang=en_gb
 set mouse=a                                     " Enable mouse.
-set lazyredraw                                  " Only redraw when needed
+"set lazyredraw                                  " Only redraw when needed
 set nostartofline                               " Do not jump to first character with page commands.
 set showmatch                                   " Highlight matching [{()}]
 set completeopt=longest,menuone,preview
@@ -29,11 +29,11 @@ set cmdheight=2                                 " Better display for messages
 set shortmess+=c                                " don't give ins-completion-menu messages.
 
 " Remove highlighted line for unfocused buffer
-augroup BgHighlight
-    autocmd!
-    autocmd WinEnter * set cul
-    autocmd WinLeave * set nocul
-augroup END
+"augroup BgHighlight
+"    autocmd!
+"    autocmd WinEnter * set cul
+"    autocmd WinLeave * set nocul
+"augroup END
 " }}}
 " Backup {{{
 set backup                                      " Enable backup of files
@@ -57,13 +57,8 @@ set foldlevelstart=99
 syntax enable
 set termguicolors
 set t_Co=256
-set cursorline                                  " Highlight current row
+set nocursorline                                  " Disable Highlight current row
 set background=dark
-
-augroup init
-  autocmd!
-  autocmd ColorScheme * highlight NonText term=NONE cterm=NONE ctermfg=242 ctermbg=NONE gui=NONE guifg=magenta guibg=NONE
-augroup END
 
 " vim hardcodes background color erase even if the terminfo file does
 " not contain bce (not to mention that libvte based terminals
@@ -86,7 +81,7 @@ set smartindent
 " }}}
 " Line numbers {{{
 set number                                      " Show line numbers"
-set rnu                                         " Relative line numbers
+set nornu                                       " No relative line numbers
 set numberwidth=3                               " Gutter width for line numbers
 set signcolumn=yes
 "}}}

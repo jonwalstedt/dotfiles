@@ -20,12 +20,14 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|ex
 function! NumberToggle()
     if(&relativenumber == 1)
         set nornu
+        set nocursorline
     else
         set rnu
+        set cursorline
     endif
 endfunc
 
-nnoremap <silent> <C-n> :call NumberToggle()<cr>
+nnoremap <silent> <leader><leader> :call NumberToggle()<cr>
 "}}}
 " Run macro over selected rows {{{
 function! ExecuteMacroOverVisualRange()

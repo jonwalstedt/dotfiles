@@ -27,9 +27,6 @@ vnoremap // y/<C-R>"<CR>``
 nnoremap * *``
 nnoremap # #``
 
-nmap n nzz
-nmap N Nzz
-
 " grep word under cursor and populate quickfix window
 nnoremap <leader>r :grep -r <C-R><C-W> ./src<CR><CR>:copen<CR><CR>
 
@@ -38,9 +35,6 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
-
-" Toggle cursorline and cursorcolumn
-nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'

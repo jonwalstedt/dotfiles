@@ -3,7 +3,7 @@ silent! so .vimlocal
 
 " Use \ as Leader key (default).
 let mapleader = "\\"
-let maplocalleader = "`"
+let maplocalleader = "ﬁ"
 
 " Helpfiles can be found here
 " https://github.com/jonwalstedt/vim-myhelp
