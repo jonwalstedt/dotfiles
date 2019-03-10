@@ -25,7 +25,7 @@ inoremap <C-space> <esc>:Snippets<cr>
 nnoremap <localleader>p :History:<cr>
 " }}}
 " NNN {{{
-Plug 'mcchrish/nnn.vim'
+Plug 'mcchrish/nnn.vim', { 'on': 'NnnPicker' }
 
 let $NNN_USE_EDITOR=1
 let $NNN_SHOW_HIDDEN=1
@@ -45,15 +45,9 @@ let g:submode_timeout = 0                           " Disable submode timeouts:
 let g:submode_keep_leaving_key = 1                  " Don't consume submode-leaving key
 " }}}
 " ProjectRoot {{{
-Plug 'dbakker/vim-projectroot'
+Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
 nnoremap <silent> <localleader>r :ProjectRootCD<CR>
 " }}}
-Plug 'ton/vim-bufsurf'
-Plug 'Konfekt/FastFold'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
-
 " Gutentags {{{
 Plug 'ludovicchabant/vim-gutentags'
 " Gutentags throws errors when saving git commit messages, as a workaround
@@ -61,16 +55,28 @@ Plug 'ludovicchabant/vim-gutentags'
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 " }}}
 " GitGutter {{{
-Plug 'airblade/vim-gitgutter'
-"disable keybindings (causes delay on mapped easymotion keys)
-let g:gitgutter_map_keys = 0
-hi GitGutterAddLine guifg=white guibg=springgreen4 gui=NONE
-hi GitGutterChangeLine guifg=#ffffff guibg=lightseablue gui=NONE
-hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
-hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
+" Plug 'airblade/vim-gitgutter'
+" "disable keybindings (causes delay on mapped easymotion keys)
+" let g:gitgutter_map_keys = 0
+" hi GitGutterAddLine guifg=white guibg=springgreen4 gui=NONE
+" hi GitGutterChangeLine guifg=#ffffff guibg=lightseablue gui=NONE
+" hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
+" hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
 " }}}
 " Vim Fugitive {{{
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive', { 'on': [] }
+
+command! Gstatus call LazyLoadFugitive('Gstatus')
+command! Gdiff call LazyLoadFugitive('Gdiff')
+command! Glog call LazyLoadFugitive('Glog')
+command! Gblame call LazyLoadFugitive('Gblame')
+
+function! LazyLoadFugitive(cmd)
+  call plug#load('vim-fugitive')
+  call fugitive#detect(expand('%:p'))
+  exe a:cmd
+endfunction
+
 function! ToggleGStatus()
   if buflisted(bufname('.git/index'))
     bd .git/index
@@ -82,7 +88,8 @@ command ToggleGStatus :call ToggleGStatus()
 "}}}
 " Twiggy  {{{
 " https://vimawesome.com/plugin/twiggy
-Plug 'sodapopcan/vim-twiggy'
+Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy'}
+
 function! ToggleTwiggy()
   if buflisted(bufname('.git/index'))
     bd .git/branches
@@ -90,15 +97,12 @@ function! ToggleTwiggy()
     Twiggy
   endif
 endfunction
-command ToggleTwiggy :call ToggleTwiggy()
+
+command! ToggleTwiggy :call ToggleTwiggy()
 "}}}
 " gv.vim  {{{
-Plug 'junegunn/gv.vim'
-"}}}
-" Vim-Commited {{{
-"Plug 'ChrisPenner/vim-committed'
-"let g:committed_min_time_threshold = 10
-"let g:committed_lines_threshold = 15
+Plug 'junegunn/gv.vim', { 'on': []}
+command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 "}}}
 " Supertab {{{
 Plug 'ervandew/supertab'
@@ -128,7 +132,6 @@ let g:user_emmet_settings = {
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
 "Disable default mappings
 let g:EasyMotion_do_mapping = 0
 
@@ -153,8 +156,6 @@ function! s:config_easyfuzzymotion(...) abort
   \   'is_stay': 1
   \ }), get(a:, 1, {}))
 endfunction
-
-noremap <silent><expr> <localleader>/ incsearch#go(<SID>config_easyfuzzymotion())
 
 nmap <space> <plug>(easymotion-overwin-f2)
 omap <space> <plug>(easymotion-bd-f2)
@@ -275,24 +276,31 @@ nnoremap <silent> <localleader>w  :<C-u>CocPrev<CR>
 nnoremap <silent> <localleader>e  :<C-u>CocListResume<CR>
 
 " }}}
-Plug 'wellle/targets.vim'
-Plug 'kana/vim-textobj-user'
-
-Plug 'bronson/vim-visual-star-search'
-Plug 'vim-scripts/ExtractMatches'
-Plug 'vim-scripts/ingo-library'
-Plug 'vim-scripts/PatternsOnText'
-
-Plug 'morhetz/gruvbox'
-Plug 'joshdick/onedark.vim'
-Plug 'jonwalstedt/minimalgrey'
-
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'hail2u/vim-css3-syntax'
+" ExtractMatches {{{
+Plug 'vim-scripts/ingo-library', { 'on': []}
+Plug 'vim-scripts/ExtractMatches', { 'on': []}
+command! YankMatches call plug#load('ExtractMatches', 'ingo-library') | YankMatches
+" }}}
 " Help {{{
 Plug 'jonwalstedt/vim-myhelp'
 " }}}
+"
+Plug 'ton/vim-bufsurf'
+Plug 'Konfekt/FastFold'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+
+Plug 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'bronson/vim-visual-star-search'
+
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
+Plug 'mustache/vim-mustache-handlebars', { 'for': ['hbs', 'handlebars'] }
+Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
+
+Plug 'joshdick/onedark.vim'
+Plug 'jonwalstedt/minimalgrey'
 call plug#end()
 
 colorscheme onedark
