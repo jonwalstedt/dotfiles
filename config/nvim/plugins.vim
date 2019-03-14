@@ -25,19 +25,19 @@ inoremap <C-space> <esc>:Snippets<cr>
 nnoremap <localleader>p :History:<cr>
 " }}}
 " NNN {{{
-Plug 'mcchrish/nnn.vim', { 'on': 'NnnPicker' }
-
-let $NNN_USE_EDITOR=1
-let $NNN_SHOW_HIDDEN=1
-let $DISABLE_FILE_OPEN_ON_NAV=1
-
-nnoremap <leader>h :NnnPicker '%:p:h'<CR>
-nnoremap - :NnnPicker '%:p:h'<CR>
-let g:nnn#action = {
-      \ '<c-t>': 'tab split',
-      \ '<localleader>t': 'tab split',
-      \ '<localleader>x': 'split',
-      \ '<localleader>v': 'vsplit' }
+"Plug 'mcchrish/nnn.vim', { 'on': 'NnnPicker' }
+"
+"let $NNN_USE_EDITOR=1
+"let $NNN_SHOW_HIDDEN=1
+"let $DISABLE_FILE_OPEN_ON_NAV=1
+"
+"nnoremap <leader>h :NnnPicker '%:p:h'<CR>
+"nnoremap - :NnnPicker '%:p:h'<CR>
+"let g:nnn#action = {
+"      \ '<c-t>': 'tab split',
+"      \ '<localleader>t': 'tab split',
+"      \ '<localleader>x': 'split',
+"      \ '<localleader>v': 'vsplit' }
 " }}}
 " Submode {{{
 Plug 'kana/vim-submode'
@@ -55,13 +55,13 @@ Plug 'ludovicchabant/vim-gutentags'
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 " }}}
 " GitGutter {{{
-" Plug 'airblade/vim-gitgutter'
-" "disable keybindings (causes delay on mapped easymotion keys)
-" let g:gitgutter_map_keys = 0
-" hi GitGutterAddLine guifg=white guibg=springgreen4 gui=NONE
-" hi GitGutterChangeLine guifg=#ffffff guibg=lightseablue gui=NONE
-" hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
-" hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
+Plug 'airblade/vim-gitgutter'
+"disable keybindings (causes delay on mapped easymotion keys)
+let g:gitgutter_map_keys = 0
+hi GitGutterAddLine guifg=white guibg=springgreen4 gui=NONE
+hi GitGutterChangeLine guifg=#ffffff guibg=lightseablue gui=NONE
+hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
+hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
 " }}}
 " Vim Fugitive {{{
 Plug 'tpope/vim-fugitive', { 'on': [] }
@@ -212,9 +212,9 @@ nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <silent> <leader>gt <Plug>(coc-type-definition)
+nmap <silent> <leader>gi <Plug>(coc-implementation)
+nmap <silent> <leader>gr <Plug>(coc-references)
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -285,6 +285,7 @@ command! YankMatches call plug#load('ExtractMatches', 'ingo-library') | YankMatc
 Plug 'jonwalstedt/vim-myhelp'
 " }}}
 "
+Plug 'tpope/vim-vinegar'
 Plug 'ton/vim-bufsurf'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
