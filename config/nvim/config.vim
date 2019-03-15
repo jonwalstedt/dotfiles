@@ -1,7 +1,7 @@
 " Misc {{{
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-let g:ruby_host_prog = 'rvm system do neovim-ruby-host'
+" let g:python2_host_prog = '/usr/local/bin/python'
+" let g:python3_host_prog = '/usr/local/bin/python3'
+" let g:ruby_host_prog = 'rvm system do neovim-ruby-host'
 
 filetype plugin indent on
 set path=.,,**
@@ -59,7 +59,6 @@ set termguicolors
 set t_Co=256
 set nocursorline                                  " Disable Highlight current row
 set background=dark
-
 " vim hardcodes background color erase even if the terminfo file does
 " not contain bce (not to mention that libvte based terminals
 " incorrectly contain bce in their terminfo files). This causes
@@ -114,7 +113,7 @@ let g:netrw_liststyle = 4
 let g:netrw_preview=1
 let g:netrw_alto=0
 let g:netrw_winsize=50
-let g:netrw_keepdir=0
+let g:netrw_keepdir=1
 let g:netrw_menu=0
 let g:netrw_banner=0
 " }}}
