@@ -1,5 +1,103 @@
 extends 30secondsofcode
 
+# ES2015
+snippet try
+try {
+  $0
+} catch (error) {
+  console.error(error);
+}
+endsnippet
+
+snippet "c(onst)?" "const" br
+const ${1} = ${2:'$1'};
+endsnippet
+
+snippet "l(et)?" "let" br
+let ${1} = ${2:'$1'};
+endsnippet
+
+snippet "i(mport|mp|m)?" "import" br
+import ${1} from '${2:./}${3:$1}';
+endsnippet
+
+snippet "e(xport|xp|x)?" "export" br
+export ${1:default };
+endsnippet
+
+snippet ie "Import file then export" b
+import ${1} from '${2:./}${3:$1}';
+
+export ${4:default} $1;
+endsnippet
+
+snippet r "return"
+return ${0:result;}
+endsnippet
+
+snippet : "Object Value JS"
+${1:key}: ${0:value},
+endsnippet
+
+snippet :f "method: func(...) { ... }"
+${1:key}: ${2:(args)} => {
+  return $4;
+}${3:,}
+endsnippet
+
+snippet "\.(map|filter|forEach|reduce)" "Array method with an arrow function" r
+.`!p snip.rv = match.group(1)`(${1:(c, i)} => {
+  return $2;
+});
+endsnippet
+
+snippet "\.(map|filter|forEach|reduce)=" "Array method with an arrow function inline" rA
+.`!p snip.rv = match.group(1)`(${1:(c, i)} => $2);
+endsnippet
+
+snippet => "Arrow function"
+(${1:args}) => {
+  return $3;
+}${2:;}
+endsnippet
+
+snippet =>> "Inline arrow function" A
+(${1:args}) => ($2);
+endsnippet
+
+snippet c=> "Const Function" bA
+const ${1:name} = (${2:args}) => {
+  return $4;
+}${3:;}
+endsnippet
+
+snippet expf "Export function" b
+export ${1:default }function ${2:name}($3) {
+  $4
+};
+endsnippet
+
+snippet fun* "Generator"
+function* ${1:name}($2) {
+  yield $3;
+}
+endsnippet
+
+snippet forof "For of loop" b
+for (let ${1:value} of ${2:iterable}) {
+  ${3:$1}
+}
+endsnippet
+
+snippet class "Class"
+class ${1:Name} {
+  constructor(${2:arg}) {
+    $3
+  }
+  $4
+}
+endsnippet
+
 snippet #! "Shebang"
 #!/usr/bin/env node
 endsnippet
@@ -64,37 +162,37 @@ endsnippet
 
 snippet f "Anonymous function" w
 function(${1:arguments}) {
-	${VISUAL}$0
+  ${VISUAL}$0
 }
 endsnippet
 
 snippet fn "Function declaration" w
 function ${1:name}(${2:arguments}) {
-	${VISUAL}$0
+  ${VISUAL}$0
 }
 endsnippet
 
 snippet fr "Arrow function" w
 (${1:arguments}) => {
-	${VISUAL}$0
+  ${VISUAL}$0
 }
 endsnippet
 
 snippet af "Async anonymous function" w
 async function(${1:arguments}) {
-	${VISUAL}$0
+  ${VISUAL}$0
 }
 endsnippet
 
 snippet afn "Async function declaration" w
 async function ${1:name}(${2:arguments}) {
-	${VISUAL}$0
+  ${VISUAL}$0
 }
 endsnippet
 
 snippet afr "Async arrow function" w
 async (${1:arguments}) => {
-	${VISUAL}$0
+  ${VISUAL}$0
 }
 endsnippet
 
@@ -103,73 +201,73 @@ endsnippet
 
 snippet before "Test before block" b
 before(() => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet beforeAll "Test beforeAll block" b
 beforeAll(() => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet beforeEach "Test beforeEach block" b
 beforeEach(() => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet after "Test after block" b
 after(() => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet afterAll "Test afterAll block" b
 afterAll(() => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet afterEach "Test afterEach block" b
 afterEach(() => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet describe "Test describe block" b
 describe('${1:context}', () => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet it "Test it block" b
 it('${1:action}', () => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet test "Test test block" b
 test('${1:action}', () => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet When "Test When block" b
 When('${1:when}', () => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet Then "Test Then block" b
 When('${1:then}', () => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
 snippet And "Test And block" b
 When('${1:and}', () => {
-	${VISUAL}$0
+  ${VISUAL}$0
 });
 endsnippet
 
@@ -186,17 +284,17 @@ endsnippet
 
 snippet switch "Switch statement" b
 switch(${VISUAL}${1:expression}) {
-	case '${VISUAL}${2:case}':
-		${3}
-		break
-	${0}
-	default:
-		${4}
+  case '${VISUAL}${2:case}':
+    ${3}
+    break
+  ${0}
+  default:
+    ${4}
 }
 endsnippet
 
 snippet case "Switch case" b
 case '${VISUAL}${1:case}':
-	${VISUAL}$0
-	break
+  ${VISUAL}$0
+  break
 endsnippet

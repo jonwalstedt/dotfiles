@@ -116,6 +116,8 @@ let g:netrw_winsize=50
 let g:netrw_keepdir=1
 let g:netrw_menu=0
 let g:netrw_banner=0
+" Allow netrw to remove non-empty local directories
+let g:netrw_localrmdir='rm -r'
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0

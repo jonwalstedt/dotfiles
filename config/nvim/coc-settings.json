@@ -1,3 +1,6 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "javascriptreact", "typescript", "typescriptreact"]
+  "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "javascriptreact", "typescript", "typescriptreact"],
+  "coc.source.tag.enable": true,
+  "coc.source.ultisnips.enable": true,
+  "coc.source.ultisnips.priority": 100
 }

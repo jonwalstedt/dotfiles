@@ -67,4 +67,20 @@ endfunction
 
 set includeexpr=LoadMainNodeModule(v:fname)
 "}}}
+" Quit netrw {{{
+function! QuitNetrw()
+  for i in range(1, bufnr($))
+    if buflisted(i)
+      if getbufvar(i, '&filetype') == "netrw"
+        silent exe 'bwipeout ' . i
+      endif
+    endif
+  endfor
+endfunction
+"
+augroup Netrw
+  autocmd!
+  autocmd Netrw VimLeavePre *  call QuitNetrw()
+augroup END
+"}}}
 " vim:foldmethod=marker:foldlevel=0
