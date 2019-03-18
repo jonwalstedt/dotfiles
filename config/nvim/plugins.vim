@@ -300,10 +300,13 @@ Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['hbs', 'handlebars'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
 
+" Plug 'chriskempson/base16-vim'
 Plug 'joshdick/onedark.vim'
 Plug 'jonwalstedt/minimalgrey'
 call plug#end()
 
+" let base16colorspace=256  " Access colors present in 256 colorspace
+" colorscheme base16-default-dark
 colorscheme onedark
 
 " Sumodes

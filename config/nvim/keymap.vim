@@ -28,13 +28,15 @@ nnoremap * *``
 nnoremap # #``
 
 " grep word under cursor and populate quickfix window
-nnoremap <leader>r :grep -r <C-R><C-W> ./src<CR><CR>:copen<CR><CR>
+nnoremap <localleader>t :grep -r <C-R><C-W> ./src<CR><CR>:copen<CR><CR>
 
 " Split panes" (create with :vs)
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+
+nmap <unique> <leader>r <Plug>NetrwRefresh
 
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
