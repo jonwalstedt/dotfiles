@@ -11,6 +11,7 @@ set secure                                      " Prevetn :autocmd unless owned 
 set spelllang=en_gb
 set mouse=a                                     " Enable mouse.
 "set lazyredraw                                  " Only redraw when needed
+set noshowmode
 set nostartofline                               " Do not jump to first character with page commands.
 set showmatch                                   " Highlight matching [{()}]
 set completeopt=longest,menuone,preview
@@ -18,8 +19,8 @@ set clipboard=unnamedplus                       " Use the clipboard register
 "set list "set listchars=eol:¶,tab:>=,trail:.
 set list
 set listchars=nbsp:¬,tab:>-,extends:»,precedes:«,trail:•
-set ruler                                       " Show the cursor position all the time.
-set showcmd                                     " Display incomplete commands.
+set noruler                                       " Show the cursor position all the time.
+set noshowcmd                                     " Display incomplete commands.
 set tildeop                                     " Enable ~ operator.
 set timeoutlen=800                              " Timeout Leader after 400 ms.
 set updatetime=300                              " If this many milliseconds nothing is typed the swap file will be written to disk - Also used for CursorHold

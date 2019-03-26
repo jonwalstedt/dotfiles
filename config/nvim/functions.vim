@@ -21,9 +21,15 @@ function! NumberToggle()
     if(&relativenumber == 1)
         set nornu
         set nocursorline
+        set noshowmode
+        set noruler
+        set noshowcmd
     else
         set rnu
         set cursorline
+        set showmode
+        set ruler
+        set showcmd
     endif
 endfunc
 
