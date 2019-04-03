@@ -1,11 +1,14 @@
 " Misc {{{
-" let g:python2_host_prog = '/usr/local/bin/python'
-" let g:python3_host_prog = '/usr/local/bin/python3'
+let g:python_host_skip_check = 1
+let g:python3_host_skip_check = 1
+let g:python2_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
 " let g:ruby_host_prog = 'rvm system do neovim-ruby-host'
 
 filetype plugin indent on
 set path=.,,**
 set suffixesadd=.js,.jsx,.ts,.tsx               " Add suffix when looking for imported files
+set include=from
 set exrc                                        " Look for project specific settings in /project/.nvimrc
 set secure                                      " Prevetn :autocmd unless owned by me
 set spelllang=en_gb
@@ -66,6 +69,7 @@ set background=dark
 " incorrect background rendering when using a color theme with a
 " background color.
 let &t_ut=''
+colorscheme onedark
 " }}}
 " Tabs (whitespace settings) {{{
 set tabstop=4                                   " Render Tabs using this many spaces.
@@ -109,7 +113,7 @@ else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 "}}}
-" Netrw {{{
+" Netrw {{
 let g:netrw_liststyle = 4
 let g:netrw_preview=1
 let g:netrw_alto=0

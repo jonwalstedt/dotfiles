@@ -7,14 +7,50 @@ if !filereadable(autoload_plug_path)
 endif
 unlet autoload_plug_path
 
-packadd! matchit
+"packadd! matchit
 
 " Plugins
 call plug#begin('~/.nvim/plugged')
-" FZF Fuzzyfinder {{{
 Plug 'junegunn/fzf', { 'dir': $XDG_DATA_HOME . '/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'kana/vim-submode'
+Plug 'justinmk/vim-sneak'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive', { 'on': [] }
+Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy'}
+Plug 'junegunn/gv.vim', { 'on': []}
+Plug 'ervandew/supertab'
+Plug 'sirver/ultisnips'
+Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'mattn/emmet-vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'haya14busa/incsearch.vim'
+Plug 'vim-scripts/ingo-library', { 'on': []}
+Plug 'vim-scripts/ExtractMatches', { 'on': []}
+Plug 'jonwalstedt/vim-myhelp'
+Plug 'tpope/vim-vinegar'
+Plug 'ton/vim-bufsurf'
+Plug 'Konfekt/FastFold'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+Plug 'wellle/targets.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'bronson/vim-visual-star-search'
+Plug 'andymass/vim-matchup'
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
+Plug 'mustache/vim-mustache-handlebars', { 'for': ['hbs', 'handlebars'] }
+Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
+Plug 'joshdick/onedark.vim'
+Plug 'jonwalstedt/minimalgrey'
+call plug#end()
+
+" Plugin settings
+" FZF Fuzzyfinder {{{
 command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
+let $FZF_DEFAULT_OPTS .= ' --inline-info'
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
@@ -23,39 +59,26 @@ nnoremap <C-t> :Buffers<cr>
 nnoremap <C-s> :Ag<cr>
 inoremap <C-space> <esc>:Snippets<cr>
 nnoremap <localleader>p :History:<cr>
-" }}}
-" NNN {{{
-"Plug 'mcchrish/nnn.vim', { 'on': 'NnnPicker' }
-"
-"let $NNN_USE_EDITOR=1
-"let $NNN_SHOW_HIDDEN=1
-"let $DISABLE_FILE_OPEN_ON_NAV=1
-"
-"nnoremap <leader>h :NnnPicker '%:p:h'<CR>
-"nnoremap - :NnnPicker '%:p:h'<CR>
-"let g:nnn#action = {
-"      \ '<c-t>': 'tab split',
-"      \ '<localleader>t': 'tab split',
-"      \ '<localleader>x': 'split',
-"      \ '<localleader>v': 'vsplit' }
+nnoremap <localleader>h :Helptags:<cr>
+
+imap <c-k> <plug>(fzf-complete-word)
+imap <c-f> <plug>(fzf-complete-path)
+imap <c-j> <plug>(fzf-complete-file-ag)
+imap <c-l> <plug>(fzf-complete-line)
 " }}}
 " Submode {{{
-Plug 'kana/vim-submode'
 let g:submode_timeout = 0                           " Disable submode timeouts:
 let g:submode_keep_leaving_key = 1                  " Don't consume submode-leaving key
 " }}}
 " ProjectRoot {{{
-Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
 nnoremap <silent> <localleader>r :ProjectRootCD<CR>
 " }}}
 " Gutentags {{{
-Plug 'ludovicchabant/vim-gutentags'
 " Gutentags throws errors when saving git commit messages, as a workaround
 " gutentags is disabled.
 au FileType gitcommit,gitrebase let g:gutentags_enabled=0
 " }}}
 " GitGutter {{{
-Plug 'airblade/vim-gitgutter'
 "disable keybindings (causes delay on mapped easymotion keys)
 let g:gitgutter_map_keys = 0
 hi GitGutterAddLine guifg=white guibg=springgreen4 gui=NONE
@@ -64,8 +87,6 @@ hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
 hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
 " }}}
 " Vim Fugitive {{{
-Plug 'tpope/vim-fugitive', { 'on': [] }
-
 command! Gstatus call LazyLoadFugitive('Gstatus')
 command! Gdiff call LazyLoadFugitive('Gdiff')
 command! Glog call LazyLoadFugitive('Glog')
@@ -88,8 +109,6 @@ command ToggleGStatus :call ToggleGStatus()
 "}}}
 " Twiggy  {{{
 " https://vimawesome.com/plugin/twiggy
-Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy'}
-
 function! ToggleTwiggy()
   if buflisted(bufname('.git/index'))
     bd .git/branches
@@ -101,24 +120,12 @@ endfunction
 command! ToggleTwiggy :call ToggleTwiggy()
 "}}}
 " gv.vim  {{{
-Plug 'junegunn/gv.vim', { 'on': []}
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 "}}}
 " Supertab {{{
-Plug 'ervandew/supertab'
-let g:SuperTabDefaultCompletionType = '<C-n>'
+"let g:SuperTabDefaultCompletionType = '<C-n>'
 " }}}
-" Ultisnips {{{
-Plug 'sirver/ultisnips'
-
-" let g:UltiSnipsExpandTrigger = '<Tab>'
-" let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-" let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-" let g:UltiSnipsSnippetsDir = $HOME.'/.config/nvim/ultisnips'
-" let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips']
-"}}}
 " Emmet {{{
-Plug 'mattn/emmet-vim'
 let g:user_emmet_settings = {
 \  'javascript' : {
 \      'extends' : 'jsx',
@@ -129,8 +136,6 @@ let g:user_emmet_settings = {
 \}
 " }}}
 "EasyMotion {{{
-Plug 'easymotion/vim-easymotion'
-Plug 'haya14busa/incsearch.vim'
 "Disable default mappings
 let g:EasyMotion_do_mapping = 0
 
@@ -157,7 +162,6 @@ map <localleader>h <Plug>(easymotion-linebackward)
 
 " }}}
 " Sneak {{{
-Plug 'justinmk/vim-sneak'
 let g:sneak#s_next = 1
 let g:sneak#use_ic_scs = 1
 nmap s <Plug>Sneak_s
@@ -172,8 +176,7 @@ omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
 "}}}
 " Coc {{{
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-
+call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin')
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
@@ -225,7 +228,7 @@ nmap <localleader>f  <Plug>(coc-format-selected)
 augroup mygroup
   autocmd!
   " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType typescript,json,javascript setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
@@ -265,39 +268,9 @@ nnoremap <silent> <localleader>e  :<C-u>CocListResume<CR>
 
 " }}}
 " ExtractMatches {{{
-Plug 'vim-scripts/ingo-library', { 'on': []}
-Plug 'vim-scripts/ExtractMatches', { 'on': []}
 command! YankMatches call plug#load('ExtractMatches', 'ingo-library') | YankMatches
 " }}}
-" Help {{{
-Plug 'jonwalstedt/vim-myhelp'
-" }}}
-"
-Plug 'tpope/vim-vinegar'
-Plug 'ton/vim-bufsurf'
-Plug 'Konfekt/FastFold'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
-
-Plug 'wellle/targets.vim'
-Plug 'kana/vim-textobj-user'
-Plug 'bronson/vim-visual-star-search'
-
-Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
-Plug 'mustache/vim-mustache-handlebars', { 'for': ['hbs', 'handlebars'] }
-Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
-
-" Plug 'chriskempson/base16-vim'
-Plug 'joshdick/onedark.vim'
-Plug 'jonwalstedt/minimalgrey'
-call plug#end()
-
-" let base16colorspace=256  " Access colors present in 256 colorspace
-" colorscheme base16-default-dark
-colorscheme onedark
-
-" Sumodes
+" Sumodes {{{
 " Resize splits
 call submode#enter_with('grow/shrink', 'n', '', '<leader>0', ':exe "vertical resize +15"<cr>')
 call submode#enter_with('grow/shrink', 'n', '', '<leader>9', ':exe "vertical resize -15"<cr>')
@@ -317,6 +290,7 @@ call submode#enter_with('bufsurff', 'n', '', '<leader>j', ':BufSurfForward<cr>')
 call submode#map('bufsurff', 'n', '', 'j', ':BufSurfForward<cr>')
 call submode#enter_with('bufsurfback', 'n', '', '<leader>f', ':BufSurfBack<cr>')
 call submode#map('bufsurfback', 'n', '', 'f', ':BufSurfBack<cr>')
+" }}}
 
-call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint')
+
 " vim:foldmethod=marker:foldlevel=0
