@@ -108,7 +108,8 @@ function! ToggleGStatus()
     Gstatus
   endif
 endfunction
-command ToggleGStatus :call ToggleGStatus()
+
+command! ToggleGStatus :call ToggleGStatus()
 "}}}
 " Twiggy  {{{
 " https://vimawesome.com/plugin/twiggy

@@ -53,6 +53,7 @@ set foldlevelstart=99
 " Colors {{{
 set nocursorline                                  " Disable Highlight current row
 colorscheme onedark
+hi VertSplit ctermbg=235 ctermfg=236
 " }}}
 " Tabs (whitespace settings) {{{
 set tabstop=4                                   " Render Tabs using this many spaces.
@@ -84,16 +85,6 @@ set splitbelow                                  " Open horizontal splits below
 set diffopt+=vertical                           " Open diff in vertical split
 set diffopt+=indent-heuristic
 set diffopt+=algorithm:patience
-"}}}
-" Rulers (rulers of 80) {{{
-if exists('+colorcolumn')
-  set colorcolumn=80
-else
-  augroup error
-    autocmd!
-    autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-  augroup end
-endif
 "}}}
 " Netrw {{
 let g:netrw_liststyle = 4
