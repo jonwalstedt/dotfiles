@@ -76,7 +76,10 @@ nnoremap <silent> <localleader>r :ProjectRootCD<CR>
 " Gutentags {{{
 " Gutentags throws errors when saving git commit messages, as a workaround
 " gutentags is disabled.
-au FileType gitcommit,gitrebase let g:gutentags_enabled=0
+augroup gutentags
+  autocmd!
+  autocmd FileType gitcommit,gitrebase let g:gutentags_enabled=0
+augroup end
 " }}}
 " GitGutter {{{
 "disable keybindings (causes delay on mapped easymotion keys)
@@ -123,7 +126,7 @@ command! ToggleTwiggy :call ToggleTwiggy()
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 "}}}
 " Supertab {{{
-"let g:SuperTabDefaultCompletionType = '<C-n>'
+let g:SuperTabDefaultCompletionType = '<C-n>'
 " }}}
 " Emmet {{{
 let g:user_emmet_settings = {
@@ -218,15 +221,14 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
-
 " Remap for format selected region
 vmap <localleader>f  <Plug>(coc-format-selected)
 nmap <localleader>f  <Plug>(coc-format-selected)
 
-augroup mygroup
+augroup coc
   autocmd!
+  " Highlight symbol under cursor on CursorHold
+  autocmd CursorHold * silent call CocActionAsync('highlight')
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json,javascript setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder

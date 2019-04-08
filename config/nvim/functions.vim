@@ -18,19 +18,19 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|ex
 "}}}
 " Toggle relative line numbers {{{
 function! NumberToggle()
-    if(&relativenumber == 1)
-        set nornu
-        set nocursorline
-        set noshowmode
-        set noruler
-        set noshowcmd
-    else
-        set rnu
-        set cursorline
-        set showmode
-        set ruler
-        set showcmd
-    endif
+  if(&relativenumber == 1)
+    set norelativenumber
+    set nocursorline
+    set noshowmode
+    set noruler
+    set noshowcmd
+  else
+    set relativenumber
+    set cursorline
+    set showmode
+    set ruler
+    set showcmd
+  endif
 endfunc
 
 nnoremap <silent> <leader><leader> :call NumberToggle()<cr>
@@ -46,17 +46,17 @@ xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 "}}}
 " Create missing folders when creating new file {{{
 function! s:MkNonExDir(file, buf)
-    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-        let dir=fnamemodify(a:file, ':h')
-        if !isdirectory(dir)
-            call mkdir(dir, 'p')
-        endif
+  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+    let dir=fnamemodify(a:file, ':h')
+    if !isdirectory(dir)
+      call mkdir(dir, 'p')
     endif
+  endif
 endfunction
 
 augroup BWCCreateDir
-    autocmd!
-    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+  autocmd!
+  autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
 augroup END
 "}}}
 " Load node modules{{{

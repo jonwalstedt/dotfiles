@@ -3,9 +3,7 @@ let g:python_host_skip_check = 1
 let g:python3_host_skip_check = 1
 let g:python2_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
-" let g:ruby_host_prog = 'rvm system do neovim-ruby-host'
 
-filetype plugin indent on
 set path=.,,**
 set suffixesadd=.js,.jsx,.ts,.tsx               " Add suffix when looking for imported files
 set include=from
@@ -19,7 +17,6 @@ set nostartofline                               " Do not jump to first character
 set showmatch                                   " Highlight matching [{()}]
 set completeopt=longest,menuone,preview
 set clipboard=unnamedplus                       " Use the clipboard register
-"set list "set listchars=eol:¶,tab:>=,trail:.
 set list
 set listchars=nbsp:¬,tab:>-,extends:»,precedes:«,trail:•
 set noruler                                       " Show the cursor position all the time.
@@ -33,11 +30,11 @@ set cmdheight=2                                 " Better display for messages
 set shortmess+=c                                " don't give ins-completion-menu messages.
 
 " Remove highlighted line for unfocused buffer
-"augroup BgHighlight
-"    autocmd!
-"    autocmd WinEnter * set cul
-"    autocmd WinLeave * set nocul
-"augroup END
+augroup BgHighlight
+  autocmd!
+  autocmd WinEnter * set cul
+  autocmd WinLeave * set nocul
+augroup END
 " }}}
 " Backup {{{
 set backup                                      " Enable backup of files
@@ -48,27 +45,13 @@ set writebackup
 " }}}
 " Undo {{{
 set undofile                                    " Keep a persistent backup file.
-set undodir=$HOME/.nvim/undo
-set undolevels=1000
-set undoreload=10000
 " }}}
 " Folding {{{
-set foldenable                                  " Enable folding
 set foldmethod=indent
 set foldlevelstart=99
 " }}}
 " Colors {{{
-syntax enable
-set termguicolors
-set t_Co=256
 set nocursorline                                  " Disable Highlight current row
-set background=dark
-" vim hardcodes background color erase even if the terminfo file does
-" not contain bce (not to mention that libvte based terminals
-" incorrectly contain bce in their terminfo files). This causes
-" incorrect background rendering when using a color theme with a
-" background color.
-let &t_ut=''
 colorscheme onedark
 " }}}
 " Tabs (whitespace settings) {{{
@@ -76,21 +59,17 @@ set tabstop=4                                   " Render Tabs using this many sp
 set softtabstop=0
 set expandtab                                   " Insert spaces when TAB is pressed.
 set shiftwidth=2                                " Indentation amount for < and > commands.
-set smarttab
 set nojoinspaces                                " Prevents inserting two spaces after punctuation on a join (J).
-set laststatus=2                                " Allways show statusline
 set nrformats-=octal                            " Numbers that start with a zero will be considered to be octal
-set autoindent
 set smartindent
 " }}}
 " Line numbers {{{
 set number                                      " Show line numbers"
-set nornu                                       " No relative line numbers
+set norelativenumber                                       " No relative line numbers
 set numberwidth=3                               " Gutter width for line numbers
 set signcolumn=yes
 "}}}
 " Search {{{
-set incsearch                                   " Highlight search results as you type
 set ignorecase                                  " Make searching case insensitive.
 set smartcase                                   " Use case sensitive search when query has mixed case.
 set gdefault                                    " Use 'g' flag by default with :s/foo/bar/.
@@ -110,7 +89,10 @@ set diffopt+=algorithm:patience
 if exists('+colorcolumn')
   set colorcolumn=80
 else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+  augroup error
+    autocmd!
+    autocmd BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+  augroup end
 endif
 "}}}
 " Netrw {{
