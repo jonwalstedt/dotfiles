@@ -28,13 +28,6 @@ set virtualedit=block                           " Enable virtualedit when in Vis
 set hidden                                      " Allow for unsaved changes when switchin buffers (use confirm if you want to be prompted for save)
 set cmdheight=2                                 " Better display for messages
 set shortmess+=c                                " don't give ins-completion-menu messages.
-
-" Remove highlighted line for unfocused buffer
-augroup BgHighlight
-  autocmd!
-  autocmd WinEnter * set cul
-  autocmd WinLeave * set nocul
-augroup END
 " }}}
 " Backup {{{
 set backup                                      " Enable backup of files

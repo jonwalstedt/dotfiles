@@ -50,9 +50,24 @@ call plug#end()
 " Plugin settings
 " FZF Fuzzyfinder {{{
 command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
-let $FZF_DEFAULT_OPTS .= ' --inline-info'
+let $FZF_DEFAULT_OPTS .= ' --inline-info --color "border:#333333"'
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'Normal'],
+  \ 'bg+':     ['bg', 'Normal', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 nnoremap <C-p> :FZF<cr>
 nnoremap <C-t> :Buffers<cr>
