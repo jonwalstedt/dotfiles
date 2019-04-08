@@ -10,7 +10,7 @@ unlet autoload_plug_path
 "packadd! matchit
 
 " Plugins
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': $XDG_DATA_HOME . '/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-submode'
