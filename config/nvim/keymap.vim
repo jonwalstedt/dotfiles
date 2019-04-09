@@ -38,6 +38,9 @@ nnoremap <C-k> <C-w><C-k>
 
 nmap <unique> <leader>r <Plug>NetrwRefresh
 
+" Yank to end of line
+map Y y$
+
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
