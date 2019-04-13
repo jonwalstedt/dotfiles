@@ -24,7 +24,10 @@ nnoremap <esc>^[ <esc>^[
 vnoremap // y/<C-R>"<CR>``
 
 " Search word under cursor without moving the cursor
-nnoremap * *``
+nnoremap <silent> * :let @/='\<'.expand('<cword>').'\>'<CR>
+xnoremap <silent> * "sy:let @/=@s<CR>
+
+" nnoremap * *``
 nnoremap # #``
 
 " grep word under cursor and populate quickfix window

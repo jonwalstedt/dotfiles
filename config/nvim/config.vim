@@ -79,7 +79,7 @@ set diffopt+=vertical                           " Open diff in vertical split
 set diffopt+=indent-heuristic
 set diffopt+=algorithm:patience
 "}}}
-" Netrw {{
+" Netrw {{{
 let g:netrw_liststyle = 4
 let g:netrw_preview=1
 let g:netrw_alto=0
