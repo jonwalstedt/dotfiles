@@ -46,7 +46,8 @@ set foldlevelstart=99
 " Colors {{{
 set nocursorline                                  " Disable Highlight current row
 colorscheme onedark
-hi VertSplit ctermbg=235 ctermfg=236
+highlight VertSplit ctermbg=235 ctermfg=236
+highlight LineNr ctermfg=darkgrey
 " }}}
 " Tabs (whitespace settings) {{{
 set tabstop=4                                   " Render Tabs using this many spaces.

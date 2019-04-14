@@ -61,4 +61,7 @@ nmap <localleader>v :Vexplore<cr>
 "Easily edit the macro stored at register q
 nnoremap <leader>q :<c-u><c-r><c-r>='let @q = '. string(getreg('q'))<cr><c-f><left>
 
+" Navigate between closed folds
+nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
+nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
 " vim:foldmethod=marker:foldlevel=0
