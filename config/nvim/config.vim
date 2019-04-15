@@ -48,6 +48,7 @@ set nocursorline                                  " Disable Highlight current ro
 colorscheme onedark
 highlight VertSplit ctermbg=235 ctermfg=236
 highlight LineNr ctermfg=darkgrey
+set termguicolors
 " }}}
 " Tabs (whitespace settings) {{{
 set tabstop=4                                   " Render Tabs using this many spaces.
