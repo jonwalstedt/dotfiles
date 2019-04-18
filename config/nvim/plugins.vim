@@ -50,8 +50,8 @@ call plug#end()
 " Plugin settings
 " FZF Fuzzyfinder {{{
 command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
-let $FZF_DEFAULT_OPTS .= ' --inline-info --color "border:#333333"'
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+"let $FZF_DEFAULT_OPTS .= ' --inline-info --color "border:#333333"'
+"let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 let g:fzf_colors =

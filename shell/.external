@@ -19,12 +19,6 @@ fi
 # Auto-completion
 [[ $- == *i* ]] && source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
 
-export FZF_DEFAULT_OPTS='--height 40% --border'
-export FZF_ALT_C_COMMAND='blsd'
-export FZF_DEFAULT_COMMAND='ag --nocolor --ignore node_modules -g ""'
-# To apply the command to CTRL-T as well
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
 # Key bindings
 source "/usr/local/opt/fzf/shell/key-bindings.zsh"
 
