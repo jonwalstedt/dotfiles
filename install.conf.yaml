@@ -37,6 +37,9 @@
     ~/.config/oni/config.tsx: config/oni/config.tsx
     ~/.config/oni/tsconfig.json: config/oni/tsconfig.json
 
+    #Ctags
+    ~/.ctags: config/ctags
+
 - shell:
   -
     command: echo Installing Homebrew formulas from Brewfile && brew bundle
