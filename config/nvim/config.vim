@@ -82,7 +82,7 @@ set diffopt+=indent-heuristic
 set diffopt+=algorithm:patience
 "}}}
 " Netrw {{{
-let g:netrw_liststyle = 4
+let g:netrw_liststyle=4
 let g:netrw_preview=1
 let g:netrw_alto=0
 let g:netrw_winsize=50
@@ -91,6 +91,7 @@ let g:netrw_menu=0
 let g:netrw_banner=0
 " Allow netrw to remove non-empty local directories
 let g:netrw_localrmdir='rm -r'
+let g:netrw_bufsettings='noma nomod nu nowrap ro nobl'
 " }}}
 
 " vim:foldmethod=marker:foldlevel=0
