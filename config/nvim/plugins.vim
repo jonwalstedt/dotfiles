@@ -29,8 +29,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'vim-scripts/ingo-library', { 'on': []}
 Plug 'vim-scripts/ExtractMatches', { 'on': []}
-Plug 'jonwalstedt/vim-myhelp'
 Plug 'tpope/vim-vinegar'
+Plug 'romainl/vim-qlist'
 Plug 'ton/vim-bufsurf'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
@@ -45,6 +45,7 @@ Plug 'mustache/vim-mustache-handlebars', { 'for': ['hbs', 'handlebars'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
 Plug 'joshdick/onedark.vim'
 Plug 'jonwalstedt/minimalgrey'
+Plug 'jonwalstedt/vim-myhelp'
 call plug#end()
 
 " Plugin settings
