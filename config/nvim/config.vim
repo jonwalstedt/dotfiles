@@ -93,5 +93,8 @@ let g:netrw_banner=0
 let g:netrw_localrmdir='rm -r'
 let g:netrw_bufsettings='noma nomod nu nowrap ro nobl'
 " }}}
+" Tags {{{
+set tags=./.tags,.tags;
+" }}}
 
 " vim:foldmethod=marker:foldlevel=0

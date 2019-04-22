@@ -89,6 +89,14 @@ let g:submode_keep_leaving_key = 1                  " Don't consume submode-leav
 nnoremap <silent> <localleader>r :ProjectRootCD<CR>
 " }}}
 " Gutentags {{{
+let g:gutentags_ctags_tagfile = '.tags'
+let g:gutentags_file_list_command = {
+      \ 'markers': {
+      \ '.git': 'git ls-files',
+      \ },
+      \ }
+let g:gutentags_generate_on_new = 1
+
 " Gutentags throws errors when saving git commit messages, as a workaround
 " gutentags is disabled.
 augroup gutentags
