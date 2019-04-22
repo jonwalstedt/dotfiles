@@ -12,7 +12,6 @@ set secure                                      " Prevetn :autocmd unless owned 
 set spelllang=en_gb
 set mouse=a                                     " Enable mouse.
 "set lazyredraw                                  " Only redraw when needed
-set noshowmode
 set nostartofline                               " Do not jump to first character with page commands.
 set showmatch                                   " Highlight matching [{()}]
 set completeopt=longest,menuone,preview
@@ -61,11 +60,11 @@ set smartindent
 " }}}
 " Line numbers {{{
 set number                                      " Show line numbers"
-set norelativenumber                                       " No relative line numbers
 set numberwidth=3                               " Gutter width for line numbers
 set signcolumn=yes
 "}}}
 " Search {{{
+set grepprg=ag\ --vimgrep
 set ignorecase                                  " Make searching case insensitive.
 set smartcase                                   " Use case sensitive search when query has mixed case.
 set gdefault                                    " Use 'g' flag by default with :s/foo/bar/.
