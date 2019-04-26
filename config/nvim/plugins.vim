@@ -7,8 +7,6 @@ if !filereadable(autoload_plug_path)
 endif
 unlet autoload_plug_path
 
-"packadd! matchit
-
 " Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': $XDG_DATA_HOME . '/fzf', 'do': './install --bin' }
