@@ -38,6 +38,7 @@ Plug 'wellle/targets.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'bronson/vim-visual-star-search'
 Plug 'andymass/vim-matchup'
+Plug 'jiangmiao/auto-pairs'
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['hbs', 'handlebars'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
