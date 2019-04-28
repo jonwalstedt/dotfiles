@@ -46,12 +46,6 @@ set foldlevelstart=99
 set nocursorline                                  " Disable Highlight current row
 set termguicolors
 colorscheme onedark
-highlight VertSplit ctermbg=235 ctermfg=236
-highlight LineNr ctermfg=darkgrey
-
-highlight NonBreakingSpace ctermbg=red guibg=red
-match NonBreakingSpace / / " (CTRL+V x a 0)
-
 " }}}
 " Tabs (whitespace settings) {{{
 set tabstop=4                                   " Render Tabs using this many spaces.
