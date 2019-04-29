@@ -133,6 +133,10 @@ function! ToggleGStatus()
 endfunction
 
 command! ToggleGStatus :call ToggleGStatus()
+
+" Fugitive (toggle git status panel)
+call submode#enter_with('gitstatus', 'n', '', '<localleader><space>', ':ToggleGStatus<cr>')
+call submode#map('gitstatus', 'n', '', '<space>', ':ToggleGStatus<cr>')
 "}}}
 " Twiggy  {{{
 " https://vimawesome.com/plugin/twiggy
@@ -145,6 +149,10 @@ function! ToggleTwiggy()
 endfunction
 
 command! ToggleTwiggy :call ToggleTwiggy()
+
+" Twiggy (toggle twiggy panel)
+call submode#enter_with('gitbranches', 'n', '', '<localleader>b', ':ToggleTwiggy<cr>')
+call submode#map('gitbranches', 'n', '', 'b', ':ToggleTwiggy<cr>')
 "}}}
 " gv.vim  {{{
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
@@ -274,26 +282,17 @@ nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
 " ExtractMatches {{{
 command! YankMatches call plug#load('ExtractMatches', 'ingo-library') | YankMatches
 " }}}
-" Sumodes {{{
-" Resize splits
+" BufSurf {{{
+call submode#enter_with('bufsurff', 'n', '', '<localleader>i', ':BufSurfForward<cr>')
+call submode#map('bufsurff', 'n', '', 'i', ':BufSurfForward<cr>')
+call submode#enter_with('bufsurfback', 'n', '', '<localleader>o', ':BufSurfBack<cr>')
+call submode#map('bufsurfback', 'n', '', 'o', ':BufSurfBack<cr>')
+" }}}
+" Resize splits {{{
 call submode#enter_with('grow/shrink', 'n', '', '<leader>0', ':exe "vertical resize +15"<cr>')
 call submode#enter_with('grow/shrink', 'n', '', '<leader>9', ':exe "vertical resize -15"<cr>')
 call submode#map('grow/shrink', 'n', '', '0', ':exe "vertical resize +15"<cr>')
 call submode#map('grow/shrink', 'n', '', '9', ':exe "vertical resize -15"<cr>')
-
-" Fugitive (toggle git status panel)
-call submode#enter_with('gitstatus', 'n', '', '<localleader><space>', ':ToggleGStatus<cr>')
-call submode#map('gitstatus', 'n', '', '<space>', ':ToggleGStatus<cr>')
-
-" Twiggy (toggle twiggy panel)
-call submode#enter_with('gitbranches', 'n', '', '<localleader>b', ':ToggleTwiggy<cr>')
-call submode#map('gitbranches', 'n', '', 'b', ':ToggleTwiggy<cr>')
-
-" BufSurf
-call submode#enter_with('bufsurff', 'n', '', '<leader>j', ':BufSurfForward<cr>')
-call submode#map('bufsurff', 'n', '', 'j', ':BufSurfForward<cr>')
-call submode#enter_with('bufsurfback', 'n', '', '<leader>f', ':BufSurfBack<cr>')
-call submode#map('bufsurfback', 'n', '', 'f', ':BufSurfBack<cr>')
 " }}}
 
 
