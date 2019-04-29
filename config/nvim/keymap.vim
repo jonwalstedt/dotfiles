@@ -1,5 +1,5 @@
 " Map leader enter to redraw screen
-nmap <leader><cr> :redraw!<CR>
+nnoremap <leader><cr> :redraw!<CR>
 
 " Map jj to escape
 inoremap jj <Esc>
@@ -9,8 +9,8 @@ inoremap jk <Esc>:w<cr>
 nnoremap <BS> <c-^>
 
 " Open zsh terminal in vertical or horizontal split
-nmap <silent> <Leader>tv :vs term://zsh<CR>
-nmap <silent> <Leader>th :sp term://zsh<CR>
+nnoremap <silent> <Leader>tv :vs term://zsh<CR>
+nnoremap <silent> <Leader>th :sp term://zsh<CR>
 
 " Escape to exit to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
@@ -29,9 +29,6 @@ xnoremap <silent> * "sy:let @/=@s<CR>
 
 " nnoremap * *``
 nnoremap # #``
-
-" grep word under cursor and populate quickfix window
-nnoremap <localleader>t :grep -r <C-R><C-W> ./src<CR><CR>:copen<CR><CR>
 
 " Split panes" (create with :vs)
 nnoremap <C-l> <C-w><C-l>
