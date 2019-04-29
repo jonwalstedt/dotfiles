@@ -42,6 +42,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['hbs', 'handlebars'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
+Plug 'jparise/vim-graphql'
 Plug 'joshdick/onedark.vim'
 Plug 'jonwalstedt/minimalgrey'
 Plug 'jonwalstedt/vim-myhelp'
