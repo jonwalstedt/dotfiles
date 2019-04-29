@@ -71,16 +71,15 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 nnoremap <C-p> :FZF<cr>
-nnoremap <C-t> :Buffers<cr>
 nnoremap <C-s> :Ag<cr>
 inoremap <C-space> <esc>:Snippets<cr>
+nnoremap <localleader>t :Buffers<cr>
 nnoremap <localleader>p :History:<cr>
 nnoremap <localleader>h :History<cr>
 
-" imap <c-k> <plug>(fzf-complete-word)
 imap <c-f> <plug>(fzf-complete-path)
-" imap <c-j> <plug>(fzf-complete-file-ag)
 imap <c-l> <plug>(fzf-complete-line)
+
 " }}}
 " Submode {{{
 let g:submode_timeout = 0                           " Disable submode timeouts:
@@ -247,10 +246,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Remap for format selected region
-vmap <localleader>f  <Plug>(coc-format-selected)
-nmap <localleader>f  <Plug>(coc-format-selected)
-
 augroup coc
   autocmd!
   " Highlight symbol under cursor on CursorHold
@@ -261,15 +256,6 @@ augroup coc
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-vmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
 " Use `:Format` for format current buffer
 command! -nargs=0 Format :call CocAction('format')
 
@@ -279,20 +265,10 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <leader>e  :<C-u>CocList extensions<cr>
 " Show commands
 nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <localleader>o  :<C-u>CocList outline<cr>
 " Search workspace symbols
 nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <localleader>q  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <localleader>w  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <localleader>e  :<C-u>CocListResume<CR>
 
 " }}}
 " ExtractMatches {{{
