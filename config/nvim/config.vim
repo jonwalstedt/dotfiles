@@ -22,7 +22,6 @@ set noruler                                       " Show the cursor position all
 set noshowcmd                                     " Display incomplete commands.
 set tildeop                                     " Enable ~ operator.
 set timeoutlen=800                              " Timeout Leader after 400 ms.
-set updatetime=300                              " If this many milliseconds nothing is typed the swap file will be written to disk - Also used for CursorHold
 set virtualedit=block                           " Enable virtualedit when in Visual Block mode.
 set hidden                                      " Allow for unsaved changes when switchin buffers (use confirm if you want to be prompted for save)
 set cmdheight=2                                 " Better display for messages
