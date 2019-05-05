@@ -27,6 +27,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'vim-scripts/ingo-library', { 'on': []}
 Plug 'vim-scripts/ExtractMatches', { 'on': []}
+Plug 'google/vim-searchindex'
 Plug 'tpope/vim-vinegar'
 Plug 'romainl/vim-qlist'
 Plug 'ton/vim-bufsurf'
