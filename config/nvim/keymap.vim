@@ -3,7 +3,7 @@ nnoremap <leader><cr> :redraw!<CR>
 
 " Map jj to escape
 inoremap jj <Esc>
-inoremap jk <Esc>:w<cr>
+inoremap kk <Esc>:w<cr>
 
 " Go to previous file with backspace
 nnoremap <BS> <c-^>
