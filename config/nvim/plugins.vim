@@ -22,7 +22,6 @@ Plug 'ervandew/supertab'
 Plug 'sirver/ultisnips'
 Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
-Plug 'mattn/emmet-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'haya14busa/incsearch.vim'
 Plug 'vim-scripts/ingo-library', { 'on': []}
@@ -162,16 +161,6 @@ command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 " Supertab {{{
 let g:SuperTabDefaultCompletionType = '<C-n>'
 " }}}
-" Emmet {{{
-let g:user_emmet_settings = {
-\  'javascript' : {
-\      'extends' : 'jsx',
-\  },
-\  'typescript' : {
-\      'extends' : 'jsx',
-\  },
-\}
-" }}}
 "EasyMotion {{{
 "Disable default mappings
 let g:EasyMotion_do_mapping = 0
@@ -211,7 +200,7 @@ omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
 "}}}
 " Coc {{{
-call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin')
+call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-emmet')
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>

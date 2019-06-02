@@ -11,6 +11,7 @@ nnoremap <BS> <c-^>
 " Open zsh terminal in vertical or horizontal split
 nnoremap <silent> <Leader>tv :vs term://zsh<CR>
 nnoremap <silent> <Leader>th :sp term://zsh<CR>
+nnoremap <silent> <localleader>l :vs term://zsh<CR>
 
 " Escape to exit to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
