@@ -18,4 +18,15 @@ augroup highlights
   autocmd ColorScheme * call MyHighlights()
 augroup end
 " }}}
-" vim:foldmethod=marker:foldlevel=0
+" Folding {{{
+
+function! ConfigFolds() abort
+  setlocal foldmethod=marker
+  setlocal foldlevel=0
+endfunction
+
+augroup marker
+  autocmd!
+  autocmd FileType vim,txt call ConfigFolds()
+augroup end
+" }}}

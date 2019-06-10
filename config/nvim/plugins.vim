@@ -286,5 +286,3 @@ call submode#map('grow/shrink', 'n', '', '0', ':exe "vertical resize +15"<cr>')
 call submode#map('grow/shrink', 'n', '', '9', ':exe "vertical resize -15"<cr>')
 " }}}
 
-
-" vim:foldmethod=marker:foldlevel=0

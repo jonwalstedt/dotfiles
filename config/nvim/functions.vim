@@ -104,4 +104,3 @@ function! NextClosedFold(dir)
     endif
 endfunction
 " }}}
-" vim:foldmethod=marker:foldlevel=0

@@ -2,5 +2,3 @@
 " Console log whats currently in the clipboard
 let @l = "iconsole.log('jjpa:', jjpA;jj=="
 " }}}
-
-" vim:foldmethod=marker:foldlevel=0

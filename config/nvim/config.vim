@@ -26,6 +26,7 @@ set virtualedit=block                           " Enable virtualedit when in Vis
 set hidden                                      " Allow for unsaved changes when switchin buffers (use confirm if you want to be prompted for save)
 set cmdheight=2                                 " Better display for messages
 set shortmess+=c                                " don't give ins-completion-menu messages.
+set nomodeline
 " }}}
 " Backup {{{
 set backup                                      " Enable backup of files
@@ -92,5 +93,3 @@ let g:netrw_bufsettings='noma nomod nu nowrap ro nobl'
 " Tags {{{
 set tags=./.tags,.tags;
 " }}}
-
-" vim:foldmethod=marker:foldlevel=0

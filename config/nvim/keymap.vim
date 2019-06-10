@@ -77,4 +77,3 @@ nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
 nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
 
 nnoremap <localleader>] <C-]>
-" vim:foldmethod=marker:foldlevel=0
