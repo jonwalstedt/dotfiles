@@ -30,3 +30,14 @@ augroup marker
   autocmd FileType vim,txt call ConfigFolds()
 augroup end
 " }}}
+" Terminal buffer {{{
+function! ConfigTerminal() abort
+  setlocal nonumber
+  setlocal signcolumn=no
+endfunction
+
+augroup terminal
+  autocmd!
+  autocmd TermOpen * call ConfigTerminal()
+augroup end
+" }}}
