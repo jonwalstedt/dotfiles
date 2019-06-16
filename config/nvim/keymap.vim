@@ -73,7 +73,7 @@ nmap <localleader>v :Vexplore<cr>
 nnoremap <leader>q :<c-u><c-r><c-r>='let @q = '. string(getreg('q'))<cr><c-f><left>
 
 " Navigate between closed folds
-nnoremap <silent> <leader>zj :call NextClosedFold('j')<cr>
-nnoremap <silent> <leader>zk :call NextClosedFold('k')<cr>
+nnoremap <silent> zn :call NextClosedFold('j')<cr>
+nnoremap <silent> zN :call NextClosedFold('k')<cr>
 
 nnoremap <localleader>] <C-]>
