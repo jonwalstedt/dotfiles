@@ -40,7 +40,7 @@ set undofile                                    " Keep a persistent backup file.
 " }}}
 " Folding {{{
 set foldmethod=indent
-set foldlevelstart=1
+set foldlevelstart=99
 set foldnestmax=2
 set foldtext=NeatFoldText()
 " }}}
