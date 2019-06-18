@@ -3,5 +3,7 @@
   "coc.source.tag.enable": true,
   "coc.source.ultisnips.enable": true,
   "coc.source.ultisnips.priority": 100,
-  "prettier.requireConfig": true
+  "prettier.requireConfig": true,
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.noselect": false
 }
