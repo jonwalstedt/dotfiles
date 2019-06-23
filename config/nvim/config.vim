@@ -11,7 +11,7 @@ set exrc                                        " Look for project specific sett
 set secure                                      " Prevetn :autocmd unless owned by me
 set spelllang=en_gb
 set mouse=a                                     " Enable mouse.
-set lazyredraw                                  " Only redraw when needed
+set nolazyredraw                                  " Only redraw when needed
 set nostartofline                               " Do not jump to first character with page commands.
 set showmatch                                   " Highlight matching [{()}]
 set completeopt=longest,menuone,preview
@@ -94,4 +94,20 @@ let g:netrw_bufsettings='noma nomod nu nowrap ro nobl'
 " }}}
 " Tags {{{
 set tags=./.tags,.tags;
+" }}}
+" Dim inactive buffer {{{
+" Background colors for active vs inactive windows
+hi ActiveWindow guibg=#21242b
+hi InactiveWindow guibg=#282c34
+
+" Call method on window enter
+augroup WindowManagement
+  autocmd!
+  autocmd WinEnter * call Handle_Win_Enter()
+augroup END
+
+" Change highlight group of active/inactive windows
+function! Handle_Win_Enter()
+  setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+endfunction
 " }}}
