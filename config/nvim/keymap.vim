@@ -24,13 +24,6 @@ nnoremap <esc>^[ <esc>^[
 " Search for visually selected word with //
 vnoremap // y/<C-R>"<CR>``
 
-" Search word under cursor without moving the cursor
-nnoremap <silent> * :let @/='\<'.expand('<cword>').'\>'<CR>
-xnoremap <silent> * "sy:let @/=@s<CR>
-
-" nnoremap * *``
-nnoremap # #``
-
 "move to the split in the direction shown, or create a new split
 nnoremap <silent> <C-h> :call WinMove('h')<cr>
 nnoremap <silent> <C-j> :call WinMove('j')<cr>

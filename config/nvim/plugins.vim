@@ -21,7 +21,6 @@ Plug 'sirver/ultisnips'
 Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
 Plug 'easymotion/vim-easymotion'
-Plug 'haya14busa/incsearch.vim'
 Plug 'vim-scripts/ingo-library', { 'on': []}
 Plug 'vim-scripts/ExtractMatches', { 'on': []}
 Plug 'google/vim-searchindex'
