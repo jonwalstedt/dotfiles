@@ -13,12 +13,10 @@ Plug 'junegunn/fzf', { 'dir': $XDG_DATA_HOME . '/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'kana/vim-submode'
 Plug 'justinmk/vim-sneak'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive', { 'on': [] }
 Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy'}
 Plug 'junegunn/gv.vim', { 'on': []}
-"Plug 'ervandew/supertab'
 Plug 'sirver/ultisnips'
 Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
 Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
@@ -89,22 +87,6 @@ let g:submode_keep_leaving_key = 1                  " Don't consume submode-leav
 " ProjectRoot {{{
 nnoremap <silent> <localleader>r :ProjectRootCD<CR>
 " }}}
-" Gutentags {{{
-let g:gutentags_ctags_tagfile = '.tags'
-let g:gutentags_file_list_command = {
-      \ 'markers': {
-      \ '.git': 'git ls-files',
-      \ },
-      \ }
-let g:gutentags_generate_on_new = 1
-
-" Gutentags throws errors when saving git commit messages, as a workaround
-" gutentags is disabled.
-augroup gutentags
-  autocmd!
-  autocmd FileType gitcommit,gitrebase let g:gutentags_enabled=0
-augroup end
-" }}}
 " GitGutter {{{
 "disable keybindings (causes delay on mapped easymotion keys)
 let g:gitgutter_map_keys = 0
@@ -158,9 +140,6 @@ call submode#map('gitbranches', 'n', '', 'b', ':ToggleTwiggy<cr>')
 " gv.vim  {{{
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 "}}}
-" Supertab {{{
-let g:SuperTabDefaultCompletionType = '<C-n>'
-" }}}
 "EasyMotion {{{
 "Disable default mappings
 let g:EasyMotion_do_mapping = 0
