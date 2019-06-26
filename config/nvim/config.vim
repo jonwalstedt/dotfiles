@@ -11,7 +11,7 @@ set exrc                                        " Look for project specific sett
 set secure                                      " Prevetn :autocmd unless owned by me
 set spelllang=en_gb
 set mouse=a                                     " Enable mouse.
-set nolazyredraw                                  " Only redraw when needed
+set lazyredraw                                  " Only redraw when needed
 set nostartofline                               " Do not jump to first character with page commands.
 set showmatch                                   " Highlight matching [{()}]
 set completeopt=longest,menuone,preview
