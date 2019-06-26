@@ -25,7 +25,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'vim-scripts/ingo-library', { 'on': []}
 Plug 'vim-scripts/ExtractMatches', { 'on': []}
 Plug 'google/vim-searchindex'
-Plug 'tpope/vim-vinegar'
+Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'ton/vim-bufsurf'
 Plug 'Konfekt/FastFold'
@@ -140,6 +140,15 @@ call submode#map('gitbranches', 'n', '', 'b', ':ToggleTwiggy<cr>')
 " gv.vim  {{{
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 "}}}
+" vim-dirvi  {{{
+let g:dirvish_mode = ':sort ,^.*[\/],'
+
+augroup dirvish_config
+  autocmd!
+  autocmd FileType dirvish silent! unmap <buffer> <C-p>
+  autocmd FileType dirvish silent! unmap <buffer> <C-n>
+augroup END
+" }}}
 "EasyMotion {{{
 "Disable default mappings
 let g:EasyMotion_do_mapping = 0
