@@ -70,3 +70,5 @@ nnoremap <silent> zn :call NextClosedFold('j')<cr>
 nnoremap <silent> zN :call NextClosedFold('k')<cr>
 
 nnoremap <localleader>] <C-]>
+
+map <C-w>f :vertical wincmd f<CR>
