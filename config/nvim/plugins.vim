@@ -277,4 +277,6 @@ call submode#enter_with('grow/shrink', 'n', '', '<leader>9', ':exe "vertical res
 call submode#map('grow/shrink', 'n', '', '0', ':exe "vertical resize +15"<cr>')
 call submode#map('grow/shrink', 'n', '', '9', ':exe "vertical resize -15"<cr>')
 " }}}
-
+" Ultisnips {{{
+let g:UltiSnipsExpandTrigger="æ"
+" }}}
