@@ -4,6 +4,7 @@ nnoremap <leader><cr> :redraw!<CR>
 " Map jj to escape
 inoremap jj <Esc>
 inoremap kk <Esc>:w<cr>
+nnoremap KK ZZ
 
 " Go to previous file with backspace
 nnoremap <BS> <c-^>
@@ -20,9 +21,6 @@ tnoremap jj <C-\><C-n>
 " Escape to clear highlighting in normal mode
 nnoremap <silent> <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
-
-" Search for visually selected word with //
-vnoremap // y/<C-R>"<CR>``
 
 "move to the split in the direction shown, or create a new split
 nnoremap <silent> <C-h> :call WinMove('h')<cr>
