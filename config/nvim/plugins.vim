@@ -26,6 +26,7 @@ Plug 'vim-scripts/ExtractMatches', { 'on': []}
 Plug 'google/vim-searchindex'
 Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
+Plug 'romainl/vim-qf'
 Plug 'ton/vim-bufsurf'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
