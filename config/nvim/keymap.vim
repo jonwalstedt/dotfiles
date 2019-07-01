@@ -1,10 +1,16 @@
 " Map leader enter to redraw screen
 nnoremap <leader><cr> :redraw!<CR>
 
-" Map jj to escape
 inoremap jj <Esc>
 inoremap kk <Esc>:w<cr>
+
 nnoremap LL ZZ
+
+nnoremap c* /\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgn
+nnoremap c# ?\<<C-R>=expand('<cword>')<CR>\>\C<CR>``cgN
+
+nnoremap d* /\<<C-r>=expand('<cword>')<CR>\>\C<CR>``dgn
+nnoremap d# ?\<<C-r>=expand('<cword>')<CR>\>\C<CR>``dgN
 
 " Go to previous file with backspace
 nnoremap <BS> <c-^>
