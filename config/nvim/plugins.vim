@@ -19,7 +19,7 @@ Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy'}
 Plug 'junegunn/gv.vim', { 'on': []}
 Plug 'sirver/ultisnips'
 Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': { -> coc#util#install()}}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ingo-library', { 'on': []}
 Plug 'vim-scripts/ExtractMatches', { 'on': []}
