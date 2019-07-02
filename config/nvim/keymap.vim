@@ -12,6 +12,9 @@ nnoremap c# *``cgN
 nnoremap d* *``dgn
 nnoremap d# *``dgN
 
+nnoremap <C-space> :%s//
+vnoremap <C-space> y/<C-R>"<CR>:%s//
+
 " Go to previous file with backspace
 nnoremap <BS> :update<CR><c-^>
 
