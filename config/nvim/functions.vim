@@ -116,3 +116,11 @@ function! NeatFoldText()
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 " }}}
+
+function! GetWord()
+  let l:searchStr = @/
+  let l:searchStr = substitute(l:searchStr, '\\<', '', 'g')
+  let l:searchStr = substitute(l:searchStr, '\\>', '', 'g')
+  return ":s//" . l:searchStr
+endfunction
+
