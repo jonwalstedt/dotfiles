@@ -1,10 +1,13 @@
 " Map leader enter to redraw screen
-nnoremap <leader><cr> :redraw!<CR>
+nnoremap <leader><CR> :redraw!<CR>
 
 inoremap jj <Esc>
-inoremap kk <Esc>:w<cr>
 
-nnoremap LL ZZ
+nnoremap KK ZZ
+nnoremap L $
+vnoremap L $
+nnoremap H _
+vnoremap H _
 
 nnoremap c* *``cgn
 nnoremap c# *``cgN
@@ -33,10 +36,10 @@ nnoremap <silent> <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 
 "move to the split in the direction shown, or create a new split
-nnoremap <silent> <C-h> :call WinMove('h')<cr>
-nnoremap <silent> <C-j> :call WinMove('j')<cr>
-nnoremap <silent> <C-k> :call WinMove('k')<cr>
-nnoremap <silent> <C-l> :call WinMove('l')<cr>
+nnoremap <silent> <C-h> :call WinMove('h')<CR>
+nnoremap <silent> <C-j> :call WinMove('j')<CR>
+nnoremap <silent> <C-k> :call WinMove('k')<CR>
+nnoremap <silent> <C-l> :call WinMove('l')<CR>
 
 function! WinMove(key)
   let t:curwin = winnr()
@@ -51,31 +54,31 @@ function! WinMove(key)
   endif
 endfunction
 
-nmap <unique> <leader>r <Plug>NetrwRefresh
+nnoremap <unique> <leader>r <Plug>NetrwRefresh
 
 " Yank to end of line
-map Y y$
+nnoremap Y y$
 
 " select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " go to tag
-nmap <leader>gd <C-]>
+nnoremap <leader>gd <C-]>
 
 " netrw
 " opens netrw in the current window
-nmap <localleader>e :Explore<cr>
+nnoremap <localleader>e :Explore<CR>
 " opens netrw in a horizontal split
-nmap <localleader>x :Sexplore<cr>
+nnoremap <localleader>x :Sexplore<CR>
 " opens netrw in a vertical split
-nmap <localleader>v :Vexplore<cr>
+nnoremap <localleader>v :Vexplore<CR>
 
 " Easily edit the macro stored at register q
-nnoremap <leader>q :<c-u><c-r><c-r>='let @q = '. string(getreg('q'))<cr><c-f><left>
+nnoremap <leader>q :<c-u><c-r><c-r>='let @q = '. string(getreg('q'))<CR><c-f><left>
 
 " Navigate between closed folds
-nnoremap <silent> zn :call NextClosedFold('j')<cr>
-nnoremap <silent> zN :call NextClosedFold('k')<cr>
+nnoremap <silent> zn :call NextClosedFold('j')<CR>
+nnoremap <silent> zN :call NextClosedFold('k')<CR>
 
 nnoremap <localleader>] <C-]>
 
