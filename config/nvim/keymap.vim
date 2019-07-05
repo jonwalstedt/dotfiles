@@ -14,7 +14,7 @@ nnoremap d# *``dgN
 
 nnoremap <C-space> *``:%s//<C-R><C-W>
 vnoremap <C-space> y/<C-R>"<CR>:%s//<C-R>/
-vnoremap <expr> <localleader><space> GetWord()
+vnoremap <expr> <localleader><space> GetSearchWordClean()
 
 " Go to previous file with backspace
 nnoremap <BS> :update<CR><c-^>
