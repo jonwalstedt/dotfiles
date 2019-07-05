@@ -5,9 +5,11 @@ inoremap jj <Esc>
 
 nnoremap KK ZZ
 nnoremap L $
-vnoremap L $
-nnoremap H _
-vnoremap H _
+nnoremap L $
+onoremap L $
+nnoremap H ^
+vnoremap H ^
+onoremap H ^
 
 nnoremap c* *``cgn
 nnoremap c# *``cgN
