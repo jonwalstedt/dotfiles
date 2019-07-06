@@ -4,9 +4,14 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 " Source Vimrc
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" Use jj as escape
 inoremap jj <Esc>
 
+" Update and close buffer with KK
 nnoremap KK ZZ
+
+" Yank to end of line
+nnoremap Y y$
 
 " Move to end of line
 nnoremap L $
@@ -54,9 +59,6 @@ nnoremap <silent> <C-h> :call WinMove('h')<CR>
 nnoremap <silent> <C-j> :call WinMove('j')<CR>
 nnoremap <silent> <C-k> :call WinMove('k')<CR>
 nnoremap <silent> <C-l> :call WinMove('l')<CR>
-
-" Yank to end of line
-nnoremap Y y$
 
 " Select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
