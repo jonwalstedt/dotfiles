@@ -1,11 +1,11 @@
 " Open Vimrc in split
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 
 " Source Vimrc
-nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Use jj as escape
-inoremap jj <Esc>
+inoremap jj <Esc>:update<CR>
 
 " Update and close buffer with KK
 nnoremap KK ZZ
