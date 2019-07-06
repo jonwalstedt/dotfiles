@@ -116,7 +116,7 @@ function! NeatFoldText()
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 " }}}
-
+" Get visual selection {{{
 "function! GetVisualSelection()
 "  if mode()=="v"
 "    let [line_start, column_start] = getpos("v")[1:2]
@@ -137,11 +137,30 @@ endfunction
 "  let lines[0] = lines[0][column_start - 1:]
 "  return join(lines, "\n")
 "endfunction
-
+" }}}
+" Remove visual selection marker from word {{{
 function! GetSearchWordClean()
   let l:searchStr = @/
   let l:searchStr = substitute(l:searchStr, '\\<', '', 'g')
   let l:searchStr = substitute(l:searchStr, '\\>', '', 'g')
   return ":s//".l:searchStr
 endfunction
-
+" }}}
+" Create and move to split {{{
+" Check if a split already exists in the direction you want to move to.
+" If it does, the function simply moves the focus to that split.
+" If there isn’t a split already, the function creates a new split and
+" moves the focus to that split
+function! WinMove(key)
+  let t:curwin = winnr()
+  exec "wincmd ".a:key
+  if (t:curwin == winnr())
+    if (match(a:key,'[jk]'))
+      wincmd v
+    else
+      wincmd s
+    endif
+    exec "wincmd ".a:key
+  endif
+endfunction
+" }}}

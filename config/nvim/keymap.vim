@@ -55,21 +55,6 @@ nnoremap <silent> <C-j> :call WinMove('j')<CR>
 nnoremap <silent> <C-k> :call WinMove('k')<CR>
 nnoremap <silent> <C-l> :call WinMove('l')<CR>
 
-function! WinMove(key)
-  let t:curwin = winnr()
-  exec "wincmd ".a:key
-  if (t:curwin == winnr())
-    if (match(a:key,'[jk]'))
-      wincmd v
-    else
-      wincmd s
-    endif
-    exec "wincmd ".a:key
-  endif
-endfunction
-
-nnoremap <unique> <leader>r <Plug>NetrwRefresh
-
 " Yank to end of line
 nnoremap Y y$
 
@@ -86,6 +71,8 @@ nnoremap <localleader>e :Explore<CR>
 nnoremap <localleader>x :Sexplore<CR>
 " opens netrw in a vertical split
 nnoremap <localleader>v :Vexplore<CR>
+
+nnoremap <unique> <leader>r <Plug>NetrwRefresh
 
 " Easily edit the macro stored at register q
 nnoremap <leader>q :<C-U><C-R><C-R>='let @q = '. string(getreg('q'))<CR><C-F><left>
