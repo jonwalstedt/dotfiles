@@ -5,7 +5,7 @@ nnoremap <leader>ev :vsplit $MYVIMRC<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
 
 " Use jj as escape
-inoremap jj <Esc>:update<CR>
+inoremap jj <Esc>
 
 " Update and close buffer with KK
 nnoremap KK ZZ
