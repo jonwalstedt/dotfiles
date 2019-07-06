@@ -1,12 +1,19 @@
-" Map leader enter to redraw screen
-nnoremap <leader><CR> :redraw!<CR>
+" Open Vimrc in split
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" Source Vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
 
 inoremap jj <Esc>
 
 nnoremap KK ZZ
+
+" Move to end of line
 nnoremap L $
 nnoremap L $
 onoremap L $
+
+" Move to start of line
 nnoremap H ^
 vnoremap H ^
 onoremap H ^
@@ -17,8 +24,13 @@ nnoremap c# *``cgN
 nnoremap d* *``dgn
 nnoremap d# *``dgN
 
+" Substitute word under cursor
 nnoremap <C-space> *``:%s//<C-R><C-W>
+
+" Substitute visually selection
 vnoremap <C-space> y/<C-R>"<CR>:%s//<C-R>/
+
+" Substitute previous search within selected range
 vnoremap <expr> <localleader><space> GetSearchWordClean()
 
 " Go to previous file with backspace
@@ -37,7 +49,7 @@ tnoremap jj <C-\><C-n>
 nnoremap <silent> <esc> :noh<return><esc>
 nnoremap <esc>^[ <esc>^[
 
-"move to the split in the direction shown, or create a new split
+" Move to the split in the direction shown, or create a new split
 nnoremap <silent> <C-h> :call WinMove('h')<CR>
 nnoremap <silent> <C-j> :call WinMove('j')<CR>
 nnoremap <silent> <C-k> :call WinMove('k')<CR>
@@ -61,10 +73,10 @@ nnoremap <unique> <leader>r <Plug>NetrwRefresh
 " Yank to end of line
 nnoremap Y y$
 
-" select last paste in visual mode
+" Select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
-" go to tag
+" Go to tag
 nnoremap <leader>gd <C-]>
 
 " netrw
@@ -76,7 +88,7 @@ nnoremap <localleader>x :Sexplore<CR>
 nnoremap <localleader>v :Vexplore<CR>
 
 " Easily edit the macro stored at register q
-nnoremap <leader>q :<c-u><c-r><c-r>='let @q = '. string(getreg('q'))<CR><c-f><left>
+nnoremap <leader>q :<C-U><C-R><C-R>='let @q = '. string(getreg('q'))<CR><C-F><left>
 
 " Navigate between closed folds
 nnoremap <silent> zn :call NextClosedFold('j')<CR>
@@ -84,4 +96,5 @@ nnoremap <silent> zN :call NextClosedFold('k')<CR>
 
 nnoremap <localleader>] <C-]>
 
-map <C-w>f :vertical wincmd f<CR>
+" Open file under cursor in vertical split
+nnoremap <C-w>f :vertical wincmd f<CR>
