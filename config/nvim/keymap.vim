@@ -1,10 +1,10 @@
 " Keymap
 
 " Open Vimrc in split
-nnoremap <leader>ev :vsplit $MYVIMRC<CR>
+nnoremap <leader>ve :vsplit $MYVIMRC<CR>
 
 " Source Vimrc
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>vs :source $MYVIMRC<CR>
 
 " Use jj as escape
 inoremap jj <Esc>

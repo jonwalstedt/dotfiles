@@ -72,11 +72,11 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 nnoremap <C-p> :FZF<cr>
-nnoremap <C-s> :Ag<cr>
-inoremap <C-space> <esc>:Snippets<cr>
-nnoremap <localleader>t :Buffers<cr>
-nnoremap <localleader>p :History:<cr>
-nnoremap <localleader>h :History<cr>
+nnoremap <leader>ff :Ag<cr>
+inoremap <leader>fs <esc>:Snippets<cr>
+nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader>fc :History:<cr>
+nnoremap <leader>fh :History<cr>
 
 imap <c-f> <plug>(fzf-complete-path)
 imap <c-l> <plug>(fzf-complete-line)
@@ -206,9 +206,6 @@ endfunction
 let g:coc_snippet_next = '<Tab>'
 let g:coc_snippet_prev = '<S-Tab>'
 
-" Use <c-space> for trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
 " Navigate with tab and s-tab
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
@@ -218,6 +215,9 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Close preview window when completion is done
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" Use <c-space> for trigger completion.
+inoremap <silent><expr> <leader>cc coc#refresh()
 
 " Use `[c` and `]c` for navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
