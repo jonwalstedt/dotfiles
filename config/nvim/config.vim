@@ -1,3 +1,5 @@
+" Config
+
 " Misc {{{
 let g:python_host_skip_check = 1
 let g:python3_host_skip_check = 1

@@ -1,6 +1,5 @@
-" SuperRetab {{{
-command! -nargs=1 -range SuperRetab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
-"}}}
+" Commands
+
 " Vim Profiler {{{
 command! ProfileMe :profile start profile.log <bar> profile func * <bar> profile file *
 command! ProfileStop :profile pause
@@ -19,25 +18,18 @@ augroup highlights
 augroup end
 " }}}
 " Folding {{{
-
-function! ConfigFolds() abort
-  setlocal foldmethod=marker
-  setlocal foldlevel=0
-endfunction
-
 augroup marker
   autocmd!
-  autocmd FileType vim,txt call ConfigFolds()
+  autocmd FileType vim,txt
+        \ setlocal foldmethod=marker |
+        \ setlocal foldlevel=0
 augroup end
 " }}}
 " Terminal buffer {{{
-function! ConfigTerminal() abort
-  setlocal nonumber
-  setlocal signcolumn=no
-endfunction
-
 augroup terminal
   autocmd!
-  autocmd TermOpen * call ConfigTerminal()
+  autocmd TermOpen *
+    \ setlocal nonumber |
+    \ setlocal signcolumn=no
 augroup end
 " }}}

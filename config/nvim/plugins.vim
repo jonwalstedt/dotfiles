@@ -1,3 +1,5 @@
+" Plugins
+" Plugins {{{
 " Bootstrap Plug
 let autoload_plug_path = stdpath('data') . '/site/autoload/plug.vim'
 if !filereadable(autoload_plug_path)
@@ -7,7 +9,6 @@ if !filereadable(autoload_plug_path)
 endif
 unlet autoload_plug_path
 
-" Plugins
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': $XDG_DATA_HOME . '/fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
@@ -46,6 +47,7 @@ Plug 'joshdick/onedark.vim'
 Plug 'jonwalstedt/minimalgrey'
 Plug 'jonwalstedt/vim-myhelp'
 call plug#end()
+"}}}
 
 " Plugin settings
 " FZF Fuzzyfinder {{{
@@ -223,9 +225,9 @@ nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> <leader>gt <Plug>(coc-type-definition)
-nmap <silent> <leader>gi <Plug>(coc-implementation)
-nmap <silent> <leader>gr <Plug>(coc-references)
+nmap <silent> <leader>ct <Plug>(coc-type-definition)
+nmap <silent> <leader>ci <Plug>(coc-implementation)
+nmap <silent> <leader>cr <Plug>(coc-references)
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -256,11 +258,11 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>cd  :<C-u>CocList diagnostics<cr>
 " Show commands
-nnoremap <silent> <leader>c  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 " Search workspace symbols
-nnoremap <silent> <leader>s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 
 " }}}
 " ExtractMatches {{{
@@ -271,12 +273,6 @@ call submode#enter_with('bufsurff', 'n', '', '<localleader>i', ':BufSurfForward<
 call submode#map('bufsurff', 'n', '', 'i', ':BufSurfForward<cr>')
 call submode#enter_with('bufsurfback', 'n', '', '<localleader>o', ':BufSurfBack<cr>')
 call submode#map('bufsurfback', 'n', '', 'o', ':BufSurfBack<cr>')
-" }}}
-" Resize splits {{{
-call submode#enter_with('grow/shrink', 'n', '', '<leader>0', ':exe "vertical resize +15"<cr>')
-call submode#enter_with('grow/shrink', 'n', '', '<leader>9', ':exe "vertical resize -15"<cr>')
-call submode#map('grow/shrink', 'n', '', '0', ':exe "vertical resize +15"<cr>')
-call submode#map('grow/shrink', 'n', '', '9', ':exe "vertical resize -15"<cr>')
 " }}}
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="æ"

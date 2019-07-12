@@ -1,3 +1,5 @@
+" Init
+
 " Load project specific vim settings
 silent! so .vimlocal
 
