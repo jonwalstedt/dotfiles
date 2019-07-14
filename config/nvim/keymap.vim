@@ -107,8 +107,8 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|ex
 " http://learnvimscriptthehardway.stevelosh.com/chapters/32.html)
 " nnoremap <leader><space> :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
 
-nnoremap <leader>g :set operatorfunc=GrepOperator<cr>g@
-vnoremap <leader>g :<c-u>call GrepOperator(visualmode())<cr>
+nnoremap <leader>gg :set operatorfunc=GrepOperator<cr>g@
+vnoremap <leader>gg :<c-u>call GrepOperator(visualmode())<cr>
 " }}}
 " Substitute {{{
 nnoremap c* *``cgn
@@ -120,9 +120,12 @@ nnoremap d# *``dgN
 " Substitute word under cursor
 nnoremap <C-space> *``:%s//<C-R><C-W>
 
-" Substitute visually selection
+" Substitute visual selection
 vnoremap <C-space> y/<C-R>"<CR>:%s//<C-R>/
 
 " Substitute previous search within selected range
 vnoremap <expr> <localleader><space> GetSearchWordClean()
+
+nnoremap <leader>gs :call SubstituteWordOrSelection("normal")<CR>
+vnoremap <leader>gs :<c-u>call SubstituteWordOrSelection(visualmode())<CR>
 " }}}

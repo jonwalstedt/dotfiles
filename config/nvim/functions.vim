@@ -1,37 +1,5 @@
 " Functions
 
-" Search within range {{{
-function! RangeSearch(direction)
-  call inputsave()
-  let g:srchstr = input(a:direction)
-  call inputrestore()
-  if strlen(g:srchstr) > 0
-    let g:srchstr = g:srchstr.
-          \ '\%>'.(line("'<")-1).'l'.
-          \ '\%<'.(line("'>")+1).'l'
-  else
-    let g:srchstr = ''
-  endif
-endfunction
-"}}}
-" Grep Operator {{{
-function! GrepOperator(type)
-  let saved_unnamed_register = @@
-
-  if a:type ==# 'v'
-    normal! `<v`>y
-  elseif a:type ==# 'char'
-    normal! `[v`]y
-  else
-    return
-  endif
-
-  silent execute "grep! -R " . shellescape(@@) . " ."
-  copen
-
-  let @@ = saved_unnamed_register
-endfunction
-" }}}
 " Toggle relative line numbers {{{
 function! NumberToggle()
   if(&relativenumber == 1)
@@ -145,6 +113,38 @@ function! NeatFoldText()
   return foldtextstart . repeat(foldchar, winwidth(0)-foldtextlength) . foldtextend
 endfunction
 " }}}
+" Search within range {{{
+function! RangeSearch(direction)
+  call inputsave()
+  let g:srchstr = input(a:direction)
+  call inputrestore()
+  if strlen(g:srchstr) > 0
+    let g:srchstr = g:srchstr.
+          \ '\%>'.(line("'<")-1).'l'.
+          \ '\%<'.(line("'>")+1).'l'
+  else
+    let g:srchstr = ''
+  endif
+endfunction
+"}}}
+" Grep Operator {{{
+function! GrepOperator(type)
+  let saved_unnamed_register = @@
+
+  if a:type ==# 'v'
+    normal! `<v`>y
+  elseif a:type ==# 'char'
+    normal! `[v`]y
+  else
+    return
+  endif
+
+  silent execute "grep! -R " . shellescape(@@) . " ."
+  copen
+
+  let @@ = saved_unnamed_register
+endfunction
+" }}}
 " Get visual selection {{{
 function! GetVisualSelection()
   if mode()=="v"
@@ -172,6 +172,24 @@ function! GetSearchWordClean()
   let l:searchStr = @/
   let l:searchStr = substitute(l:searchStr, '\\<', '', 'g')
   let l:searchStr = substitute(l:searchStr, '\\>', '', 'g')
-  return ":s//".l:searchStr
+  return l:searchStr
 endfunction
 " }}}
+
+function! SubstituteWordOrSelection(type)
+  if a:type ==# 'v'
+    let @/ = GetVisualSelection()
+    call feedkeys(":%s//".GetVisualSelection())
+  elseif a:type ==# 'V'
+    let l:searchStr = @/
+    let l:searchStr = substitute(l:searchStr, '\\<', '', 'g')
+    let l:searchStr = substitute(l:searchStr, '\\>', '', 'g')
+    call feedkeys(":'<,'>s//".l:searchStr)
+  elseif a:type ==# 'normal'
+    let l:currentWord = expand("<cword>")
+    let @/ = l:currentWord
+    call feedkeys(":%s//".l:currentWord)
+  else
+    return
+  endif
+endfunction
