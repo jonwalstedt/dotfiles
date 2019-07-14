@@ -24,6 +24,18 @@ nnoremap <leader>tl :colorscheme morning<CR>
 " Use dark theme
 nnoremap <leader>td :colorscheme onedark<CR>
 
+" New tab
+nnoremap <leader>tn :tabnew<CR>
+
+" Previous tab (override unimpaired jump to next tag)
+nnoremap <silent> [t :tabp<CR>
+
+" Next tab (override unimpaired jump to previous tag)
+nnoremap <silent> ]t :tabn<CR>
+
+" Close current buffer
+nnoremap <leader>bd :bd<CR>
+
 " Select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 
