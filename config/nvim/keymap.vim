@@ -117,15 +117,6 @@ nnoremap c# *``cgN
 nnoremap d* *``dgn
 nnoremap d# *``dgN
 
-" Substitute word under cursor
-nnoremap <C-space> *``:%s//<C-R><C-W>
-
-" Substitute visual selection
-vnoremap <C-space> y/<C-R>"<CR>:%s//<C-R>/
-
-" Substitute previous search within selected range
-vnoremap <expr> <localleader><space> GetSearchWordClean()
-
-nnoremap <leader>gs :call SubstituteWordOrSelection("normal")<CR>
-vnoremap <leader>gs :<c-u>call SubstituteWordOrSelection(visualmode())<CR>
+nnoremap <C-space> :call SubstituteWordOrSelection("normal")<CR>
+vnoremap <C-space> :<c-u>call SubstituteWordOrSelection(visualmode())<CR>
 " }}}

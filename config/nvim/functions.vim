@@ -167,15 +167,7 @@ function! GetVisualSelection()
   return join(lines, "\n")
 endfunction
 " }}}
-" Remove visual selection marker from word {{{
-function! GetSearchWordClean()
-  let l:searchStr = @/
-  let l:searchStr = substitute(l:searchStr, '\\<', '', 'g')
-  let l:searchStr = substitute(l:searchStr, '\\>', '', 'g')
-  return l:searchStr
-endfunction
-" }}}
-
+" Substitute current word or selection {{{
 function! SubstituteWordOrSelection(type)
   if a:type ==# 'v'
     let @/ = GetVisualSelection()
@@ -193,3 +185,4 @@ function! SubstituteWordOrSelection(type)
     return
   endif
 endfunction
+"}}}
