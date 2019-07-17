@@ -166,13 +166,13 @@ let g:EasyMotion_startofline = 0
 
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwy'
 
-nmap <space> <plug>(easymotion-overwin-f2)
-omap <space> <plug>(easymotion-bd-f2)
-vmap <space> <plug>(easymotion-bd-f2)
+nmap <leader>e <plug>(easymotion-overwin-f2)
+omap <leader>e <plug>(easymotion-bd-f2)
+vmap <leader>e <plug>(easymotion-bd-f2)
 
 "JK motions: Line motions
-map <localleader>j <Plug>(easymotion-j)
-map <localleader>k <Plug>(easymotion-k)
+map <leader>j <Plug>(easymotion-j)
+map <leader>k <Plug>(easymotion-k)
 
 " }}}
 " Sneak {{{

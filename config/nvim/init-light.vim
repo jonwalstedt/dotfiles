@@ -4,7 +4,7 @@
 silent! so .vimlocal
 
 " Use \ as Leader key (default).
-let mapleader = "\\"
+let mapleader = "\<Space>"
 let maplocalleader = "ﬁ"
 
 " Helpfiles can be found here

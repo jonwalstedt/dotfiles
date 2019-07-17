@@ -44,7 +44,7 @@ nnoremap <silent> <esc> :nohlsearch<return><esc>
 nnoremap <esc>^[ <esc>^[
 
 " Toggle relative line numbers
-nnoremap <silent> <leader><leader> :call NumberToggle()<cr>
+nnoremap <silent> <leader>n :call NumberToggle()<cr>
 
 " Macros {{{
 " Easily edit the macro stored at register q
@@ -68,7 +68,6 @@ onoremap H ^
 " Open zsh terminal in vertical or horizontal split
 nnoremap <silent> <Leader>tv :vs term://zsh<CR>
 nnoremap <silent> <Leader>th :sp term://zsh<CR>
-nnoremap <silent> <localleader>l :vs term://zsh<CR>
 
 " Escape to exit to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
@@ -105,9 +104,7 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|ex
 
 " Grep word under cursor: (from Learn Vimscript the hard way:
 " http://learnvimscriptthehardway.stevelosh.com/chapters/32.html)
-" nnoremap <leader><space> :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<cr>:copen<cr>
-
-nnoremap <leader>gg :set operatorfunc=GrepOperator<cr>g@
+nnoremap <leader>gg :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
 vnoremap <leader>gg :<c-u>call GrepOperator(visualmode())<cr>
 " }}}
 " Substitute {{{
