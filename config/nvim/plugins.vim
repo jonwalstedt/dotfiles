@@ -22,8 +22,6 @@ Plug 'sirver/ultisnips'
 Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'easymotion/vim-easymotion'
-Plug 'vim-scripts/ingo-library', { 'on': []}
-Plug 'vim-scripts/ExtractMatches', { 'on': []}
 Plug 'google/vim-searchindex'
 Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
@@ -73,10 +71,10 @@ let g:fzf_colors =
 
 nnoremap <C-p> :FZF<cr>
 nnoremap <leader>ff :Ag<cr>
-inoremap <leader>fs <esc>:Snippets<cr>
 nnoremap <leader>fb :Buffers<cr>
 nnoremap <leader>fc :History:<cr>
 nnoremap <leader>fh :History<cr>
+inoremap <M-space> <esc>:Snippets<cr>
 
 imap <c-f> <plug>(fzf-complete-path)
 imap <c-l> <plug>(fzf-complete-line)
@@ -166,9 +164,9 @@ let g:EasyMotion_startofline = 0
 
 let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwy'
 
-nmap <leader>e <plug>(easymotion-overwin-f2)
-omap <leader>e <plug>(easymotion-bd-f2)
-vmap <leader>e <plug>(easymotion-bd-f2)
+nmap <leader><leader> <plug>(easymotion-overwin-f2)
+omap <leader><leader> <plug>(easymotion-bd-f2)
+vmap <leader><leader> <plug>(easymotion-bd-f2)
 
 "JK motions: Line motions
 map <leader>j <Plug>(easymotion-j)
@@ -217,7 +215,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use <c-space> for trigger completion.
-inoremap <silent><expr> <leader>cc coc#refresh()
+inoremap <silent><expr> <localleader>cc coc#refresh()
 
 " Use `[c` and `]c` for navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
@@ -263,10 +261,6 @@ nnoremap <silent> <leader>cd  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 " Search workspace symbols
 nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
-
-" }}}
-" ExtractMatches {{{
-command! YankMatches call plug#load('ExtractMatches', 'ingo-library') | YankMatches
 " }}}
 " BufSurf {{{
 call submode#enter_with('bufsurff', 'n', '', '<localleader>i', ':BufSurfForward<cr>')

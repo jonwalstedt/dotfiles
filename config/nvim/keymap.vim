@@ -9,32 +9,29 @@ nnoremap <leader>vs :source $MYVIMRC<CR>
 " Use jj as escape
 inoremap jj <Esc>
 
-" Write buffer and close window
-nnoremap KK ZZ
-
 " Yank to end of line
 nnoremap Y y$
 
+" Yank all matches
+nnoremap <leader>y :CopyMatches<CR>
+
 " Go to previous file with backspace
 nnoremap <BS> :update<CR><c-^>
+
+" Close current buffer
+nnoremap <leader>bd :bd<CR>
+
+" Write buffer and close window
+nnoremap <leader>w :update<CR>
+
+" Write buffer and close window
+nnoremap <leader>ll ZZ<C-w><C-p>
 
 " Use light theme
 nnoremap <leader>tl :colorscheme morning<CR>
 
 " Use dark theme
 nnoremap <leader>td :colorscheme onedark<CR>
-
-" New tab
-nnoremap <leader>tn :tabnew<CR>
-
-" Previous tab (override unimpaired jump to next tag)
-nnoremap <silent> [t :tabp<CR>
-
-" Next tab (override unimpaired jump to previous tag)
-nnoremap <silent> ]t :tabn<CR>
-
-" Close current buffer
-nnoremap <leader>bd :bd<CR>
 
 " Select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -46,6 +43,16 @@ nnoremap <esc>^[ <esc>^[
 " Toggle relative line numbers
 nnoremap <silent> <leader>n :call NumberToggle()<cr>
 
+" Tabs {{{
+" New tab
+nnoremap <leader>tn :tabnew<CR>
+
+" Previous tab (override unimpaired jump to next tag)
+nnoremap <silent> [t :tabp<CR>
+
+" Next tab (override unimpaired jump to previous tag)
+nnoremap <silent> ]t :tabn<CR>
+" }}}
 " Macros {{{
 " Easily edit the macro stored at register q
 nnoremap <leader>q :<C-U><C-R><C-R>='let @q = '. string(getreg('q'))<CR><C-F><left>
@@ -104,8 +111,8 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|ex
 
 " Grep word under cursor: (from Learn Vimscript the hard way:
 " http://learnvimscriptthehardway.stevelosh.com/chapters/32.html)
-nnoremap <leader>gg :silent execute "grep! -R " . shellescape(expand("<cWORD>")) . " ."<CR>:copen<CR>
-vnoremap <leader>gg :<c-u>call GrepOperator(visualmode())<cr>
+nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cword>")) . " ."<CR>:copen<CR>
+vnoremap <leader>g :<c-u>call GrepOperator(visualmode())<cr>
 " }}}
 " Substitute {{{
 nnoremap c* *``cgn
