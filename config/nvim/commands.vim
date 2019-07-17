@@ -1,5 +1,11 @@
 " Commands
 
+" Auto reload vimrc {{{
+augroup autoreloadvimrc
+  autocmd!
+  autocmd BufWritePost *.vim source $MYVIMRC
+augroup end
+" }}}
 " Vim Profiler {{{
 command! ProfileMe :profile start profile.log <bar> profile func * <bar> profile file *
 command! ProfileStop :profile pause
