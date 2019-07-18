@@ -21,6 +21,9 @@ nnoremap <BS> :update<CR><c-^>
 " Close current buffer
 nnoremap <leader>bd :bd<CR>
 
+" Close all buffers and close
+nnoremap <leader>q :qall<CR>
+
 " Write buffer and close window
 nnoremap <leader>w :update<CR>
 
@@ -55,7 +58,7 @@ nnoremap <silent> ]t :tabn<CR>
 " }}}
 " Macros {{{
 " Easily edit the macro stored at register q
-nnoremap <leader>q :<C-U><C-R><C-R>='let @q = '. string(getreg('q'))<CR><C-F><left>
+nnoremap <leader>mq :<C-U><C-R><C-R>='let @q = '. string(getreg('q'))<CR><C-F><left>
 
 " Run macro over selected rows using @
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>

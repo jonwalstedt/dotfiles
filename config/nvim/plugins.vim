@@ -11,31 +11,29 @@ unlet autoload_plug_path
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': $XDG_DATA_HOME . '/fzf', 'do': './install --bin' }
+Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
+Plug 'inkarkat/vim-ingo-library'
+Plug 'inkarkat/vim-SearchHighlighting'
+Plug 'andymass/vim-matchup'
 Plug 'junegunn/fzf.vim'
-Plug 'kana/vim-submode'
-Plug 'justinmk/vim-sneak'
+Plug 'ton/vim-bufsurf'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive', { 'on': [] }
 Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy'}
 Plug 'junegunn/gv.vim', { 'on': []}
 Plug 'sirver/ultisnips'
-Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-unimpaired'
+Plug 'wellle/targets.vim'
 Plug 'google/vim-searchindex'
 Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
-Plug 'ton/vim-bufsurf'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-unimpaired'
-Plug 'wellle/targets.vim'
-Plug 'kana/vim-textobj-user'
-Plug 'inkarkat/vim-ingo-library'
-Plug 'inkarkat/vim-SearchHighlighting'
-Plug 'andymass/vim-matchup'
 Plug 'jiangmiao/auto-pairs'
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['hbs', 'handlebars'] }
@@ -80,10 +78,6 @@ imap <c-f> <plug>(fzf-complete-path)
 imap <c-l> <plug>(fzf-complete-line)
 
 " }}}
-" Submode {{{
-let g:submode_timeout = 0                           " Disable submode timeouts:
-let g:submode_keep_leaving_key = 1                  " Don't consume submode-leaving key
-" }}}
 " ProjectRoot {{{
 nnoremap <silent> <localleader>r :ProjectRootCD<CR>
 " }}}
@@ -118,8 +112,7 @@ endfunction
 command! ToggleGStatus :call ToggleGStatus()
 
 " Fugitive (toggle git status panel)
-call submode#enter_with('gitstatus', 'n', '', '<localleader><space>', ':ToggleGStatus<cr>')
-call submode#map('gitstatus', 'n', '', '<space>', ':ToggleGStatus<cr>')
+nnoremap <localleader><space> :call ToggleGStatus()<cr>
 "}}}
 " Twiggy  {{{
 " https://vimawesome.com/plugin/twiggy
@@ -134,8 +127,7 @@ endfunction
 command! ToggleTwiggy :call ToggleTwiggy()
 
 " Twiggy (toggle twiggy panel)
-call submode#enter_with('gitbranches', 'n', '', '<localleader>b', ':ToggleTwiggy<cr>')
-call submode#map('gitbranches', 'n', '', 'b', ':ToggleTwiggy<cr>')
+nnoremap <localleader>b :call ToggleTwiggy()<cr>
 "}}}
 " gv.vim  {{{
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
@@ -263,10 +255,8 @@ nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 " }}}
 " BufSurf {{{
-call submode#enter_with('bufsurff', 'n', '', '<localleader>i', ':BufSurfForward<cr>')
-call submode#map('bufsurff', 'n', '', 'i', ':BufSurfForward<cr>')
-call submode#enter_with('bufsurfback', 'n', '', '<localleader>o', ':BufSurfBack<cr>')
-call submode#map('bufsurfback', 'n', '', 'o', ':BufSurfBack<cr>')
+nnoremap <leader>i :BufSurfForward<CR>
+nnoremap <leader>o :BufSurfBack<CR>
 " }}}
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="æ"
