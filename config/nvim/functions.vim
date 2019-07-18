@@ -57,7 +57,7 @@ function! QuitNetrw()
   for i in range(1, bufnr($))
     if buflisted(i)
       if getbufvar(i, '&filetype') == "netrw"
-        silent exe 'bwipeout ' . i
+        silent execute 'bwipeout ' . i
       endif
     endif
   endfor
@@ -75,14 +75,14 @@ augroup END
 " moves the focus to that split
 function! WinMove(key)
   let t:curwin = winnr()
-  exec "wincmd ".a:key
+  execute "wincmd ".a:key
   if (t:curwin == winnr())
     if (match(a:key,'[jk]'))
       wincmd v
     else
       wincmd s
     endif
-    exec "wincmd ".a:key
+    execute "wincmd ".a:key
   endif
 endfunction
 " }}}
