@@ -24,11 +24,14 @@ augroup highlights
 augroup end
 " }}}
 " Folding {{{
+function! Marker() abort
+  setlocal foldmethod=marker
+  setlocal foldlevel=0
+endfunction
+
 augroup marker
   autocmd!
-  autocmd FileType vim,txt
-        \ setlocal foldmethod=marker |
-        \ setlocal foldlevel=0
+  autocmd FileType vim,txt call Marker()
 augroup end
 " }}}
 " Terminal buffer {{{
