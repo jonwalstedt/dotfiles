@@ -21,14 +21,12 @@ nnoremap <BS> :update<CR><c-^>
 " Close current buffer
 nnoremap <leader>bd :bd<CR>
 
-" Close all buffers and close
-nnoremap <leader>q :qall<CR>
+" Close and update buffer
+nnoremap <leader>q ZZ<C-w><C-p>
+nnoremap <leader>ll ZZ<C-w><C-p>
 
 " Write buffer and close window
 nnoremap <leader>w :update<CR>
-
-" Write buffer and close window
-nnoremap <leader>ll ZZ<C-w><C-p>
 
 " Use light theme
 nnoremap <leader>tl :colorscheme morning<CR>
@@ -114,8 +112,9 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|ex
 
 " Grep word under cursor: (from Learn Vimscript the hard way:
 " http://learnvimscriptthehardway.stevelosh.com/chapters/32.html)
-nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cword>")) . " ."<CR>:copen<CR>
-vnoremap <leader>g :<c-u>call GrepOperator(visualmode())<cr>
+"nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cword>")) . " ."<CR>:copen<CR>
+nnoremap <leader>g :call SearchAndGrep("normal")<CR>
+vnoremap <leader>g :<c-u>call SearchAndGrep(visualmode())<CR>
 " }}}
 " Substitute {{{
 nnoremap c* *``cgn
@@ -126,4 +125,6 @@ nnoremap d# *``dgN
 
 nnoremap <C-space> :call SubstituteWordOrSelection("normal")<CR>
 vnoremap <C-space> :<c-u>call SubstituteWordOrSelection(visualmode())<CR>
+
+nnoremap <leader>s :cdo %s///c \| update<left><left><left><left><left><left><left><left><left><left><left>
 " }}}

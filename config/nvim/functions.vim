@@ -127,20 +127,28 @@ function! RangeSearch(direction)
   endif
 endfunction
 "}}}
-" Grep Operator {{{
-function! GrepOperator(type)
+" Search and then Grep {{{
+function! SearchAndGrep(type)
   let saved_unnamed_register = @@
 
   if a:type ==# 'v'
     normal! `<v`>y
+    let @/ = @@
+    silent execute "grep! -R " . shellescape(@@) . " ."
   elseif a:type ==# 'char'
     normal! `[v`]y
+    let @/ = @@
+    silent execute "grep! -R " . shellescape(@@) . " ."
+  elseif a:type ==# 'normal'
+    let l:currentWord = expand("<cword>")
+    let @/ = l:currentWord
+    silent execute ":grep! -R " . shellescape(l:currentWord) . " ."
   else
     return
   endif
 
-  silent execute "grep! -R " . shellescape(@@) . " ."
   copen
+  set hlsearch
 
   let @@ = saved_unnamed_register
 endfunction
