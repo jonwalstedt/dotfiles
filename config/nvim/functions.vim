@@ -134,15 +134,15 @@ function! SearchAndGrep(type)
   if a:type ==# 'v'
     normal! `<v`>y
     let @/ = @@
-    silent execute "grep! -R " . shellescape(@@) . " ."
+    silent! execute "grep! -R " . shellescape(@@) . " ."
   elseif a:type ==# 'char'
     normal! `[v`]y
     let @/ = @@
-    silent execute "grep! -R " . shellescape(@@) . " ."
+    silent! execute "grep! -R " . shellescape(@@) . " ."
   elseif a:type ==# 'normal'
     let l:currentWord = expand("<cword>")
     let @/ = l:currentWord
-    silent execute ":grep! -R " . shellescape(l:currentWord) . " ."
+    silent! execute ":grep! -R " . shellescape(l:currentWord) . " ."
   else
     return
   endif

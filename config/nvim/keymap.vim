@@ -74,8 +74,8 @@ onoremap H ^
 " }}}
 " Terminal {{{
 " Open zsh terminal in vertical or horizontal split
-nnoremap <silent> <Leader>tv :vs term://zsh<CR>
-nnoremap <silent> <Leader>th :sp term://zsh<CR>
+nnoremap <silent> <Leader>tl :vs term://zsh<CR>
+nnoremap <silent> <Leader>tj :sp term://zsh<CR>
 
 " Escape to exit to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
@@ -126,5 +126,5 @@ nnoremap d# *``dgN
 nnoremap <C-space> :call SubstituteWordOrSelection("normal")<CR>
 vnoremap <C-space> :<c-u>call SubstituteWordOrSelection(visualmode())<CR>
 
-nnoremap <leader>s :cdo %s///c \| update<left><left><left><left><left><left><left><left><left><left><left>
+nnoremap <leader>s :cfdo %s///c \| update<left><left><left><left><left><left><left><left><left><left><left>
 " }}}
