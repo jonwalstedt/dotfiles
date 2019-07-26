@@ -28,6 +28,9 @@ nnoremap <leader>ll ZZ<C-w><C-p>
 " Write buffer and close window
 nnoremap <leader>w :update<CR>
 
+" Vanilla fuzzy find
+nnoremap <leader>p :find *
+
 " Use light theme
 nnoremap <leader>tl :colorscheme morning<CR>
 

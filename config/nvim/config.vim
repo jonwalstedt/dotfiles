@@ -6,7 +6,9 @@ let g:python3_host_skip_check = 1
 let g:python2_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
-set path=.,,**
+set path+=.,,**
+set wildmenu
+set wildoptions=pum
 set suffixesadd=.js,.jsx,.ts,.tsx               " Add suffix when looking for imported files
 set include=from
 set exrc                                        " Look for project specific settings in /project/.nvimrc
