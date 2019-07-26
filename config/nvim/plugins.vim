@@ -132,7 +132,7 @@ nnoremap <localleader>b :call ToggleTwiggy()<cr>
 " gv.vim  {{{
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 "}}}
-" vim-dirvi  {{{
+" Dirvish  {{{
 let g:dirvish_mode = ':sort ,^.*[\/],'
 
 augroup dirvish_config
