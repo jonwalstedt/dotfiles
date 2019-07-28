@@ -29,7 +29,7 @@ nnoremap <leader>ll ZZ<C-w><C-p>
 nnoremap <leader>w :update<CR>
 
 " Vanilla fuzzy find
-nnoremap <leader>p :find *
+nnoremap <leader>p :find ./**/
 
 " Use light theme
 nnoremap <leader>tl :colorscheme morning<CR>
@@ -110,6 +110,9 @@ nnoremap <silent> zn :call NextClosedFold('j')<CR>
 nnoremap <silent> zN :call NextClosedFold('k')<CR>
 " }}}
 " Grep / Search  {{{
+" Regular grep
+nnoremap <leader>h :silent grep! -R  .<left><left>
+
 vnoremap <silent> / :<C-U>call RangeSearch('/')<CR>:if strlen(g:srchstr) > 0\|exec '/'.g:srchstr\|endif<CR>
 vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|exec '?'.g:srchstr\|endif<CR>
 
