@@ -29,7 +29,7 @@ nnoremap <leader>ll ZZ<C-w><C-p>
 nnoremap <leader>w :update<CR>
 
 " Vanilla fuzzy find
-nnoremap <leader>p :find ./**/
+nnoremap <leader>p :find ./src/**/
 
 " Use light theme
 nnoremap <leader>tl :colorscheme morning<CR>
