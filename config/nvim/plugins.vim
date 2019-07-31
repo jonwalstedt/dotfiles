@@ -153,6 +153,20 @@ vnoremap <leader>rM :Shdo! rm {}
 
 nmap <leader>d<CR> Z!
 " }}}
+" Sneak {{{
+let g:sneak#s_next = 1
+let g:sneak#use_ic_scs = 1
+nmap s <Plug>Sneak_s
+nmap S <Plug>Sneak_S
+
+" visual-mode
+xmap s <Plug>Sneak_s
+xmap S <Plug>Sneak_S
+
+" operator-pending-mode
+omap s <Plug>Sneak_s
+omap S <Plug>Sneak_S
+"}}}
 "EasyMotion {{{
 "Disable default mappings
 let g:EasyMotion_do_mapping = 0
@@ -177,20 +191,10 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 
 " }}}
-" Sneak {{{
-let g:sneak#s_next = 1
-let g:sneak#use_ic_scs = 1
-nmap s <Plug>Sneak_s
-nmap S <Plug>Sneak_S
-
-" visual-mode
-xmap s <Plug>Sneak_s
-xmap S <Plug>Sneak_S
-
-" operator-pending-mode
-omap s <Plug>Sneak_s
-omap S <Plug>Sneak_S
-"}}}
+" Targets {{{
+" Never seek backwards
+let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr rr lb ar ab lB Ar aB Ab AB rb rB bb bB BB'
+" }}}
 " Coc {{{
 call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-emmet')
 
