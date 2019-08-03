@@ -1,7 +1,7 @@
 " Init
 
 " Load project specific vim settings
-silent! so .vimlocal
+silent! source .vimlocal
 
 " Use \ as Leader key (default).
 let mapleader = "\<Space>"
