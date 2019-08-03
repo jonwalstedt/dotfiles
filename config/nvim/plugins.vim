@@ -48,10 +48,6 @@ call plug#end()
 "}}}
 
 " Plugin settings
-" Matchup {{{
-let g:matchup_matchparen_status_offscreen=0
-let g:matchup_matchparen_deferred=1
-" }}}
 " FZF Fuzzyfinder {{{
 command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
 "let $FZF_DEFAULT_OPTS .= ' --inline-info --color "border:#333333"'
