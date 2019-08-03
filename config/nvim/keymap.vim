@@ -29,7 +29,10 @@ nnoremap <leader>ll ZZ<C-w><C-p>
 nnoremap <leader>w :update<CR>
 
 " Vanilla fuzzy find
-nnoremap <leader>p :find<space>
+nnoremap <leader>p :find ./src/**/
+
+" Close all other wndows
+nnoremap <leader><CR> :only<CR>
 
 " Use light theme
 nnoremap <leader>tl :colorscheme morning<CR>

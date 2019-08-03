@@ -35,6 +35,8 @@ Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
+
+" Syntax highlight and colorschemes
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
 Plug 'mustache/vim-mustache-handlebars', { 'for': ['hbs', 'handlebars'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
@@ -46,6 +48,10 @@ call plug#end()
 "}}}
 
 " Plugin settings
+" Matchup {{{
+let g:matchup_matchparen_status_offscreen=0
+let g:matchup_matchparen_deferred=1
+" }}}
 " FZF Fuzzyfinder {{{
 command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
 "let $FZF_DEFAULT_OPTS .= ' --inline-info --color "border:#333333"'
@@ -196,7 +202,7 @@ map <leader>k <Plug>(easymotion-k)
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr rr lb ar ab lB Ar aB Ab AB rb rB bb bB BB'
 " }}}
 " Coc {{{
-call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-emmet')
+call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin')
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
