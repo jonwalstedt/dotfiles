@@ -6,3 +6,4 @@ tags.temp
 .DS_Store
 .netrwhist
 .vimlocal
+Session.vim
