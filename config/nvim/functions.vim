@@ -131,7 +131,7 @@ function! SearchAndGrep(type)
     return
   endif
 
-  copen
+  copen 28
   set hlsearch
 
   let @@ = saved_unnamed_register

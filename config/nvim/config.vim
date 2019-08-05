@@ -6,6 +6,7 @@ let g:python3_host_skip_check = 1
 let g:python2_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
+set path+=.
 set wildignorecase                              " Case insensitive :search etc.
 set wildmenu
 set wildoptions=pum
