@@ -29,7 +29,7 @@ nnoremap <leader>ll ZZ<C-w><C-p>
 nnoremap <leader>w :update<CR>
 
 " Vanilla fuzzy find
-nnoremap <leader>p :find ./**/
+nnoremap <leader>p :find **/
 
 " Close all other wndows
 nnoremap <leader><CR> :only<CR>
