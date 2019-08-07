@@ -28,6 +28,9 @@ nnoremap <leader>ll ZZ<C-w><C-p>
 " Write buffer and close window
 nnoremap <leader>w :update<CR>
 
+" Refresh buffer
+nnoremap <leader>e :e<CR>
+
 " Vanilla fuzzy find
 nnoremap <leader>p :find **/*
 
