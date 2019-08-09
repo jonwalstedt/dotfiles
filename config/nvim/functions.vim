@@ -125,8 +125,8 @@ function! SearchAndGrep(type)
     silent! execute "grep! -R " . shellescape(@@) . " ."
   elseif a:type ==# 'normal'
     let l:currentWord = expand("<cword>")
-    let @/ = l:currentWord
-    silent! execute ":grep! -R " . shellescape(l:currentWord) . " ."
+    let @/ = '\<'.l:currentWord.'\>'
+    silent! execute ":grep! -R -w " . shellescape(l:currentWord) . " ."
   else
     return
   endif
@@ -171,7 +171,7 @@ function! SubstituteWordOrSelection(type)
     call feedkeys(":'<,'>s//".l:searchStr)
   elseif a:type ==# 'normal'
     let l:currentWord = expand("<cword>")
-    let @/ = l:currentWord
+    let @/ = '\<'.l:currentWord.'\>'
     call feedkeys(":%s//".l:currentWord)
   else
     return
