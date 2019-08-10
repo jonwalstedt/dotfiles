@@ -5,5 +5,5 @@ tags.lock
 tags.temp
 .DS_Store
 .netrwhist
-.vimlocal
+.nvimrc
 Session.vim

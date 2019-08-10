@@ -34,6 +34,3 @@ source $HOME/.config/nvim/macros.vim
 source $HOME/.config/nvim/keymap.vim
 source $HOME/.config/nvim/config.vim
 
-" Load project specific vim settings
-silent! source .vimlocal
-
