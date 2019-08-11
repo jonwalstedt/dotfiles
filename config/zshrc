@@ -20,6 +20,31 @@ HYPHEN_INSENSITIVE="false"
 HIST_STAMPS="yyyy-mm-dd"
 HIST_IGNORE_SPACE="true"
 
+setopt auto_cd
+setopt auto_list
+setopt auto_menu
+setopt auto_param_keys
+setopt auto_param_slash
+setopt auto_pushd
+setopt complete_aliases
+setopt correct
+setopt equals
+setopt extended_glob
+setopt hist_ignore_all_dups
+setopt hist_save_nodups
+setopt hist_find_no_dups
+setopt list_packed
+setopt list_types
+setopt mark_dirs
+setopt magic_equal_subst
+setopt no_flow_control
+setopt no_hup
+setopt noautoremoveslash
+setopt nolistbeep
+setopt prompt_subst
+setopt auto_remove_slash
+setopt share_history
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
