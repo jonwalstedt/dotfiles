@@ -35,6 +35,7 @@ Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
+Plug 'fatih/vim-go'
 
 " Syntax highlight and colorschemes
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
@@ -198,7 +199,7 @@ map <leader>k <Plug>(easymotion-k)
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr rr lb ar ab lB Ar aB Ab AB rb rB bb bB BB'
 " }}}
 " Coc {{{
-call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin')
+call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go')
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
