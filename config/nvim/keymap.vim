@@ -53,6 +53,19 @@ nnoremap <esc>^[ <esc>^[
 " Toggle relative line numbers
 nnoremap <silent> <leader>n :call NumberToggle()<cr>
 
+" Emacs style movement in commandline (as in bash or Zsh)
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-d>  <Delete>
+cnoremap <M-b>  <S-Left>
+cnoremap <M-f>  <S-Right>
+cnoremap <M-d>  <S-right><Delete>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+cnoremap <Esc>d <S-right><Delete>
+cnoremap <C-g>  <C-c>
+
 " Tabs {{{
 " New tab
 nnoremap <leader>tn :tabnew<CR>
