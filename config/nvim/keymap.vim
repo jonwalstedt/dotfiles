@@ -13,7 +13,7 @@ inoremap jj <Esc>
 nnoremap Y y$
 
 " Yank all matches
-nnoremap <leader>y :CopyMatches<CR>
+nnoremap <leader>Y :CopyMatches<CR>
 
 " Go to previous file with backspace
 nnoremap <BS> :update<CR><c-^>
@@ -30,9 +30,6 @@ nnoremap <leader>w :update<CR>
 
 " Refresh buffer
 nnoremap <leader>e :e<CR>
-
-" Vanilla fuzzy find
-nnoremap <leader>p :find **/*
 
 " Close all other wndows
 nnoremap <leader><CR> :only<CR>
@@ -51,7 +48,7 @@ nnoremap <silent> <esc> :nohlsearch<return><esc>
 nnoremap <esc>^[ <esc>^[
 
 " Toggle relative line numbers
-nnoremap <silent> <leader>n :call NumberToggle()<cr>
+nnoremap <silent> <leader>, :call NumberToggle()<cr>
 
 " Emacs style movement in commandline (as in bash or Zsh)
 cnoremap <C-a>  <Home>

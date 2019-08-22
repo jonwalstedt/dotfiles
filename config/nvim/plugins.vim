@@ -18,7 +18,7 @@ Plug 'andymass/vim-matchup'
 Plug 'junegunn/fzf.vim'
 Plug 'ton/vim-bufsurf'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive', { 'on': [] }
+Plug 'tpope/vim-fugitive'
 Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy'}
 Plug 'junegunn/gv.vim', { 'on': []}
 Plug 'sirver/ultisnips'
@@ -32,6 +32,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'Konfekt/FastFold'
+Plug 'vim-scripts/YankRing.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
@@ -93,17 +94,6 @@ hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
 hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
 " }}}
 " Vim Fugitive {{{
-command! Gstatus call LazyLoadFugitive('Gstatus')
-command! Gdiff call LazyLoadFugitive('Gdiff')
-command! Glog call LazyLoadFugitive('Glog')
-command! Gblame call LazyLoadFugitive('Gblame')
-
-function! LazyLoadFugitive(cmd)
-  call plug#load('vim-fugitive')
-  call fugitive#detect(expand('%:p'))
-  exe a:cmd
-endfunction
-
 function! ToggleGStatus()
   if buflisted(bufname('.git/index'))
     bd .git/index
@@ -116,6 +106,7 @@ command! ToggleGStatus :call ToggleGStatus()
 
 " Fugitive (toggle git status panel)
 nnoremap <localleader><space> :call ToggleGStatus()<cr>
+nnoremap <leader>dv :Gvdiff<CR>
 "}}}
 " Twiggy  {{{
 " https://vimawesome.com/plugin/twiggy
@@ -237,7 +228,7 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> <leader>ct <Plug>(coc-type-definition)
 nmap <silent> <leader>ci <Plug>(coc-implementation)
 nmap <silent> <leader>cr <Plug>(coc-references)
-
+nmap <silent> <leader>rn <Plug>(coc-rename)
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -279,6 +270,12 @@ nnoremap <leader>o :BufSurfBack<CR>
 " }}}
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="æ"
+" }}}
+" YankRing {{{
+let g:yankring_replace_n_pkey = '<leader>p'
+let g:yankring_replace_n_nkey = '<leader>n'
+" ,y to show the yankring
+nmap <leader>y :YRShow<cr>
 " }}}
 " Vim GO {{{
 " disable vim-go :GoDef short cut (gd)
