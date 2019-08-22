@@ -32,7 +32,6 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'Konfekt/FastFold'
-Plug 'vim-scripts/YankRing.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
@@ -270,12 +269,6 @@ nnoremap <leader>o :BufSurfBack<CR>
 " }}}
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="æ"
-" }}}
-" YankRing {{{
-let g:yankring_replace_n_pkey = '<leader>p'
-let g:yankring_replace_n_nkey = '<leader>n'
-" ,y to show the yankring
-nmap <leader>y :YRShow<cr>
 " }}}
 " Vim GO {{{
 " disable vim-go :GoDef short cut (gd)
