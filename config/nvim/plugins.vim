@@ -32,6 +32,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'Konfekt/FastFold'
+Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
@@ -269,6 +270,12 @@ nnoremap <leader>o :BufSurfBack<CR>
 " }}}
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="æ"
+" }}
+" Yankstack {{{
+let g:yankstack_map_keys = 0
+nmap <leader>p <Plug>yankstack_substitute_older_paste
+nmap <leader>n <Plug>yankstack_substitute_newer_paste
+call yankstack#setup()
 " }}}
 " Vim GO {{{
 " disable vim-go :GoDef short cut (gd)
