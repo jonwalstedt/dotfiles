@@ -32,7 +32,6 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'Konfekt/FastFold'
-Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
@@ -190,7 +189,7 @@ map <leader>k <Plug>(easymotion-k)
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr rr lb ar ab lB Ar aB Ab AB rb rB bb bB BB'
 " }}}
 " Coc {{{
-call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go')
+call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go', 'coc-yank')
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -263,6 +262,9 @@ nnoremap <silent> <leader>cd  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 " Search workspace symbols
 nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
+
+" Open yank history (coc-yank)
+nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 " }}}
 " BufSurf {{{
 nnoremap <leader>i :BufSurfForward<CR>
@@ -271,12 +273,6 @@ nnoremap <leader>o :BufSurfBack<CR>
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="æ"
 " }}
-" Yankstack {{{
-let g:yankstack_map_keys = 0
-nmap <leader>p <Plug>yankstack_substitute_older_paste
-nmap <leader>n <Plug>yankstack_substitute_newer_paste
-call yankstack#setup()
-" }}}
 " Vim GO {{{
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
