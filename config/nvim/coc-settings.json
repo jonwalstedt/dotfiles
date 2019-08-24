@@ -12,6 +12,5 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     }
-  },
-  "yank.highlight.enable": false
+  }
 }

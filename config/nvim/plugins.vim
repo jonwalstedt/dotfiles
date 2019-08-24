@@ -189,7 +189,7 @@ map <leader>k <Plug>(easymotion-k)
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr rr lb ar ab lB Ar aB Ab AB rb rB bb bB BB'
 " }}}
 " Coc {{{
-call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go', 'coc-yank')
+call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go')
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -262,9 +262,6 @@ nnoremap <silent> <leader>cd  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 " Search workspace symbols
 nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
-
-" Open yank history (coc-yank)
-nnoremap <silent> <leader>y  :<C-u>CocList -A --normal yank<cr>
 " }}}
 " BufSurf {{{
 nnoremap <leader>i :BufSurfForward<CR>
