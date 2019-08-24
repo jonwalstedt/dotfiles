@@ -33,6 +33,7 @@ Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'bfredl/nvim-miniyank'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'fatih/vim-go'
@@ -266,6 +267,14 @@ nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 " BufSurf {{{
 nnoremap <leader>i :BufSurfForward<CR>
 nnoremap <leader>o :BufSurfBack<CR>
+" }}}
+" MiniYank {{{
+let g:miniyank_maxitems = 100
+
+map p <Plug>(miniyank-autoput)
+map P <Plug>(miniyank-autoPut)
+map <leader>p <Plug>(miniyank-cycle)
+map <leader>n <Plug>(miniyank-cycleback)
 " }}}
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="æ"
