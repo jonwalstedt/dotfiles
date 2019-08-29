@@ -74,7 +74,7 @@ let g:fzf_colors =
 nnoremap <C-p> :FZF<cr>
 nnoremap <leader>ff :Ag<cr>
 nnoremap <leader>fb :Buffers<cr>
-nnoremap <leader><BS> :Buffers<cr>
+nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>fc :History:<cr>
 nnoremap <leader>fh :History<cr>
 inoremap <M-space> <esc>:Snippets<cr>
@@ -135,16 +135,6 @@ augroup dirvish_config
   autocmd FileType dirvish silent! unmap <buffer> <C-p>
   autocmd FileType dirvish silent! unmap <buffer> <C-n>
 augroup END
-
-nnoremap <leader>mv :Shdo mv {}
-vnoremap <leader>mv :Shdo mv {}
-nnoremap <leader>mV :Shdo! mv {}
-vnoremap <leader>mV :Shdo! mv {}
-
-nnoremap <leader>rm :Shdo rm {}
-vnoremap <leader>rm :Shdo rm {}
-nnoremap <leader>rM :Shdo! rm {}
-vnoremap <leader>rM :Shdo! rm {}
 
 nmap <leader>d<CR> Z!
 " }}}

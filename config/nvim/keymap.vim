@@ -15,11 +15,11 @@ nnoremap Y y$
 " Yank all matches
 nnoremap <leader>Y :CopyMatches<CR>
 
-" Go to previous file with backspace
+" Update and go to previous file with backspace
 nnoremap <BS> :update<CR><c-^>
 
-" Close current buffer
-nnoremap <leader>bd :bd<CR>
+" Open previous file in vertical split with shift backspace
+nnoremap <leader><BS> :vsp<CR><c-^>
 
 " Close and update buffer
 nnoremap <leader>q ZZ<C-w><C-p>
