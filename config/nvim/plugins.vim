@@ -74,6 +74,7 @@ let g:fzf_colors =
 nnoremap <C-p> :FZF<cr>
 nnoremap <leader>ff :Ag<cr>
 nnoremap <leader>fb :Buffers<cr>
+nnoremap <leader><BS> :Buffers<cr>
 nnoremap <leader>fc :History:<cr>
 nnoremap <leader>fh :History<cr>
 inoremap <M-space> <esc>:Snippets<cr>
