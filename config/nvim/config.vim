@@ -102,17 +102,6 @@ set tags=./.tags,.tags;
 " }}}
 " Dim inactive buffer {{{
 " Background colors for active vs inactive windows
-hi ActiveWindow guibg=#21242b
-hi InactiveWindow guibg=#282c34
-
-" Call method on window enter
-augroup WindowManagement
-  autocmd!
-  autocmd WinEnter * call Handle_Win_Enter()
-augroup END
-
-" Change highlight group of active/inactive windows
-function! Handle_Win_Enter()
-  setlocal winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
-endfunction
-" }}}
+highlight ActiveWindow ctermbg=None ctermfg=None guibg=#21242b
+highlight InactiveWindow ctermbg=darkgray ctermfg=gray guibg=#282c34
+set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
