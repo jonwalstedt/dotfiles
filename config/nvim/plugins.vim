@@ -37,6 +37,7 @@ Plug 'bfredl/nvim-miniyank'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'fatih/vim-go'
+Plug 'honza/vim-snippets'
 
 " Syntax highlight and colorschemes
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
@@ -77,7 +78,7 @@ nnoremap <leader>fb :Buffers<cr>
 nnoremap <leader>b :Buffers<cr>
 nnoremap <leader>fc :History:<cr>
 nnoremap <leader>fh :History<cr>
-inoremap <M-space> <esc>:Snippets<cr>
+inoremap <c-space> <esc>:Snippets<cr>
 
 imap <c-f> <plug>(fzf-complete-path)
 imap <c-l> <plug>(fzf-complete-line)
@@ -191,11 +192,11 @@ inoremap <silent><expr> <TAB>
 
 function! s:check_back_space() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<Tab>'
-let g:coc_snippet_prev = '<S-Tab>'
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<s-tab>'
 
 " Navigate with tab and s-tab
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"

@@ -3,6 +3,17 @@
   "coc.source.tag.enable": true,
   "coc.source.ultisnips.enable": true,
   "coc.source.ultisnips.priority": 100,
+  "snippets.extends": {
+    "javascriptreact": [
+      "javascript"
+    ],
+    "typescript": [
+      "javascript"
+    ],
+    "typescriptreact": [
+      "javascript"
+    ]
+  },
   "prettier.requireConfig": true,
   "suggest.triggerAfterInsertEnter": true,
   "suggest.noselect": true,
