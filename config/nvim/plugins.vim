@@ -33,11 +33,11 @@ Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'bfredl/nvim-miniyank'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'fatih/vim-go'
 Plug 'honza/vim-snippets'
+Plug 'ryanoasis/vim-devicons'
 
 " Syntax highlight and colorschemes
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
@@ -72,10 +72,11 @@ let g:fzf_colors =
   \ 'spinner': ['fg', 'Label'],
   \ 'header':  ['fg', 'Comment'] }
 
-nnoremap <C-p> :FZF<cr>
-nnoremap <leader>ff :Ag<cr>
+nnoremap <silent> <C-p> :call Fzf_dev()<CR>
+nnoremap <leader>p :Buffers<cr>
 nnoremap <leader>fb :Buffers<cr>
 nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>ff :Ag<cr>
 nnoremap <leader>fc :History:<cr>
 nnoremap <leader>fh :History<cr>
 inoremap <c-space> <esc>:Snippets<cr>
@@ -259,14 +260,6 @@ nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 " BufSurf {{{
 nnoremap <leader>i :BufSurfForward<CR>
 nnoremap <leader>o :BufSurfBack<CR>
-" }}}
-" MiniYank {{{
-let g:miniyank_maxitems = 100
-
-map p <Plug>(miniyank-autoput)
-map P <Plug>(miniyank-autoPut)
-map <leader>p <Plug>(miniyank-cycle)
-map <leader>n <Plug>(miniyank-cycleback)
 " }}}
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="æ"
