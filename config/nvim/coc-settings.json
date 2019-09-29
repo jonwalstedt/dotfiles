@@ -3,6 +3,7 @@
   "coc.source.tag.enable": true,
   "coc.source.ultisnips.enable": true,
   "coc.source.ultisnips.priority": 100,
+  "snippets.priority": 100,
   "snippets.extends": {
     "javascriptreact": [
       "javascript"
