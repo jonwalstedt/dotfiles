@@ -59,7 +59,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
+  \ 'bg':      ['bg', '#181a1f'],
   \ 'hl':      ['fg', 'Comment'],
   \ 'fg+':     ['fg', 'Normal'],
   \ 'bg+':     ['bg', 'Normal', 'CursorColumn'],
