@@ -50,7 +50,7 @@ set foldnestmax=2
 set foldtext=NeatFoldText()
 " }}}
 " Colors {{{
-set nocursorline                                  " Disable Highlight current row
+set cursorline                                  " Disable Highlight current row
 set termguicolors
 colorscheme onedark
 " }}}
