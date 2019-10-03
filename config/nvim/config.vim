@@ -102,6 +102,6 @@ set tags=./.tags,.tags;
 " }}}
 " Dim inactive buffer {{{
 " Background colors for active vs inactive windows
-highlight ActiveWindow ctermbg=None ctermfg=None guibg=#21242b
+highlight ActiveWindow ctermbg=None ctermfg=None guibg=#181a1f
 highlight InactiveWindow ctermbg=darkgray ctermfg=gray guibg=#282c34
 set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
