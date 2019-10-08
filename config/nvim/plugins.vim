@@ -10,12 +10,12 @@ endif
 unlet autoload_plug_path
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'junegunn/fzf', { 'dir': $XDG_DATA_HOME . '/fzf', 'do': './install --bin' }
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
 Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-SearchHighlighting'
 Plug 'andymass/vim-matchup'
-Plug 'junegunn/fzf.vim'
 Plug 'ton/vim-bufsurf'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -73,13 +73,14 @@ let g:fzf_colors =
   \ 'header':  ['fg', 'Comment'] }
 
 nnoremap <silent> <C-p> :call FZFWithDevIcons()<CR>
-nnoremap <leader>p :Buffers<cr>
-nnoremap <leader>fb :Buffers<cr>
-nnoremap <leader>b :Buffers<cr>
-nnoremap <leader>ff :Ag<cr>
-nnoremap <leader>fc :History:<cr>
-nnoremap <leader>fh :History<cr>
-inoremap <c-space> <esc>:Snippets<cr>
+"nnoremap <silent> <C-p> :Files<CR>
+nnoremap <leader>p :Buffers<CR>
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>ff :Ag<CR>
+nnoremap <leader>fc :History:<CR>
+nnoremap <leader>fh :History<CR>
+inoremap <c-space> <esc>:Snippets<CR>
 
 imap <c-f> <plug>(fzf-complete-path)
 imap <c-l> <plug>(fzf-complete-line)
@@ -183,7 +184,7 @@ map <leader>k <Plug>(easymotion-k)
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr rr lb ar ab lB Ar aB Ab AB rb rB bb bB BB'
 " }}}
 " Coc {{{
-call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go')
+call coc#add_extension('coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go', 'coc-tabnine')
 
 "inoremap <silent><expr> <TAB>
 "      \ pumvisible() ? coc#_select_confirm() :

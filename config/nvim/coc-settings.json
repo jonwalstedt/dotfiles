@@ -17,7 +17,7 @@
   },
   "prettier.requireConfig": true,
   "suggest.triggerAfterInsertEnter": true,
-  "suggest.noselect": true,
+  "suggest.noselect": false,
   "languageserver": {
     "golang": {
       "command": "gopls",
