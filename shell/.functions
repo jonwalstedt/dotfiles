@@ -48,8 +48,7 @@ fco() {
   git checkout $(awk '{print $2}' <<<"$target" )
 }
 
-zle -N fco
-bindkey '^gp' fco
+bindkey -s "^gp" "fco^J"
 
 # git pull (ctrl-g+p)
 function gitpull() {
@@ -59,5 +58,4 @@ function gitpull() {
   zle redisplay;
 }
 
-zle -N gitpull
-bindkey '^gg' gitpull
+bindkey -s "^gg" "gitpull^J"
