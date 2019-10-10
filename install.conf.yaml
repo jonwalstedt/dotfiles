@@ -7,8 +7,6 @@
     command: echo Running pre installation script && sh pre-install.sh
     stdout: true
 
-  - [mkdir -p ~/.config/oni, Creating oni folders]
-
 - link:
     # Terminal:
     ~/.shell:
@@ -31,11 +29,6 @@
 
     # Neovim
     ~/.config/nvim: config/nvim
-
-    # Oni
-    ~/.config/oni/config.js: config/oni/config.js
-    ~/.config/oni/config.tsx: config/oni/config.tsx
-    ~/.config/oni/tsconfig.json: config/oni/tsconfig.json
 
     #Ctags
     ~/.ctags: config/ctags
@@ -70,6 +63,10 @@
     command: echo Installing vim plugins && nvim +'PlugInstall --sync' +qa
     stdout: true
 
+- shell:
+  -
+    command: echo zsh theme && npm install --global pure-prompt
+    stdout: true
 # These links should be created after everything is installed:
 - shell:
   - [brew cleanup, Cleaning up]
