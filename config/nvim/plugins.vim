@@ -37,6 +37,7 @@ Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'fatih/vim-go'
 Plug 'honza/vim-snippets'
+Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
 
 " Syntax highlight and colorschemes
