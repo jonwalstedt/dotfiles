@@ -51,11 +51,8 @@ fco() {
 bindkey -s "^ p" "fco^J"
 
 # git pull (ctrl-g+p)
-function gitpull() {
-  echo "git pull";
+function gitPull() {
   git pull;
-  zle reset-prompt;
-  zle redisplay;
 }
 
-bindkey -s "^ g" "gitpull^J"
+bindkey -s "^ g" "gitPull^J"
