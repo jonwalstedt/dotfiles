@@ -293,9 +293,31 @@ command! -bang -nargs=? -range=% CopyMatches call s:CopyMatches(<bang>0, <line1>
 command! -bang -nargs=? -range=% CopyLines call s:CopyMatches(<bang>0, <line1>, <line2>, <q-args>, 1)
 " }}}
 " FZF with icons {{{
+
+function! FloatingFZF()
+  let buf = nvim_create_buf(v:false, v:true)
+  call setbufvar(buf, '&signcolumn', 'no')
+
+  let height = float2nr(30)
+  let width = float2nr(180)
+  let horizontal = float2nr((&columns - width) / 2)
+  let vertical = 20
+
+  let opts = {
+        \ 'relative': 'editor',
+        \ 'row': vertical,
+        \ 'col': horizontal,
+        \ 'width': width,
+        \ 'height': height,
+        \ 'style': 'minimal'
+        \ }
+
+  call nvim_open_win(buf, v:true, opts)
+endfunction
+
 " Files + devicons
 function! FZFWithDevIcons()
-  let l:fzf_files_options = ' -m --bind ctrl-d:preview-page-down,ctrl-u:preview-page-up --preview "bat --color always --style numbers {2..}"'
+  let l:fzf_files_options = ' --preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'" --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all'
 
   function! s:files()
     let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
@@ -336,3 +358,5 @@ function! FZFWithDevIcons()
 
 endfunction
 " }}}
+" Open files in vertical split with <leader>Enter in quick fix list
+autocmd! FileType qf nmap <buffer> <leader><Enter> <C-w><Enter><C-w>L

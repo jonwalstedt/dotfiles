@@ -54,22 +54,9 @@ call plug#end()
 " Plugin settings
 " FZF Fuzzyfinder {{{
 command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
+let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse --margin=1,2'
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', '#181a1f'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'Normal'],
-  \ 'bg+':     ['bg', 'Normal', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 nnoremap <silent> <C-p> :call FZFWithDevIcons()<CR>
 "nnoremap <silent> <C-p> :Files<CR>
