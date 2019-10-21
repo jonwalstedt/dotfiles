@@ -96,7 +96,8 @@ command! ToggleGStatus :call ToggleGStatus()
 
 " Fugitive (toggle git status panel)
 nnoremap <localleader><space> :call ToggleGStatus()<cr>
-nnoremap <leader>dv :Gvdiff<CR>
+nnoremap <leader>fv :Gvdiff<CR>
+nnoremap <leader>fl :Glog -10 -- %<CR>
 "}}}
 " Twiggy  {{{
 " https://vimawesome.com/plugin/twiggy

@@ -36,6 +36,9 @@ set nomodeline
 " Backup {{{
 set backup                                      " Enable backup of files
 set writebackup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " }}}
 " Undo {{{
 set undofile                                    " Keep a persistent backup file.
