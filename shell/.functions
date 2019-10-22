@@ -32,7 +32,14 @@ cdf () {
   cd "$path"
 }
 
-# fco - FZF fuzzy checkout git branch/tag (ctrl-g+g)
+fbr() {
+  local branches branch
+  branches=$(git --no-pager branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# fco - FZF fuzzy checkout git branch/tag
 fco() {
   local tags branches target
   branches=$(
@@ -48,7 +55,7 @@ fco() {
   git checkout $(awk '{print $2}' <<<"$target" )
 }
 
-bindkey -s "^ p" "fco^J"
+bindkey -s "^ p" "fbr^J"
 
 # git pull (ctrl-g+p)
 function gitPull() {
