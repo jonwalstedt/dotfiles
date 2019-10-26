@@ -82,6 +82,10 @@ hi GitGutterAddLine guifg=white guibg=springgreen4 gui=NONE
 hi GitGutterChangeLine guifg=#ffffff guibg=lightseablue gui=NONE
 hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
 hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
+
+nnoremap <leader>nn :GitGutterNextHunk<CR>
+nnoremap <leader>np :GitGutterPreviousHunk<CR>
+nnoremap <leader>nf :GitGutterFold<CR>
 " }}}
 " Vim Fugitive {{{
 function! ToggleGStatus()
