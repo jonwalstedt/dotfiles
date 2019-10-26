@@ -32,7 +32,7 @@ set hidden                                      " Allow for unsaved changes when
 set cmdheight=2                                 " Better display for messages
 set shortmess+=c                                " don't give ins-completion-menu messages.
 set nomodeline
-set scrolloff=999                               " always keep next match centered on screen
+set scrolloff=15
 " }}}
 " Backup {{{
 set backup                                      " Enable backup of files
