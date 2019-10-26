@@ -258,6 +258,8 @@ nnoremap <silent> <leader>cd  :<C-u>CocList diagnostics<cr>
 nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 " Search workspace symbols
 nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
+" Outline document
+nnoremap <silent> <leader>cp  :<C-u>CocList outline<cr>
 " }}}
 " BufSurf {{{
 nnoremap <leader>i :BufSurfForward<CR>
