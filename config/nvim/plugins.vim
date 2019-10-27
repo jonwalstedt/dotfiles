@@ -84,8 +84,9 @@ hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
 hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
 
 nnoremap <leader>nn :GitGutterNextHunk<CR>
-nnoremap <leader>np :GitGutterPreviousHunk<CR>
+nnoremap <leader>np :GitGutterPrevHunk<CR>
 nnoremap <leader>nf :GitGutterFold<CR>
+nnoremap <leader>nq :GitGutterQuickFix<CR>
 " }}}
 " Vim Fugitive {{{
 function! ToggleGStatus()
