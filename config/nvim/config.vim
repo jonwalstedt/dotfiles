@@ -43,6 +43,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " }}}
 " Undo {{{
 set undofile                                    " Keep a persistent backup file.
+set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " }}}
 " Folding {{{
 set foldmethod=indent
