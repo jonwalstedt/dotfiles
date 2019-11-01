@@ -66,6 +66,7 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>ff :Ag<CR>
 nnoremap <leader>fc :History:<CR>
 nnoremap <leader>fh :History<CR>
+nnoremap <leader>fg :Ag <C-R><C-W><CR>
 inoremap <c-space> <esc>:Snippets<CR>
 
 imap <c-f> <plug>(fzf-complete-path)
