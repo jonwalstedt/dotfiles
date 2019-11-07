@@ -16,7 +16,6 @@ Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
 Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-SearchHighlighting'
 Plug 'andymass/vim-matchup'
-Plug 'ton/vim-bufsurf'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy'}
@@ -266,10 +265,6 @@ nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 " Outline document
 nnoremap <silent> <leader>cp  :<C-u>CocList outline<cr>
-" }}}
-" BufSurf {{{
-nnoremap <leader>i :BufSurfForward<CR>
-nnoremap <leader>o :BufSurfBack<CR>
 " }}}
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="æ"
