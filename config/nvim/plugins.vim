@@ -38,7 +38,6 @@ Plug 'fatih/vim-go'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
-Plug 'qpkorr/vim-bufkill'
 
 " Syntax highlight and colorschemes
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
@@ -267,12 +266,9 @@ nnoremap <silent> <leader>cp  :<C-u>CocList outline<cr>
 " }}}
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="æ"
-" }}
+" }}}
 " Vim GO {{{
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
-" }}}
-" BufKlil {{{
-nnoremap <leader>b :BD<CR>
 " }}}
