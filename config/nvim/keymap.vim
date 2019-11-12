@@ -26,6 +26,7 @@ nnoremap <leader>q ZZ<C-w><C-p>
 nnoremap <leader>ll ZZ<C-w><C-p>
 
 nnoremap <leader>dd :lclose<bar>b#<bar>bd! #<CR>
+nnoremap <leader>df :bd!<CR>
 
 " Write buffer and close window
 nnoremap <leader>w :update<CR>
