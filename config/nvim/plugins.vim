@@ -38,6 +38,7 @@ Plug 'fatih/vim-go'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
+Plug 'qpkorr/vim-bufkill'
 
 " Syntax highlight and colorschemes
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
@@ -60,8 +61,6 @@ let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 nnoremap <silent> <C-p> :call FZFWithDevIcons()<CR>
 "nnoremap <silent> <C-p> :Files<CR>
 nnoremap <leader>p :Buffers<CR>
-nnoremap <leader>fb :Buffers<CR>
-nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>ff :Ag<CR>
 nnoremap <leader>fc :History:<CR>
 nnoremap <leader>fh :History<CR>
@@ -273,4 +272,7 @@ let g:UltiSnipsExpandTrigger="æ"
 " disable vim-go :GoDef short cut (gd)
 " this is handled by LanguageClient [LC]
 let g:go_def_mapping_enabled = 0
+" }}}
+" BufKlil {{{
+nnoremap <leader>b :BD<CR>
 " }}}
