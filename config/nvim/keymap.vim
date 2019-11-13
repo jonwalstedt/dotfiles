@@ -29,7 +29,7 @@ nnoremap <leader>ll ZZ<C-w><C-p>
 nnoremap <silent> <leader>dd :update<bar>:bd!<CR>
 
 " Update and close buffer, keep window open and switch to previous file
-nnoremap <silent> <leader>df :update<bar>:lclose<bar>b#<bar>bd #<CR>
+nnoremap <silent> <leader>df :update<bar>:lclose<bar>b#<bar>bd! #<CR>
 
 " Update current buffer and close all other buffer
 nnoremap <silent> <leader>d<CR> :wa<bar>%bd!<bar>e#<bar>bd#<CR>
