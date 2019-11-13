@@ -59,12 +59,12 @@ let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 nnoremap <silent> <C-p> :call FZFWithDevIcons()<CR>
 "nnoremap <silent> <C-p> :Files<CR>
-nnoremap <leader>p :Buffers<CR>
-nnoremap <leader>ff :Ag<CR>
-nnoremap <leader>fc :History:<CR>
-nnoremap <leader>fh :History<CR>
-nnoremap <leader>fg :Ag <C-R><C-W><CR>
-inoremap <c-space> <esc>:Snippets<CR>
+nnoremap <silent> <leader>p :Buffers<CR>
+nnoremap <silent> <leader>ff :Ag<CR>
+nnoremap <silent> <leader>fc :History:<CR>
+nnoremap <silent> <leader>fh :History<CR>
+nnoremap <silent> <leader>fg :Ag <C-R><C-W><CR>
+inoremap <silent> <c-space> <esc>:Snippets<CR>
 
 imap <c-f> <plug>(fzf-complete-path)
 imap <c-l> <plug>(fzf-complete-line)
@@ -81,10 +81,10 @@ hi GitGutterChangeLine guifg=#ffffff guibg=lightseablue gui=NONE
 hi GitGutterDeleteLine guifg=#ff0101 guibg=firebricks gui=NONE
 hi GitGutterChangeDeleteLine guifg=#000000 guibg=#ffb733 gui=NONE
 
-nnoremap <leader>nn :GitGutterNextHunk<CR>
-nnoremap <leader>np :GitGutterPrevHunk<CR>
-nnoremap <leader>nf :GitGutterFold<CR>
-nnoremap <leader>nq :GitGutterQuickFix<CR>
+nnoremap <silent> <leader>nn :GitGutterNextHunk<CR>
+nnoremap <silent> <leader>np :GitGutterPrevHunk<CR>
+nnoremap <silent> <leader>nf :GitGutterFold<CR>
+nnoremap <silent> <leader>nq :GitGutterQuickFix<CR>
 " }}}
 " Vim Fugitive {{{
 function! ToggleGStatus()
@@ -98,7 +98,7 @@ endfunction
 command! ToggleGStatus :call ToggleGStatus()
 
 " Fugitive (toggle git status panel)
-nnoremap <localleader><space> :call ToggleGStatus()<cr>
+nnoremap <silent> <localleader><space> :call ToggleGStatus()<cr>
 nnoremap <leader>fv :Gvdiff<CR>
 nnoremap <leader>fl :Glog -10 -- %<CR>
 "}}}
@@ -129,7 +129,7 @@ augroup dirvish_config
   autocmd FileType dirvish silent! unmap <buffer> <C-n>
 augroup END
 
-nmap <leader>d<CR> Z!
+nmap <leader>f<CR> Z!
 " }}}
 " Sneak {{{
 let g:sneak#s_next = 1
