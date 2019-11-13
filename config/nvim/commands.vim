@@ -42,3 +42,6 @@ augroup terminal
     \ setlocal signcolumn=no
 augroup end
 " }}}
+" Close all buffers except current {{{
+command! BufOnly silent! execute "%bd|e#|bd#"
+" }}}
