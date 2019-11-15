@@ -12,7 +12,6 @@ unlet autoload_plug_path
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'dbakker/vim-projectroot', { 'on': 'ProjectRootCD' }
 Plug 'inkarkat/vim-ingo-library'
 Plug 'inkarkat/vim-SearchHighlighting'
 Plug 'andymass/vim-matchup'
@@ -66,9 +65,6 @@ inoremap <silent> <c-space> <esc>:Snippets<CR>
 imap <c-f> <plug>(fzf-complete-path)
 imap <c-l> <plug>(fzf-complete-line)
 
-" }}}
-" ProjectRoot {{{
-nnoremap <silent> <localleader>r :ProjectRootCD<CR>
 " }}}
 " GitGutter {{{
 "disable keybindings (causes delay on mapped easymotion keys)
