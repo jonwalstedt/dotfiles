@@ -18,19 +18,16 @@ Plug 'inkarkat/vim-SearchHighlighting'
 Plug 'andymass/vim-matchup'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
-Plug 'sodapopcan/vim-twiggy', { 'on': 'Twiggy'}
 Plug 'junegunn/gv.vim', { 'on': []}
 Plug 'sirver/ultisnips'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
-Plug 'wellle/targets.vim'
 Plug 'google/vim-searchindex'
 Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
-Plug 'Konfekt/FastFold'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
@@ -102,21 +99,6 @@ nnoremap <silent> <localleader><space> :call ToggleGStatus()<cr>
 nnoremap <leader>fv :Gvdiff<CR>
 nnoremap <leader>fl :Glog -10 -- %<CR>
 "}}}
-" Twiggy  {{{
-" https://vimawesome.com/plugin/twiggy
-function! ToggleTwiggy()
-  if buflisted(bufname('.git/index'))
-    bd .git/branches
-  else
-    Twiggy
-  endif
-endfunction
-
-command! ToggleTwiggy :call ToggleTwiggy()
-
-" Twiggy (toggle twiggy panel)
-nnoremap <localleader>b :call ToggleTwiggy()<cr>
-"}}}
 " gv.vim  {{{
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 "}}}
@@ -174,7 +156,7 @@ map <leader>k <Plug>(easymotion-k)
 let g:targets_seekRanges = 'cc cr cb cB lc ac Ac lr rr lb ar ab lB Ar aB Ab AB rb rB bb bB BB'
 " }}}
 " Coc {{{
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-tag', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go']
 
 "inoremap <silent><expr> <TAB>
 "      \ pumvisible() ? coc#_select_confirm() :
