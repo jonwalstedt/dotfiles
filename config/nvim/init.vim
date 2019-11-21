@@ -1,6 +1,6 @@
 " Init
 
-" Use <Space> as Leader key (default).
+" Use <Space> as Leader key.
 let mapleader = "\<Space>"
 let maplocalleader = "ﬁ"
 
