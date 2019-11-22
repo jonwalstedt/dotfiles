@@ -80,3 +80,5 @@ nnoremap <leader>fl :Glog -10 -- %<CR>
 local nvim_lsp = require 'nvim_lsp'
 nvim_lsp.tsserver.setup({config})
 EOF
+
+set omnifunc=lsp#omnifunc
