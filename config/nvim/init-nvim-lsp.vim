@@ -14,4 +14,9 @@ source $HOME/.config/nvim/macros.vim
 source $HOME/.config/nvim/keymap.vim
 source $HOME/.config/nvim/config.vim
 
-set relativenumber
+" Open Vimrc in split
+nnoremap <leader>ve :vsplit ~/.config/nvim/init-nvim-lsp.vim<CR>
+
+" Source Vimrc
+nnoremap <leader>vs :source ~/.config/nvim/init-nvim-lsp.vim<CR>
+

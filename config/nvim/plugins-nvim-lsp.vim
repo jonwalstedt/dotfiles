@@ -34,7 +34,7 @@ Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neovim/nvim-lsp'
 Plug 'dense-analysis/ale'
-
+Plug 'ervandew/supertab'
 " Syntax highlight and colorschemes
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
@@ -139,7 +139,9 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 " }}}
 " Ultisnips {{{
-let g:UltiSnipsExpandTrigger="æ"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }}}
 " nvim-lsp {{{
 :lua << EOF
@@ -149,24 +151,25 @@ EOF
 
 set omnifunc=lsp#omnifunc
 
-nnoremap <silent> <leader>dc :call lsp#text_document_declaration()<CR>
-nnoremap <silent> <leader>df :call lsp#text_document_definition()<CR>
-nnoremap <silent> <leader>h  :call lsp#text_document_hover()<CR>
-nnoremap <silent> <leader>i  :call lsp#text_document_implementation()<CR>
-nnoremap <silent> <leader>s  :call lsp#text_document_signature_help()<CR>
-nnoremap <silent> <leader>td :call lsp#text_document_type_definition()<CR>
+"nnoremap <silent> <leader>cd :call lsp#text_document_declaration()<CR>
+nnoremap <silent> gd :call lsp#text_document_definition()<CR>
+nnoremap <silent> K  :call lsp#text_document_hover()<CR>
+nnoremap <silent> <leader>ci  :call lsp#text_document_implementation()<CR>
+nnoremap <silent> <leader>ch  :call lsp#text_document_signature_help()<CR>
+nnoremap <silent> <leader>ct :call lsp#text_document_type_definition()<CR>
 "}}}
 " Ale{{{
-let g:ale_lis = {
+let g:ale_linters = {
   \ 'javascript': ['eslint'],
   \ 'typescript': ['eslint']
   \}
 
 let g:ale_fixers = {
-  \ 'javascript': ['eslint'],
-  \ 'typescript': ['eslint']
+  \ 'javascript': ['prettier'],
+  \ 'typescript': ['prettier'],
+  \ 'css': ['prettier'],
+  \ 'json': ['prettier']
   \}
 
 let g:ale_fix_on_save = 1
 " }}}
-
