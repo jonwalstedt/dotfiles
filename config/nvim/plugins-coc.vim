@@ -26,7 +26,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
@@ -153,23 +153,6 @@ endfunction
 let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<s-tab>'
 
-" " use <tab> for trigger completion and navigate to the next complete item
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~ '\s'
-" endfunction
-"
-" inoremap <silent><expr> <Tab>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<Tab>" :
-"       \ coc#refresh()
-"
-" let g:coc_snippet_next = '<tab>'
-
-" Navigate with tab and s-tab
-" inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
 " Use enter to confirm complete
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
@@ -191,6 +174,7 @@ nmap <silent> <leader>cr <Plug>(coc-references)
 nmap <silent> <leader>rn <Plug>(coc-rename)
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
 
 function! s:show_documentation()
   if &filetype == 'vim'
@@ -214,8 +198,9 @@ augroup end
 command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` for fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
+command! -nargs=0 Tsc :call CocAction('runCommand', 'tsserver.watchBuild')
 " Using CocList
 " Show all diagnostics
 nnoremap <silent> <leader>cd  :<C-u>CocList diagnostics<cr>
