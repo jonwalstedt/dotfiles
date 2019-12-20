@@ -101,9 +101,7 @@ vnoremap H ^
 onoremap H ^
 " }}}
 " Terminal {{{
-" Open zsh terminal in vertical or horizontal split
-nnoremap <silent> <Leader>tv :vs term://zsh<CR>
-nnoremap <silent> <Leader>th :sp term://zsh<CR>
+nnoremap <silent> <Leader><Leader> :te<CR>
 
 " Escape to exit to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
