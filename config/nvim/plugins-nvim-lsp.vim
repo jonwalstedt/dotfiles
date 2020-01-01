@@ -27,7 +27,6 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-repeat'
 Plug 'jiangmiao/auto-pairs'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
@@ -151,25 +150,18 @@ EOF
 
 set omnifunc=lsp#omnifunc
 
-"nnoremap <silent> <leader>cd :call lsp#text_document_declaration()<CR>
-nnoremap <silent> gd :call lsp#text_document_definition()<CR>
-nnoremap <silent> K  :call lsp#text_document_hover()<CR>
-nnoremap <silent> <leader>ci  :call lsp#text_document_implementation()<CR>
-nnoremap <silent> <leader>ch  :call lsp#text_document_signature_help()<CR>
-nnoremap <silent> <leader>ct :call lsp#text_document_type_definition()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
 "}}}
 " Ale{{{
-let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ 'typescript': ['eslint']
-  \}
 
-let g:ale_fixers = {
-  \ 'javascript': ['prettier'],
-  \ 'typescript': ['prettier'],
-  \ 'css': ['prettier'],
-  \ 'json': ['prettier']
-  \}
-
+let b:ale_fixers = ['prettier', 'eslint']
 let g:ale_fix_on_save = 1
+
+nnoremap ]c :ALENextWrap<CR>     " move to the next ALE warning / error
+nnoremap [c :ALEPreviousWrap<CR> " move to the previous ALE warning / error
 " }}}

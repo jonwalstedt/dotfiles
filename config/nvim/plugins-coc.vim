@@ -21,6 +21,7 @@ Plug 'junegunn/gv.vim', { 'on': []}
 Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
 Plug 'google/vim-searchindex'
 Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
@@ -135,7 +136,7 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 " }}}
 " Coc {{{
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-snippets', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go', 'coc-tabnine']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-snippets', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go']
 
 
 inoremap <silent><expr> <TAB>
