@@ -42,3 +42,9 @@ augroup terminal
     \ setlocal signcolumn=no
 augroup end
 " }}}
+" Remove NonBreakingSpaces {{{
+augroup RemoveSpaces
+  autocmd!
+  autocmd BufWritePre * silent! :%s/\%u00A0/ /g
+augroup end
+" }}}
