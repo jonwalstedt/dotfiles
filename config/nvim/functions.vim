@@ -112,21 +112,33 @@ function! RangeSearch(direction)
 endfunction
 "}}}
 " Search and then Grep {{{
-function! SearchAndGrep(type)
-  let saved_unnamed_register = @@
+function! SearchAndGrep(type, local)
+  let savedUnnamedRegister = @@
 
   if a:type ==# 'v'
     normal! `<v`>y
     let @/ = @@
-    silent! execute "grep! -R " . shellescape(@@) . " ."
+    if a:local ==# 1
+      silent! execute "grep! " . shellescape(@@) . " %"
+    else
+      silent! execute "grep! -R " . shellescape(@@) . " ."
+    endif
   elseif a:type ==# 'char'
     normal! `[v`]y
     let @/ = @@
-    silent! execute "grep! -R " . shellescape(@@) . " ."
+    if a:local ==# 1
+      silent! execute "grep! " . shellescape(@@) . " %"
+    else
+      silent! execute "grep! -R " . shellescape(@@) . " ."
+    endif
   elseif a:type ==# 'normal'
     let l:currentWord = expand("<cword>")
     let @/ = '\<'.l:currentWord.'\>'
-    silent! execute ":grep! -R -w " . shellescape(l:currentWord) . " ."
+    if a:local ==# 1
+      silent! execute ":grep! " . shellescape(l:currentWord)  . " %"
+    else
+      silent! execute ":grep! -R -w " . shellescape(l:currentWord) . " ."
+    endif
   else
     return
   endif
@@ -134,7 +146,7 @@ function! SearchAndGrep(type)
   copen 28
   set hlsearch
 
-  let @@ = saved_unnamed_register
+  let @@ = savedUnnamedRegister
 endfunction
 " }}}
 " Get visual selection {{{

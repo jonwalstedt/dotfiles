@@ -145,8 +145,11 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|ex
 " Grep word under cursor: (from Learn Vimscript the hard way:
 " http://learnvimscriptthehardway.stevelosh.com/chapters/32.html)
 "nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cword>")) . " ."<CR>:copen<CR>
-nnoremap <leader>g :call SearchAndGrep("normal")<CR>
-vnoremap <leader>g :<c-u>call SearchAndGrep(visualmode())<CR>
+nnoremap <leader>g :call SearchAndGrep("normal", 0)<CR>
+vnoremap <leader>g :<c-u>call SearchAndGrep(visualmode(), 0)<CR>
+
+nnoremap <leader>l :call SearchAndGrep("normal", 1)<CR>
+vnoremap <leader>l :<c-u>call SearchAndGrep(visualmode(), 1)<CR>
 " }}}
 " Substitute {{{
 nnoremap c* *``cgn
