@@ -62,19 +62,6 @@ nnoremap <esc>^[ <esc>^[
 " Toggle relative line numbers
 nnoremap <silent> <leader>, :call NumberToggle()<cr>
 
-" Emacs style movement in commandline (as in bash or Zsh)
-cnoremap <C-a>  <Home>
-cnoremap <C-b>  <Left>
-cnoremap <C-f>  <Right>
-cnoremap <C-d>  <Delete>
-cnoremap <M-b>  <S-Left>
-cnoremap <M-f>  <S-Right>
-cnoremap <M-d>  <S-right><Delete>
-cnoremap <Esc>b <S-Left>
-cnoremap <Esc>f <S-Right>
-cnoremap <Esc>d <S-right><Delete>
-cnoremap <C-g>  <C-c>
-
 " Tabs {{{
 " New tab
 nnoremap <leader>tn :tabnew<CR>
@@ -93,6 +80,19 @@ nnoremap <leader>mq :<C-U><C-R><C-R>='let @q = '. string(getreg('q'))<CR><C-F><l
 xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
 " }}}
 " Movement {{{
+" Emacs style movement in commandline (as in bash or Zsh)
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-d>  <Delete>
+cnoremap <M-b>  <S-Left>
+cnoremap <M-f>  <S-Right>
+cnoremap <M-d>  <S-right><Delete>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+cnoremap <Esc>d <S-right><Delete>
+cnoremap <C-g>  <C-c>
+
 " Move to end of line
 nnoremap L $
 nnoremap L $
@@ -102,6 +102,12 @@ onoremap L $
 nnoremap H ^
 vnoremap H ^
 onoremap H ^
+
+nnoremap <leader>h }k_
+vnoremap <leader>h }k_
+
+nnoremap <leader>y {j_
+vnoremap <leader>y {j_
 " }}}
 " Terminal {{{
 nnoremap <silent> <Leader><Leader> :te<CR>
@@ -137,7 +143,7 @@ nnoremap <silent> zN :call NextClosedFold('k')<CR>
 " }}}
 " Grep / Search  {{{
 " Regular grep
-nnoremap <leader>h :silent grep! -R  .<left><left>
+" nnoremap <leader>h :silent grep! -R  .<left><left>
 
 vnoremap <silent> / :<C-U>call RangeSearch('/')<CR>:if strlen(g:srchstr) > 0\|exec '/'.g:srchstr\|endif<CR>
 vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|exec '?'.g:srchstr\|endif<CR>
