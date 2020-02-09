@@ -399,5 +399,14 @@ function! ToggleList(bufname, pfx)
 endfunction
 " }}}
 
+" Clean git commit message after squash
+function! CleanCommit()
+  silent! execute 'g/#/d'
+  silent! execute 'g/^\n/d'
+  silent! execute '%s/^- /'
+  silent! execute '2,$s/^/- '
+endfunction
+command! CleanCommit :call CleanCommit()
+
 " Open files in vertical split with <leader>Enter in quick fix list
 autocmd! FileType qf nmap <buffer> <leader><Enter> <C-w><Enter><C-w>L
