@@ -170,5 +170,6 @@ vnoremap <C-space> :<c-u>call SubstituteWordOrSelection(visualmode())<CR>
 nnoremap <leader>s :cfdo %s///c \| update<left><left><left><left><left><left><left><left><left><left><left>
 " }}}
 " Custom Commands {{{
+nnoremap <silent> <leader>ck :MarkToSqash<cr>
 nnoremap <silent> <leader>cl :CleanCommit<cr>
 " }}}

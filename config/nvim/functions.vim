@@ -398,15 +398,27 @@ function! ToggleList(bufname, pfx)
   endif
 endfunction
 " }}}
-
-" Clean git commit message after squash
+" Mark all except first to squash {{{
+function! MarkToSqash()
+  " Mark all commits to be squashed except first
+  silent! execute 'normal j}kecsk'
+endfunction
+command! MarkToSqash :call MarkToSqash()
+" }}}
+" Clean git commit message after squash {{{
 function! CleanCommit()
+  silent! execute '/SVTIPLAYTV/t0'
+  silent! execute 'normal dn'
+  silent! execute 'normal 3wC:'
   silent! execute 'g/#/d'
   silent! execute 'g/^\n/d'
   silent! execute '%s/^- /'
   silent! execute '2,$s/^/- '
+  silent! execute 'normal ggo'
+  silent! execute 'normal gg'
+  silent! call feedkeys('A ', 'n')
 endfunction
 command! CleanCommit :call CleanCommit()
-
+" }}}
 " Open files in vertical split with <leader>Enter in quick fix list
 autocmd! FileType qf nmap <buffer> <leader><Enter> <C-w><Enter><C-w>L
