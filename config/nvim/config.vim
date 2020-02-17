@@ -66,7 +66,7 @@ set nrformats-=octal                            " Numbers that start with a zero
 set smartindent
 " }}}
 " Line numbers {{{
-set number                                      " Show line numbers"
+" set number                                      " Show line numbers"
 set numberwidth=3                               " Gutter width for line numbers
 set signcolumn=yes
 "}}}
