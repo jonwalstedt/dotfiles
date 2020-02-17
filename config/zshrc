@@ -116,20 +116,20 @@ source $HOME/.shell_env
 
 bindkey '^v' fzf-cd-widget
 
-chpwd () {
-  if [[ -z $VIMRUNTIME ]]; then
-    if git rev-parse --git-dir > /dev/null 2>&1; then
-      set -- "$(git rev-parse --show-toplevel)" 2>/dev/null
-      # If cd'ing into a git working copy and not within the same working copy
-        if [ -n "$1" ] && [ "$1" != "$vc_root" ]; then
-          vc_root="$1"
-          git fetch --all
-          git --no-pager log -n 20 --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all --date=relative
-        fi
-    fi
-  fi
-}
-chpwd
+# chpwd () {
+#   if [[ -z $VIMRUNTIME ]]; then
+#     if git rev-parse --git-dir > /dev/null 2>&1; then
+#       set -- "$(git rev-parse --show-toplevel)" 2>/dev/null
+#       # If cd'ing into a git working copy and not within the same working copy
+#         if [ -n "$1" ] && [ "$1" != "$vc_root" ]; then
+#           vc_root="$1"
+#           git fetch --all
+#           git --no-pager log -n 20 --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all --date=relative
+#         fi
+#     fi
+#   fi
+# }
+# chpwd
 
 # uncomment to update oh_my_zsh on load
 # upgrade_oh_my_zsh
