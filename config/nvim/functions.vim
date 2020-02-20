@@ -370,6 +370,20 @@ function! FZFWithDevIcons()
 
 endfunction
 " }}}
+" FZF BD to close buffers {{{
+function! Bufs()
+  redir => list
+  silent ls
+  redir END
+  return split(list, "\n")
+endfunction
+
+command! BD call fzf#run(fzf#wrap({
+  \ 'source': Bufs(),
+  \ 'sink*': { lines -> execute('bwipeout '.join(map(lines, {_, line -> split(line)[0]}))) },
+  \ 'options': '--multi --reverse --bind ctrl-a:select-all+accept'
+\ }))
+" }}}
 " Toggle QuickFix list {{{
 function! GetBufferList()
   redir =>buflist
