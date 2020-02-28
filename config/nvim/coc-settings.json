@@ -4,6 +4,7 @@
   "coc.source.tag.enable": true,
   "coc.source.ultisnips.enable": true,
   "coc.source.ultisnips.priority": 100,
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
   "snippets.priority": 100,
   "snippets.extends": {
     "javascriptreact": [

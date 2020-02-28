@@ -53,7 +53,7 @@ nnoremap <silent> <leader>ff :Ag<CR>
 nnoremap <silent> <leader>fc :History:<CR>
 nnoremap <silent> <leader>fh :History<CR>
 nnoremap <silent> <leader>fg :Ag <C-R><C-W><CR>
-nnoremap <silent> <leader>ds :BD<CR>
+nnoremap <silent> <leader>fd :BD<CR>
 inoremap <silent> <c-space> <esc>:Snippets<CR>
 
 imap <c-f> <plug>(fzf-complete-path)
