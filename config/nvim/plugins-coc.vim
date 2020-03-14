@@ -27,7 +27,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'jiangmiao/auto-pairs'
+Plug 'tmsvg/pear-tree'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
@@ -211,4 +211,16 @@ nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 " Outline document
 nnoremap <silent> <leader>cp  :<C-u>CocList outline<cr>
+" }}}
+" Pear tree {{{
+let g:pear_tree_pairs = {
+            \ '(': {'closer': ')'},
+            \ '[': {'closer': ']'},
+            \ '{': {'closer': '}'},
+            \ "'": {'closer': "'"},
+            \ '"': {'closer': '"'},
+            \ '<*>': {'closer': '</*>', 'not_like': '/$'},
+            \ }
+
+imap jj <Plug>(PearTreeFinishExpansion)
 " }}}

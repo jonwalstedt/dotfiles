@@ -26,5 +26,6 @@
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
       "filetypes": ["go"]
     }
-  }
+  },
+  "eslint.autoFixOnSave": true
 }
