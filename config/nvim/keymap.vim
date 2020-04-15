@@ -46,6 +46,9 @@ nnoremap <leader>e :e<CR>
 " Close all other wndows
 nnoremap <leader><CR> :only<CR>
 
+" Move window to new tab
+nnoremap <leader>tt <C-w>T
+
 " Use light theme
 nnoremap <leader>tl :colorscheme morning<CR>
 

@@ -32,8 +32,8 @@ Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neovim/nvim-lsp'
-Plug 'dense-analysis/ale'
-Plug 'ervandew/supertab'
+Plug 'haorenW1025/completion-nvim'
+
 " Syntax highlight and colorschemes
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
@@ -157,11 +157,7 @@ nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
 "}}}
-" Ale{{{
-
-let b:ale_fixers = ['prettier', 'eslint']
-let g:ale_fix_on_save = 1
-
-nnoremap ]c :ALENextWrap<CR>     " move to the next ALE warning / error
-nnoremap [c :ALEPreviousWrap<CR> " move to the previous ALE warning / error
+" completion-nvim {{{
+" Use completion-nvim in every buffer
+autocmd BufEnter * lua require'completion'.on_attach()
 " }}}
