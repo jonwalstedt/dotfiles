@@ -54,7 +54,9 @@ set foldtext=NeatFoldText()
 " Colors {{{
 set cursorline                                  " Disable Highlight current row
 set termguicolors
-colorscheme onedark
+" colorscheme onedark
+" colorscheme night-owl
+colorscheme dracula
 " }}}
 " Tabs (whitespace settings) {{{
 set tabstop=4                                   " Render Tabs using this many spaces.
@@ -104,6 +106,12 @@ set tags=./.tags,.tags;
 " }}}
 " Dim inactive buffer {{{
 " Background colors for active vs inactive windows
-highlight ActiveWindow ctermbg=None ctermfg=None guibg=#181a1f
-highlight InactiveWindow ctermbg=darkgray ctermfg=gray guibg=#282c34
+" One Dark
+"highlight ActiveWindow guibg=#181a1f
+"highlight InactiveWindow guibg=#282c34
+
+" Night Owl and Dracula
+highlight ActiveWindow guibg=#051626
+highlight InactiveWindow guibg=#1f2730
+highlight VertSplit guibg=#051626 guifg=#1f2730
 set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow

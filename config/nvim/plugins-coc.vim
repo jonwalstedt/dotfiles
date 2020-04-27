@@ -37,6 +37,8 @@ Plug 'HerringtonDarkholme/yats.vim', { 'for': ['js', 'jsx', 'ts', 'tsx'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
 Plug 'jparise/vim-graphql'
 Plug 'joshdick/onedark.vim'
+Plug 'haishanh/night-owl.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 "}}}
 

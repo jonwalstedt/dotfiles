@@ -329,7 +329,7 @@ endfunction
 
 " Files + devicons
 function! FZFWithDevIcons()
-  let l:fzf_files_options = ' --preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'" --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all'
+  let l:fzf_files_options = ' --preview "bat --theme="Dracula" --style=numbers,changes --color always {2..-1} | head -'.&lines.'" --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=ctrl-a:select-all,ctrl-d:deselect-all'
 
   function! s:files()
     let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
