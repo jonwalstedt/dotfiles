@@ -18,6 +18,7 @@ Plug 'andymass/vim-matchup'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim', { 'on': []}
+Plug 'https://github.com/shumphrey/fugitive-gitlab.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
@@ -39,6 +40,7 @@ Plug 'jparise/vim-graphql'
 Plug 'joshdick/onedark.vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'jonwalstedt/vim-myhelp'
 call plug#end()
 "}}}
 
@@ -94,6 +96,9 @@ nnoremap <leader>fl :Glog -10 -- %<CR>
 " gv.vim  {{{
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 "}}}
+" Fugitive gitlag {{{
+let g:fugitive_gitlab_domains = ['https://git.svt.se']
+" }}}
 " Dirvish  {{{
 let g:dirvish_mode = ':sort ,^.*[\/],'
 
@@ -139,7 +144,7 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 " }}}
 " Coc {{{
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-snippets', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go']
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-snippets', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go', 'coc-actions']
 
 
 inoremap <silent><expr> <TAB>
@@ -213,6 +218,12 @@ nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>
 nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>
 " Outline document
 nnoremap <silent> <leader>cp  :<C-u>CocList outline<cr>
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
 " }}}
 " Pear tree {{{
 let g:pear_tree_pairs = {
