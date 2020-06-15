@@ -10,19 +10,6 @@ augroup end
 command! ProfileMe :profile start profile.log <bar> profile func * <bar> profile file *
 command! ProfileStop :profile pause
 "}}}
-" Highlights {{{
-function! MyHighlights() abort
-  highlight VertSplit ctermbg=235 ctermfg=236
-  highlight LineNr ctermfg=darkgrey
-  highlight NonBreakingSpace ctermbg=red guibg=red
-  match NonBreakingSpace / / " (CTRL+V x a 0)
-endfunction
-
-augroup highlights
-  autocmd!
-  autocmd ColorScheme * call MyHighlights()
-augroup end
-" }}}
 " Folding {{{
 function! Marker() abort
   setlocal foldmethod=marker
@@ -46,5 +33,11 @@ augroup end
 augroup RemoveSpaces
   autocmd!
   autocmd BufWritePre * silent! :%s/\%u00A0/ /g
+augroup end
+" }}}
+" Automatically return to normal mode on idle {{{
+augroup LeaveInsertOnIdle
+  autocmd!
+  autocmd CursorHoldI * stopinsert
 augroup end
 " }}}
