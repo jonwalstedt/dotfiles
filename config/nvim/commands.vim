@@ -35,9 +35,3 @@ augroup RemoveSpaces
   autocmd BufWritePre * silent! :%s/\%u00A0/ /g
 augroup end
 " }}}
-" Automatically return to normal mode on idle {{{
-augroup LeaveInsertOnIdle
-  autocmd!
-  autocmd CursorHoldI * stopinsert
-augroup end
-" }}}

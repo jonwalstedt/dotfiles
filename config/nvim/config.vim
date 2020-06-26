@@ -46,9 +46,9 @@ set undofile                                    " Keep a persistent backup file.
 set undodir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " }}}
 " Folding {{{
-set foldmethod=indent
-set foldlevelstart=99
-set foldnestmax=2
+set foldmethod=manual
+" set foldlevelstart=99
+" set foldnestmax=2
 set foldtext=NeatFoldText()
 " }}}
 " Colors {{{

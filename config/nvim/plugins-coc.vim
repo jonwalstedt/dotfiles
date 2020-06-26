@@ -13,7 +13,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'inkarkat/vim-ingo-library'
-Plug 'inkarkat/vim-SearchHighlighting'
+"Plug 'inkarkat/vim-SearchHighlighting'
 Plug 'andymass/vim-matchup'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -111,7 +111,7 @@ augroup END
 nmap <leader>f<CR> Z!
 " }}}
 " Sneak {{{
-let g:sneak#s_next = 1
+let g:sneak#s_next = 0
 let g:sneak#use_ic_scs = 1
 nmap s <Plug>Sneak_s
 nmap S <Plug>Sneak_S
