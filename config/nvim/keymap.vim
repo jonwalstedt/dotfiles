@@ -159,6 +159,9 @@ vnoremap <leader>g :<c-u>call SearchAndGrep(visualmode(), 0)<CR>
 
 nnoremap <leader>l :call SearchAndGrep("normal", 1)<CR>
 vnoremap <leader>l :<c-u>call SearchAndGrep(visualmode(), 1)<CR>
+
+" Search for selection
+vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
 " }}}
 " Substitute {{{
 nnoremap c* *``cgn
