@@ -113,7 +113,7 @@ nnoremap <leader>y {j_
 vnoremap <leader>y {j_
 " }}}
 " Terminal {{{
-nnoremap <silent> <Leader><Leader> :te<CR>
+nnoremap <silent> <Leader>t<Leader> :te<CR>
 
 " Escape to exit to normal mode in terminal
 tnoremap <Esc> <C-\><C-n>
@@ -162,6 +162,8 @@ vnoremap <leader>l :<c-u>call SearchAndGrep(visualmode(), 1)<CR>
 
 " Search for selection
 vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
+
+nnoremap <leader><leader> :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
 " }}}
 " Substitute {{{
 nnoremap c* *``cgn

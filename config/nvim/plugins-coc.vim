@@ -237,3 +237,6 @@ let g:pear_tree_pairs = {
 
 imap jj <Plug>(PearTreeFinishExpansion)
 " }}}
+" Matchup {{{
+let g:matchup_motion_keepjumps='true'
+"}}}
