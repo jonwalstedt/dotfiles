@@ -54,7 +54,7 @@ let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 nnoremap <silent> <C-p> :call FZFWithDevIcons()<CR>
 nnoremap <silent> <leader>p :Buffers<CR>
 nnoremap <silent> <leader>ff :Ag<CR>
-nnoremap <silent> <leader>f<leader> :History:<CR>
+nnoremap <silent> <leader>hh :History:<CR>
 nnoremap <silent> <leader>fh :History<CR>
 nnoremap <silent> <leader>fg :Ag <C-R><C-W><CR>
 nnoremap <silent> <leader>fd :BD<CR>
