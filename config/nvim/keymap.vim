@@ -163,7 +163,7 @@ vnoremap <leader>l :<c-u>call SearchAndGrep(visualmode(), 1)<CR>
 " Search for selection
 vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-nnoremap <leader><leader> :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
+nnoremap <silent><CR> :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
 " }}}
 " Substitute {{{
 nnoremap c* *``cgn

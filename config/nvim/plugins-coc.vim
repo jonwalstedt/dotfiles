@@ -240,3 +240,6 @@ imap jj <Plug>(PearTreeFinishExpansion)
 " Matchup {{{
 let g:matchup_motion_keepjumps='true'
 "}}}
+" Vim QF {{{
+let g:qf_mapping_ack_style = 1
+" }}}
