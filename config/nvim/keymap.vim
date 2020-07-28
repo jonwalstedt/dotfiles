@@ -53,7 +53,7 @@ nnoremap <leader>tt <C-w>T
 nnoremap <leader>tl :colorscheme morning<CR>
 
 " Use dark theme
-nnoremap <leader>td :colorscheme onedark<CR>
+nnoremap <leader>td :colorscheme dracula<CR>
 
 " Select last paste in visual mode
 nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
@@ -94,7 +94,6 @@ cnoremap <M-d>  <S-right><Delete>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 cnoremap <Esc>d <S-right><Delete>
-cnoremap <C-g>  <C-c>
 
 " Move to end of line
 nnoremap L $
@@ -154,11 +153,11 @@ vnoremap <silent> ? :<C-U>call RangeSearch('?')<CR>:if strlen(g:srchstr) > 0\|ex
 " Grep word under cursor: (from Learn Vimscript the hard way:
 " http://learnvimscriptthehardway.stevelosh.com/chapters/32.html)
 "nnoremap <leader>g :silent execute "grep! -R " . shellescape(expand("<cword>")) . " ."<CR>:copen<CR>
-nnoremap <leader>g :call SearchAndGrep("normal", 0)<CR>
-vnoremap <leader>g :<c-u>call SearchAndGrep(visualmode(), 0)<CR>
+nnoremap <silent> <leader>g :call SearchAndGrep("normal", 0)<CR>
+vnoremap <silent> <leader>g :<c-u>call SearchAndGrep(visualmode(), 0)<CR>
 
-nnoremap <leader>l :call SearchAndGrep("normal", 1)<CR>
-vnoremap <leader>l :<c-u>call SearchAndGrep(visualmode(), 1)<CR>
+nnoremap <silent> <leader>l :call SearchAndGrep("normal", 1)<CR>
+vnoremap <silent> <leader>l :<c-u>call SearchAndGrep(visualmode(), 1)<CR>
 
 " Search for selection
 vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>

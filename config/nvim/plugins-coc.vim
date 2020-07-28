@@ -123,6 +123,8 @@ xmap S <Plug>Sneak_S
 " operator-pending-mode
 omap s <Plug>Sneak_s
 omap S <Plug>Sneak_S
+
+autocmd ColorScheme * hi! Sneak guifg=black guibg=aqua ctermfg=black ctermbg=green
 "}}}
 "EasyMotion {{{
 "Disable default mappings
@@ -242,4 +244,5 @@ let g:matchup_motion_keepjumps='true'
 "}}}
 " Vim QF {{{
 let g:qf_mapping_ack_style = 1
+nmap <leader>fq <Plug>(qf_qf_toggle)
 " }}}
