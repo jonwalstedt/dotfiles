@@ -18,6 +18,7 @@
     ~/.bashrc: config/bashrc
     ~/.zshrc: config/zshrc
     ~/.agignore: config/agignore
+    ~/.stCommitMsg: config/.stCommitMsg
 
     # Git:
     ~/.gitconfig: config/gitconfig

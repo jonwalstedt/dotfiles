@@ -5,7 +5,7 @@
 # This file is used as a part of `.shell_env`
 
 # === perl ===
-source $HOME/perl5/perlbrew/etc/bashrc
+# source $HOME/perl5/perlbrew/etc/bashrc
 
 # === fzf ===
 # https://github.com/junegunn/fzf
