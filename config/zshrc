@@ -1,3 +1,4 @@
+ZSH_DISABLE_COMPFIX="true"
 source $HOME/.profile
 
 # Path to your oh-my-zsh installation.

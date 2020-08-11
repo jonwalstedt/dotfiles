@@ -115,3 +115,4 @@ highlight ActiveWindow guibg=#051626
 highlight InactiveWindow guibg=#1f2730
 highlight VertSplit guibg=#051626 guifg=#1f2730
 set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
+" }}}

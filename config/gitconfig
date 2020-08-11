@@ -1,10 +1,10 @@
 [core]
-    excludesfile = /Users/jonwalstedt/.gitignore_global
+    excludesfile = ~/.gitignore_global
 [user]
-    email = jon.walstedt@svt.se
+    email = jon.walstedt@king.com
     name = Jon Wålstedt
 [commit]
-    template = /Users/jonwalstedt/.stCommitMsg
+    template = ~/.stCommitMsg
 [credential]
     helper = osxkeychain
 [pager]
@@ -24,6 +24,7 @@
     process = git-lfs filter-process
     required = true
 [alias]
+    undo = reset --soft HEAD~1
     st = status -sb
     ci = commit
     co = checkout

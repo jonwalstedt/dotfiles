@@ -178,9 +178,9 @@ nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> <leader>ct <Plug>(coc-type-definition)
-nmap <silent> <leader>ci <Plug>(coc-implementation)
-nmap <silent> <leader>cr <Plug>(coc-references)
+nmap <silent> <leader>ft <Plug>(coc-type-definition)
+nmap <silent> <leader>fi <Plug>(coc-implementation)
+nmap <silent> <leader>fr <Plug>(coc-references)
 nmap <silent> <leader>rn <Plug>(coc-rename)
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
