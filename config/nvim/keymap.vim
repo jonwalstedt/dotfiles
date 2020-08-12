@@ -44,7 +44,7 @@ nnoremap <leader>w :update<CR>
 nnoremap <leader>e :e<CR>
 
 " Close all other wndows
-nnoremap <leader><CR> :only<CR>
+nnoremap <leader>do :only<CR>
 
 " Move window to new tab
 nnoremap <leader>tt <C-w>T
@@ -162,7 +162,7 @@ vnoremap <silent> <leader>l :<c-u>call SearchAndGrep(visualmode(), 1)<CR>
 " Search for selection
 vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-nnoremap <silent><CR> :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
+nnoremap <silent><leader><CR> :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
 " }}}
 " Substitute {{{
 nnoremap c* *``cgn
