@@ -18,7 +18,6 @@ Plug 'andymass/vim-matchup'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim', { 'on': []}
-Plug 'https://github.com/shumphrey/fugitive-gitlab.vim'
 Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'

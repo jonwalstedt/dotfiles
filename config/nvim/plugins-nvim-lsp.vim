@@ -13,25 +13,28 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'inkarkat/vim-ingo-library'
-Plug 'inkarkat/vim-SearchHighlighting'
+" Plug 'inkarkat/vim-SearchHighlighting'
 Plug 'andymass/vim-matchup'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim', { 'on': []}
-Plug 'sirver/ultisnips'
+" Plug 'sirver/ultisnips'
 Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
 Plug 'google/vim-searchindex'
 Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'jiangmiao/auto-pairs'
+Plug 'tmsvg/pear-tree'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
+
 Plug 'neovim/nvim-lsp'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'haorenW1025/completion-nvim'
 
 " Syntax highlight and colorschemes
@@ -39,6 +42,7 @@ Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
 Plug 'jparise/vim-graphql'
 Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 "}}}
 

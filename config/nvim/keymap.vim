@@ -163,6 +163,11 @@ vnoremap <silent> <leader>l :<c-u>call SearchAndGrep(visualmode(), 1)<CR>
 vnoremap * y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 nnoremap <silent><leader><CR> :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
+
+" augroup SearchOnEnter
+"     autocmd!
+"     autocmd FileType tsx,ts,js,css,scss,less,html,xhtml,vim nnoremap <buffer><silent><leader><CR> :let @/ = '\<'.expand('<cword>').'\>'\|set hlsearch<C-M>
+" augroup END
 " }}}
 " Substitute {{{
 nnoremap c* *``cgn

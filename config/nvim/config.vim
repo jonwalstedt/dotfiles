@@ -52,11 +52,11 @@ set foldmethod=manual
 set foldtext=NeatFoldText()
 " }}}
 " Colors {{{
-set cursorline                                  " Disable Highlight current row
 set termguicolors
 " colorscheme onedark
 " colorscheme night-owl
 colorscheme dracula
+set nocursorline                                  " Disable Highlight current row
 " }}}
 " Tabs (whitespace settings) {{{
 set tabstop=4                                   " Render Tabs using this many spaces.
