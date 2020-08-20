@@ -62,9 +62,6 @@ nnoremap <expr> gb '`[' . strpart(getregtype(), 0, 1) . '`]'
 nnoremap <silent> <esc> :nohlsearch<return><esc>
 nnoremap <esc>^[ <esc>^[
 
-" Toggle relative line numbers
-nnoremap <silent> <leader>, :call NumberToggle()<cr>
-
 " Tabs {{{
 " New tab
 nnoremap <leader>tn :tabnew<CR>

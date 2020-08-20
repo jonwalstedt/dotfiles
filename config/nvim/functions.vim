@@ -1,22 +1,5 @@
 " Functions
 
-" Toggle relative line numbers {{{
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set norelativenumber
-    set nocursorline
-    set noshowmode
-    set noruler
-    set noshowcmd
-  else
-    set relativenumber
-    set cursorline
-    set showmode
-    set ruler
-    set showcmd
-  endif
-endfunc
-"}}}
 " Run macro over selected rows {{{
 function! ExecuteMacroOverVisualRange()
   echo "@".getcmdline()
