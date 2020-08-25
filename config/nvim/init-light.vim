@@ -17,7 +17,7 @@ endif
 unlet autoload_plug_path
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 " }}}
 " Setup syntax {{{

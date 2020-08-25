@@ -44,8 +44,17 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_192.jdk/Contents/Home"
 # export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-14.jdk/Contents/Home"
-alias java11='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home'
-alias java14='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-14.jdk/Contents/Home'
+alias java11='export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home" && echo "Now using java 11"'
+alias java14='export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-14.jdk/Contents/Home" && echo "Now using java 14"'
+
+# export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+# export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+# export JAVA_14_HOME=$(/usr/libexec/java_home -v14)
+#
+# alias java8='export JAVA_HOME=$JAVA_8_HOME'
+# alias java11='export JAVA_HOME=$JAVA_11_HOME'
+# alias java14='export JAVA_HOME=$JAVA_14_HOME'
+
 # === GO ===
 
 export GOPATH=$HOME/go

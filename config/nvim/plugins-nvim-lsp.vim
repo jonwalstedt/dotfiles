@@ -12,13 +12,10 @@ unlet autoload_plug_path
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'inkarkat/vim-ingo-library'
-" Plug 'inkarkat/vim-SearchHighlighting'
 Plug 'andymass/vim-matchup'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim', { 'on': []}
-" Plug 'sirver/ultisnips'
 Plug 'justinmk/vim-sneak'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
@@ -34,14 +31,17 @@ Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'neovim/nvim-lsp'
+Plug 'nvim-lua/completion-nvim'
+Plug 'nvim-lua/diagnostic-nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'haorenW1025/completion-nvim'
+Plug 'nvim-treesitter/completion-treesitter'
 
-" Syntax highlight and colorschemes
+" Syntax highlight
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
 Plug 'jparise/vim-graphql'
-Plug 'joshdick/onedark.vim'
+
+" Colorschemes
 Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 "}}}
@@ -141,13 +141,9 @@ let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwy'
 map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 " }}}
-" Ultisnips {{{
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-" }}}
 " nvim-lsp {{{
-:lua << EOF
+if GetNVimVersion() != "0.4.3"
+lua <<EOF
 local nvim_lsp = require 'nvim_lsp'
 nvim_lsp.tsserver.setup({config})
 EOF
@@ -160,8 +156,49 @@ nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+endif
+"}}}
+" treesitter {{{
+if GetNVimVersion() != "0.4.3"
+lua <<EOF
+local status, nvim_ts = pcall(require, 'nvim-treesitter.configs')
+if (status) then
+  nvim_ts.setup {
+    ensure_installed = 'all',
+    highlight = {
+      enable = true,
+    },
+  }
+end
+EOF
+endif
 "}}}
 " completion-nvim {{{
 " Use completion-nvim in every buffer
+if GetNVimVersion() != "0.4.3"
 autocmd BufEnter * lua require'completion'.on_attach()
+ let g:completion_enable_auto_popup = 1
+let g:completion_auto_change_source = 0
+let g:completion_enable_auto_hover = 1
+" Set completeopt to have a better completion experience
+" set omnifunc=v:lua.vim.lsp.omnifunc
+set completeopt=menuone,noinsert,noselect
+" Avoid showing message extra message when using completion
+set shortmess+=c
+" completion-nvim
+
+" Use <Tab> and <S-Tab> to navigate through popup menu
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+endif
+" }}}
+" lsp-diagnostics {{{
+" diagnostic-nvim
+let g:diagnostic_virtual_text_prefix = ' '
+let g:diagnostic_trimmed_virtual_text = '20'
+let g:space_before_virtual_text = 5
+let g:diagnostic_enable_virtual_text = 1
+let g:diagnostic_insert_delay = 1
+let g:diagnostic_show_sign = 0
+lua require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
 " }}}

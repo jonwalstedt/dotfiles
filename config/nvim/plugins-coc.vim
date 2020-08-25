@@ -12,8 +12,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'inkarkat/vim-ingo-library'
-"Plug 'inkarkat/vim-SearchHighlighting'
 Plug 'andymass/vim-matchup'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -32,12 +30,14 @@ Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
 
-" Syntax highlight and colorschemes
+" Syntax highlight
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['js', 'jsx', 'ts', 'tsx'] }
 Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
 Plug 'jparise/vim-graphql'
 Plug 'joshdick/onedark.vim'
 Plug 'haishanh/night-owl.vim'
+
+" Colorschemes
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'jonwalstedt/vim-myhelp'
 call plug#end()

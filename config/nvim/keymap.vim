@@ -7,7 +7,7 @@ nnoremap <leader>ve :vsplit $MYVIMRC<CR>
 nnoremap <leader>vs :source $MYVIMRC<CR>
 
 " Use jj as escape
-" inoremap jj <Esc>
+inoremap jj <Esc>
 
 " Yank to end of line
 nnoremap Y y$

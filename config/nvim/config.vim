@@ -19,7 +19,7 @@ set mouse=a                                     " Enable mouse.
 set lazyredraw                                  " Only redraw when needed
 set nostartofline                               " Do not jump to first character with page commands.
 set showmatch                                   " Highlight matching [{()}]
-set completeopt=longest,menuone,preview
+"set completeopt=longest,menuone,preview
 set clipboard=unnamedplus                       " Use the clipboard register
 set list
 set listchars=nbsp:¬,tab:>-,extends:»,precedes:«,trail:•
@@ -30,7 +30,7 @@ set timeoutlen=800                              " Timeout Leader after 400 ms.
 set virtualedit=block                           " Enable virtualedit when in Visual Block mode.
 set hidden                                      " Allow for unsaved changes when switchin buffers (use confirm if you want to be prompted for save)
 set cmdheight=2                                 " Better display for messages
-set shortmess+=c                                " don't give ins-completion-menu messages.
+" set shortmess+=c                                " don't give ins-completion-menu messages.
 set nomodeline
 set scrolloff=5
 " }}}
@@ -77,7 +77,7 @@ set grepprg=ag\ --vimgrep
 set ignorecase                                  " Make searching case insensitive.
 set smartcase                                   " Use case sensitive search when query has mixed case.
 set gdefault                                    " Use 'g' flag by default with :s/foo/bar/.
-set omnifunc=syntaxcomplete#Complete
+" set omnifunc=syntaxcomplete#Complete
 "}}}
 " Substitute {{{
 set inccommand=nosplit                          " Shows the effects of a command incrementally, as you type.

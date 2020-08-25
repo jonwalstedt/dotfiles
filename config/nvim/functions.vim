@@ -419,3 +419,12 @@ command! CleanCommit :call CleanCommit()
 " }}}
 " Open files in vertical split with <leader>Enter in quick fix list
 autocmd! FileType qf nmap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+
+" Get neovim version {{{
+function! GetNVimVersion()
+  redir => s
+  silent! version
+  redir END
+  return matchstr(s, 'NVIM v\zs[^\n]*')
+endfunction
+"}}}
