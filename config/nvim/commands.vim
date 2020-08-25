@@ -35,3 +35,7 @@ augroup RemoveSpaces
   autocmd BufWritePre * silent! :%s/\%u00A0/ /g
 augroup end
 " }}}
+" Execut bash script {{{
+" https://dev.to/22mahmoud/no-more-postman-just-use-curl-vim-2mha
+command! Exec set splitright | vnew | set filetype=sh | read !sh #
+"}}}
