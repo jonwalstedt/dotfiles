@@ -118,7 +118,8 @@ fi
 source $ZSH/oh-my-zsh.sh
 source $HOME/.shell_env
 
-bindkey '^v' fzf-cd-widget
+bindkey '^v' fzf-file-widget
+bindkey "ç" fzf-cd-widget
 
 # chpwd () {
 #   if [[ -z $VIMRUNTIME ]]; then
