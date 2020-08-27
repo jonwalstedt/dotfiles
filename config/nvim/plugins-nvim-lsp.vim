@@ -203,3 +203,7 @@ let g:diagnostic_insert_delay = 1
 let g:diagnostic_show_sign = 0
 lua require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
 " }}}
+" prettier {{{
+let g:prettier#autoformat_config_present = 1
+let g:prettier#autoformat_require_pragma = 0
+" }}}
