@@ -29,6 +29,7 @@ Plug 'tmsvg/pear-tree'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 Plug 'neovim/nvim-lsp'
 Plug 'nvim-lua/completion-nvim'
@@ -151,8 +152,8 @@ EOF
 set omnifunc=lsp#omnifunc
 nnoremap <silent><leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
 nnoremap <silent>gD    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent>gd    <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent><c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent>gt    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent><gd> <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent><c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent>1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
