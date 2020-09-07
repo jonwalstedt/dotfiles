@@ -26,9 +26,6 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Copy public key to clipboard:
 alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
-# Svt molnet
-alias moln='ssh cli@sthlm.molnet.svt.se --'
-
 # Digital ocean vps
 alias vps='ssh jonwalstedt@128.199.54.176'
 

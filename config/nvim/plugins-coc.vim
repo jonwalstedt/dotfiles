@@ -25,7 +25,6 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tmsvg/pear-tree'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
@@ -46,8 +45,8 @@ call plug#end()
 " Plugin settings
 " FZF Fuzzyfinder {{{
 command! -bar -bang Snippets call fzf#vim#snippets({'options': '-n ..'}, <bang>0)
-let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse --margin=1,2'
-let g:fzf_history_dir = '~/.local/share/fzf-history'
+" let $FZF_DEFAULT_OPTS=' --color=dark --color=fg:15,bg:-1,hl:1,fg+:#ffffff,bg+:0,hl+:1 --color=info:0,prompt:0,pointer:12,marker:4,spinner:11,header:-1 --layout=reverse --margin=1,2'
+" let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_layout = { 'window': 'call FloatingFZF()' }
 
 nnoremap <silent> <C-p> :call FZFWithDevIcons()<CR>
@@ -225,18 +224,6 @@ function! s:cocActionsOpenFromSelected(type) abort
 endfunction
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
 nmap <silent> <leader>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
-" }}}
-" Pear tree {{{
-let g:pear_tree_pairs = {
-            \ '(': {'closer': ')'},
-            \ '[': {'closer': ']'},
-            \ '{': {'closer': '}'},
-            \ "'": {'closer': "'"},
-            \ '"': {'closer': '"'},
-            \ '<*>': {'closer': '</*>', 'not_like': '/$'},
-            \ }
-
-imap jj <Plug>(PearTreeFinishExpansion)
 " }}}
 " Matchup {{{
 let g:matchup_motion_keepjumps='true'
