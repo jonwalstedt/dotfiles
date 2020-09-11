@@ -6,7 +6,7 @@ export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-ZSH_THEME="robbyrussell"
+ZSH_THEME="dracula"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -53,8 +53,10 @@ setopt share_history
 # zstyle :omz:plugins:ssh-agent agent-forwarding on
 # zstyle :omz:plugins:ssh-agent identities id_rsa
 # plugins=(extract git web-search gradle ssh-agent)
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666666"
+bindkey '^l' autosuggest-accept
 
-plugins=(extract git web-search gradle z)
+plugins=(extract git web-search gradle z zsh-autosuggestions)
 
 # User configuration
 # Preferred editor for local and remote sessions
@@ -177,3 +179,7 @@ bindkey "ç" fzf-cd-widget
 autoload -U promptinit; promptinit
 prompt pure
 PURE_PROMPT_SYMBOL=$
+
+  # Set Spaceship ZSH as a prompt
+  autoload -U promptinit; promptinit
+  prompt spaceship
