@@ -40,3 +40,5 @@ alias vm.='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim -u ~/.config/nvim/init-nvim-lsp.vim
 alias th='cat ~/repos/dev-tools/terminal/terminal-cheatsheet/README.md'
 
 alias fzfh='cat ~/repos/dotfiles/shell/help/fzf.md'
+
+alias tree='tree -C'

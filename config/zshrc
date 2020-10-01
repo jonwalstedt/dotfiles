@@ -175,11 +175,3 @@ bindkey "ç" fzf-cd-widget
 
 # uncomment to update oh_my_zsh on load
 # upgrade_oh_my_zsh
-
-autoload -U promptinit; promptinit
-prompt pure
-PURE_PROMPT_SYMBOL=$
-
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
