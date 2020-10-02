@@ -27,6 +27,7 @@ nnoremap <leader>q ZZ<C-w><C-p>
 " Toggle QuickFixList
 "nnoremap <silent> <localleader>l :call ToggleList("Location List", 'l')<CR>
 nnoremap <silent> <localleader><cr> :call ToggleList("Quickfix List", 'c')<CR>
+nnoremap <silent> §<cr> :call ToggleList("Quickfix List", 'c')<CR>
 
 " Update current buffer and close it without saving (needed to close terminal buffers)
 nnoremap <silent> <leader>dd :update<bar>:bd!<CR>
