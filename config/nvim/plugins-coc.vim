@@ -88,15 +88,13 @@ command! ToggleGStatus :call ToggleGStatus()
 
 " Fugitive (toggle git status panel)
 nnoremap <silent> <localleader><space> :call ToggleGStatus()<cr>
+nnoremap <silent> §<space> :call ToggleGStatus()<cr>
 nnoremap <leader>fv :Gvdiff<CR>
 nnoremap <leader>fl :Glog -10 -- %<CR>
 "}}}
 " gv.vim  {{{
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 "}}}
-" Fugitive gitlag {{{
-let g:fugitive_gitlab_domains = ['https://git.svt.se']
-" }}}
 " Dirvish  {{{
 let g:dirvish_mode = ':sort ,^.*[\/],'
 
