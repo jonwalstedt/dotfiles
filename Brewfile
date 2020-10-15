@@ -14,6 +14,7 @@ brew "brew-cask-completion"
 brew "cmake"
 brew "coreutils"
 brew "curl", args: ["with-openssl"]
+brew "chrome-cli"
 brew "diff-pdf"
 brew "diff-so-fancy"
 brew "xhyve"

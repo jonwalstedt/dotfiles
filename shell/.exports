@@ -45,6 +45,7 @@ export FZF_DEFAULT_OPTS="
 --bind 'ctrl-y:execute-silent(echo {+} | pbcopy)'
 --bind 'ctrl-e:execute(echo {+} | xargs -o vim)'
 --bind 'ctrl-v:execute(code {+})'
+--bind change:top
 "
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules' --exclude 'Library'"
 export FZF_ALT_C_COMMAND='blsd'
@@ -66,7 +67,8 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 # === JAVA ===
 
 alias java11='export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home" && echo "Now using java 11"'
-alias java14='export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-14.jdk/Contents/Home" && echo "Now using java 14"'
+alias java14='export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-14.0.2.jdk/Contents/Home" && echo "Now using java 14"'
+alias java15='export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home" && echo "Now using java 15"'
 
 # === GO ===
 

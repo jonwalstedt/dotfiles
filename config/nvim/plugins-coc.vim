@@ -28,6 +28,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
+Plug 'sheerun/vim-polyglot'
 
 " Syntax highlight
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['js', 'jsx', 'ts', 'tsx'] }
