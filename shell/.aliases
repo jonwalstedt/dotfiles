@@ -47,3 +47,6 @@ alias tabs='~/repos/jonwalstedt/findTabs.js focus "$(~/repos/jonwalstedt/findTab
 
 weeknumber=`date +%V`
 alias vecka="figlet -c $weeknumber"
+
+alias datum='date +"%Y-%m-%d %H:%M:%S" | figlet'
+alias idag=datum
