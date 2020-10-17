@@ -45,6 +45,8 @@ alias tree='tree -C'
 
 alias tabs='~/repos/jonwalstedt/chrome-control/chrome.js focusByTitle "$(~/repos/jonwalstedt/chrome-control/chrome.js titles | fzf --bind change:top)"'
 
+alias closeTabs='~/repos/jonwalstedt/chrome-control/chrome.js close --title'
+
 weeknumber=`date +%V`
 alias vecka="figlet -c $weeknumber"
 
