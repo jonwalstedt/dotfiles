@@ -43,7 +43,7 @@ alias fzfh='cat ~/repos/dotfiles/shell/help/fzf.md'
 
 alias tree='tree -C'
 
-alias tabs='~/repos/jonwalstedt/findTabs.js focus "$(~/repos/jonwalstedt/findTabs.js list | fzf --bind change:top)"'
+alias tabs='~/repos/jonwalstedt/chrome-control/chrome.js focusByTitle "$(~/repos/jonwalstedt/chrome-control/chrome.js titles | fzf --bind change:top)"'
 
 weeknumber=`date +%V`
 alias vecka="figlet -c $weeknumber"
