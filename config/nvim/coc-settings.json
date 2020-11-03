@@ -1,11 +1,8 @@
 {
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "coc.source.tag.enable": true,
-  "coc.source.ultisnips.enable": true,
-  "coc.source.ultisnips.priority": 100,
-  "snippets.userSnippetsDirectory": "~/.config/nvim/snippets",
-  "snippets.priority": 100,
+  "snippets.userSnippetsDirectory": "$HOME/.config/nvim/snippets",
+  "snippets.priority": 90,
   "snippets.extends": {
     "javascriptreact": [
       "javascript"
@@ -14,12 +11,13 @@
       "javascript"
     ],
     "typescriptreact": [
-      "javascript"
+      "typescript"
     ]
   },
   "prettier.requireConfig": true,
   "suggest.triggerAfterInsertEnter": true,
   "suggest.noselect": true,
+  "yaml.format.enable": true,
   "languageserver": {
     "golang": {
       "command": "gopls",

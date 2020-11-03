@@ -36,6 +36,9 @@ Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
 Plug 'jparise/vim-graphql'
 Plug 'joshdick/onedark.vim'
 Plug 'haishanh/night-owl.vim'
+Plug 'christianchiarulli/nvcode.vim'
+Plug 'nvim-treesitter/nvim-treesitter'
+
 
 " Colorschemes
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -143,7 +146,7 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 " }}}
 " Coc {{{
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-snippets', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go', 'coc-actions']
+let g:coc_global_extensions = ['coc-lists', 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-snippets', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go', 'coc-actions', 'coc-yaml']
 
 
 inoremap <silent><expr> <TAB>
@@ -157,11 +160,11 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<s-tab>'
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+let g:coc_snippet_next = '<TAB>'
+let g:coc_snippet_prev = '<S-TAB>'
 
 " Use enter to confirm complete
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Close preview window when completion is done
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
@@ -231,3 +234,15 @@ let g:matchup_motion_keepjumps='true'
 let g:qf_mapping_ack_style = 1
 nmap <leader>fq <Plug>(qf_qf_toggle)
 " }}}
+" Treesitter and theme setup {{{
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = {},  -- list of language that will be disabled
+  },
+}
+EOF
+"}}}
+

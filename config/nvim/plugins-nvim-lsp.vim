@@ -34,6 +34,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'neovim/nvim-lsp'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
+Plug 'christianchiarulli/nvcode.vim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'nvim-treesitter/completion-treesitter'
 Plug 'RishabhRD/popfix'
@@ -197,13 +198,14 @@ endif
 " }}}
 " lsp-diagnostics {{{
 " diagnostic-nvim
+lua require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
 let g:diagnostic_virtual_text_prefix = ' '
 let g:diagnostic_trimmed_virtual_text = '20'
 let g:space_before_virtual_text = 5
 let g:diagnostic_enable_virtual_text = 1
 let g:diagnostic_insert_delay = 1
+let g:diagnostic_auto_popup_while_jump = 1
 let g:diagnostic_show_sign = 0
-lua require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
 " }}}
 " prettier {{{
 let g:prettier#autoformat_config_present = 1

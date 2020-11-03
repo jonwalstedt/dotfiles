@@ -175,3 +175,13 @@ bindkey "ç" fzf-cd-widget
 
 # uncomment to update oh_my_zsh on load
 # upgrade_oh_my_zsh
+
+# Change line prefix
+# PS1="$ [%~] "
+# PS1="%n@%m:%%# "
+PROMPT='%{$fg[green]%}%~%{$fg_bold[blue]%}$(git_prompt_info)%{$reset_color%} '
+
+ZSH_THEME_GIT_PROMPT_PREFIX="("
+ZSH_THEME_GIT_PROMPT_SUFFIX=")"
+ZSH_THEME_GIT_PROMPT_DIRTY=" +"
+ZSH_THEME_GIT_PROMPT_CLEAN=" "
