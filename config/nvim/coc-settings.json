@@ -2,7 +2,7 @@
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "javascriptreact", "typescript", "typescriptreact"],
   "snippets.userSnippetsDirectory": "$HOME/.config/nvim/snippets",
-  "snippets.priority": 90,
+  "snippets.priority": 110,
   "snippets.extends": {
     "javascriptreact": [
       "javascript"

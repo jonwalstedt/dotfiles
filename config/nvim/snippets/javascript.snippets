@@ -1,4 +1,13 @@
-snippet ((=> "fn as argument" i
-((${0}) => {
-  ${1}
-})
+snippet ims "Import css module"
+import styles from './`!v expand('%:p:h:t')`.module.css';
+endsnippet
+
+snippet yl "log yanked content"
+console.log('`!v @"`: ', `!v @"`);
+endsnippet
+
+snippet yif "if (yanked content) { ... }"
+if (`!v @"`${1}) {
+  ${2}
+}
+endsnippet
