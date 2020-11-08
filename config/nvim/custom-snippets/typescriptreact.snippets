@@ -4,7 +4,6 @@
 #
 # and end with:
 #
-#		endsnippet
 #
 # Snippet options:
 #
@@ -20,14 +19,14 @@
 #		snippet emitter "emitter properties" b
 #		private readonly ${1} = new Emitter<$2>()
 #		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
-#		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
 snippet cc "Functional React component in typescript"
 import React from 'react';
 
 export const ${1} = ():JSX.Element => {
-	return (${0:${VISUAL}});
+  return (${0:${VISUAL}});
 }
 endsnippet
 
@@ -35,11 +34,11 @@ snippet cci "Functional React component in typescript - with interface"
 import React from 'react';
 
 interface ${1}Props {
-	${2}
+  ${2}
 }
 
 export const ${1} = ({${3}}: ${1}Props):JSX.Element => {
-	return (${0:${VISUAL}});
+  return (${0:${VISUAL}});
 }
 endsnippet
 
@@ -48,10 +47,14 @@ snippet ccii "Functional React component in typescript - with interface"
 import React from 'react';
 
 interface `!v expand('%:p:h:t')`Props {
-	${1}
+  ${1}
 }
 
 export const `!v expand('%:p:h:t')` = ({${2}}: `!v expand('%:p:h:t')`Props):JSX.Element => {
-	return (${2});
+  return (${2});
 }
+endsnippet
+
+snippet useState "useState my Hook"
+const [${1:state}, set`!p snip.rv = t[1].capitalize()`] = useState(${2})$0
 endsnippet
