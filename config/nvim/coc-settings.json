@@ -1,19 +1,6 @@
 {
   "coc.preferences.useQuickfixForLocations": true,
   "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "javascriptreact", "typescript", "typescriptreact"],
-  "snippets.userSnippetsDirectory": "$HOME/.config/nvim/custom-snippets",
-  "snippets.priority": 110,
-  "snippets.extends": {
-    "javascriptreact": [
-      "javascript"
-    ],
-    "typescript": [
-      "javascript"
-    ],
-    "typescriptreact": [
-      "typescript"
-    ]
-  },
   "prettier.requireConfig": true,
   "suggest.triggerAfterInsertEnter": true,
   "suggest.noselect": true,

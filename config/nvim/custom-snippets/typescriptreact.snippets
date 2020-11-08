@@ -21,6 +21,9 @@
 #		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+extends javascript
+
+priority 100
 
 snippet cc "Functional React component in typescript"
 import React from 'react';
@@ -55,6 +58,6 @@ export const `!v expand('%:p:h:t')` = ({${2}}: `!v expand('%:p:h:t')`Props):JSX.
 }
 endsnippet
 
-snippet useState "useState my Hook"
-const [${1:state}, set${1}] = useState(${2})
+snippet useState "useState Hook"
+const [${1:state}, set`!p snip.rv = t[1].capitalize()`] = useState(${2});
 endsnippet

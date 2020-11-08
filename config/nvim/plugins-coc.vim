@@ -25,10 +25,11 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'honza/vim-snippets'
-Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
 Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'joaohkfaria/vim-jest-snippets'
 
 " Syntax highlight
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['js', 'jsx', 'ts', 'tsx'] }
@@ -146,8 +147,7 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 " }}}
 " Coc {{{
-let g:coc_global_extensions = ['coc-lists', 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-snippets', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go', 'coc-actions', 'coc-yaml']
-
+let g:coc_global_extensions = ['coc-lists', 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go', 'coc-actions', 'coc-yaml']
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -161,8 +161,8 @@ function! s:check_back_space() abort
 endfunction
 
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-let g:coc_snippet_next = '<TAB>'
-let g:coc_snippet_prev = '<S-TAB>'
+" let g:coc_snippet_next = '<TAB>'
+" let g:coc_snippet_prev = '<S-TAB>'
 
 " Use enter to confirm complete
 
@@ -237,12 +237,20 @@ nmap <leader>fq <Plug>(qf_qf_toggle)
 " Treesitter and theme setup {{{
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-    disable = {},  -- list of language that will be disabled
-  },
+ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+highlight = {
+  enable = true,              -- false will disable the whole extension
+  disable = {},  -- list of language that will be disabled
+},
 }
 EOF
 "}}}
-
+" Ultisnips {{{
+let g:UltiSnipsExpandTrigger="<Nop>"
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom-snippets"]
+" Jump to next/previous placeholder.
+" let g:UltiSnipsJumpForwardTrigger="<c-j>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" }}}
