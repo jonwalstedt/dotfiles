@@ -1,3 +1,5 @@
+extends javascript
+
 priority 100
 
 snippet ims "Import css module"
@@ -12,4 +14,34 @@ snippet yif "if (yanked content) { ... }"
 if (`!v @"`${1}) {
   ${2}
 }
+endsnippet
+
+snippet useState "useState" w
+const [${1:state}, set`!p snip.rv = t[1].capitalize()`] = useState(${2});
+endsnippet
+
+snippet useEffect "useEffect" w
+useEffect(() => {
+  $1
+})${0:;}
+endsnippet
+
+snippet useContext "useContext" w
+const $1 = useContext($2)${0:;}
+endsnippet
+
+snippet useCallback "useCallback" w
+useCallback(($1) => {
+	$2
+},[$3])${0:;}
+endsnippet
+
+snippet useMemo "useMemo" w
+const $1 = useMemo(() => {
+	$2
+}, [$3])${0:;}
+endsnippet
+
+snippet useRef "useRef" w
+const $1 = useRef($2)${0:;}
 endsnippet

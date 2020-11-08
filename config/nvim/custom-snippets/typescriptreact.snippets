@@ -23,8 +23,6 @@
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
 extends javascript
 
-priority 100
-
 snippet cc "Functional React component in typescript"
 import React from 'react';
 
@@ -56,8 +54,4 @@ interface `!v expand('%:p:h:t')`Props {
 export const `!v expand('%:p:h:t')` = ({${2}}: `!v expand('%:p:h:t')`Props):JSX.Element => {
   return (${2});
 }
-endsnippet
-
-snippet useState "useState Hook"
-const [${1:state}, set`!p snip.rv = t[1].capitalize()`] = useState(${2});
 endsnippet
