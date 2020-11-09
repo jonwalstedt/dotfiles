@@ -246,7 +246,7 @@ highlight = {
 EOF
 "}}}
 " Ultisnips {{{
-let g:UltiSnipsExpandTrigger="<Nop>"
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "custom-snippets"]
 " Jump to next/previous placeholder.
 " let g:UltiSnipsJumpForwardTrigger="<c-j>"

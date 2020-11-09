@@ -45,3 +45,18 @@ endsnippet
 snippet useRef "useRef" w
 const $1 = useRef($2)${0:;}
 endsnippet
+
+snippet .find "find" i
+.find(($1) => $2);
+endsnippet
+
+snippet .map "map" i
+.map(($1) => $2);
+endsnippet
+
+snippet .reduce "reduce" i
+.reduce((${VISUAL}${1:acc}, ${2:val}) => {
+  $3
+  return $1;
+}, $4);
+endsnippet
