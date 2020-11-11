@@ -3,7 +3,7 @@
   "coc.preferences.formatOnSaveFiletypes": ["css", "Markdown", "javascript", "javascriptreact", "typescript", "typescriptreact"],
   "prettier.requireConfig": true,
   "suggest.triggerAfterInsertEnter": true,
-  "suggest.noselect": true,
+  "suggest.noselect": false,
   "yaml.format.enable": true,
   "languageserver": {
     "golang": {

@@ -45,11 +45,11 @@ endsnippet
 snippet ccii "Functional React component in typescript - with interface"
 import React from 'react';
 
-interface `!v expand('%:p:h:t')`Props {
+interface `!v expand('%:t:r')`Props {
   ${1}
 }
 
-export const `!v expand('%:p:h:t')` = ({${2}}: `!v expand('%:p:h:t')`Props):JSX.Element => {
+export const `!v expand('%:t:r')` = ({${2}}: `!v expand('%:t:r')`Props):JSX.Element => {
   return (${2});
 }
 endsnippet
