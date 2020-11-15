@@ -32,12 +32,12 @@ export const ${1} = ():JSX.Element => {
 endsnippet
 
 snippet cci "Functional React component in typescript - with interface"
-interface ${1}Props {
+interface I${1}Props {
   ${2}
 }
 
-const ${1} = ({${3}}: ${1}Props):JSX.Element => {
-  return (${0:${VISUAL}});
+const ${1} = ({${3}}: I${1}Props): JSX.Element => {
+  return (${4});
 }
 endsnippet
 
@@ -45,12 +45,12 @@ endsnippet
 snippet ccii "Functional React component in typescript - with interface"
 import React from 'react';
 
-interface `!v expand('%:t:r')`Props {
+interface I`!v expand('%:t:r')`Props {
   ${1}
 }
 
-export const `!v expand('%:t:r')` = ({${2}}: `!v expand('%:t:r')`Props):JSX.Element => {
-  return (${2});
+export const `!v expand('%:t:r')` = ({${2}}: I`!v expand('%:t:r')`Props):JSX.Element => {
+  return (${3});
 }
 endsnippet
 
