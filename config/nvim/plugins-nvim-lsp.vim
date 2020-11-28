@@ -31,7 +31,7 @@ Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
-Plug 'neovim/nvim-lsp'
+Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'christianchiarulli/nvcode.vim'
@@ -148,8 +148,8 @@ map <leader>k <Plug>(easymotion-k)
 " nvim-lsp {{{
 if GetNVimVersion() != "0.4.3"
 lua <<EOF
-local nvim_lsp = require 'nvim_lsp'
-nvim_lsp.tsserver.setup({config})
+local lspconfig = require 'lspconfig'
+lspconfig.tsserver.setup({config})
 EOF
 
 set omnifunc=lsp#omnifunc
@@ -198,7 +198,7 @@ endif
 " }}}
 " lsp-diagnostics {{{
 " diagnostic-nvim
-lua require'nvim_lsp'.pyls.setup{on_attach=require'diagnostic'.on_attach}
+lua require'lspconfig'.pyls.setup{on_attach=require'diagnostic'.on_attach}
 let g:diagnostic_virtual_text_prefix = ' '
 let g:diagnostic_trimmed_virtual_text = '20'
 let g:space_before_virtual_text = 5

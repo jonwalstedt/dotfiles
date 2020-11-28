@@ -30,6 +30,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
+" Plug 'mattn/emmet-vim'
 
 " Syntax highlight
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['js', 'jsx', 'ts', 'tsx'] }
@@ -37,7 +38,7 @@ Plug 'hail2u/vim-css3-syntax', { 'for': ['css'] }
 Plug 'jparise/vim-graphql'
 Plug 'joshdick/onedark.vim'
 Plug 'haishanh/night-owl.vim'
-Plug 'christianchiarulli/nvcode.vim'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'nvim-treesitter/nvim-treesitter'
 
 
@@ -244,6 +245,12 @@ highlight = {
 },
 }
 EOF
+
+" checks if your terminal has 24-bit color support
+if (has("termguicolors"))
+    set termguicolors
+    hi LineNr ctermbg=NONE guibg=NONE
+endif
 "}}}
 " Ultisnips {{{
 let g:UltiSnipsExpandTrigger="<Nop>"
