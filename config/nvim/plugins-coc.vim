@@ -30,7 +30,8 @@ Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
-" Plug 'mattn/emmet-vim'
+Plug 'meain/vim-package-info', { 'do': 'npm install' }
+
 
 " Syntax highlight
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['js', 'jsx', 'ts', 'tsx'] }
@@ -39,11 +40,12 @@ Plug 'jparise/vim-graphql'
 Plug 'joshdick/onedark.vim'
 Plug 'haishanh/night-owl.vim'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
-Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'nvim-treesitter/nvim-treesitter'
 
 
 " Colorschemes
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'ryuta69/elly.vim'
 Plug 'jonwalstedt/vim-myhelp'
 call plug#end()
 "}}}
@@ -59,10 +61,11 @@ nnoremap <silent> <C-p> :call FZFWithDevIcons()<CR>
 nnoremap <silent> <leader>p :Buffers<CR>
 nnoremap <silent> <leader>ff :Ag<CR>
 nnoremap <silent> <leader>hh :History:<CR>
+nnoremap <silent> <leader>fl :BLines<CR>
 nnoremap <silent> <leader>fh :History<CR>
 nnoremap <silent> <leader>fg :Ag <C-R><C-W><CR>
 nnoremap <silent> <leader>fd :BD<CR>
-inoremap <silent> <c-space> <esc>:Snippets<CR>
+" inoremap <silent> <c-space> <esc>:Snippets<CR>
 
 imap <c-f> <plug>(fzf-complete-path)
 imap <c-l> <plug>(fzf-complete-line)
@@ -95,14 +98,15 @@ command! ToggleGStatus :call ToggleGStatus()
 " Fugitive (toggle git status panel)
 nnoremap <silent> <localleader><space> :call ToggleGStatus()<cr>
 nnoremap <silent> §<space> :call ToggleGStatus()<cr>
-nnoremap <leader>fv :Gvdiff<CR>
-nnoremap <leader>fl :Glog -10 -- %<CR>
+nnoremap <localleader>v :Gvdiffsplit<CR>
+nnoremap <localleader>l :Glog -10 -- %<CR>
 "}}}
 " gv.vim  {{{
 command! GV call plug#load('vim-fugitive', 'gv.vim') | GV
 "}}}
 " Dirvish  {{{
 let g:dirvish_mode = ':sort ,^.*[\/],'
+let g:loaded_netrwPlugin = 0
 
 augroup dirvish_config
   autocmd!
@@ -148,7 +152,7 @@ map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 " }}}
 " Coc {{{
-let g:coc_global_extensions = ['coc-lists', 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-css', 'coc-eslint', 'coc-tslint', 'coc-tslint-plugin', 'coc-go', 'coc-actions', 'coc-yaml']
+let g:coc_global_extensions = ['coc-lists', 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-html', 'coc-jest', 'coc-ultisnips', 'coc-css', 'coc-eslint', 'coc-go', 'coc-actions', 'coc-yaml', 'coc-emmet']
 
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? coc#_select_confirm() :
@@ -171,7 +175,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
 
 " Use <c-space> for trigger completion.
-inoremap <silent><expr> <localleader>cc coc#refresh()
+inoremap <silent><expr> <C><space> coc#refresh()
 
 " Use `[c` and `]c` for navigate diagnostics
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
@@ -236,16 +240,16 @@ let g:qf_mapping_ack_style = 1
 nmap <leader>fq <Plug>(qf_qf_toggle)
 " }}}
 " Treesitter and theme setup {{{
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-highlight = {
-  enable = true,              -- false will disable the whole extension
-  disable = {},  -- list of language that will be disabled
-},
-}
-EOF
-
+" lua << EOF
+" require'nvim-treesitter.configs'.setup {
+" ensure_installed = "all", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+" highlight = {
+"   enable = true,              -- false will disable the whole extension
+"   disable = {},  -- list of language that will be disabled
+" },
+" }
+" EOF
+"
 " checks if your terminal has 24-bit color support
 if (has("termguicolors"))
     set termguicolors

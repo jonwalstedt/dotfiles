@@ -128,11 +128,11 @@ nnoremap <C-w>f :vertical wincmd f<CR>
 " }}}
 " Netrw {{{
 " opens netrw in the current window
-nnoremap <localleader>e :Explore<CR>
+"nnoremap <localleader>e :Explore<CR>
 " opens netrw in a horizontal split
-nnoremap <localleader>x :Sexplore<CR>
+"nnoremap <localleader>x :Sexplore<CR>
 " opens netrw in a vertical split
-nnoremap <localleader>v :Vexplore<CR>
+"nnoremap <localleader>v :Vexplore<CR>
 
 " Refresh netrw directory listing using <C-l>
 " }}}

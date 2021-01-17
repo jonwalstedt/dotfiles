@@ -56,6 +56,7 @@ set termguicolors
 " colorscheme onedark
 " colorscheme night-owl
 " colorscheme dracula
+" colorscheme elly
 
 colorscheme nvcode
 set nocursorline                                  " Disable Highlight current row
@@ -64,8 +65,6 @@ highlight Comment cterm=italic
 let g:nvcode_hide_endofbuffer=1
 let g:nvcode_terminal_italics=1
 let g:nvcode_termcolors=256
-
-
 
 " checks if your terminal has 24-bit color support
 if (has("termguicolors"))
@@ -194,8 +193,13 @@ set tags=./.tags,.tags;
 "highlight InactiveWindow guibg=#282c34
 
 " Night Owl and Dracula
-highlight ActiveWindow guibg=#051626
-highlight InactiveWindow guibg=#1f2730
+" highlight ActiveWindow guibg=#051626
+" highlight InactiveWindow guibg=#1f2730
+" highlight VertSplit guibg=#051626 guifg=#1f2730
+
+" Elly
+highlight ActiveWindow guibg=#0c1317
+highlight InactiveWindow guibg=#111a20
 highlight VertSplit guibg=#051626 guifg=#1f2730
 set winhighlight=Normal:ActiveWindow,NormalNC:InactiveWindow
 " }}}

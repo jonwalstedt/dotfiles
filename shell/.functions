@@ -79,3 +79,7 @@ function gitPull() {
 }
 
 bindkey -s "^ g" "gitPull^J"
+
+killport() {
+  kill $(lsof -ti:$1)
+}
