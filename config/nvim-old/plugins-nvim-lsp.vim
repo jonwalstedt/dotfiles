@@ -9,6 +9,28 @@ if !filereadable(autoload_plug_path)
 endif
 unlet autoload_plug_path
 
+"---- vim-plug setup  ----
+let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
+if has('win32')&&!has('win64')
+  let curl_exists=expand('C:\Windows\Sysnative\curl.exe')
+else
+  let curl_exists=expand('curl')
+endif
+
+if !filereadable(vimplug_exists)
+  if !executable(curl_exists)
+    echoerr "You have to install curl or first install vim-plug yourself!"
+    execute "q!"
+  endif
+  echo "Installing Vim-Plug..."
+  echo ""
+  silent exec "!"curl_exists" -fLo " . shellescape(vimplug_exists) . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+  let g:not_finish_vimplug = "yes"
+
+  autocmd VimEnter * PlugInstall
+endif
+
+"-------- end vim-plug setup ----
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -25,7 +47,7 @@ Plug 'justinmk/vim-dirvish'
 Plug 'romainl/vim-qlist'
 Plug 'romainl/vim-qf'
 Plug 'editorconfig/editorconfig-vim'
-" Plug 'tmsvg/pear-tree'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'joaohkfaria/vim-jest-snippets'
 Plug 'ryanoasis/vim-devicons'
@@ -33,7 +55,6 @@ Plug 'ryanoasis/vim-devicons'
 
 " LSP
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -41,9 +62,9 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/diagnostic-nvim'
 Plug 'christianchiarulli/nvcode.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/completion-treesitter'
 Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
+Plug 'hrsh7th/nvim-compe'
 
 " Syntax highlight
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['ts', 'tsx'] }
@@ -54,6 +75,12 @@ Plug 'jparise/vim-graphql'
 Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 "}}}
+
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
 
 " Plugin settings
 " FZF Fuzzyfinder {{{
@@ -150,114 +177,35 @@ let g:EasyMotion_keys = 'abcdefghijklmnopqrstuvwy'
 map <leader>j <Plug>(easymotion-j)
 map <leader>k <Plug>(easymotion-k)
 " }}}
+
+
 " nvim-lsp {{{
 lua require('init')
-" Display LSP diagnostics to statusline
-
-function! LSP_StatusLine() abort
-    " let l:diagnostics = luaeval("require('lsp-status').diagnostics()")
-    let l:diagnostics = { 'errors': 0, 'warnings': 0 }
-    let l:errors = l:diagnostics.errors
-    let l:warnings = l:diagnostics.warnings
-
-    if l:errors > 0 || l:warnings > 0
-        return printf('LSP %d 🔴 %d 🟡', l:errors, l:warnings)
-    endif
-
-    return ''
-endfunction
-
-" Register LSP keys
-function! LSP_RegisterKeys()
-    nnoremap <silent> <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
-    nnoremap <silent> <leader>a<leader> <cmd>lua vim.lsp.diagnostic.code_action()<CR>
-    nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
-    nnoremap <silent> gt <cmd>lua vim.lsp.buf.implementation()<CR>
-    nnoremap <silent> <leader>lf <cmd>lua vim.lsp.buf.formatting()<CR>
-    nnoremap <silent> <leader>lr <cmd>lua vim.lsp.buf.references()<CR>
-    nnoremap <silent> <leader>lh <cmd>lua vim.lsp.buf.hover()<CR>
-    nnoremap <silent> <leader>le <cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
-    nnoremap <silent> [c <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-    nnoremap <silent> ]c <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-endfunction
-
-function! ToggleConceal()
-    if &conceallevel == 0
-        set conceallevel=2
-    elseif &conceallevel == 2
-        set conceallevel=0
-    endif
-endfunction
-
-" if GetNVimVersion() != "0.4.3"
-" lua <<EOF
-" local lspconfig = require 'lspconfig'
-" lspconfig.tsserver.setup({config})
-" EOF
-
-set omnifunc=lsp#omnifunc
-" nnoremap <silent>gD    <cmd>lua vim.lsp.buf.declaration()<CR>
-" nnoremap <silent>gt    <cmd>lua vim.lsp.buf.implementation()<CR>
-" nnoremap <silent><gd> <cmd>lua vim.lsp.buf.definition()<CR>
-" nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
-" nnoremap <silent><c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
-" nnoremap <silent>1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
-" endif
 "}}}
-" treesitter {{{
-if GetNVimVersion() != "0.4.3"
-lua <<EOF
-local status, nvim_ts = pcall(require, 'nvim-treesitter.configs')
-if (status) then
-  nvim_ts.setup {
-    ensure_installed = 'all',
-    highlight = {
-      enable = true,
-    },
-  }
-end
-EOF
-endif
-"}}}
-" completion-nvim {{{
-" Use completion-nvim in every buffer
-if GetNVimVersion() != "0.4.3"
-autocmd BufEnter * lua require'completion'.on_attach()
- let g:completion_enable_auto_popup = 1
-let g:completion_auto_change_source = 0
-let g:completion_enable_auto_hover = 1
-" Set completeopt to have a better completion experience
-" set omnifunc=v:lua.vim.lsp.omnifunc
-set completeopt=menuone,noinsert,noselect
-" Avoid showing message extra message when using completion
-set shortmess+=c
-" completion-nvim
 
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-endif
-" }}}
 " lsp-diagnostics {{{
 " diagnostic-nvim
-lua require'lspconfig'.pyls.setup{on_attach=require'diagnostic'.on_attach}
-let g:diagnostic_virtual_text_prefix = ' '
-let g:diagnostic_trimmed_virtual_text = '20'
-let g:space_before_virtual_text = 5
-let g:diagnostic_enable_virtual_text = 1
-let g:diagnostic_insert_delay = 1
-let g:diagnostic_auto_popup_while_jump = 1
-let g:diagnostic_show_sign = 0
+" lua require'lspconfig'.pyls.setup{on_attach=require'diagnostic'.on_attach}
+" let g:diagnostic_virtual_text_prefix = ' '
+" let g:diagnostic_trimmed_virtual_text = '20'
+" let g:space_before_virtual_text = 5
+" let g:diagnostic_enable_virtual_text = 1
+" let g:diagnostic_insert_delay = 1
+" let g:diagnostic_auto_popup_while_jump = 1
+" let g:diagnostic_show_sign = 0
 " }}}
-" lsputils {{{
-lua <<EOF
-vim.lsp.callbacks['textDocument/codeAction'] = require'lsputil.codeAction'.code_action_handler
-vim.lsp.callbacks['textDocument/references'] = require'lsputil.locations'.references_handler
-vim.lsp.callbacks['textDocument/definition'] = require'lsputil.locations'.definition_handler
-vim.lsp.callbacks['textDocument/declaration'] = require'lsputil.locations'.declaration_handler
-vim.lsp.callbacks['textDocument/typeDefinition'] = require'lsputil.locations'.typeDefinition_handler
-vim.lsp.callbacks['textDocument/implementation'] = require'lsputil.locations'.implementation_handler
-vim.lsp.callbacks['textDocument/documentSymbol'] = require'lsputil.symbols'.document_handler
-vim.lsp.callbacks['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
-EOF
-"}}}
+
+" Errors in Red
+" hi LspDiagnosticsVirtualTextError guifg=Red ctermfg=Red
+" " Warnings in Yellow
+" hi LspDiagnosticsVirtualTextWarning guifg=Yellow ctermfg=Yellow
+" " Info and Hints in White
+" hi LspDiagnosticsVirtualTextInformation guifg=White ctermfg=White
+" hi LspDiagnosticsVirtualTextHint guifg=White ctermfg=White
+"
+" " Underline the offending code
+" hi LspDiagnosticsUnderlineError guifg=NONE ctermfg=NONE cterm=underline gui=underline
+" hi LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=underline gui=underline
+" hi LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline
+" hi LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline
+

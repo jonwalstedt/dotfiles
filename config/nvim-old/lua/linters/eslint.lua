@@ -34,4 +34,3 @@ local eslint = {
 }
 
 return eslint
-
