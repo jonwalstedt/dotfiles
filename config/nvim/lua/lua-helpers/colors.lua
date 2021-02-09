@@ -6,7 +6,14 @@ local function highlight(key, fg, bg)
   end
 end
 
+local palette = {
+    green = '#30d130',
+    cyan = '#30d130',
+    yellow = '#f5ee27',
+    red = '#f52727',
+}
 
 return {
-    highlight = highlight
+    highlight = highlight,
+    palette = palette,
 }

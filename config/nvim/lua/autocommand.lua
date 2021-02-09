@@ -39,3 +39,7 @@ vim.cmd[[augroup sneak]]
   vim.cmd[[autocmd ColorScheme * hi! Sneak guifg=black guibg=aqua ctermfg=black ctermbg=green]]
 vim.cmd[[augroup END]]
 
+vim.cmd[[augroup formatting_sync]]
+  vim.cmd[[autocmd!]]
+  vim.cmd[[autocmd BufWritePost * silent! lua vim.lsp.buf.formatting()]]
+vim.cmd[[augroup END]]

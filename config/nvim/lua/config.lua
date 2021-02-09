@@ -19,7 +19,7 @@ vim.g.python2_host_prog = '/usr/local/bin/python2'
 vim.g.python3_host_prog = '/usr/local/bin/python3'
 
 -- Include current directory in path
--- set 'path+=.'
+set 'path+=.'
 
 -- Case insensitive :search etc.
 set 'wildignorecase'
@@ -110,13 +110,14 @@ set ('foldtext', 'NeatFoldText()')
 
 -- Colors
 set 'termguicolors'
-vim.cmd('colorscheme nvcode')
+vim.cmd('colorscheme onedark')
 
 -- Disable Highlight current row
 set 'nocursorline'
 set 'termguicolors'
 
 highlight('Comment', 'italic')
+highlight('Comment', '#666666')
 -- highlight Comment cterm=italic
 
 -- checks if your terminal has 24-bit color support
@@ -156,7 +157,7 @@ set ('signcolumn', 'yes')
 
 
 -- Search
--- set ('grepprg', 'ag --vimgrep')
+set ('grepprg', 'ag\\ --vimgrep')
 
 -- Make searching case insensitive.
 set 'ignorecase'

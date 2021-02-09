@@ -9,7 +9,6 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-
 -- configuring diagnostics
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -20,7 +19,30 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
   }
 )
 
+-- Customize diagnostics signs
+local function set_sign(type, icon)
+  local sign = string.format("LspDiagnosticsSign%s", type)
+  local texthl = string.format("LspDiagnosticsDefault%s", type)
+  vim.fn.sign_define(sign, {text = icon, texthl = texthl})
+end
 
+set_sign("Hint", "")
+set_sign("Information", "")
+set_sign("Warning", "")
+set_sign("Error", "ﰸ")
+
+-- Customize diagnostics highlights
+local function set_highlight(type, color)
+  vim.cmd(string.format("highlight! LspDiagnosticsDefault%s guifg=%s", type, color))
+end
+
+local colors = require 'lua-helpers/colors'
+local palette = colors.palette
+
+set_highlight("Hint", palette.green)
+set_highlight("Information", palette.cyan)
+set_highlight("Warning", palette.yellow)
+set_highlight("Error", palette.red)
 
 -- configuring LSP servers
 local on_attach_common = function(_)
@@ -51,8 +73,14 @@ local on_attach_common = function(_)
 
 end
 
+-- JSON
+lsp.jsonls.setup{on_attach=on_attach_common}
+
 -- Typescript
-lsp.tsserver.setup{on_attach=on_attach_common}
+lsp.tsserver.setup{
+  on_attach=on_attach_common,
+  capabilities = capabilities,
+}
 
 -- HTML
 lsp.html.setup{
@@ -104,6 +132,40 @@ lsp.sumneko_lua.setup({
     on_attach = on_attach_common
 })
 
+-- Diagnostic LSP
+local eslint = require('./linters/eslint')
+local prettier = require('./formatters/prettier')
+local prettier_standard = require('./formatters/prettier-standard')
+lsp.diagnosticls.setup {
+    on_attach = on_attach_common,
+    filetypes = {
+        'javascript',
+        'javascriptreact',
+        'typescript',
+        'typescriptreact',
+    },
+    init_options = {
+        filetypes = {
+            javascript = 'eslint',
+            javascriptreact = 'eslint',
+            typescript = 'eslint',
+            typescriptreact = 'eslint',
+        },
+        formatFiletypes = {
+            javascript = 'prettier',
+            javascriptreact = 'prettier',
+            typescript = 'prettier',
+            typescriptreact = 'prettier',
+        },
+        linters = {
+            eslint = eslint,
+        },
+        formatters = {
+            prettier = prettier,
+            prettier_standard = prettier_standard,
+        },
+    },
+}
 
 -- nvim-lsputils configuration
 vim.g.lsp_utils_location_opts = {
