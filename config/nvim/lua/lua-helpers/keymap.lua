@@ -37,6 +37,10 @@ local function omap(command, value, opts)
     map_keys('o', command, value, opts)
 end
 
+local function smap(command, value, opts)
+    map_keys('s', command, value, opts)
+end
+
 return {
     map = map,
     nmap = nmap,
@@ -46,4 +50,5 @@ return {
     cmap = cmap,
     xmap = xmap,
     omap = omap,
+    smap = smap,
 }
