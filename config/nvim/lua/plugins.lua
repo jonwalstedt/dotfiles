@@ -23,9 +23,12 @@ plug {
   'editorconfig/editorconfig-vim',
   'ryanoasis/vim-devicons',
   'sheerun/vim-polyglot',
-  'SirVer/ultisnips',
-  'honza/vim-snippets',
-  'joaohkfaria/vim-jest-snippets',
+  'hrsh7th/vim-vsnip',
+  'hrsh7th/vim-vsnip-integ',
+
+  -- 'SirVer/ultisnips',
+  -- 'honza/vim-snippets',
+  -- 'joaohkfaria/vim-jest-snippets',
 
   -- NVIM LSP
   'RishabhRD/nvim-lsputils',
@@ -145,15 +148,19 @@ require'compe'.setup {
     documentation = true,
     source = {
         path = {
+	    menu = '[PATH]',
             priority = 9
         },
         buffer = {
+	    menu = '[BUF]',
             priority = 8
         },
         vsnip = {
-            priority = 9
+	    menu = '[SPT]',
+            priority = 10
         },
         nvim_lsp = {
+	    menu = '[LSP]',
             priority = 10,
             sort = false
         },
@@ -202,11 +209,19 @@ _G.s_tab_complete = function()
   end
 end
 
+-- SET SNIPPETS PATH
+vim.g.vsnip_snippet_dir = vim.fn.stdpath("config").."/snippets"
+vim.g.vsnip_filetypes = {
+  javascriptreact = {'javascript', 'html'},
+  typescriptreact = {'typescript', 'html'}
+}
+
 imap("<C-Space>", "compe#complete()", {expr = true})
 imap("<CR>", "compe#confirm('<CR>')", {expr = true})
 imap("<C-e>", "compe#close('<C-e>')", {expr = true})
 imap("<C-f>", "compe#scroll({ 'delta': +4 })", {expr = true})
 imap("<C-d>", "compe#scroll({ 'delta': -4 })", {expr = true})
+
 imap("<Tab>", "v:lua.tab_complete()", {expr = true})
 imap("<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 smap("<Tab>", "v:lua.tab_complete()", {expr = true})
