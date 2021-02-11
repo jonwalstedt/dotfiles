@@ -105,32 +105,32 @@ lsp.cssls.setup{
 }
 
 -- Lua language server
-local system_name
-if vim.fn.has("mac") == 1 then
-  system_name = "macOS"
-elseif vim.fn.has("unix") == 1 then
-  system_name = "Linux"
-elseif vim.fn.has('win32') == 1 then
-  system_name = "Windows"
-else
-  print("Unsupported system for sumneko")
-end
-
-local sumneko_root_path = '/Users/jonwalstedt/repos/language-servers/lua/lua-language-server'
-local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
-lsp.sumneko_lua.setup({
-    cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-    settings = {
-        Lua = {
-            diagnostics = {
-                enable = true,
-                globals = { "vim" },
-            },
-        }
-    },
-
-    on_attach = on_attach_common
-})
+-- local system_name
+-- if vim.fn.has("mac") == 1 then
+--   system_name = "macOS"
+-- elseif vim.fn.has("unix") == 1 then
+--   system_name = "Linux"
+-- elseif vim.fn.has('win32') == 1 then
+--   system_name = "Windows"
+-- else
+--   print("Unsupported system for sumneko")
+-- end
+-- 
+-- local sumneko_root_path = '/Users/jonwalstedt/repos/language-servers/lua/lua-language-server'
+-- local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+-- lsp.sumneko_lua.setup({
+--     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+--     settings = {
+--         Lua = {
+--             diagnostics = {
+--                 enable = true,
+--                 globals = { "vim" },
+--             },
+--         }
+--     },
+-- 
+--     on_attach = on_attach_common
+-- })
 
 -- Diagnostic LSP
 local eslint = require('./linters/eslint')

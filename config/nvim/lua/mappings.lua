@@ -91,13 +91,13 @@ nmap('H', '^')
 vmap('H', '^')
 omap('H', '^')
 
--- Move to beginning of last line of paragraph
-nmap('<leader>hh', '}k_')
-vmap('<leader>hh', '}k_')
+-- -- Move to beginning of last line of paragraph
+-- nmap('<leader>hh', '}k_')
+-- vmap('<leader>hh', '}k_')
 
--- Move to beginning of first line of paragraph
-nmap('<leader>gg', '{j_')
-vmap('<leader>gg', '{j_')
+-- -- Move to beginning of first line of paragraph
+-- nmap('<leader>gg', '{j_')
+-- vmap('<leader>gg', '{j_')
 
 -- Terminal
 nmap('<Leader>t<Leader>', ':te<CR>')

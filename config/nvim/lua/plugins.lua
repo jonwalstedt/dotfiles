@@ -134,44 +134,53 @@ vim.g.UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
 -- Compe
 require'compe'.setup {
-    enabled = true,
-    autocomplete = true,
-    debug = false,
-    min_length = 1,
-    preselect = 'enable',
-    throttle_time = 80,
-    source_timeout = 200,
-    incomplete_delay = 400,
-    max_abbr_width = 100,
-    max_kind_width = 100,
-    max_menu_width = 100,
-    documentation = true,
-    source = {
-        path = {
-	    menu = '[PATH]',
-            priority = 9
-        },
-        buffer = {
-	    menu = '[BUF]',
-            priority = 8
-        },
-        vsnip = {
-	    menu = '[SPT]',
-            priority = 10
-        },
-        nvim_lsp = {
-	    menu = '[LSP]',
-            priority = 10,
-            sort = false
-        },
-        calc = true,
-        nvim_lua = true,
-        spell = true,
-        tags = true,
-        snippets_nvim = true,
-        treesitter = true,
-    };
+  enabled = true,
+  autocomplete = true,
+  debug = false,
+  min_length = 1,
+  preselect = 'enable',
+  throttle_time = 80,
+  source_timeout = 200,
+  incomplete_delay = 400,
+  max_abbr_width = 100,
+  max_kind_width = 100,
+  max_menu_width = 100,
+  documentation = true,
+  source = {
+    path = {
+      menu = '[PATH]',
+      priority = 9
+    },
+    buffer = {
+      menu = '[BUF]',
+      priority = 8
+    },
+    vsnip = {
+      menu = '[SPT]',
+      priority = 10
+    },
+    nvim_lsp = {
+      menu = '[LSP]',
+      priority = 10,
+      sort = false
+    },
+    calc = true,
+    nvim_lua = true,
+    spell = true,
+    tags = true,
+    snippets_nvim = true,
+    treesitter = true,
+  };
 }
+
+-- SET SNIPPETS PATH
+vim.g.vsnip_snippet_dir = vim.fn.stdpath("config").."/snippets"
+vim.g.vsnip_filetypes = {
+  javascriptreact = {'javascript', 'html'},
+  typescriptreact = {'typescript', 'html'}
+}
+
+
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -208,13 +217,6 @@ _G.s_tab_complete = function()
     return t "<S-Tab>"
   end
 end
-
--- SET SNIPPETS PATH
-vim.g.vsnip_snippet_dir = vim.fn.stdpath("config").."/snippets"
-vim.g.vsnip_filetypes = {
-  javascriptreact = {'javascript', 'html'},
-  typescriptreact = {'typescript', 'html'}
-}
 
 imap("<C-Space>", "compe#complete()", {expr = true})
 imap("<CR>", "compe#confirm('<CR>')", {expr = true})

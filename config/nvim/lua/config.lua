@@ -19,7 +19,7 @@ vim.g.python2_host_prog = '/usr/local/bin/python2'
 vim.g.python3_host_prog = '/usr/local/bin/python3'
 
 -- Include current directory in path
-set 'path+=.'
+set 'path=.'
 
 -- Case insensitive :search etc.
 set 'wildignorecase'
@@ -157,7 +157,7 @@ set ('signcolumn', 'yes')
 
 
 -- Search
-set ('grepprg', 'ag\\ --vimgrep')
+set ('grepprg', 'ag\\ --vimgrep\\ --nogroup\\ --nocolor')
 
 -- Make searching case insensitive.
 set 'ignorecase'
