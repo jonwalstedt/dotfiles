@@ -42,6 +42,9 @@ nmap('<leader>e', ':e<CR>')
 -- Close all other wndows
 nmap('<leader>do', ':only<CR>')
 
+-- Update current buffer and close all other buffers
+nmap('<leader>d<CR>', ':wa<bar>%bd!<bar>e#<bar>bd#<CR>')
+
 -- Move window to new tab
 nmap('<leader>tt', '<C-w>T')
 
