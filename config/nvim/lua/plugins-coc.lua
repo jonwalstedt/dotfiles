@@ -137,12 +137,13 @@ local function check_back_space()
 end
 
 local fn = vim.fn
-imap('<TAB>', [[pumvisible() ?
-  coc#_select_confirm() :
+
+imap('<TAB>', [[
+  pumvisible() ? coc#_select_confirm() :
     coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-    <SID>check_back_space() ? "\<TAB>" :
+    check_back_space() ? "\<TAB>" :
     coc#refresh()
-]], {expr = true})
+]])
 
 imap('<cr>', 'pumvisible() ? "<C-y>" : "<C-g>u<CR>"', {expr = true})
 
@@ -166,7 +167,7 @@ nmap('<leader>fi', '<Plug>(coc-implementation)')
 nmap('<leader>fr', '<Plug>(coc-references)')
 nmap('<leader>rn', '<Plug>(coc-rename)')
 -- Use K for show documentation in preview window
-nmap('K', ':call <SID>show_documentation()<CR>')
+nmap('K', ':call show_documentation()<CR>')
 
 
 -- Using CocList
@@ -185,7 +186,7 @@ local function cocActionsOpenFromSelected(type)
 end
 
 xmap('<leader>a', ":<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>")
-nmap('<leader>a', ':<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@')
+nmap('<leader>a', ':<C-u>set operatorfunc=cocActionsOpenFromSelected<CR>g@')
 
 
 -- Ultisnips
