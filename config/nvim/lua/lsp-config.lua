@@ -169,6 +169,9 @@ lsp.terraformls.setup {
 lsp.tsserver.setup {
     capabilities = capabilities,
     on_attach = function(client)
+        if client.config.flags then
+            client.config.flags.allow_incremental_sync = true
+        end
         client.resolved_capabilities.document_formatting = false
         on_attach_common(client)
     end
@@ -205,6 +208,22 @@ local prettier = require "efm/prettier"
 local eslint = require "efm/eslint"
 local terraform = require "efm/terraform"
 
+local function eslint_config_exists()
+  local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
+
+  if not vim.tbl_isempty(eslintrc) then
+    return true
+  end
+
+  if vim.fn.filereadable("package.json") then
+    if vim.fn.json_decode(vim.fn.readfile("package.json"))["eslintConfig"] then
+      return true
+    end
+  end
+
+  return false
+end
+
 -- https://github.com/mattn/efm-langserver
 lsp.efm.setup {
     on_attach = function(client)
@@ -212,8 +231,14 @@ lsp.efm.setup {
         on_attach_common(client)
     end,
     init_options = {documentFormatting = true},
+    root_dir = function()
+        if not eslint_config_exists() then
+            return nil
+        end
+        return vim.fn.getcwd()
+    end,
     settings = {
-        rootMarkers = {".git/"},
+        -- rootMarkers = {".git/"},
         languages = {
             lua = {luafmt},
             go = {golint, goimports},
@@ -221,6 +246,8 @@ lsp.efm.setup {
             javascript = {prettier, eslint},
             typescriptreact = {prettier, eslint},
             javascriptreact = {prettier, eslint},
+            ["javascript.jsx"] = {prettier, eslint},
+            ["typescript.tsx"] = {prettier, eslint},
             yaml = {prettier},
             json = {prettier},
             html = {prettier},

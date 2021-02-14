@@ -5,6 +5,7 @@ root-markers:
   - .git/
   - package.json
   - .eslintrc.cjs
+  - .eslintrc.js
 
 tools:
   eruby-erb: &eruby-erb
@@ -88,6 +89,8 @@ tools:
     root-markers:
       - .git/
       - .eslintrc.cjs
+      - .eslintrc.js
+      - .eslintrc
 
   prettier: &prettier
     format-command: './node_modules/.bin/prettier'
