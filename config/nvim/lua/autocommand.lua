@@ -8,11 +8,6 @@ vim.cmd[[augroup xresources]]
   vim.cmd[[autocmd BufWritePost *Xresources,*Xdefaults !xrdb -load %]]
 vim.cmd[[augroup END]]
 
-vim.cmd[[augroup formatting_sync]]
-  vim.cmd[[autocmd!]]
-  vim.cmd[[autocmd BufWritePost * silent! lua vim.lsp.buf.formatting_sync()]]
-vim.cmd[[augroup END]]
-
 vim.cmd[[augroup terminal]]
   vim.cmd[[autocmd!]]
   vim.cmd[[autocmd TermOpen * setlocal nonumber | setlocal signcolumn=no]]
