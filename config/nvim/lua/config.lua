@@ -109,19 +109,20 @@ set ('foldtext', 'NeatFoldText()')
 
 
 -- Colors
+vim.cmd('syntax on')
+vim.g.nvcode_termcolors = 256
 set 'termguicolors'
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme nvcode')
+highlight('CursorLineNR', '#f00')
 
 -- Disable Highlight current row
-set 'nocursorline'
+set 'cursorline'
 set 'termguicolors'
 
 highlight('Comment', 'italic')
 highlight('Comment', '#666666')
 -- highlight Comment cterm=italic
-
--- checks if your terminal has 24-bit color support
-highlight('LineNr', 'NONE')
+-- highlight('LineNr', 'NONE')
 
 
 

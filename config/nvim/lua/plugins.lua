@@ -25,6 +25,7 @@ plug {
   'sheerun/vim-polyglot',
   'hrsh7th/vim-vsnip',
   'hrsh7th/vim-vsnip-integ',
+  'norcalli/snippets.nvim',
 
   -- 'SirVer/ultisnips',
   -- 'honza/vim-snippets',
@@ -43,6 +44,7 @@ plug {
   'jparise/vim-graphql',
 
   -- Colorschemes
+  'christianchiarulli/nvcode-color-schemes.vim',
   'joshdick/onedark.vim',
   'haishanh/night-owl.vim',
   'christianchiarulli/nvcode-color-schemes.vim',
