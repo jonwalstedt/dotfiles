@@ -37,6 +37,7 @@ plug {
   'neovim/nvim-lspconfig',
   'hrsh7th/nvim-compe',
   'nvim-treesitter/nvim-treesitter',
+  'alexaandru/nvim-lspupdate',
 
   -- Language
   'HerringtonDarkholme/yats.vim',
