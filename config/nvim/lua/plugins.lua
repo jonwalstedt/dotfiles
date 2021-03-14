@@ -9,6 +9,7 @@ end
 plug {
   'junegunn/fzf',
   'junegunn/fzf.vim',
+  'chengzeyi/fzf-preview.vim',
   'andymass/vim-matchup',
   'airblade/vim-gitgutter',
   'tpope/vim-fugitive',
@@ -68,14 +69,13 @@ local highlight = colors.highlight
 
 
 -- FZF
--- vim.g.fzf_layout = { 'window': 'call CustomFZF#Float()' }
-nmap('<C-p>', ':call CustomFZF#WithDevIcons()<CR>')
+nmap('<C-p>', ':call CustomFZF#FilesWithDevIcons()<CR>')
 nmap('<leader>p', ':Buffers<CR>')
-nmap('<leader>ff', ':Ag<CR>')
-nmap('<leader>hh', ':History:<CR>')
-nmap('<leader>fl', ':BLines<CR>')
-nmap('<leader>fh', ':History<CR>')
-nmap('<leader>fg', ':Ag <C-R><C-W><CR>')
+nmap('<leader>ff', ':FZFAg<CR>')
+nmap('<leader>fg', ':FZFAg<CR>')
+nmap('<leader>hh', ':FZFHistory:<CR>')
+nmap('<leader>fl', ':FZFBLines<CR>')
+nmap('<leader>fh', ':FZFHistory<CR>')
 nmap('<leader>fd', ':BD<CR>')
 
 imap('<C-f>', '<Plug>(fzf-complete-path)', {})
@@ -167,9 +167,12 @@ require'compe'.setup {
       priority = 10,
       sort = false
     },
+    spell = {
+      menu = '[SPELL]',
+      priority = 6,
+    },
     calc = true,
     nvim_lua = true,
-    spell = true,
     tags = true,
     snippets_nvim = true,
     treesitter = true,

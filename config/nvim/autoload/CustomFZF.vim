@@ -1,33 +1,7 @@
-function! CustomFZF#Float()
-  let buf = nvim_create_buf(v:false, v:true)
-  call setbufvar(buf, '&signcolumn', 'no')
-
-  let height = float2nr(50)
-  let width = float2nr(180)
-  let horizontal = float2nr((&columns - width) / 2)
-  let vertical = 10
-
-  let opts = {
-        \ 'relative': 'editor',
-        \ 'row': vertical,
-        \ 'col': horizontal,
-        \ 'width': width,
-        \ 'height': height,
-        \ 'style': 'minimal'
-        \ }
-
-  call nvim_open_win(buf, v:true, opts)
-endfunction
-
 " Files + devicons
-function! CustomFZF#WithDevIcons()
+function! CustomFZF#FilesWithDevIcons()
 
   let l:fzf_files_options = " --preview '([[ -f {2..-1} ]] && (bat --theme='Dracula' --style=numbers,changes --color always {2..-1} | head -".&lines." || cat {2..-1})) || tree -C {2..-1} || echo {} 2> /dev/null | head -200' --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=?:toggle-preview,ctrl-a:select-all,ctrl-d:deselect-all"
-
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(l:files)
-  endfunction
 
   function! s:prepend_icon(candidates)
     let result = []
@@ -38,6 +12,11 @@ function! CustomFZF#WithDevIcons()
     endfor
 
     return result
+  endfunction
+
+  function! s:files()
+    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+    return s:prepend_icon(l:files)
   endfunction
 
   function! s:edit_file(items)

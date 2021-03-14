@@ -116,7 +116,7 @@ vim.cmd('colorscheme nvcode')
 highlight('CursorLineNR', '#f00')
 
 -- Disable Highlight current row
-set 'cursorline'
+-- set 'cursorline'
 set 'termguicolors'
 
 highlight('Comment', 'italic')
