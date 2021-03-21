@@ -36,9 +36,9 @@ plug {
   'RishabhRD/nvim-lsputils',
   'RishabhRD/popfix',
   'neovim/nvim-lspconfig',
+  'kabouzeid/nvim-lspinstall',
   'hrsh7th/nvim-compe',
   'nvim-treesitter/nvim-treesitter',
-  'alexaandru/nvim-lspupdate',
 
   -- Language
   'HerringtonDarkholme/yats.vim',

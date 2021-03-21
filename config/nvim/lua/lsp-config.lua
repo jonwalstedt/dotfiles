@@ -2,7 +2,7 @@ local lsp = require'lspconfig'
 
 -- Utility servers
 local map = function(type, key, value)
-    vim.fn.nvim_buf_set_keymap(0,type,key,value,{noremap = true, silent = true});
+    vim.api.nvim_buf_set_keymap(0, type, key, value, {noremap = true, silent = true});
 end
 
 -- For snippet support
@@ -142,10 +142,10 @@ lsp.pyright.setup {on_attach = on_attach_common}
 lsp.vimls.setup {on_attach = on_attach_common}
 
 -- https://github.com/vscode-langservers/vscode-json-languageserver (vscode-json-languageserver)
-lsp.jsonls.setup {
-    on_attach = on_attach_common,
-    cmd = {"json-languageserver", "--stdio"}
-}
+-- lsp.jsonls.setup {
+--     on_attach = on_attach_common,
+--     cmd = {"json-languageserver", "--stdio"}
+-- }
 
 -- https://github.com/redhat-developer/yaml-language-server
 lsp.yamlls.setup {on_attach = on_attach_common}
