@@ -48,4 +48,3 @@ function! CustomFZF#Bufs()
   redir END
   return split(list, "\n")
 endfunction
-

@@ -9,6 +9,7 @@ end
 plug {
   'junegunn/fzf',
   'junegunn/fzf.vim',
+  'stsewd/fzf-checkout.vim',
   'chengzeyi/fzf-preview.vim',
   'andymass/vim-matchup',
   'airblade/vim-gitgutter',
@@ -77,9 +78,24 @@ nmap('<leader>hh', ':FZFHistory:<CR>')
 nmap('<leader>fl', ':FZFBLines<CR>')
 nmap('<leader>fh', ':FZFHistory<CR>')
 nmap('<leader>fd', ':BD<CR>')
+nmap('<leader>fb', ':FzfGBranches<CR>')
 
 imap('<C-f>', '<Plug>(fzf-complete-path)', {})
 imap('<C-l>', '<Plug>(fzf-complete-line)', {})
+
+-- fzf-checkout.vim
+--  https://github.com/stsewd/fzf-checkout.vim
+vim.g.fzf_command_prefix = 'Fzf'
+vim.g.fzf_branch_actions = {
+  diff = {
+    prompt = 'Diff> ',
+    execute = 'Git diff {branch}',
+    multiple = false,
+    keymap = 'ctrl-f',
+    required = {'branch'},
+    confirm = false,
+  }
+}
 
 
 -- Git gutter
@@ -99,8 +115,10 @@ nmap('<leader>nq', ':GitGutterQuickFix<CR>')
 -- Fugitive (toggle git status panel)
 nmap('<localleader><space>', ':call CustomFugitive#ToggleGStatus()<cr>')
 nmap('§<space>', ':call CustomFugitive#ToggleGStatus()<cr>')
-nmap('<localleader>v', ':Gvdiffsplit<CR>')
-nmap('<localleader>l', ':Glog -10 -- %<CR>')
+nmap('<localleader>v', ':Gdiffsplit!<CR>')
+nmap('<localleader>h', ':diffget //2<CR>')
+nmap('<localleader>l', ':diffget //3<CR>')
+nmap('<localleader>g', ':Gclog -10 -- %<CR>')
 
 
 -- Dirvish
