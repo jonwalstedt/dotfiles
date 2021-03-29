@@ -13,11 +13,15 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
         underline = true,
-        virtual_text = true,
+        virtual_text = false, -- disable inline diagnostics
         signs = true,
         update_in_insert = false,
     }
 )
+
+-- go to next error
+-- vim.fn.nvim_set_keymap("n", "gn", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", {noremap = true, silent = true})
+--   vim.fn.nvim_set_keymap("n", "gp", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", {noremap = true, silent = true})
 
 -- Customize diagnostics signs
 local function set_sign(type, icon)

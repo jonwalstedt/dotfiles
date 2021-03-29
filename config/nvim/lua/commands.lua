@@ -12,5 +12,6 @@ command([[BD]], [[call fzf#run(fzf#wrap({ 'source': CustomFZF#Bufs(), 'sink*': {
 command([[ToggleGStatus]], [[:call CustomFugitive#ToggleGStatus()]])
 command([[GV]],[[call plug#load('vim-fugitive', 'gv.vim') | GV]])
 command([[Ag]],[[:call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)]])
-command([[Tmp]],[[:call Notes#OpenKingNotes()]])
+command([[NotesBrowse]],[[:call Notes#Browse()]])
+command([[NoteCreate]],[[:call Notes#Create()]])
 command([[CopyBufferPath]],[[:let @+ = expand('%:p')]])
