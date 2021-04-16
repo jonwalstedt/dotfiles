@@ -255,8 +255,9 @@ lsp.efm.setup {
             yaml = {prettier},
             json = {prettier},
             html = {prettier},
-            scss = {prettier},
-            css = {prettier},
+            less = {prettier, eslint},
+            scss = {prettier, eslint},
+            css = {prettier, eslint},
             markdown = {prettier},
             tf = {terraform}
         }
@@ -267,7 +268,10 @@ lsp.efm.setup {
         "javascript.jsx",
         "typescript",
         "typescript.tsx",
-        "typescriptreact"
+        "typescriptreact",
+        "less",
+        "scss",
+        "css"
     }
 }
 
