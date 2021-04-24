@@ -69,8 +69,8 @@
   "describe": {
     "prefix": "desc",
     "body": [
-      "describe(() => {",
-      "  $1",
+      "describe('$1', () => {",
+      "  $2",
       "})"
     ],
     "description": "describe"

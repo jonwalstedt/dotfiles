@@ -24,18 +24,49 @@
     process = git-lfs filter-process
     required = true
 [alias]
+    # undo last commit
     undo = reset --soft HEAD~1
+    list-merged = ! git branch --merged master | grep --invert-match "master"
+    remove-merged = ! git branch --merged master | grep --invert-match "master" | xargs -n 1 git branch -d
+    list-commit = diff-tree --no-commit-id --name-only -r
+
+    # Log aliases
+    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=relative
+    la = log --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all --date=relative
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    l1 = !git l1 -35
+    l2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)%ad(%ar)%C(red) %an%C(reset)%C(bold yellow)%d%C(reset) — %C(white)%s%C(reset) %C(bold white)' --abbrev-commit --date=iso
+    l3 = log --graph --pretty=format:'%C(bold blue)%h%C(white) - %C(bold green)%cr %C(white)- %C(bold red)%an%C(bold yellow)%d%C(white) - %s' --abbrev-commit --date=relative
+    l4 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+    l5 = log --graph --oneline
+
+    # Handfull shortcuts
+    ck = checkout
+    m = checkout master
+    d = checkout develop
+
+    # Prune aliases
+    # Prune Tags - Prune local Git tags that doesn't exist on remote 'origin'
+    p-tags=!git fetch --prune origin '+refs/tags/*:refs/tags/*'
+
+    # Prune Branches remote branchs and remove the local ones that as gonne on the remote
+    # See https://stackoverflow.com/a/33548037/2397394
+    list-no-remote="!gitListNoRemote() { git fetch --prune && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do echo $branch; done }; gitListNoRemote"
+    p-branch="!gitPruneBranch() { git fetch --prune && for branch in `git branch -vv | grep ': gone]' | awk '{print $1}'`; do git branch -D $branch; done }; gitPruneBranch"
+    remove-no-remote=!git p-branch
+    # Alinas for prune all branches and tags
+    p-all=!git p-branch && git p-tags
+    # A shortcut for the the command 'p-all'
+    pa=!git p-all
+
     st = status -sb
     ci = commit
     co = checkout
     s = status
     b = branch
     hist = log --graph --oneline --decorate --date=relative --all
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=relative
-    la = log --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all --date=relative
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    list-commit = diff-tree --no-commit-id --name-only -r
     surec = submodule update --recursive
+
 [color "diff-highlight"]
     oldNormal = red bold
     oldHighlight = red bold 52

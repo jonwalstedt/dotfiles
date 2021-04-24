@@ -29,6 +29,8 @@ plug {
   'hrsh7th/vim-vsnip-integ',
   'norcalli/snippets.nvim',
 
+  'kyazdani42/nvim-web-devicons',
+  'folke/lsp-trouble.nvim',
   -- 'SirVer/ultisnips',
   -- 'honza/vim-snippets',
   -- 'joaohkfaria/vim-jest-snippets',
@@ -252,3 +254,7 @@ imap("<Tab>", "v:lua.tab_complete()", {expr = true})
 imap("<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 smap("<Tab>", "v:lua.tab_complete()", {expr = true})
 smap("<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+-- Trouble
+require("trouble").setup { }
+nmap('<leader>e<cr>', ':LspTroubleOpen<cr>')
