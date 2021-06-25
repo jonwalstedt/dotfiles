@@ -111,7 +111,7 @@ local on_attach_common = function(client)
     map('n','<leader>ai',  '<cmd>lua vim.lsp.buf.incoming_calls()<CR>')
     map('n','<leader>ao',  '<cmd>lua vim.lsp.buf.outgoing_calls()<CR>')
     -- Diagnostics mapping
-    map('n','<leader>ee', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
+    map('n','<leader>ed', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>')
     map('n','<leader>en', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
     map('n','<leader>ep', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
 end

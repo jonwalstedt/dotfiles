@@ -3,6 +3,7 @@ local function plug(t)
   for _,v in ipairs(t) do
     vim.cmd(string.format([[Plug '%s']], v))
   end
+    vim.cmd([[Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}]])
   vim.cmd[[call plug#end()]]
 end
 
@@ -41,7 +42,7 @@ plug {
   'neovim/nvim-lspconfig',
   'kabouzeid/nvim-lspinstall',
   'hrsh7th/nvim-compe',
-  'nvim-treesitter/nvim-treesitter',
+  -- 'nvim-treesitter/nvim-treesitter',
 
   -- Language
   'HerringtonDarkholme/yats.vim',
@@ -160,11 +161,11 @@ require'compe'.setup {
   enabled = true,
   autocomplete = true,
   debug = false,
-  min_length = 1,
+  min_length = 3,
   preselect = 'enable',
-  throttle_time = 80,
+  throttle_time = 120,
   source_timeout = 200,
-  incomplete_delay = 400,
+  incomplete_delay = 600,
   max_abbr_width = 100,
   max_kind_width = 100,
   max_menu_width = 100,
@@ -187,10 +188,10 @@ require'compe'.setup {
       priority = 10,
       sort = false
     },
-    spell = {
-      menu = '[SPELL]',
-      priority = 6,
-    },
+    -- spell = {
+    --   menu = '[SPELL]',
+    --   priority = 6,
+    -- },
     calc = true,
     nvim_lua = true,
     tags = true,

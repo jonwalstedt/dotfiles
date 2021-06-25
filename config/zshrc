@@ -58,6 +58,9 @@ bindkey '^l' autosuggest-accept
 
 plugins=(extract git web-search gradle z zsh-autosuggestions)
 
+unsetopt inc_append_history
+unsetopt share_history
+
 # User configuration
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then

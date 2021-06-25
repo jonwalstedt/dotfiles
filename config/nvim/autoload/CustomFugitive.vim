@@ -4,7 +4,7 @@ function! CustomFugitive#ToggleGStatus()
     bd .git/index
     setlocal cursorline
   else
-    Gstatus
+    Git
     setlocal nocursorline
   endif
 endfunction

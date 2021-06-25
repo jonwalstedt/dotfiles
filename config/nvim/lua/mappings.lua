@@ -31,13 +31,16 @@ nmap('<localleader><cr>', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
 nmap('§<cr>', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
 
 -- Update current buffer and close it without saving (needed to close terminal buffers)
-nmap('<leader>dd', ':update<bar>:bd!<CR>')
+nmap('<leader>dd', ':bd!<CR>')
 
 -- Write buffer and close window
 nmap('<leader>w', ':update<CR>')
 
 -- Refresh buffer
-nmap('<leader>e', ':e<CR>')
+nmap('<leader>er', ':e<CR>')
+
+-- Execute current file in bash
+nmap('<leader>ee', ':Exec<CR>')
 
 -- Close all other wndows
 nmap('<leader>do', ':only<CR>')

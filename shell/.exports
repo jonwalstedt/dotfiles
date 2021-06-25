@@ -86,3 +86,8 @@ export NODE_OPTIONS=--max-old-space-size=8192
 
 # mysql
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+
+# llvm/clang
+export PATH="/usr/local/opt/llvm/bin:$PATH"
+
+export CC="gcc-11"
