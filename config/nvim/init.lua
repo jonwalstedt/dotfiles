@@ -1,6 +1,3 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = "ﬁ"
-
 local function disable_default_plugins()
   vim.g.loaded_gzip = 1
   vim.g.loaded_tar = 1
@@ -24,11 +21,11 @@ end
 
 disable_default_plugins()
 
-require'mappings'
-require'plugins'
-require'commands'
-require'autocommand'
-require'macros'
-require'config'
-require'lsp-config'
-require'tree-sitter-config'
+vim.g.mapleader = ' '
+vim.g.maplocalleader = "ﬁ"
+
+require('core.utils')
+require('core.plugins')
+require('core.options')
+require('core.keymaps')
+require('core.autocmds')
