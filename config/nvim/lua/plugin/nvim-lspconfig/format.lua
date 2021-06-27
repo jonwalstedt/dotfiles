@@ -23,4 +23,6 @@ return {
   typescript = {prettier, eslint},
   typescriptreact = {prettier, eslint},
   yaml = {prettier},
+  ["javascript.jsx"] = {prettier, eslint},
+  ["typescript.tsx"] = {prettier, eslint},
 }

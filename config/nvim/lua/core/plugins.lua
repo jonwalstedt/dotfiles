@@ -65,12 +65,6 @@ return packer.startup(function(use)
   }
   -- Icons
   use {'kyazdani42/nvim-web-devicons', setup = [[require('plugin.nvim-web-devicons')]]}
-  -- Indentline
-  use {
-    'lukas-reineke/indent-blankline.nvim',
-    branch = 'lua',
-    setup = [[require('plugin.indent-blankline')]],
-  }
   -- Lsp
   use {
     'neovim/nvim-lspconfig',

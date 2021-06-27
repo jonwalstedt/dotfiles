@@ -115,7 +115,7 @@ highlight('InactiveWindow', { guibg = '#141414' })
 highlight('VertSplit', { guibg = '#000000', guifg = '#444444' })
 set ('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
 -- highlight('CursorLine', { guifg = '#ff0000' })
-highlight('CursorLineNR', { guifg = '#e900ff' })
+-- highlight('CursorLineNR', { guifg = '#e900ff' })
 
 
 highlight('Comment', { guifg = '#666666', gui = 'italic', cterm = 'italic' })

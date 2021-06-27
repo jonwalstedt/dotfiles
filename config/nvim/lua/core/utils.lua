@@ -108,7 +108,7 @@ U.palette = {
 
 
 function U.command(key, value)
-    vim.cmd(string.format('command %s %s', key, value))
+  vim.cmd(string.format('command! %s %s', key, value))
 end
 
 function U.set(key, value)
