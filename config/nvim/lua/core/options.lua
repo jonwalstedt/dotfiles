@@ -1,13 +1,4 @@
-local function set(key, value)
-    if value == true or value == nil then
-  vim.cmd(string.format('set %s', key))
-    elseif value == false then
-  vim.cmd(string.format('set no%s', key))
-    else
-  vim.cmd(string.format('set %s=%s', key, value))
-    end
-end
-
+local set = U.set
 local highlight = U.highlight
 
 local o = vim.opt
@@ -111,20 +102,25 @@ set ('foldtext', 'NeatFoldText()')
 
 
 -- Colors
-vim.cmd('syntax on')
 vim.g.nvcode_termcolors = 256
+vim.cmd('syntax on')
 set 'termguicolors'
-vim.cmd('colorscheme nvcode')
-highlight('CursorLineNR', '#f00')
+vim.cmd('colorscheme snazzy')
+-- Disable highlight current row
+set 'nocursorline'
 
--- Disable Highlight current row
--- set 'cursorline'
-set 'termguicolors'
+-- Dim inactive buffer
+highlight('ActiveWindow', { guibg = '#000000'})
+highlight('InactiveWindow', { guibg = '#141414' })
+highlight('VertSplit', { guibg = '#000000', guifg = '#444444' })
+set ('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
+-- highlight('CursorLine', { guifg = '#ff0000' })
+highlight('CursorLineNR', { guifg = '#e900ff' })
 
-highlight('Comment', 'italic')
-highlight('Comment', '#666666')
--- highlight Comment cterm=italic
--- highlight('LineNr', 'NONE')
+
+highlight('Comment', { guifg = '#666666', gui = 'italic', cterm = 'italic' })
+highlight('SignColumn', { guibg = '#000000' })
+highlight('LineNr', { guibg = '#000000'})
 
 
 
@@ -211,21 +207,5 @@ vim.g.netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 -- Tags
 set ('tags', './.tags,.tags')
 
-
-
--- Dim inactive buffer
--- Background colors for active vs inactive windows
--- One Dark
--- highlight ActiveWindow guibg=#181a1f
--- highlight InactiveWindow guibg=#282c34
-
--- Night Owl and Dracula
--- highlight ActiveWindow guibg=#051626
--- highlight InactiveWindow guibg=#1f2730
--- highlight VertSplit guibg=#051626 guifg=#1f2730
-
--- Elly
-vim.cmd('highlight ActiveWindow guibg=#0c1317')
-vim.cmd('highlight InactiveWindow guibg=#111a20')
-vim.cmd('highlight VertSplit guibg=#051626 guifg=#1f2730')
-set ('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
+-- highlight('MyActiveSignColumn', { guibg = '#0000ff' })
+-- highlight('MyInactiveSignColumn', { guibg = '#ff0000' })
