@@ -48,6 +48,10 @@ return packer.startup(function(use)
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
   use 'norcalli/snippets.nvim'
+  use { 'RishabhRD/nvim-lsputils',
+    requires = { 'RishabhRD/popfix' },
+    setup = [[require('plugin.nvim-lsputils')]],
+  }
   use { 'folke/lsp-trouble.nvim', setup = [[require('plugin.lsp-trouble')]]}
   use { 'jose-elias-alvarez/null-ls.nvim', requires = {
    'nvim-lua/plenary.nvim'
