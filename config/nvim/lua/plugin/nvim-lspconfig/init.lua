@@ -86,13 +86,19 @@ local function setup_servers()
       on_attach_common(client)
     end,
     init_options = {documentFormatting = true, codeAction = true, document_formatting = true},
-    root_dir = function()
-      if not eslint_config_exists() then
-        return nil
-      end
-      return vim.fn.getcwd()
-    end,
-    filetypes = vim.tbl_keys(languages),
+    root_dir = lspconfig.util.root_pattern({'.git/', '.'}),
+
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "javascript.jsx",
+        "typescript",
+        "typescript.tsx",
+        "typescriptreact",
+        "less",
+        "scss",
+        "css"
+    },
     settings = {languages = languages, log_level = 1, log_file = '~/efm.log'},
   }
 
