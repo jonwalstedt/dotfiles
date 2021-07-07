@@ -12,6 +12,7 @@ local prettier = {formatCommand = 'prettier --stdin-filepath ${INPUT}', formatSt
 local luaformatter = {formatCommand = 'lua-format -i', formatStdin = true}
 
 return {
+  less = {prettier},
   css = {prettier},
   html = {prettier},
   javascript = {prettier, eslint},
