@@ -39,15 +39,18 @@ return packer.startup(function(use)
   use 'tpope/vim-unimpaired'
   use 'tpope/vim-repeat'
   use 'google/vim-searchindex'
+
+  -- File browser and quick fix list
   use { 'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]]}
   use 'romainl/vim-qlist'
   use 'romainl/vim-qf'
   use 'editorconfig/editorconfig-vim'
-  use 'ryanoasis/vim-devicons'
   use 'sheerun/vim-polyglot'
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
   use 'norcalli/snippets.nvim'
+
+  -- LSP Setup
   use { 'RishabhRD/nvim-lsputils',
     requires = { 'RishabhRD/popfix' },
     setup = [[require('plugin.nvim-lsputils')]],
@@ -67,8 +70,12 @@ return packer.startup(function(use)
   use {
     'ChristianChiarulli/nvcode-color-schemes.vim', 'glepnir/zephyr-nvim', 'folke/tokyonight.nvim',
   }
+
   -- Icons
+  use {'sunjon/shade.nvim', setup = [[require('plugin.nvim-shade')]]}
+  use 'ryanoasis/vim-devicons'
   use {'kyazdani42/nvim-web-devicons', setup = [[require('plugin.nvim-web-devicons')]]}
+
   -- Lsp
   use {
     'neovim/nvim-lspconfig',
