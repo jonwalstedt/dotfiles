@@ -154,21 +154,21 @@ local function setup_servers()
 
   -- Python languageserver
   -- https://github.com/palantir/python-language-server
-  lspconfig.pyls.setup {
-    on_attach = on_attach_common,
-    settings = {
-      pyls = {
-        plugins = {
-          pycodestyle = {
-            enabled = false,
-            ignore = {
-              "E501"
-            }
-          }
-        }
-      }
-    }
-  }
+  -- lspconfig.pyls.setup {
+  --   on_attach = on_attach_common,
+  --   settings = {
+  --     pyls = {
+  --       plugins = {
+  --         pycodestyle = {
+  --           enabled = false,
+  --           ignore = {
+  --             "E501"
+  --           }
+  --         }
+  --       }
+  --     }
+  --   }
+  -- }
 
   lspconfig.pyright.setup {on_attach = on_attach_common}
 

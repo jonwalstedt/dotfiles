@@ -26,7 +26,7 @@ return packer.startup(function(use)
     setup = [[require('plugin.fzf-checkout')]]
   }
   use { 'chengzeyi/fzf-preview.vim', after = 'fzf'}
-  use 'andymass/vim-matchup'
+  -- use 'andymass/vim-matchup'
 
   -- Git
   use { 'airblade/vim-gitgutter', setup = [[require('plugin.vim-gitgutter')]]}
@@ -64,8 +64,11 @@ return packer.startup(function(use)
 
   -- Autopairs
   use {'windwp/nvim-autopairs', setup = [[require('plugin.nvim-autopairs')]]}
+
   -- Colorizer
-  use {'norcalli/nvim-colorizer.lua', setup = [[require('plugin.nvim-colorizer')]]}
+  -- use {'norcalli/nvim-colorizer.lua', setup = [[require('plugin.nvim-colorizer')]]}
+  use { 'NTBBloodbath/color-converter.nvim', setup = [[require('plugin.color-converter-nvim')]] }
+
   -- Colorschemes
   use {
     'ChristianChiarulli/nvcode-color-schemes.vim', 'glepnir/zephyr-nvim', 'folke/tokyonight.nvim',
@@ -96,9 +99,9 @@ return packer.startup(function(use)
     run = ':TSUpdate',
     setup = [[require('plugin.nvim-treesitter')]],
     requires = {
-      'p00f/nvim-ts-rainbow',
+      -- 'p00f/nvim-ts-rainbow',
       'windwp/nvim-ts-autotag',
-      'JoosepAlviste/nvim-ts-context-commentstring',
+      -- 'JoosepAlviste/nvim-ts-context-commentstring',
     },
   }
 
