@@ -5,22 +5,6 @@ end
 vim.cmd 'packadd packer.nvim | au BufWritePost plugins.lua PackerCompile'
 vim.opt.rtp = vim.opt.rtp + '~/.local/share/nvim/site/pack/packer/opt/*'
 
--- disable plugins
-vim.g.loaded_matchparen = 1
-vim.g.loaded_matchit = 1
-vim.g.loaded_logiPat = 1
-vim.g.loaded_rrhelper = 1
-vim.g.loaded_tarPlugin = 1
-vim.g.loaded_gzip = 1
-vim.g.loaded_zipPlugin = 1
-vim.g.loaded_2html_plugin = 1
-vim.g.loaded_shada_plugin = 1
-vim.g.loaded_spellfile_plugin = 1
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
-vim.g.loaded_tutor_mode_plugin = 1
-vim.g.loaded_remote_plugins = 1
-
 local packer = require('packer')
 local plugin_path = U.os.data .. '/site/pack/packer/opt/'
 local packer_compiled = U.os.data .. '/site/plugin/packer_compiled.vim'
@@ -29,90 +13,32 @@ return packer.startup(function(use)
   packer.init({compile_path = packer_compiled, opt_default = true})
 
   -- Plugin Manager
-  use 'wbthomason/packer.nvim'
-
-  -- FZF file/content search
-  use 'junegunn/fzf'
-  use { 'junegunn/fzf.vim',
-    after = 'fzf',
-    setup = [[require('plugin.fzf')]]
-  }
-  use { 'stsewd/fzf-checkout.vim',
-    after = 'fzf',
-    setup = [[require('plugin.fzf-checkout')]]
-  }
-  use { 'chengzeyi/fzf-preview.vim', after = 'fzf'}
-  -- use 'andymass/vim-matchup'
-
-  -- Git
-  use { 'tpope/vim-fugitive', setup = [[require('plugin.vim-fugitive')]]}
-  use 'junegunn/gv.vim'
   use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-    setup = [[require('plugin.nvim-gitsigns')]]
+    'wbthomason/packer.nvim',
+    event = 'VimEnter'
   }
 
-  -- Movement
-  use { 'justinmk/vim-sneak', setup = [[require('plugin.vim-sneak')]]}
+  -- LSP
+  use {
+    'kabouzeid/nvim-lspinstall',
+    event = 'BufRead'
+  }
 
-  use 'tpope/vim-unimpaired'
-  use 'tpope/vim-repeat'
-  use 'google/vim-searchindex'
-
-  -- File browser and quick fix list
-  use { 'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]]}
-  use 'romainl/vim-qlist'
-  use 'romainl/vim-qf'
-  use 'editorconfig/editorconfig-vim'
-  use 'sheerun/vim-polyglot'
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
-  use 'norcalli/snippets.nvim'
-
-  use 'jonwalstedt/vim-myhelp'
-
-  -- Autopairs
-  use {'windwp/nvim-autopairs', setup = [[require('plugin.nvim-autopairs')]], event = 'InsertEnter'}
-
-  -- Colorizer
-  -- use {'norcalli/nvim-colorizer.lua', setup = [[require('plugin.nvim-colorizer')]]}
-  use { 'NTBBloodbath/color-converter.nvim', setup = [[require('plugin.color-converter-nvim')]] }
-
-  -- Colorschemes
-  use { 'ChristianChiarulli/nvcode-color-schemes.vim' }
-
-  -- Icons
-  use {'sunjon/shade.nvim', setup = [[require('plugin.nvim-shade')]]}
-  use 'ryanoasis/vim-devicons'
-
-  -- Lsp
   use {
     'neovim/nvim-lspconfig',
     setup = [[require('plugin.nvim-lspconfig')]],
-    requires = {
-      {'hrsh7th/nvim-compe', setup = [[require('plugin.nvim-compe')]], event = 'InsertEnter'},
-      'kabouzeid/nvim-lspinstall',
-      -- 'glepnir/lspsaga.nvim',
-      -- 'jose-elias-alvarez/nvim-lsp-ts-utils',
-    },
+    after = 'nvim-lspinstall'
   }
 
-  -- LSP Setup
-  use { 'RishabhRD/nvim-lsputils',
-    requires = { 'RishabhRD/popfix' },
-    setup = [[require('plugin.nvim-lsputils')]],
-  }
-  use { 'jose-elias-alvarez/null-ls.nvim',
-    requires = {
-     'nvim-lua/plenary.nvim'
-    }
-  }
-
-  -- Profiling
-  -- use 'tweekmonster/startuptime.vim'
+  -- use { 'RishabhRD/nvim-lsputils',
+  --   requires = { 'RishabhRD/popfix' },
+  --   setup = [[require('plugin.nvim-lsputils')]],
+  -- }
+  -- use { 'jose-elias-alvarez/null-ls.nvim',
+  --   requires = {
+  --    'nvim-lua/plenary.nvim'
+  --   }
+  -- }
 
   -- Treesitter
   use {
@@ -121,10 +47,130 @@ return packer.startup(function(use)
     run = ':TSUpdate',
     setup = [[require('plugin.nvim-treesitter')]],
     requires = {
-      -- 'p00f/nvim-ts-rainbow',
       'windwp/nvim-ts-autotag',
+      -- 'p00f/nvim-ts-rainbow',
       -- 'JoosepAlviste/nvim-ts-context-commentstring',
     },
+    event = 'BufRead',
+  }
+
+  -- Autocomplete
+  use {
+    'hrsh7th/nvim-compe',
+    event = 'InsertEnter',
+    config = function()
+      require 'plugin.nvim-compe'
+    end,
+    wants = 'LuaSnip',
+    requires = {
+      {
+        'L3MON4D3/LuaSnip',
+        wants = 'friendly-snippets',
+        event = 'InsertCharPre',
+        config = function()
+          require 'plugin.luasnip'
+        end
+      },
+      {
+        'rafamadriz/friendly-snippets',
+        event = 'InsertCharPre'
+      }
+    },
+  }
+
+  -- File browser
+  use { 'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]]}
+
+  -- FZF file/content search
+  use {
+    'chengzeyi/fzf-preview.vim',
+    requires = {
+      'junegunn/fzf',
+      'junegunn/fzf.vim',
+      'ryanoasis/vim-devicons'
+    },
+    setup = [[require('plugin.fzf')]],
+    opt = true,
+    event = 'BufRead',
+  }
+
+  -- Git
+  use {
+    'tpope/vim-fugitive',
+    setup = [[require('plugin.vim-fugitive')]],
+    opt = true,
+    event = 'BufRead',
+  }
+
+  use {
+    'junegunn/gv.vim',
+    requires = {
+      {
+        'tpope/vim-fugitive',
+        setup = [[require('plugin.vim-fugitive')]],
+      }
+    },
+    cmd = 'GV'
+  }
+
+  use {
+    'airblade/vim-gitgutter',
+    setup = [[require('plugin.vim-gitgutter')]],
+    opt = true,
+    event = 'BufRead'
+  }
+
+  -- Quickfix list
+  use 'romainl/vim-qlist'
+  use 'romainl/vim-qf'
+
+  -- Language support
+  use {
+    'sheerun/vim-polyglot',
+    event = 'BufRead'
+  }
+
+  -- Colorschemes
+  use { 'ChristianChiarulli/nvcode-color-schemes.vim' }
+
+  -- Movement
+  use {
+    'justinmk/vim-sneak',
+    setup = [[require('plugin.vim-sneak')]],
+    event = 'BufRead'
+  }
+
+  -- Autopairs
+  use {
+    'windwp/nvim-autopairs',
+    after = 'nvim-compe',
+    config = function()
+      require 'plugin.nvim-autopairs'
+    end
+  }
+
+  -- Misc
+  -- Complementary pairs of mappings
+  use 'tpope/vim-unimpaired'
+  -- Make plugin actions repeatable by .
+  use 'tpope/vim-repeat'
+  -- Show search result count
+  use 'google/vim-searchindex'
+  -- Pickup and use editor config files
+  use 'editorconfig/editorconfig-vim'
+  -- Colorconverter
+  use {
+    'NTBBloodbath/color-converter.nvim',
+    setup = [[require('plugin.color-converter-nvim')]],
+    opt = true,
+    event = 'BufRead'
+  }
+  -- Dim inactive windows
+  use {
+    'sunjon/shade.nvim',
+    setup = [[require('plugin.nvim-shade')]],
+    opt = true,
+    event = 'BufRead'
   }
 
   -- Autoinstall/compile plugins
