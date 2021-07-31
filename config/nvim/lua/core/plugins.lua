@@ -13,10 +13,7 @@ return packer.startup(function(use)
   packer.init({compile_path = packer_compiled, opt_default = true})
 
   -- Plugin Manager
-  use {
-    'wbthomason/packer.nvim',
-    event = 'VimEnter'
-  }
+  use { 'wbthomason/packer.nvim' }
 
   -- LSP
   use {
@@ -27,7 +24,10 @@ return packer.startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     setup = [[require('plugin.nvim-lspconfig')]],
-    after = 'nvim-lspinstall'
+    after = 'nvim-lspinstall',
+    requires = {
+      'glepnir/lspsaga.nvim'
+    }
   }
 
   -- use { 'RishabhRD/nvim-lsputils',
@@ -51,7 +51,6 @@ return packer.startup(function(use)
       -- 'p00f/nvim-ts-rainbow',
       -- 'JoosepAlviste/nvim-ts-context-commentstring',
     },
-    event = 'BufRead',
   }
 
   -- Autocomplete
@@ -83,40 +82,34 @@ return packer.startup(function(use)
 
   -- FZF file/content search
   use {
-    'chengzeyi/fzf-preview.vim',
+    'junegunn/fzf.vim',
+    setup = [[require('plugin.fzf')]],
     requires = {
       'junegunn/fzf',
-      'junegunn/fzf.vim',
+    },
+    event = 'BufRead',
+  }
+
+  use {
+    'chengzeyi/fzf-preview.vim',
+    after = 'fzf.vim',
+    requires = {
       'ryanoasis/vim-devicons'
     },
-    setup = [[require('plugin.fzf')]],
-    opt = true,
-    event = 'BufRead',
   }
 
   -- Git
   use {
     'tpope/vim-fugitive',
     setup = [[require('plugin.vim-fugitive')]],
-    opt = true,
-    event = 'BufRead',
   }
 
   use {
-    'junegunn/gv.vim',
+    'lewis6991/gitsigns.nvim',
+    setup = [[require('plugin.nvim-gitsigns')]],
     requires = {
-      {
-        'tpope/vim-fugitive',
-        setup = [[require('plugin.vim-fugitive')]],
-      }
+      'nvim-lua/plenary.nvim'
     },
-    cmd = 'GV'
-  }
-
-  use {
-    'airblade/vim-gitgutter',
-    setup = [[require('plugin.vim-gitgutter')]],
-    opt = true,
     event = 'BufRead'
   }
 
@@ -127,7 +120,6 @@ return packer.startup(function(use)
   -- Language support
   use {
     'sheerun/vim-polyglot',
-    event = 'BufRead'
   }
 
   -- Colorschemes
@@ -162,14 +154,12 @@ return packer.startup(function(use)
   use {
     'NTBBloodbath/color-converter.nvim',
     setup = [[require('plugin.color-converter-nvim')]],
-    opt = true,
     event = 'BufRead'
   }
   -- Dim inactive windows
   use {
     'sunjon/shade.nvim',
     setup = [[require('plugin.nvim-shade')]],
-    opt = true,
     event = 'BufRead'
   }
 

@@ -19,7 +19,7 @@ require'compe'.setup {
   source = {
     path = { kind = '   (Path)', priority = 9 },
     buffer = { kind = '   (Buffer)', priority = 8 },
-    vsnip = { kind = '   (Snippet)', priority = 10 },
+    luasnip = { kind = '   (Snippet)', priority = 10 },
     nvim_lsp = { kind = '   (LSP)', priority = 10 },
     treesitter = { kind = "  ", priority = 8 },
     calc = { kind = '   (Calc)' },
@@ -28,18 +28,12 @@ require'compe'.setup {
     tags = false,
     vim_dadbod_completion = true,
     snippets_nvim = { kind = "  " },
+    -- vsnip = { kind = '   (Snippet)', priority = 10 },
     -- nvim_lua = {kind = "  "},
     -- spell = {kind = '   (Spell)'},
     -- ultisnips = {kind = "  "},
     -- for emoji press : (idk if that in compe tho)
   },
-}
-
-
-vim.g.vsnip_snippet_dir = U.os.config.."/snippets"
-vim.g.vsnip_filetypes = {
-  javascriptreact = {'javascript', 'html'},
-  typescriptreact = {'typescript', 'html'}
 }
 
 
@@ -62,8 +56,8 @@ end
 _G.tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-n>"
-  elseif vim.fn.call("vsnip#available", {1}) == 1 then
-    return t "<Plug>(vsnip-expand-or-jump)"
+  elseif require'luasnip'.expand_or_jumpable() then
+    return t "<Plug>luasnip-expand-or-jump"
   elseif check_back_space() then
     return t "<Tab>"
   else
@@ -73,8 +67,8 @@ end
 _G.s_tab_complete = function()
   if vim.fn.pumvisible() == 1 then
     return t "<C-p>"
-  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
+  elseif require'luasnip'.jumpable(-1) then
+    return t "<Plug>luasnip-jump-prev"
   else
     return t "<S-Tab>"
   end

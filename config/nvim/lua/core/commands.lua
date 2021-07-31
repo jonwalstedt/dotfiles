@@ -21,11 +21,12 @@ command("Ag",":call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'},
 
 -- Git
 command("ToggleGStatus", "call CustomFugitive#ToggleGStatus()")
-command("GV","call plug#load('vim-fugitive', 'gv.vim') | GV")
-command("GitFileHistory","call plug#load('vim-fugitive') | 0Gclog")
-command("GFileHistory","call plug#load('vim-fugitive') | 0Gclog")
-command("GitDiffWithHash", "call plug#load('vim-fugitive') | call CustomFugitive#DiffFileWithHash()")
-command("GDiffWithHash", "call plug#load('vim-fugitive') | call CustomFugitive#DiffFileWithHash()")
+command("-nargs=* Glg", "Git --paginate log --graph --pretty=format:'%h - (%ad)%d %s <%an>' --abbrev-commit --date=local <args>")
+command("-nargs=* GV", "Git --paginate log --graph --pretty=format:'%h - (%ad)%d %s <%an>' --abbrev-commit --date=local <args>")
+command("GitFileHistory", "0Gclog")
+command("GFileHistory", "0Gclog")
+command("GitDiffWithHash", "call CustomFugitive#DiffFileWithHash()")
+command("GDiffWithHash", "call CustomFugitive#DiffFileWithHash()")
 
 -- Note taking
 command("NotesBrowse",":call Notes#Browse()")
