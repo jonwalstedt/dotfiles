@@ -4,6 +4,13 @@ local highlight = U.highlight
 local o = vim.opt
 
 -- Misc
+-- disable some health checks
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_python_provider = 0
+--g.loaded_python3_provider = 0
+
 vim.g.python_host_skip_check = 1
 vim.g.python3_host_skip_check = 1
 vim.g.python2_host_prog = '/usr/local/bin/python2'
@@ -106,6 +113,7 @@ vim.g.nvcode_termcolors = 256
 vim.cmd('syntax on')
 set 'termguicolors'
 vim.cmd('colorscheme snazzy')
+
 -- Disable highlight current row
 set 'nocursorline'
 

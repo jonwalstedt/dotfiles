@@ -68,14 +68,14 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 
 
 local function setup_servers()
-  lspinstall.setup()
-  local installed = lspinstall.installed_servers()
-  for _, server in pairs(installed) do
-    local config = {root_dir = lspconfig.util.root_pattern({'.git/', '.'})}
-    capabilities = capabilities
-    config.on_attach = on_attach_common
-    lspconfig[server].setup(config)
-  end
+  --lspinstall.setup()
+  -- local installed = lspinstall.installed_servers()
+  -- for _, server in pairs(installed) do
+  --   local config = {root_dir = lspconfig.util.root_pattern({'.git/', '.'})}
+  --   capabilities = capabilities
+  --   config.on_attach = on_attach_common
+  --   lspconfig[server].setup(config)
+  -- end
 
 
   -- Efm language server

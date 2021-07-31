@@ -5,6 +5,22 @@ end
 vim.cmd 'packadd packer.nvim | au BufWritePost plugins.lua PackerCompile'
 vim.opt.rtp = vim.opt.rtp + '~/.local/share/nvim/site/pack/packer/opt/*'
 
+-- disable plugins
+vim.g.loaded_matchparen = 1
+vim.g.loaded_matchit = 1
+vim.g.loaded_logiPat = 1
+vim.g.loaded_rrhelper = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_gzip = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_shada_plugin = 1
+vim.g.loaded_spellfile_plugin = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_tutor_mode_plugin = 1
+vim.g.loaded_remote_plugins = 1
+
 local packer = require('packer')
 local plugin_path = U.os.data .. '/site/pack/packer/opt/'
 local packer_compiled = U.os.data .. '/site/plugin/packer_compiled.vim'
@@ -29,9 +45,15 @@ return packer.startup(function(use)
   -- use 'andymass/vim-matchup'
 
   -- Git
-  use { 'airblade/vim-gitgutter', setup = [[require('plugin.vim-gitgutter')]]}
   use { 'tpope/vim-fugitive', setup = [[require('plugin.vim-fugitive')]]}
   use 'junegunn/gv.vim'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    setup = [[require('plugin.nvim-gitsigns')]]
+  }
 
   -- Movement
   use { 'justinmk/vim-sneak', setup = [[require('plugin.vim-sneak')]]}
@@ -50,34 +72,21 @@ return packer.startup(function(use)
   use 'hrsh7th/vim-vsnip-integ'
   use 'norcalli/snippets.nvim'
 
-  -- LSP Setup
-  use { 'RishabhRD/nvim-lsputils',
-    requires = { 'RishabhRD/popfix' },
-    setup = [[require('plugin.nvim-lsputils')]],
-  }
-  use { 'folke/lsp-trouble.nvim', setup = [[require('plugin.lsp-trouble')]]}
-  use { 'jose-elias-alvarez/null-ls.nvim', requires = {
-   'nvim-lua/plenary.nvim'
-  }}
-
   use 'jonwalstedt/vim-myhelp'
 
   -- Autopairs
-  use {'windwp/nvim-autopairs', setup = [[require('plugin.nvim-autopairs')]]}
+  use {'windwp/nvim-autopairs', setup = [[require('plugin.nvim-autopairs')]], event = 'InsertEnter'}
 
   -- Colorizer
   -- use {'norcalli/nvim-colorizer.lua', setup = [[require('plugin.nvim-colorizer')]]}
   use { 'NTBBloodbath/color-converter.nvim', setup = [[require('plugin.color-converter-nvim')]] }
 
   -- Colorschemes
-  use {
-    'ChristianChiarulli/nvcode-color-schemes.vim', 'glepnir/zephyr-nvim', 'folke/tokyonight.nvim',
-  }
+  use { 'ChristianChiarulli/nvcode-color-schemes.vim' }
 
   -- Icons
   use {'sunjon/shade.nvim', setup = [[require('plugin.nvim-shade')]]}
   use 'ryanoasis/vim-devicons'
-  use {'kyazdani42/nvim-web-devicons', setup = [[require('plugin.nvim-web-devicons')]]}
 
   -- Lsp
   use {
@@ -86,16 +95,29 @@ return packer.startup(function(use)
     requires = {
       {'hrsh7th/nvim-compe', setup = [[require('plugin.nvim-compe')]], event = 'InsertEnter'},
       'kabouzeid/nvim-lspinstall',
-      'glepnir/lspsaga.nvim',
+      -- 'glepnir/lspsaga.nvim',
       -- 'jose-elias-alvarez/nvim-lsp-ts-utils',
     },
   }
+
+  -- LSP Setup
+  use { 'RishabhRD/nvim-lsputils',
+    requires = { 'RishabhRD/popfix' },
+    setup = [[require('plugin.nvim-lsputils')]],
+  }
+  use { 'jose-elias-alvarez/null-ls.nvim',
+    requires = {
+     'nvim-lua/plenary.nvim'
+    }
+  }
+
   -- Profiling
-  use 'tweekmonster/startuptime.vim'
+  -- use 'tweekmonster/startuptime.vim'
 
   -- Treesitter
   use {
     'nvim-treesitter/nvim-treesitter',
+    branch = '0.5-compat',
     run = ':TSUpdate',
     setup = [[require('plugin.nvim-treesitter')]],
     requires = {
