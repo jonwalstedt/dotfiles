@@ -96,7 +96,8 @@ local function setup_servers()
         "typescriptreact",
         "less",
         "scss",
-        "css"
+        "css",
+        "lua",
     },
     settings = {languages = languages, log_level = 1, log_file = '~/efm.log'},
   }
