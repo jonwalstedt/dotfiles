@@ -2,7 +2,7 @@ local nmap = U.keymap.nmap
 local imap = U.keymap.imap
 
 nmap('<C-p>', ':call CustomFZF#FilesWithDevIcons()<CR>')
-nmap('<leader>p', ':FzfBuffers<CR>')
+nmap('<leader>p', ':Buffers<CR>')
 nmap('<leader>ff', ':FZFAg<CR>')
 nmap('<leader>fg', ':FZFAg<CR>')
 nmap('<leader>hh', ':FZFHistory:<CR>')

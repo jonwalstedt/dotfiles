@@ -6,7 +6,6 @@ local xmap = U.keymap.xmap
 local omap = U.keymap.omap
 local tmap = U.keymap.tmap
 
-
 -- Open Vimrc in split
 nmap('<leader>ve', ':vsplit $MYVIMRC<CR>')
 
@@ -75,16 +74,16 @@ nmap(']t', ':tabn<CR>')
 xmap('@', ':<C-u>call Macros#ExecuteMacroOverVisualRange()<CR>')
 
 -- Emacs style movement in commandline (as in bash or Zsh)
--- cmap('<C-a>', '<Home>', {})
--- cmap('<C-b>', '<Left>', {})
--- cmap('<C-f>', '<Right>', {})
--- cmap('<C-d>', '<Delete>', {})
--- cmap('<M-b>', '<S-Left>', {})
--- cmap('<M-f>', '<S-Right>', {})
--- cmap('<M-d>', '<S-right><Delete>', {})
--- cmap('<Esc>b', '<S-Left>', {})
--- cmap('<Esc>f', '<S-Right>', {})
--- cmap('<Esc>d', '<S-right><Delete>', {})
+-- cmap('<C-a>', '<Home>', {})
+-- cmap('<C-b>', '<Left>', {})
+-- cmap('<C-f>', '<Right>', {})
+-- cmap('<C-d>', '<Delete>', {})
+-- cmap('<M-b>', '<S-Left>', {})
+-- cmap('<M-f>', '<S-Right>', {})
+-- cmap('<M-d>', '<S-right><Delete>', {})
+-- cmap('<Esc>b', '<S-Left>', {})
+-- cmap('<Esc>f', '<S-Right>', {})
+-- cmap('<Esc>d', '<S-right><Delete>', {})
 
 -- Move to end of line
 nmap('L', '$')
@@ -113,8 +112,10 @@ nmap('<C-k>', ':call Windows#Move("k")<CR>')
 nmap('<C-l>', ':call Windows#Move("l")<CR>')
 
 -- Search within selection
-vmap('/', ':<C-U>call Search#RangeSearch("/")<CR>:if strlen(g:srchstr) > 0|exec "/".g:srchstr|endif<CR>')
-vmap('?', ':<C-U>call Search#RangeSearch("?")<CR>:if strlen(g:srchstr) > 0|exec "?".g:srchstr|endif<CR>')
+vmap('/',
+     ':<C-U>call Search#RangeSearch("/")<CR>:if strlen(g:srchstr) > 0|exec "/".g:srchstr|endif<CR>')
+vmap('?',
+     ':<C-U>call Search#RangeSearch("?")<CR>:if strlen(g:srchstr) > 0|exec "?".g:srchstr|endif<CR>')
 
 -- Grep word under cursor
 nmap('<leader>g', ':call Search#SearchAndGrep("normal", 0)<CR>')
