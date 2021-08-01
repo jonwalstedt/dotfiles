@@ -68,6 +68,11 @@
   -
     command: echo zsh theme && npm install --global pure-prompt
     stdout: true
+
+- shell:
+  -
+    command: luarocks install --server=https://luarocks.org/dev luaformatter
+    stdout: true
 # These links should be created after everything is installed:
 - shell:
   - [brew cleanup, Cleaning up]
