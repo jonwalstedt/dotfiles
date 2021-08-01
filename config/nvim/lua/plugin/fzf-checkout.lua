@@ -7,7 +7,7 @@ vim.g.fzf_branch_actions = {
     execute = 'Git diff {branch}',
     multiple = false,
     keymap = 'ctrl-f',
-    required = {'branch'},
-    confirm = false,
+    required = { 'branch' },
+    confirm = false
   }
 }

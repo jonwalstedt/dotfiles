@@ -1,6 +1,5 @@
 local nmap = U.keymap.nmap
 local imap = U.keymap.imap
-local cmap = U.keymap.cmap
 local vmap = U.keymap.vmap
 local xmap = U.keymap.xmap
 local omap = U.keymap.omap
@@ -112,10 +111,14 @@ nmap('<C-k>', ':call Windows#Move("k")<CR>')
 nmap('<C-l>', ':call Windows#Move("l")<CR>')
 
 -- Search within selection
-vmap('/',
-     ':<C-U>call Search#RangeSearch("/")<CR>:if strlen(g:srchstr) > 0|exec "/".g:srchstr|endif<CR>')
-vmap('?',
-     ':<C-U>call Search#RangeSearch("?")<CR>:if strlen(g:srchstr) > 0|exec "?".g:srchstr|endif<CR>')
+vmap(
+  '/',
+    ':<C-U>call Search#RangeSearch("/")<CR>:if strlen(g:srchstr) > 0|exec "/".g:srchstr|endif<CR>'
+)
+vmap(
+  '?',
+    ':<C-U>call Search#RangeSearch("?")<CR>:if strlen(g:srchstr) > 0|exec "?".g:srchstr|endif<CR>'
+)
 
 -- Grep word under cursor
 nmap('<leader>g', ':call Search#SearchAndGrep("normal", 0)<CR>')

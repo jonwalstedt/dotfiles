@@ -23,31 +23,30 @@ require'compe'.setup {
     nvim_lsp = { kind = '   (LSP)', priority = 10 },
     treesitter = { kind = "  ", priority = 8 },
     calc = { kind = '   (Calc)' },
-    emoji = { kind = ' ﲃ  (Emoji)', filetypes = {'markdown', 'text'} },
+    emoji = { kind = ' ﲃ  (Emoji)', filetypes = { 'markdown', 'text' } },
     nvim_lua = false,
     tags = false,
     vim_dadbod_completion = true,
-    snippets_nvim = { kind = "  " },
+    snippets_nvim = { kind = "  " }
     -- vsnip = { kind = '   (Snippet)', priority = 10 },
     -- nvim_lua = {kind = "  "},
     -- spell = {kind = '   (Spell)'},
     -- ultisnips = {kind = "  "},
     -- for emoji press : (idk if that in compe tho)
-  },
+  }
 }
-
 
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
 local check_back_space = function()
-    local col = vim.fn.col('.') - 1
-    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
-        return true
-    else
-        return false
-    end
+  local col = vim.fn.col('.') - 1
+  if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+    return true
+  else
+    return false
+  end
 end
 
 -- Use (s-)tab to:
@@ -74,13 +73,13 @@ _G.s_tab_complete = function()
   end
 end
 
-imap("<C-Space>", "compe#complete()", {expr = true})
-imap("<CR>", "compe#confirm('<CR>')", {expr = true})
-imap("<C-e>", "compe#close('<C-e>')", {expr = true})
-imap("<C-f>", "compe#scroll({ 'delta': +4 })", {expr = true})
-imap("<C-d>", "compe#scroll({ 'delta': -4 })", {expr = true})
+imap("<C-Space>", "compe#complete()", { expr = true })
+imap("<CR>", "compe#confirm('<CR>')", { expr = true })
+imap("<C-e>", "compe#close('<C-e>')", { expr = true })
+imap("<C-f>", "compe#scroll({ 'delta': +4 })", { expr = true })
+imap("<C-d>", "compe#scroll({ 'delta': -4 })", { expr = true })
 
-imap("<Tab>", "v:lua.tab_complete()", {expr = true})
-imap("<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-smap("<Tab>", "v:lua.tab_complete()", {expr = true})
-smap("<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+imap("<Tab>", "v:lua.tab_complete()", { expr = true })
+imap("<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
+smap("<Tab>", "v:lua.tab_complete()", { expr = true })
+smap("<S-Tab>", "v:lua.s_tab_complete()", { expr = true })

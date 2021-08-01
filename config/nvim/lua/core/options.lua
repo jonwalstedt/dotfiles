@@ -1,8 +1,6 @@
 local set = U.set
 local highlight = U.highlight
 
-local o = vim.opt
-
 -- Misc
 -- disable some health checks
 vim.g.loaded_node_provider = 0
@@ -116,7 +114,7 @@ set 'nocursorline'
 -- highlight('CursorLine', { guifg = '#ff0000' })
 -- highlight('CursorLineNR', { guifg = '#e900ff' })
 
-highlight('Comment', {guifg = '#666666', gui = 'italic', cterm = 'italic'})
+highlight('Comment', { guifg = '#666666', gui = 'italic', cterm = 'italic' })
 -- highlight('SignColumn', { guibg = '#000000' })
 -- highlight('LineNr', { guibg = '#000000'})
 
@@ -193,5 +191,5 @@ vim.g.netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
 -- Tags
 set('tags', './.tags,.tags')
 
---  highlight('MyActiveSignColumn', { guibg = '#0000ff' })
---  highlight('MyInactiveSignColumn', { guibg = '#ff0000' })
+-- highlight('MyActiveSignColumn', { guibg = '#0000ff' })
+-- highlight('MyInactiveSignColumn', { guibg = '#ff0000' })

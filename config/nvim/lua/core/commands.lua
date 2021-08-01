@@ -7,8 +7,10 @@ command("LspClearDiagnostics", "lua vim.lsp.diagnostic.clear(0)")
 command("LspPrint", "lua print(vim.inspect(vim.lsp.buf_get_clients()))")
 
 -- Profiling
-command("ProfileMe",
-        "profile start profile.log <bar> profile func * <bar> profile file *")
+command(
+  "ProfileMe",
+    "profile start profile.log <bar> profile func * <bar> profile file *"
+)
 command("ProfileStop", "profile pause")
 
 -- Misc
@@ -17,17 +19,25 @@ command("Exec", "set splitright | vnew | set filetype=sh | read !sh #")
 -- copy buffer file path
 command("CopyBufferPath", ":let @+ = expand('%:p')")
 
-command("BD",
-        "call fzf#run(fzf#wrap({ 'source': CustomFZF#Bufs(), 'sink*': { lines -> execute('bwipeout '.join(map(lines, {_, line -> split(line)[0]}))) }, 'options': '--multi --reverse --bind ctrl-a:select-all+accept' }))")
-command("Ag",
-        ":call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)")
+command(
+  "BD",
+    "call fzf#run(fzf#wrap({ 'source': CustomFZF#Bufs(), 'sink*': { lines -> execute('bwipeout '.join(map(lines, {_, line -> split(line)[0]}))) }, 'options': '--multi --reverse --bind ctrl-a:select-all+accept' }))"
+)
+command(
+  "Ag",
+    ":call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)"
+)
 
 -- Git
 command("ToggleGStatus", "call CustomFugitive#ToggleGStatus()")
-command("-nargs=* Glg",
-        "Git --paginate log --graph --pretty=format:'%h - (%ad)%d %s <%an>' --abbrev-commit --date=local <args>")
-command("-nargs=* GV",
-        "Git --paginate log --graph --pretty=format:'%h - (%ad)%d %s <%an>' --abbrev-commit --date=local <args>")
+command(
+  "-nargs=* Glg",
+    "Git --paginate log --graph --pretty=format:'%h - (%ad)%d %s <%an>' --abbrev-commit --date=local <args>"
+)
+command(
+  "-nargs=* GV",
+    "Git --paginate log --graph --pretty=format:'%h - (%ad)%d %s <%an>' --abbrev-commit --date=local <args>"
+)
 command("GitFileHistory", "0Gclog")
 command("GFileHistory", "0Gclog")
 command("GitDiffWithHash", "call CustomFugitive#DiffFileWithHash()")

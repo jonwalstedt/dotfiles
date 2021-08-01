@@ -7,11 +7,9 @@ vim.g['sneak#use_ic_scs'] = 1
 nmap('s', '<Plug>Sneak_s', {})
 nmap('S', '<Plug>Sneak_S', {})
 
-
 -- visual-mode
 xmap('s', '<Plug>Sneak_s', {})
 xmap('S', '<Plug>Sneak_S', {})
-
 
 -- operator-pending-mode
 omap('s', '<Plug>Sneak_s', {})

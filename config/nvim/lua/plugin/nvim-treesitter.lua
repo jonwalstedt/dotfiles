@@ -1,11 +1,11 @@
 require'nvim-treesitter.configs'.setup {
-  highlight = {enable = true},
+  highlight = { enable = true },
   ensure_installed = 'maintained',
-  indent = {enable = true},
-  autopairs = {enable = true},
-  rainbow = {enable = true},
-  autotag = {enable = true},
-  context_commentstring = {enable = true},
+  indent = { enable = true },
+  autopairs = { enable = true },
+  rainbow = { enable = true },
+  autotag = { enable = true },
+  context_commentstring = { enable = true },
 
   incremental_selection = {
     enable = true,
@@ -13,7 +13,7 @@ require'nvim-treesitter.configs'.setup {
       init_selection = 'gnn',
       scope_incremental = 'grc',
       node_incremental = 'grn',
-      node_decremental = 'grm',
+      node_decremental = 'grm'
     }
   },
   textobjects = {
@@ -31,9 +31,9 @@ require'nvim-treesitter.configs'.setup {
           javascript = "(function_definition) @function",
           javascriptreact = "(function_definition) @function",
           typescript = "(function_definition) @function",
-          typescriptreact = "(function_definition) @function",
-        },
-      },
-    },
-  },
+          typescriptreact = "(function_definition) @function"
+        }
+      }
+    }
+  }
 }
