@@ -26,9 +26,6 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 # Copy public key to clipboard:
 alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
-# Digital ocean vps
-alias vps='ssh jonwalstedt@128.199.54.176'
-
 # Neovim
 alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
 alias v.='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim .'
