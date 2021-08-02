@@ -139,12 +139,6 @@ return packer.startup(
       setup = [[require('plugin.color-converter-nvim')]],
       event = 'BufRead'
     }
-    -- Dim inactive windows
-    use {
-      'sunjon/shade.nvim',
-      setup = [[require('plugin.nvim-shade')]],
-      event = 'BufRead'
-    }
 
     -- Autoinstall/compile plugins
     if vim.fn.isdirectory(vim.fn.glob(plugin_path)) > 0 then packer.install() end

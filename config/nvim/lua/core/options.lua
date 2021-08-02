@@ -107,10 +107,10 @@ vim.cmd('colorscheme snazzy')
 set 'nocursorline'
 
 -- Dim inactive buffer
--- highlight('ActiveWindow', { guibg = '#000000'})
--- highlight('InactiveWindow', { guibg = '#141414' })
+highlight('ActiveWindow', { guibg = '#000000' })
+highlight('InactiveWindow', { guibg = '#141414' })
 -- highlight('VertSplit', { guibg = '#000000', guifg = '#444444' })
--- set ('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
+set('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
 -- highlight('CursorLine', { guifg = '#ff0000' })
 -- highlight('CursorLineNR', { guifg = '#e900ff' })
 

@@ -47,6 +47,11 @@ U.nvim_create_augroup(
         ' ',
         'hi! Sneak guifg=black guibg=aqua ctermfg=black ctermbg=green'
       }
+    },
+    window_management = {
+      { 'WinEnter', '*', ':call WindowManagement#Handle_Win_Enter()' }
+      -- { 'WinLeave', '*',  ':call WindowManagement#Handle_Win_Leave()' }
     }
+
   }
 )
