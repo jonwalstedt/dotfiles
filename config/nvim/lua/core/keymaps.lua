@@ -20,6 +20,12 @@ nmap('<BS>', ':update<CR><c-^>')
 -- Open previous file in vertical split with shift backspace
 nmap('<leader><BS>', ':vsp<CR><c-^>')
 
+-- Store current position to global mark J
+nmap('<leader>j', 'mJ')
+
+-- Go to global mark J
+nmap('<leader>k', '`J')
+
 -- Close and update buffer
 nmap('<leader>q', 'ZZ<C-w><C-p>')
 
@@ -132,3 +138,6 @@ vmap('*', 'y/\\V<C-R>=escape(@","/")<CR><CR>')
 
 -- Search and highlight word under the cursor
 nmap('<leader><CR>', [[:let @/ = '\<'.expand('<cword>').'\>'|set hlsearch<C-M>]])
+
+-- Substitute current search result
+nmap('<leader>s', ':%s//')
