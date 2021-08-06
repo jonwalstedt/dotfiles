@@ -112,13 +112,6 @@ return packer.startup(
       event = 'BufRead'
     }
 
-    -- Autopairs
-    use {
-      'windwp/nvim-autopairs',
-      after = 'nvim-compe',
-      config = function() require 'plugin.nvim-autopairs' end
-    }
-
     -- Misc
     -- Complementary pairs of mappings
     use 'tpope/vim-unimpaired'
