@@ -32,23 +32,13 @@ return packer.startup(
       setup = [[require('plugin.nvim-lsputils')]]
     }
 
-    -- use { 'jose-elias-alvarez/null-ls.nvim',
-    --   requires = {
-    --    'nvim-lua/plenary.nvim'
-    --   }
-    -- }
-
     -- Treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
       branch = '0.5-compat',
       run = ':TSUpdate',
       setup = [[require('plugin.nvim-treesitter')]],
-      requires = {
-        'windwp/nvim-ts-autotag'
-        -- 'p00f/nvim-ts-rainbow',
-        -- 'JoosepAlviste/nvim-ts-context-commentstring',
-      }
+      requires = { 'windwp/nvim-ts-autotag' }
     }
 
     -- Autocomplete
@@ -56,15 +46,14 @@ return packer.startup(
       'hrsh7th/nvim-compe',
       event = 'InsertEnter',
       config = function() require 'plugin.nvim-compe' end,
-      wants = 'LuaSnip',
+      wants = 'vim-vsnip',
       requires = {
         {
-          'L3MON4D3/LuaSnip',
-          wants = 'friendly-snippets',
+          'hrsh7th/vim-vsnip',
           event = 'InsertCharPre',
-          config = function() require 'plugin.luasnip' end
-        },
-        { 'rafamadriz/friendly-snippets', event = 'InsertCharPre' }
+          config = function() require 'plugin.vsnip' end,
+          requires = { 'hrsh7th/vim-vsnip-integ' }
+        }
       }
     }
 
