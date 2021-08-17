@@ -1,4 +1,24 @@
 {
+  "reactFunctionalComponent": {
+    "prefix": "rfc",
+    "body": [
+      "import React from 'react';",
+      "import styles from './${TM_FILENAME_BASE}.module.css';",
+      "",
+      "interface I${TM_FILENAME_BASE}Props {",
+      "  $1",
+      "}",
+      "",
+      "export const ${TM_FILENAME_BASE} = ({}: I${TM_FILENAME_BASE}Props): JSX.Element => {",
+      "  return (",
+      "    <div className={styles.${TM_FILENAME_BASE}}>",
+      "      $2",
+      "    </div>",
+      "  )",
+      "};"
+    ],
+    "description": "class"
+  },
   "class": {
     "prefix": "class",
     "body": [
@@ -37,7 +57,7 @@
   "useState": {
     "prefix": "useState",
     "body": [
-      "const [${1:state}, set${2}] = useState(${3});"
+      "const [${2:state}, set${3}${2}] = useState(${4});"
     ],
     "description": "useState"
   },

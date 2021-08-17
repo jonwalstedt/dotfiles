@@ -26,11 +26,18 @@ return packer.startup(
       requires = { 'glepnir/lspsaga.nvim' }
     }
 
-    use {
-      'RishabhRD/nvim-lsputils',
-      requires = { 'RishabhRD/popfix' },
-      setup = [[require('plugin.nvim-lsputils')]]
-    }
+    -- packer
+    use { 'ms-jpq/coq_nvim',
+      branch = 'coq',
+      requires = { 'ms-jpq/coq.artifacts', branch = 'artifacts' },
+      setup = [[require('plugin.nvim-coq')]],
+    } -- main one
+
+    -- use {
+    --   'RishabhRD/nvim-lsputils',
+    --   requires = { 'RishabhRD/popfix' },
+    --   setup = [[require('plugin.nvim-lsputils')]]
+    -- }
 
     -- Treesitter
     use {
@@ -42,20 +49,20 @@ return packer.startup(
     }
 
     -- Autocomplete
-    use {
-      'hrsh7th/nvim-compe',
-      event = 'InsertEnter',
-      config = function() require 'plugin.nvim-compe' end,
-      wants = 'vim-vsnip',
-      requires = {
-        {
-          'hrsh7th/vim-vsnip',
-          event = 'InsertCharPre',
-          config = function() require 'plugin.vsnip' end,
-          requires = { 'hrsh7th/vim-vsnip-integ' }
-        }
-      }
-    }
+    -- use {
+    --   'hrsh7th/nvim-compe',
+    --   event = 'InsertEnter',
+    --   config = function() require 'plugin.nvim-compe' end,
+    --   wants = 'vim-vsnip',
+    --   requires = {
+    --     {
+    --       'hrsh7th/vim-vsnip',
+    --       event = 'InsertCharPre',
+    --       config = function() require 'plugin.vsnip' end,
+    --       requires = { 'hrsh7th/vim-vsnip-integ', 'rafamadriz/friendly-snippets' }
+    --     }
+    --   }
+    -- }
 
     -- File browser
     use { 'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]] }

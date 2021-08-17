@@ -81,37 +81,50 @@ local function setup_servers()
     lspconfig[server].setup(config)
   end
 
+  require("packer").loader("coq_nvim coq.artifacts")
+
   -- Efm language server
   -- https://github.com/mattn/efm-langserver
-  lspconfig.efm.setup {
-    on_attach = function(client)
-      client.resolved_capabilities.document_formatting = true
-      on_attach_common(client)
-    end,
-    init_options = {
-      documentFormatting = true,
-      codeAction = true,
-      document_formatting = true
-    },
-    root_dir = lspconfig.util.root_pattern({ '.git/', '.' }),
+  lspconfig.efm.setup(
+    require("coq")().lsp_ensure_capabilities(
+      {
+        on_attach = function(client)
+          client.resolved_capabilities.document_formatting = true
+          on_attach_common(client)
+        end,
+        init_options = {
+          documentFormatting = true,
+          codeAction = true,
+          document_formatting = true
+        },
 
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescript.tsx",
-      "typescriptreact",
-      "less",
-      "scss",
-      "css",
-      "lua"
-    },
-    settings = { languages = languages, log_level = 1, log_file = '~/efm.log' }
-  }
+        root_dir = lspconfig.util.root_pattern({ '.git/', '.' }),
+
+        filetypes = {
+          "javascript",
+          "javascriptreact",
+          "javascript.jsx",
+          "typescript",
+          "typescript.tsx",
+          "typescriptreact",
+          "markdown",
+          "less",
+          "scss",
+          "css",
+          "lua"
+        },
+
+        settings = {
+          languages = languages,
+          log_level = 1,
+          log_file = '~/efm.log'
+        }
+      }
+    )
+  )
 
   -- Lua language server
-  -- local system_name
+  local system_name
   if vim.fn.has("mac") == 1 then
     system_name = "macOS"
   elseif vim.fn.has("unix") == 1 then
@@ -126,88 +139,133 @@ local function setup_servers()
     '/Users/jonwalstedt/repos/language-servers/lua/lua-language-server'
   local sumneko_binary = sumneko_root_path .. "/bin/" .. system_name ..
                            "/lua-language-server"
-  lspconfig.sumneko_lua.setup(
-    {
-      cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
-      settings = {
-        Lua = { diagnostics = { enable = true, globals = { "vim" } } }
-      },
 
-      on_attach = on_attach_common
-    }
+  lspconfig.sumneko_lua.setup(
+    require("coq")().lsp_ensure_capabilities(
+      {
+        cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
+        settings = {
+          Lua = { diagnostics = { enable = true, globals = { "vim" } } }
+        },
+
+        on_attach = on_attach_common
+      }
+    )
   )
 
   -- Typescript languageserver
   -- https://github.com/theia-ide/typescript-language-server
-  lspconfig.tsserver.setup {
-    capabilities = capabilities,
-    on_attach = function(client)
-      if client.config.flags then
-        client.config.flags.allow_incremental_sync = true
-      end
-      client.resolved_capabilities.document_formatting = false
-      on_attach_common(client)
-    end
-  }
+  lspconfig.tsserver.setup(
+    require("coq")().lsp_ensure_capabilities(
+      {
+        capabilities = capabilities,
+        on_attach = function(client)
+          if client.config.flags then
+            client.config.flags.allow_incremental_sync = true
+          end
+          client.resolved_capabilities.document_formatting = false
+          on_attach_common(client)
+        end
+      }
+    )
+  )
 
   -- Go languageserver
   -- https://github.com/golang/tools/tree/master/gopls
-  lspconfig.gopls.setup {
-    on_attach = function(client)
-      client.resolved_capabilities.document_formatting = false
-      on_attach_common(client)
-    end
-  }
+  lspconfig.gopls.setup(
+    require("coq")().lsp_ensure_capabilities(
+      {
+        on_attach = function(client)
+          client.resolved_capabilities.document_formatting = false
+          on_attach_common(client)
+        end
+      }
+    )
+  )
 
   -- Python languageserver
   -- https://github.com/palantir/python-language-server
-  --  lspconfig.pyls.setup {
-  --    on_attach = on_attach_common,
-  --    settings = {
-  --      pyls = {
-  --        plugins = {
-  --          pycodestyle = {
-  --            enabled = false,
-  --            ignore = {
-  --              "E501"
-  --            }
-  --          }
-  --        }
-  --      }
-  --    }
-  --  }
+  -- lspconfig.pyls.setup {
+  --   on_attach = on_attach_common,
+  --   settings = {
+  --     pyls = {
+  --       plugins = {
+  --         pycodestyle = {
+  --           enabled = false,
+  --           ignore = {
+  --             "E501"
+  --           }
+  --         }
+  --       }
+  --     }
+  --   }
+  -- }
 
-  lspconfig.pyright.setup { on_attach = on_attach_common }
+  lspconfig.pyright.setup(
+    require("coq")().lsp_ensure_capabilities(
+      { on_attach = on_attach_common }
+    )
+  )
 
   -- Vim languageserver
   -- https://github.com/iamcco/vim-language-server
-  lspconfig.vimls.setup { on_attach = on_attach_common }
+  lspconfig.vimls.setup(
+    require("coq")().lsp_ensure_capabilities(
+      { on_attach = on_attach_common }
+    )
+  )
 
   -- Docker languageserver
   -- https://github.com/rcjsuen/dockerfile-language-server-nodejs
-  lspconfig.dockerls.setup { on_attach = on_attach_common }
+  lspconfig.dockerls.setup(
+    require("coq")().lsp_ensure_capabilities(
+      { on_attach = on_attach_common }
+    )
+  )
 
   -- Terraform languageserver
   -- https://github.com/hashicorp/terraform-ls
-  lspconfig.terraformls.setup {
-    on_attach = on_attach_common,
-    cmd = { "terraform-ls", "serve" },
-    filetypes = { "tf" }
-  }
+  lspconfig.terraformls.setup(
+    require("coq")().lsp_ensure_capabilities(
+      {
+        on_attach = on_attach_common,
+        cmd = { "terraform-ls", "serve" },
+        filetypes = { "tf" }
+      }
+    )
+  )
 
   -- CSS languageserver
-  -- https://github.com/vscode-langservers/vscode-css-languageserver-bin
-  lspconfig.cssls.setup {
-    on_attach = on_attach_common,
-    capabilities = capabilities,
-    cmd = { "html-languageserver", "--stdio" },
-    filetypes = { "html" },
-    init_options = {
-      configurationSection = { "html", "css", "javascript" },
-      embeddedLanguages = { css = true, javascript = true }
-    },
-    settings = {}
-  }
+  -- Installed from https://github.com/kabouzeid/nvim-lspinstall
+  lspconfig.css.setup(
+    require("coq")().lsp_ensure_capabilities(
+      { on_attach = on_attach_common, capabilities = capabilities }
+    )
+  )
+
+  -- Yaml languageserver
+  -- Installed from https://github.com/kabouzeid/nvim-lspinstall
+  lspconfig.yaml.setup(
+    require("coq")().lsp_ensure_capabilities(
+      { on_attach = on_attach_common, capabilities = capabilities }
+    )
+  )
+
+  -- json languageserver
+  -- Installed from https://github.com/kabouzeid/nvim-lspinstall
+  lspconfig.json.setup(
+    require("coq")().lsp_ensure_capabilities(
+      { on_attach = on_attach_common, capabilities = capabilities }
+    )
+  )
+
+  -- html languageserver
+  -- Installed from https://github.com/kabouzeid/nvim-lspinstall
+  lspconfig.html.setup(
+    require("coq")().lsp_ensure_capabilities(
+      { on_attach = on_attach_common, capabilities = capabilities }
+    )
+  )
 end
 
 setup_servers()

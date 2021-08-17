@@ -1,26 +1,4 @@
 {
-
-  "reactFunctionalComponent": {
-    "prefix": "rfc",
-    "body": [
-      "import React from 'react';",
-      "import styles from './${TM_FILENAME_BASE}.module.css';",
-      "",
-      "interface I${TM_FILENAME_BASE}Props {",
-      "  $1",
-      "}",
-      "",
-      "export const ${TM_FILENAME_BASE} = ({}: I${TM_FILENAME_BASE}Props): JSX.Element => {",
-      "  return (",
-      "    <div className={styles.${TM_FILENAME_BASE}}>",
-      "      $2",
-      "    </div>",
-      "  )",
-      "};"
-    ],
-    "description": "class"
-
-  },
   "class": {
     "prefix": "class",
     "body": [
@@ -49,10 +27,10 @@
   "For Loop": {
     "prefix": "for",
     "body": [
-        "for (var ${1:index} = 0; ${index} < ${2:array}.length; ${index}++) {",
-        "    let ${3:element} = ${array}[${index}];",
-        "    $0",
-        "}"
+      "for (var ${1:index} = 0; ${index} < ${2:array}.length; ${index}++) {",
+      "    let ${3:element} = ${array}[${index}];",
+      "    $0",
+      "}"
     ],
     "description": "For Loop"
   },
