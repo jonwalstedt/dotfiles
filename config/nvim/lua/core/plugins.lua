@@ -33,11 +33,11 @@ return packer.startup(
       setup = [[require('plugin.nvim-coq')]],
     } -- main one
 
-    -- use {
-    --   'RishabhRD/nvim-lsputils',
-    --   requires = { 'RishabhRD/popfix' },
-    --   setup = [[require('plugin.nvim-lsputils')]]
-    -- }
+    use {
+      'RishabhRD/nvim-lsputils',
+      requires = { 'RishabhRD/popfix' },
+      setup = [[require('plugin.nvim-lsputils')]]
+    }
 
     -- Treesitter
     use {

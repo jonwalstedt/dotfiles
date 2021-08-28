@@ -12,7 +12,8 @@ vim.g.loaded_python_provider = 0
 vim.g.python_host_skip_check = 1
 vim.g.python3_host_skip_check = 1
 vim.g.python2_host_prog = '/usr/local/bin/python2'
-vim.g.python3_host_prog = '/usr/local/bin/python3'
+--  vim.g.python3_host_prog = '/usr/local/bin/python3'
+vim.g.python3_host_prog = '/usr/local/Cellar/python@3.9/3.9.6/bin/python3.9'
 
 -- Include current directory in path
 set 'path=.'
