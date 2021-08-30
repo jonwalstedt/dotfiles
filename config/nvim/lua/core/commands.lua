@@ -46,4 +46,4 @@ command("GDiffWithHash", "call CustomFugitive#DiffFileWithHash()")
 -- Note taking
 command("NotesBrowse", ":call Notes#Browse()")
 command("NotesTODO", ":call Notes#Todo()")
-command("NoteCreate", ":call Notes#Create()")
+command("NotesCreate", ":call Notes#Create()")
