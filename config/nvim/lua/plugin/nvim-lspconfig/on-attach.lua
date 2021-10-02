@@ -3,6 +3,32 @@ local function lua_nmap(lhs, rhs, opts)
   buf_nmap(lhs, '<cmd>lua  ' .. rhs .. '<CR>', opts)
 end
 
+vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]]
+vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+local border = {
+  { "🭽", "FloatBorder" },
+  { "▔", "FloatBorder" },
+  { "🭾", "FloatBorder" },
+  { "▕", "FloatBorder" },
+  { "🭿", "FloatBorder" },
+  { "▁", "FloatBorder" },
+  { "🭼", "FloatBorder" },
+  { "▏", "FloatBorder" }
+}
+
+local signs = {
+  Error = " ",
+  Warning = " ",
+  Hint = " ",
+  Information = " "
+}
+
+for type, icon in pairs(signs) do
+  local hl = "LspDiagnosticsSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
+
 -- Prettier
 local format_options_prettier = {
   tabWidth = 2,
@@ -72,6 +98,14 @@ return function(client)
   -- if client.name ~= 'efm' then client.resolved_capabilities.document_formatting = false end
 
   -- if client.name == 'typescript' then require('nvim-lsp-ts-utils').setup {} end
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+    vim.lsp.handlers.hover, { border = border }
+  )
+
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+    vim.lsp.handlers.signature_help, { border = border }
+  )
 
   if client.resolved_capabilities.document_formatting then
     vim.cmd [[autocmd! BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]]

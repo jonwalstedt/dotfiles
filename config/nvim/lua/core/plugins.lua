@@ -37,8 +37,8 @@ return packer.startup(
       'nvim-treesitter/nvim-treesitter',
       branch = '0.5-compat',
       run = ':TSUpdate',
-      setup = [[require('plugin.nvim-treesitter')]],
-      requires = { 'windwp/nvim-ts-autotag' }
+      setup = [[require('plugin.nvim-treesitter')]]
+      -- requires = { 'windwp/nvim-ts-autotag' }
     }
 
     -- Autocomplete
@@ -100,6 +100,11 @@ return packer.startup(
       setup = [[require('plugin.vim-sneak')]],
       event = 'BufRead'
     }
+    -- use {
+    --   'IndianBoy42/hop.nvim',
+    --   as = 'hop',
+    --   setup = [[require('plugin.nvim-hop')]]
+    -- }
 
     -- Misc
     -- Complementary pairs of mappings
@@ -111,16 +116,17 @@ return packer.startup(
     -- Pickup and use editor config files
     use 'editorconfig/editorconfig-vim'
     -- Colorizer
-    use {
-      'norcalli/nvim-colorizer.lua',
-      setup = [[require('plugin.nvim-colorizer')]]
-    }
+    -- use {
+    --   'norcalli/nvim-colorizer.lua',
+    --   setup = [[require('plugin.nvim-colorizer')]]
+    -- }
+
     -- Colorconverter
-    use {
-      'NTBBloodbath/color-converter.nvim',
-      setup = [[require('plugin.color-converter-nvim')]],
-      event = 'BufRead'
-    }
+    -- use {
+    --   'NTBBloodbath/color-converter.nvim',
+    --   setup = [[require('plugin.color-converter-nvim')]],
+    --   event = 'BufRead'
+    -- }
 
     -- Autoinstall/compile plugins
     if vim.fn.isdirectory(vim.fn.glob(plugin_path)) > 0 then packer.install() end
