@@ -17,12 +17,11 @@ return packer.startup(
     use { 'wbthomason/packer.nvim' }
 
     -- LSP
-    use { 'kabouzeid/nvim-lspinstall', event = 'BufRead' }
+    use { 'williamboman/nvim-lsp-installer', event = 'BufRead' }
 
     use {
       'neovim/nvim-lspconfig',
       setup = [[require('plugin.nvim-lspconfig')]],
-      after = 'nvim-lspinstall',
       requires = { 'glepnir/lspsaga.nvim' }
     }
 

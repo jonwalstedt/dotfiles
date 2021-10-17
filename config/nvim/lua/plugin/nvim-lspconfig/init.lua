@@ -1,5 +1,4 @@
 local lspconfig = require('lspconfig')
-local lspinstall = require('lspinstall')
 local languages = require('plugin.nvim-lspconfig.format')
 local on_attach_common = require('plugin.nvim-lspconfig.on-attach')
 local palette = U.palette
@@ -21,19 +20,19 @@ local function set_highlight(type, color)
 end
 
 -- Check if a eslint config is present
-local function eslint_config_exists()
-  local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
-
-  if not vim.tbl_isempty(eslintrc) then return true end
-
-  if pcall(vim.fn.filereadable("package.json")) then
-    if vim.fn.json_decode(vim.fn.readfile("package.json"))["eslintConfig"] then
-      return true
-    end
-  end
-
-  return false
-end
+-- local function eslint_config_exists()
+--   local eslintrc = vim.fn.glob(".eslintrc*", 0, 1)
+--
+--   if not vim.tbl_isempty(eslintrc) then return true end
+--
+--   if pcall(vim.fn.filereadable("package.json")) then
+--     if vim.fn.json_decode(vim.fn.readfile("package.json"))["eslintConfig"] then
+--       return true
+--     end
+--   end
+--
+--   return false
+-- end
 
 _G.formatting = function()
   if not vim.g[string.format("format_disabled_%s", vim.bo.filetype)] then
@@ -72,14 +71,6 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
 )
 
 local function setup_servers()
-  lspinstall.setup()
-  local installed = lspinstall.installed_servers()
-  for _, server in pairs(installed) do
-    local config = { root_dir = lspconfig.util.root_pattern({ '.git/', '.' }) }
-    capabilities = capabilities
-    config.on_attach = on_attach_common
-    lspconfig[server].setup(config)
-  end
 
   -- Efm language server
   -- https://github.com/mattn/efm-langserver
@@ -137,6 +128,19 @@ local function setup_servers()
     }
   )
 
+  lspconfig.eslint.setup {
+    capabilities = capabilities,
+    filetypes = {},
+    on_attach = function(client)
+      if client.config.flags then
+        client.config.flags.allow_incremental_sync = true
+      end
+      client.resolved_capabilities.document_formatting = true
+      on_attach_common(client)
+    end,
+    settings = {}
+  }
+
   -- Typescript languageserver
   -- https://github.com/theia-ide/typescript-language-server
   lspconfig.tsserver.setup {
@@ -161,21 +165,21 @@ local function setup_servers()
 
   -- Python languageserver
   -- https://github.com/palantir/python-language-server
-  --  lspconfig.pyls.setup {
-  --    on_attach = on_attach_common,
-  --    settings = {
-  --      pyls = {
-  --        plugins = {
-  --          pycodestyle = {
-  --            enabled = false,
-  --            ignore = {
-  --              "E501"
-  --            }
-  --          }
-  --        }
-  --      }
-  --    }
-  --  }
+  -- lspconfig.pyls.setup {
+  --   on_attach = on_attach_common,
+  --   settings = {
+  --     pyls = {
+  --       plugins = {
+  --         pycodestyle = {
+  --           enabled = false,
+  --           ignore = {
+  --             "E501"
+  --           }
+  --         }
+  --       }
+  --     }
+  --   }
+  -- }
 
   lspconfig.pyright.setup { on_attach = on_attach_common }
 

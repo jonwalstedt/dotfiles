@@ -90,4 +90,7 @@ export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 # llvm/clang
 export PATH="/usr/local/opt/llvm/bin:$PATH"
 
+# bin
+export PATH="$HOME/bin:$PATH"
+
 export CC="gcc-11"
