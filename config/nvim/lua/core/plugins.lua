@@ -9,6 +9,11 @@ local packer = require('packer')
 local plugin_path = U.os.data .. '/site/pack/packer/opt/'
 local packer_compiled = U.os.data .. '/site/plugin/packer_compiled.vim'
 
+-- This file can be loaded by calling `lua require('plugins')` from your init.vim
+
+-- Only required if you have packer configured as `opt`
+vim.cmd [[packadd packer.nvim]]
+
 return packer.startup(
   function(use)
     packer.init({ compile_path = packer_compiled, opt_default = true })
@@ -21,8 +26,8 @@ return packer.startup(
 
     use {
       'neovim/nvim-lspconfig',
-      setup = [[require('plugin.nvim-lspconfig')]],
-      requires = { 'glepnir/lspsaga.nvim' }
+      setup = [[require('plugin.nvim-lspconfig')]]
+      -- requires = { 'glepnir/lspsaga.nvim' }
     }
 
     use {
@@ -34,7 +39,6 @@ return packer.startup(
     -- Treesitter
     use {
       'nvim-treesitter/nvim-treesitter',
-      branch = '0.5-compat',
       run = ':TSUpdate',
       setup = [[require('plugin.nvim-treesitter')]]
       -- requires = { 'windwp/nvim-ts-autotag' }
@@ -42,19 +46,21 @@ return packer.startup(
 
     -- Autocomplete
     use {
-      'hrsh7th/nvim-compe',
-      event = 'InsertEnter',
-      config = function() require 'plugin.nvim-compe' end,
-      wants = 'vim-vsnip',
+      'hrsh7th/nvim-cmp',
       requires = {
-        {
-          'hrsh7th/vim-vsnip',
-          event = 'InsertCharPre',
-          config = function() require 'plugin.vsnip' end,
-          requires = { 'hrsh7th/vim-vsnip-integ' }
-        }
-      }
+        { 'hrsh7th/cmp-buffer' },
+        { 'hrsh7th/cmp-path' },
+        { 'hrsh7th/cmp-nvim-lua' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+        { 'hrsh7th/cmp-vsnip' },
+        { 'hrsh7th/cmp-calc' }
+      },
+      config = function() require('plugin.nvim-cmp') end,
+      event = 'InsertEnter',
+      after = 'vim-vsnip'
     }
+
+    use { 'hrsh7th/vim-vsnip' }
 
     -- File browser
     use { 'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]] }
@@ -99,11 +105,6 @@ return packer.startup(
       setup = [[require('plugin.vim-sneak')]],
       event = 'BufRead'
     }
-    -- use {
-    --   'IndianBoy42/hop.nvim',
-    --   as = 'hop',
-    --   setup = [[require('plugin.nvim-hop')]]
-    -- }
 
     -- Misc
     -- Complementary pairs of mappings
@@ -114,18 +115,6 @@ return packer.startup(
     use 'google/vim-searchindex'
     -- Pickup and use editor config files
     use 'editorconfig/editorconfig-vim'
-    -- Colorizer
-    -- use {
-    --   'norcalli/nvim-colorizer.lua',
-    --   setup = [[require('plugin.nvim-colorizer')]]
-    -- }
-
-    -- Colorconverter
-    -- use {
-    --   'NTBBloodbath/color-converter.nvim',
-    --   setup = [[require('plugin.color-converter-nvim')]],
-    --   event = 'BufRead'
-    -- }
 
     -- Autoinstall/compile plugins
     if vim.fn.isdirectory(vim.fn.glob(plugin_path)) > 0 then packer.install() end
