@@ -3,6 +3,18 @@ function! CustomFZF#FilesWithDevIcons()
 
   let l:fzf_files_options = " --preview '([[ -f {2..-1} ]] && (bat --theme='Dracula' --style=numbers,changes --color always {2..-1} | head -".&lines." || cat {2..-1})) || tree -C {2..-1} || echo {} 2> /dev/null | head -200' --expect=ctrl-t,ctrl-v,ctrl-x --multi --bind=?:toggle-preview,ctrl-a:select-all,ctrl-d:deselect-all"
 
+  function! s:build_quickfix_list(lines)
+    call setqflist(map(copy(a:lines), '{ "filename": v:val }'))
+    copen
+    cc
+  endfunction
+
+  let g:fzf_action = {
+        \ 'ctrl-q': function('s:build_quickfix_list'),
+        \ 'ctrl-t': 'tab split',
+        \ 'ctrl-x': 'split',
+        \ 'ctrl-v': 'vsplit' }
+
   function! s:prepend_icon(candidates)
     let result = []
     for candidate in a:candidates
