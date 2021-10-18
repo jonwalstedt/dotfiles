@@ -97,7 +97,8 @@ return packer.startup(
     use { 'sheerun/vim-polyglot' }
 
     -- Colorschemes
-    use { 'ChristianChiarulli/nvcode-color-schemes.vim' }
+    -- use { 'ChristianChiarulli/nvcode-color-schemes.vim' }
+    use { 'folke/tokyonight.nvim' }
 
     -- Movement
     use {

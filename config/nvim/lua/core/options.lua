@@ -101,14 +101,15 @@ set('foldtext', 'NeatFoldText()')
 vim.g.nvcode_termcolors = 256
 vim.cmd('syntax on')
 set 'termguicolors'
-vim.cmd('colorscheme snazzy')
+vim.cmd('colorscheme tokyonight')
+vim.g.tokyonight_style = "night"
 
 -- Disable highlight current row
 set 'nocursorline'
 
 -- Dim inactive buffer
-highlight('ActiveWindow', { guibg = '#000000' })
-highlight('InactiveWindow', { guibg = '#141414' })
+highlight('ActiveWindow', { guibg = '#13141c' })
+highlight('InactiveWindow', { guibg = '#1a1b26' })
 -- highlight('VertSplit', { guibg = '#000000', guifg = '#444444' })
 set('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
 -- highlight('CursorLine', { guifg = '#ff0000' })
