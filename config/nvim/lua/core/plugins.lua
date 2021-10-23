@@ -61,6 +61,7 @@ return packer.startup(
     }
 
     use { 'hrsh7th/vim-vsnip' }
+    use { 'hrsh7th/vim-vsnip-integ' }
 
     -- File browser
     use { 'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]] }
@@ -89,12 +90,18 @@ return packer.startup(
       event = 'BufRead'
     }
 
+    -- Stabilize windows
+    use {
+      "luukvbaal/stabilize.nvim",
+      config = function() require("stabilize").setup() end
+    }
+
     -- Quickfix list
     use 'romainl/vim-qlist'
     use 'romainl/vim-qf'
 
     -- Language support
-    use { 'sheerun/vim-polyglot' }
+    --  use { 'sheerun/vim-polyglot' }
 
     -- Colorschemes
     -- use { 'ChristianChiarulli/nvcode-color-schemes.vim' }

@@ -47,6 +47,9 @@ set 'nostartofline'
 -- Highlight matching [{()}]
 set 'showmatch'
 set('completeopt', 'menu,menuone,noselect')
+-- set omnifunc=syntaxcomplete#Complete
+-- set('omnifunc', 'v:lua.vim.lsp.omnifunc')
+set('completeopt', 'menu,menuone,noinsert')
 
 -- Use the clipboard register
 set('clipboard', 'unnamedplus')
@@ -157,8 +160,6 @@ set 'smartcase'
 
 -- Use 'g' flag by default with :s/foo/bar/.
 set 'gdefault'
-
--- set omnifunc=syntaxcomplete#Complete
 
 -- Substitute
 -- Shows the effects of a command incrementally, as you type.

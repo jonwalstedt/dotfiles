@@ -141,3 +141,7 @@ nmap('<leader><CR>', [[:let @/ = '\<'.expand('<cword>').'\>'|set hlsearch<C-M>]]
 
 -- Substitute current search result
 nmap('<leader>s', ':%s//')
+
+-- map omni completion to <C-Space>
+imap('<C-Space>', '<C-x><C-o>')
+imap('<C-@>', '<C-Space>')
