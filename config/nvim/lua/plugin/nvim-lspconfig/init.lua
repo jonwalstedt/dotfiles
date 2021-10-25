@@ -78,15 +78,33 @@ local function setup_servers()
             on_attach_common(client)
         end,
         init_options = {
+            -- Enable document formatting
             documentFormatting = true,
+
+            -- Enable hover information functionality
+            hover = true,
+
+            -- Enable the use of symbols
+            documentSymbol = true,
+
+            -- Enable the use of code actions
             codeAction = true,
-            document_formatting = true
+
+            -- Enable autocompletion popup
+            completion = true
+        },
+        -- '.' starts one server per buffer :( but withoutit prettier fails
+        rootMarkers = {
+            ".lua-format", ".eslintrc.cjs", ".eslintrc", ".eslintrc.json",
+            ".eslintrc.js", ".prettierrc", ".prettierrc.js", ".prettierrc.json",
+            ".prettierrc.yml", ".prettierrc.yaml", ".prettier.config.js",
+            ".prettier.config.cjs"
         },
         root_dir = lspconfig.util.root_pattern({'.git/'}),
 
         filetypes = {
             "javascript", "javascriptreact", "javascript.jsx", "typescript",
-            "typescript.tsx", "typescriptreact", "less", "scss", "css", "lua"
+            "typescript.tsx", "typescriptreact", "lua"
         },
         settings = {
             languages = languages,
@@ -117,6 +135,13 @@ local function setup_servers()
 
         on_attach = on_attach_common
     })
+
+    lspconfig.stylelint_lsp.setup {
+        filetypes = {"scss", "css", "less", "sugarss"},
+        settings = {stylelintplus = {autoFixOnSave = true}},
+        root_dir = lspconfig.util.root_pattern('.stylelintrc', 'package.json',
+                                               '.stylelintrc.js')
+    }
 
     lspconfig.eslint.setup {
         capabilities = capabilities,
