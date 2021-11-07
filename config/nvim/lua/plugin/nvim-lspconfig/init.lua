@@ -95,16 +95,17 @@ local function setup_servers()
         },
         -- '.' starts one server per buffer :( but withoutit prettier fails
         rootMarkers = {
-            ".lua-format", ".eslintrc.cjs", ".eslintrc", ".eslintrc.json",
-            ".eslintrc.js", ".prettierrc", ".prettierrc.js", ".prettierrc.json",
-            ".prettierrc.yml", ".prettierrc.yaml", ".prettier.config.js",
-            ".prettier.config.cjs"
+            '.lua-format', '.eslintrc.cjs', '.eslintrc', '.eslintrc.json',
+            '.eslintrc.js', '.prettierrc', '.prettierrc.js', '.prettierrc.json',
+            '.prettierrc.yml', '.prettierrc.yaml', '.prettier.config.js',
+            '.prettier.config.cjs'
         },
+        -- TODO '.' should hopefully not be needed (prettier does not work without it now though)
         root_dir = lspconfig.util.root_pattern({'.git/'}),
 
         filetypes = {
-            "javascript", "javascriptreact", "javascript.jsx", "typescript",
-            "typescript.tsx", "typescriptreact", "lua"
+            'javascript', 'javascriptreact', 'javascript.jsx', 'typescript',
+            'typescript.tsx', 'typescriptreact', 'lua'
         },
         settings = {
             languages = languages,
