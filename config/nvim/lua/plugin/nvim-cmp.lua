@@ -9,7 +9,7 @@ cmp.setup {
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.close(),
         ['<Esc>'] = cmp.mapping.close(),
-        ['<CR>'] = cmp.mapping.confirm({select = true}),
+        ['<CR>'] = cmp.mapping.confirm({select = false}),
         ['<Tab>'] = function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
@@ -23,13 +23,14 @@ cmp.setup {
         {name = 'path'}, {name = 'vsnip'},
         {name = 'buffer', priority = 2, keyword_length = 5, max_item_count = 10},
         {name = 'calc'}
-    }
+    },
+    experimental = {native_menu = true, ghost_text = true}
 }
 
 -- Use buffer source for `/`.
-cmp.setup.cmdline('/', {sources = {{name = 'buffer'}}})
+-- cmp.setup.cmdline('/', {sources = {{name = 'buffer'}}})
 
 -- Use cmdline & path source for ':'.
-cmp.setup.cmdline(':', {
-    sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
-})
+-- cmp.setup.cmdline(':', {
+--     sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
+-- })

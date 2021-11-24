@@ -1,8 +1,3 @@
-local packer_path = U.os.data .. '/site/pack/packer/opt/packer.nvim'
-if vim.fn.empty(vim.fn.glob(packer_path)) > 0 then
-    vim.cmd('!git clone https://github.com/wbthomason/packer.nvim ' ..
-                packer_path)
-end
 vim.cmd 'packadd packer.nvim | au BufWritePost plugins.lua PackerCompile'
 vim.opt.rtp = vim.opt.rtp + '~/.local/share/nvim/site/pack/packer/opt/*'
 
@@ -24,11 +19,7 @@ return packer.startup(function(use)
     -- LSP
     use {'williamboman/nvim-lsp-installer', event = 'BufRead'}
 
-    use {
-        'neovim/nvim-lspconfig',
-        setup = [[require('plugin.nvim-lspconfig')]]
-        -- requires = { 'glepnir/lspsaga.nvim' }
-    }
+    use {'neovim/nvim-lspconfig', setup = [[require('plugin.nvim-lspconfig')]]}
 
     use {
         'RishabhRD/nvim-lsputils',
@@ -44,6 +35,11 @@ return packer.startup(function(use)
         -- requires = { 'windwp/nvim-ts-autotag' }
     }
 
+    use {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        setup = [[require('plugin.nvim-treesitter-textobjects')]]
+    }
+
     -- Autocomplete
     use {
         'hrsh7th/nvim-cmp',
@@ -53,11 +49,11 @@ return packer.startup(function(use)
             {'hrsh7th/cmp-vsnip'}, {'hrsh7th/vim-vsnip'}, {'hrsh7th/cmp-calc'},
             {'hrsh7th/cmp-cmdline'}
         },
-        config = function() require('plugin.nvim-cmp') end,
-        event = 'InsertEnter'
+        config = function() require('plugin.nvim-cmp') end
+        -- event = 'InsertEnter'
     }
 
-    use {'github/copilot.vim'}
+    -- use {'github/copilot.vim'}
 
     -- File browser
     use {'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]]}
@@ -125,3 +121,4 @@ return packer.startup(function(use)
     if vim.fn.empty(vim.fn.glob(packer_compiled)) > 0 then packer.compile() end
 
 end)
+
