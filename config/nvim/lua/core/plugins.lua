@@ -49,8 +49,8 @@ return packer.startup(function(use)
             {'hrsh7th/cmp-vsnip'}, {'hrsh7th/vim-vsnip'}, {'hrsh7th/cmp-calc'},
             {'hrsh7th/cmp-cmdline'}
         },
-        config = function() require('plugin.nvim-cmp') end
-        -- event = 'InsertEnter'
+        config = function() require('plugin.nvim-cmp') end,
+        event = 'InsertEnter'
     }
 
     -- use {'github/copilot.vim'}
