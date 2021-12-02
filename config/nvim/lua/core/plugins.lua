@@ -31,8 +31,8 @@ return packer.startup(function(use)
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
-        setup = [[require('plugin.nvim-treesitter')]]
-        -- requires = { 'windwp/nvim-ts-autotag' }
+        setup = [[require('plugin.nvim-treesitter')]],
+        requires = {'windwp/nvim-ts-autotag'}
     }
 
     use {
@@ -84,8 +84,8 @@ return packer.startup(function(use)
 
     -- Stabilize windows
     use {
-        "luukvbaal/stabilize.nvim",
-        config = function() require("stabilize").setup() end
+        'luukvbaal/stabilize.nvim',
+        config = function() require('stabilize').setup() end
     }
 
     -- Quickfix list
@@ -107,6 +107,12 @@ return packer.startup(function(use)
     }
 
     -- Misc
+    -- Statusline
+    use {
+        'nvim-lualine/lualine.nvim',
+        setup = [[require('plugin.nvim-lualine')]]
+    }
+
     -- Complementary pairs of mappings
     use 'tpope/vim-unimpaired'
     -- Make plugin actions repeatable by .

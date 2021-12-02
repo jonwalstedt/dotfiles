@@ -52,3 +52,6 @@ alias vecka="figlet -c $weeknumber"
 alias datum="figlet -c 'v$weeknumber' && date +'%Y-%m-%d' | figlet -c && date +'%H:%M:%S' | figlet -c"
 alias idag=datum
 
+# KubeCtl
+alias k='kubectl'
+alias ka='kubectl apply -f '
