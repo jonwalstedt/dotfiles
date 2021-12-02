@@ -111,14 +111,14 @@ vim.g.tokyonight_style = "night"
 set 'nocursorline'
 
 -- Dim inactive buffer
-highlight('ActiveWindow', { guibg = '#13141c' })
-highlight('InactiveWindow', { guibg = '#1a1b26' })
+highlight('ActiveWindow', {guibg = '#13141c'})
+highlight('InactiveWindow', {guibg = '#1a1b26'})
 -- highlight('VertSplit', { guibg = '#000000', guifg = '#444444' })
 set('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
 -- highlight('CursorLine', { guifg = '#ff0000' })
 -- highlight('CursorLineNR', { guifg = '#e900ff' })
 
-highlight('Comment', { guifg = '#666666', gui = 'italic', cterm = 'italic' })
+highlight('Comment', {guifg = '#666666', gui = 'italic', cterm = 'italic'})
 -- highlight('SignColumn', { guibg = '#000000' })
 -- highlight('LineNr', { guibg = '#000000'})
 

@@ -94,3 +94,6 @@ export PATH="/usr/local/opt/llvm/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 export CC="gcc-11"
+
+
+export KUBECONFIG=/Users/jonwalstedt/repos/king/training/kubernetes-training/jonwalstedt-kubeconfig-day-3

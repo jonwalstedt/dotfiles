@@ -1,7 +1,7 @@
 vim.cmd 'packadd packer.nvim | au BufWritePost plugins.lua PackerCompile'
 vim.opt.rtp = vim.opt.rtp + '~/.local/share/nvim/site/pack/packer/opt/*'
 
-local packer = require('packer')
+local packer = require 'packer'
 local plugin_path = U.os.data .. '/site/pack/packer/opt/'
 local packer_compiled = U.os.data .. '/site/plugin/packer_compiled.vim'
 
@@ -11,120 +11,133 @@ local packer_compiled = U.os.data .. '/site/plugin/packer_compiled.vim'
 vim.cmd [[packadd packer.nvim]]
 
 return packer.startup(function(use)
-    packer.init({compile_path = packer_compiled, opt_default = true})
+  packer.init { compile_path = packer_compiled, opt_default = true }
 
-    -- Plugin Manager
-    use {'wbthomason/packer.nvim'}
+  -- Plugin Manager
+  use { 'wbthomason/packer.nvim' }
 
-    -- LSP
-    use {'williamboman/nvim-lsp-installer', event = 'BufRead'}
+  -- LSP
+  use { 'williamboman/nvim-lsp-installer', event = 'BufRead' }
 
-    use {'neovim/nvim-lspconfig', setup = [[require('plugin.nvim-lspconfig')]]}
+  use { 'neovim/nvim-lspconfig', setup = [[require('plugin.nvim-lspconfig')]] }
 
-    use {
-        'RishabhRD/nvim-lsputils',
-        requires = {'RishabhRD/popfix'},
-        setup = [[require('plugin.nvim-lsputils')]]
-    }
+  use {
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    -- setup = [[require('plugin.null-ls')]]
+  }
 
-    -- Treesitter
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate',
-        setup = [[require('plugin.nvim-treesitter')]],
-        requires = {'windwp/nvim-ts-autotag'}
-    }
+  use {
+    'RishabhRD/nvim-lsputils',
+    requires = { 'RishabhRD/popfix' },
+    setup = [[require('plugin.nvim-lsputils')]],
+  }
 
-    use {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        setup = [[require('plugin.nvim-treesitter-textobjects')]]
-    }
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    setup = [[require('plugin.nvim-treesitter')]],
+    requires = { 'windwp/nvim-ts-autotag' },
+  }
 
-    -- Autocomplete
-    use {
-        'hrsh7th/nvim-cmp',
-        requires = {
-            {'hrsh7th/cmp-buffer'}, {'hrsh7th/cmp-path'},
-            {'hrsh7th/cmp-nvim-lua'}, {'hrsh7th/cmp-nvim-lsp'},
-            {'hrsh7th/cmp-vsnip'}, {'hrsh7th/vim-vsnip'}, {'hrsh7th/cmp-calc'},
-            {'hrsh7th/cmp-cmdline'}
-        },
-        config = function() require('plugin.nvim-cmp') end,
-        event = 'InsertEnter'
-    }
+  use {
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    setup = [[require('plugin.nvim-treesitter-textobjects')]],
+  }
 
-    -- use {'github/copilot.vim'}
+  -- Autocomplete
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-nvim-lua' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-vsnip' },
+      { 'hrsh7th/vim-vsnip' },
+      { 'hrsh7th/cmp-calc' },
+      { 'hrsh7th/cmp-cmdline' },
+    },
+    config = function()
+      require 'plugin.nvim-cmp'
+    end,
+    event = 'InsertEnter',
+  }
 
-    -- File browser
-    use {'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]]}
+  -- use {'github/copilot.vim'}
 
-    -- FZF file/content search
-    use {
-        'junegunn/fzf.vim',
-        setup = [[require('plugin.fzf')]],
-        requires = {'junegunn/fzf'},
-        event = 'BufRead'
-    }
+  -- File browser
+  use { 'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]] }
 
-    use {
-        'chengzeyi/fzf-preview.vim',
-        after = 'fzf.vim',
-        requires = {'ryanoasis/vim-devicons'}
-    }
+  -- FZF file/content search
+  use {
+    'junegunn/fzf.vim',
+    setup = [[require('plugin.fzf')]],
+    requires = { 'junegunn/fzf' },
+    event = 'BufRead',
+  }
 
-    -- Git
-    use {'tpope/vim-fugitive', setup = [[require('plugin.vim-fugitive')]]}
+  use {
+    'chengzeyi/fzf-preview.vim',
+    after = 'fzf.vim',
+    requires = { 'ryanoasis/vim-devicons' },
+  }
 
-    use {
-        'lewis6991/gitsigns.nvim',
-        setup = [[require('plugin.nvim-gitsigns')]],
-        requires = {'nvim-lua/plenary.nvim'},
-        event = 'BufRead'
-    }
+  -- Git
+  use { 'tpope/vim-fugitive', setup = [[require('plugin.vim-fugitive')]] }
 
-    -- Stabilize windows
-    use {
-        'luukvbaal/stabilize.nvim',
-        config = function() require('stabilize').setup() end
-    }
+  use {
+    'lewis6991/gitsigns.nvim',
+    setup = [[require('plugin.gitsigns')]],
+    requires = { 'nvim-lua/plenary.nvim' },
+    event = 'BufRead',
+  }
 
-    -- Quickfix list
-    use 'romainl/vim-qlist'
-    use 'romainl/vim-qf'
+  -- Stabilize windows
+  use {
+    'luukvbaal/stabilize.nvim',
+    config = function()
+      require('stabilize').setup()
+    end,
+  }
 
-    -- Show register contents
-    use 'junegunn/vim-peekaboo'
+  -- Quickfix list
+  use 'romainl/vim-qlist'
+  use 'romainl/vim-qf'
 
-    -- Colorschemes
-    -- use { 'ChristianChiarulli/nvcode-color-schemes.vim' }
-    use {'folke/tokyonight.nvim'}
+  -- Show register contents
+  use 'junegunn/vim-peekaboo'
 
-    -- Movement
-    use {
-        'justinmk/vim-sneak',
-        setup = [[require('plugin.vim-sneak')]],
-        event = 'BufRead'
-    }
+  -- Colorschemes
+  -- use { 'ChristianChiarulli/nvcode-color-schemes.vim' }
+  use { 'folke/tokyonight.nvim' }
 
-    -- Misc
-    -- Statusline
-    use {
-        'nvim-lualine/lualine.nvim',
-        setup = [[require('plugin.nvim-lualine')]]
-    }
+  -- Movement
+  use {
+    'justinmk/vim-sneak',
+    setup = [[require('plugin.vim-sneak')]],
+    event = 'BufRead',
+  }
 
-    -- Complementary pairs of mappings
-    use 'tpope/vim-unimpaired'
-    -- Make plugin actions repeatable by .
-    use 'tpope/vim-repeat'
-    -- Show search result count
-    use 'google/vim-searchindex'
-    -- Pickup and use editor config files
-    use 'editorconfig/editorconfig-vim'
+  -- Misc
+  -- Statusline
+  use { 'nvim-lualine/lualine.nvim', setup = [[require('plugin.lualine')]] }
 
-    -- Autoinstall/compile plugins
-    if vim.fn.isdirectory(vim.fn.glob(plugin_path)) > 0 then packer.install() end
-    if vim.fn.empty(vim.fn.glob(packer_compiled)) > 0 then packer.compile() end
+  -- Complementary pairs of mappings
+  use 'tpope/vim-unimpaired'
+  -- Make plugin actions repeatable by .
+  use 'tpope/vim-repeat'
+  -- Show search result count
+  use 'google/vim-searchindex'
+  -- Pickup and use editor config files
+  use 'editorconfig/editorconfig-vim'
 
+  -- Autoinstall/compile plugins
+  if vim.fn.isdirectory(vim.fn.glob(plugin_path)) > 0 then
+    packer.install()
+  end
+  if vim.fn.empty(vim.fn.glob(packer_compiled)) > 0 then
+    packer.compile()
+  end
 end)
-
