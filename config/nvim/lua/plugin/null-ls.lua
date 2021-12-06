@@ -28,7 +28,8 @@ M.setup = function()
           '-',
         },
       },
-      b.formatting.prettierd.with {
+      b.formatting.prettier.with {
+        prefer_local = 'node_modules/.bin',
         filetypes = {
           'typescriptreact',
           'typescript',

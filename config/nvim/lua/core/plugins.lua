@@ -47,6 +47,7 @@ return packer.startup(function(use)
   }
 
   -- Autocomplete
+  use 'rafamadriz/friendly-snippets'
   use {
     'hrsh7th/nvim-cmp',
     requires = {
