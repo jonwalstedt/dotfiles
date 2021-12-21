@@ -26,6 +26,7 @@ return packer.startup(function(use)
     requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     -- setup = [[require('plugin.null-ls')]]
   }
+  use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
 
   use {
     'RishabhRD/nvim-lsputils',

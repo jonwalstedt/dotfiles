@@ -7,18 +7,36 @@ local capabilities = require 'plugin.nvim-lspconfig.capabilities'
 local servers = {
   tsserver = {
     capabilities = capabilities,
-    on_attach = function(client)
+    on_attach = function(client, bufnr)
       if client.config.flags then
         client.config.flags.allow_incremental_sync = true
       end
       client.resolved_capabilities.document_formatting = false
+      client.resolved_capabilities.document_range_formatting = false
+      local ts_utils = require 'nvim-lsp-ts-utils'
+      ts_utils.setup {}
+      ts_utils.setup_client(client)
+      local opts = { silent = true }
+      vim.api.nvim_buf_set_keymap(
+        bufnr,
+        'n',
+        '<leader>ao',
+        ':TSLspOrganize<CR>',
+        opts
+      )
+      vim.api.nvim_buf_set_keymap(
+        bufnr,
+        'n',
+        '<leader>ai',
+        ':TSLspImportAll<CR>',
+        opts
+      )
       on_attach_common(client)
     end,
   },
   sumneko_lua = require('plugin.nvim-lspconfig.server-configs.sumneko').config,
   jsonls = require('plugin.nvim-lspconfig.server-configs.jsonls').config,
   svelte = require('plugin.nvim-lspconfig.server-configs.svelte').config,
-  eslint = require('plugin.nvim-lspconfig.server-configs.eslint').config,
   html = { cmd = { 'vscode-html-language-server', '--stdio' } },
   cssls = { cmd = { 'vscode-css-language-server', '--stdio' } },
   intelephense = {},
@@ -56,10 +74,7 @@ local servers = {
     filetypes = { 'tf' },
   },
   pyright = {},
-  ['null-ls'] = {},
 }
-
-require('plugin.null-ls').setup()
 
 for name, opts in pairs(servers) do
   if type(opts) == 'function' then
@@ -74,3 +89,6 @@ for name, opts in pairs(servers) do
     }, opts))
   end
 end
+
+require('plugin.null-ls').setup()
+

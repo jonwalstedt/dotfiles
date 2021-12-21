@@ -16,11 +16,10 @@ M.setup = function()
     }
   end)
 
-  null_ls.config {
+  null_ls.setup {
     debounce = 150,
     autostart = true,
     sources = {
-      eslint,
       b.formatting.stylua.with {
         args = {
           '--config-path',
@@ -28,6 +27,11 @@ M.setup = function()
           '-',
         },
       },
+      eslint,
+      -- null_ls.builtins.diagnostics.eslint,
+      -- null_ls.builtins.code_actions.eslint,
+      -- null_ls.builtins.formatting.prettier,
+
       b.formatting.prettier.with {
         prefer_local = 'node_modules/.bin',
         filetypes = {
@@ -45,6 +49,21 @@ M.setup = function()
           'yaml',
         },
       },
+      b.formatting.trim_whitespace.with({
+        filetypes = { "plantuml" },
+      }),
+      b.formatting.stylua,
+      b.diagnostics.selene.with({
+        name = "selene",
+      }),
+      b.diagnostics.shellcheck,
+      b.code_actions.shellcheck,
+      b.formatting.shfmt,
+      b.diagnostics.hadolint,
+      b.diagnostics.markdownlint,
+      b.diagnostics.write_good,
+      b.diagnostics.misspell,
+      b.formatting.gofumpt,
     },
   }
 end

@@ -95,5 +95,5 @@ export PATH="$HOME/bin:$PATH"
 
 export CC="gcc-11"
 
-
-export KUBECONFIG=/Users/jonwalstedt/repos/king/training/kubernetes-training/jonwalstedt-kubeconfig-day-3
+# Script Kit
+export PATH=$HOME/.kenv/bin:$PATH

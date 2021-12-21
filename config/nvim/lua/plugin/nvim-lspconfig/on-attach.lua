@@ -26,7 +26,5 @@ return function(client)
   lua_nmap('<leader>en', 'vim.lsp.diagnostic.goto_next()')
   lua_nmap('<leader>ep', 'vim.lsp.diagnostic.goto_prev()')
 
-  if client.resolved_capabilities.document_formatting then
-    vim.cmd [[autocmd! BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]]
-  end
+  vim.cmd [[autocmd! BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 1000)]]
 end
