@@ -7,14 +7,14 @@ M.setup = function()
   vim.env.PRETTIERD_DEFAULT_CONFIG = vim.fn.stdpath 'config' .. '/.prettierrc'
 
   -- you don't have to use these helpers and could do it yourself, too
-  local eslint = require('null-ls.helpers').conditional(function(utils)
-    local project_local_bin = 'node_modules/.bin/eslint'
+  -- local eslint = require('null-ls.helpers').conditional(function(utils)
+  --   local project_local_bin = 'node_modules/.bin/eslint'
 
-    return null_ls.builtins.diagnostics.eslint.with {
-      command = utils.root_has_file(project_local_bin) and project_local_bin
-        or 'eslint_d',
-    }
-  end)
+  --   return null_ls.builtins.diagnostics.eslint.with {
+  --     command = utils.root_has_file(project_local_bin) and project_local_bin
+  --       or 'eslint_d',
+  --   }
+  -- end)
 
   null_ls.setup {
     debounce = 150,
@@ -27,7 +27,7 @@ M.setup = function()
           '-',
         },
       },
-      eslint,
+      null_ls.builtins.formatting.eslint_d,
       null_ls.builtins.diagnostics.eslint_d,
       null_ls.builtins.code_actions.eslint_d,
       --null_ls.builtins.formatting.prettierd,

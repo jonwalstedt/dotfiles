@@ -118,12 +118,12 @@ nmap('<C-l>', ':call Windows#Move("l")<CR>')
 
 -- Search within selection
 vmap(
-  '/',
-    ':<C-U>call Search#RangeSearch("/")<CR>:if strlen(g:srchstr) > 0|exec "/".g:srchstr|endif<CR>'
+  '<leader>/',
+  ':<C-U>call Search#RangeSearch("/")<CR>:if strlen(g:srchstr) > 0|exec "/".g:srchstr|endif<CR>'
 )
 vmap(
-  '?',
-    ':<C-U>call Search#RangeSearch("?")<CR>:if strlen(g:srchstr) > 0|exec "?".g:srchstr|endif<CR>'
+  '<leader>?',
+  ':<C-U>call Search#RangeSearch("?")<CR>:if strlen(g:srchstr) > 0|exec "?".g:srchstr|endif<CR>'
 )
 
 -- Grep word under cursor
@@ -137,7 +137,10 @@ vmap('<leader>l', ':<c-u>call Search#SearchAndGrep(visualmode(), 1)<CR>')
 vmap('*', 'y/\\V<C-R>=escape(@","/")<CR><CR>')
 
 -- Search and highlight word under the cursor
-nmap('<leader><CR>', [[:let @/ = '\<'.expand('<cword>').'\>'|set hlsearch<C-M>]])
+nmap(
+  '<leader><CR>',
+  [[:let @/ = '\<'.expand('<cword>').'\>'|set hlsearch<C-M>]]
+)
 
 -- Substitute current search result
 nmap('<leader>s', ':%s//')
