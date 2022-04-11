@@ -1,42 +1,11 @@
 local M = {}
 
-M.config = {
-  cmd = { 'vscode-json-language-server', '--stdio' },
-  filetypes = { 'json', 'jsonc' },
-  settings = {
-    json = {
-      schemas = {
-        {
-          fileMatch = { 'package.json' },
-          url = 'https://json.schemastore.org/package.json',
-        },
-        {
-          fileMatch = { 'jsconfig*.json' },
-          url = 'https://json.schemastore.org/jsconfig.json',
-        },
-        {
-          fileMatch = { 'tsconfig*.json' },
-          url = 'https://json.schemastore.org/tsconfig.json',
-        },
-        {
-          fileMatch = {
-            '.prettierrc',
-            '.prettierrc.json',
-            'prettier.config.json',
-          },
-          url = 'https://json.schemastore.org/prettierrc.json',
-        },
-        {
-          fileMatch = { '.eslintrc', '.eslintrc.json' },
-          url = 'https://json.schemastore.org/eslintrc.json',
-        },
-        {
-          fileMatch = { 'nodemon.json' },
-          url = 'https://json.schemastore.org/nodemon.json',
-        },
-      },
-    },
-  },
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+require('lspconfig').jsonls.setup {
+  capabilities = capabilities,
 }
 
 return M

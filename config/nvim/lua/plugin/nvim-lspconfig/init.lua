@@ -7,6 +7,7 @@ local capabilities = require 'plugin.nvim-lspconfig.capabilities'
 local servers = {
   tsserver = {
     capabilities = capabilities,
+    root_dir = lspconfig.util.root_pattern '.git',
     on_attach = function(client, bufnr)
       if client.config.flags then
         client.config.flags.allow_incremental_sync = true
@@ -91,4 +92,3 @@ for name, opts in pairs(servers) do
 end
 
 require('plugin.null-ls').setup()
-

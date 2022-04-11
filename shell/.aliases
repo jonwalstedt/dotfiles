@@ -55,3 +55,6 @@ alias idag=datum
 # KubeCtl
 alias k='kubectl'
 alias ka='kubectl apply -f '
+
+# Lima ~> Docker
+# alias docker="lima nerdctl"

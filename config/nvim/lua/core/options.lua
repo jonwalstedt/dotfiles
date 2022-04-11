@@ -102,23 +102,23 @@ set('foldtext', 'NeatFoldText()')
 
 -- Colors
 vim.g.nvcode_termcolors = 256
-vim.cmd('syntax on')
+vim.cmd 'syntax on'
 set 'termguicolors'
-vim.cmd('colorscheme tokyonight')
-vim.g.tokyonight_style = "night"
+vim.cmd 'colorscheme tokyonight'
+vim.g.tokyonight_style = 'night'
 
 -- Disable highlight current row
 set 'nocursorline'
 
 -- Dim inactive buffer
-highlight('ActiveWindow', {guibg = '#13141c'})
-highlight('InactiveWindow', {guibg = '#1a1b26'})
+highlight('ActiveWindow', { guibg = '#13141c' })
+highlight('InactiveWindow', { guibg = '#1a1b26' })
 -- highlight('VertSplit', { guibg = '#000000', guifg = '#444444' })
 set('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
 -- highlight('CursorLine', { guifg = '#ff0000' })
 -- highlight('CursorLineNR', { guifg = '#e900ff' })
 
-highlight('Comment', {guifg = '#666666', gui = 'italic', cterm = 'italic'})
+highlight('Comment', { guifg = '#666666', gui = 'italic', cterm = 'italic' })
 -- highlight('SignColumn', { guibg = '#000000' })
 -- highlight('LineNr', { guibg = '#000000'})
 
@@ -137,7 +137,7 @@ set('shiftwidth', 2)
 set 'nojoinspaces'
 
 -- Numbers that start with a zero will be considered to be octal
-vim.cmd('set nrformats-=octal')
+vim.cmd 'set nrformats-=octal'
 
 set 'smartindent'
 
@@ -173,9 +173,9 @@ set 'splitright'
 set 'splitbelow'
 
 -- Open diff in vertical split
-vim.cmd('set diffopt+=vertical')
-vim.cmd('set diffopt+=indent-heuristic')
-vim.cmd('set diffopt+=algorithm:patience')
+vim.cmd 'set diffopt+=vertical'
+vim.cmd 'set diffopt+=indent-heuristic'
+vim.cmd 'set diffopt+=algorithm:patience'
 
 -- Netrw
 vim.g.netrw_liststyle = 4

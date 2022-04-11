@@ -2,10 +2,8 @@
 function! CustomFugitive#ToggleGStatus()
   if buflisted(bufname('.git/index'))
     bd .git/index
-    setlocal cursorline
   else
     Git
-    setlocal nocursorline
   endif
 endfunction
 
