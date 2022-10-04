@@ -16,59 +16,33 @@ return packer.startup(function(use)
   -- Plugin Manager
   use { 'wbthomason/packer.nvim' }
 
-  -- LSP
-  use { 'williamboman/nvim-lsp-installer', event = 'BufRead' }
+  -- Git
+  use { 'tpope/vim-fugitive', setup = [[require('plugin.vim-fugitive')]] }
 
-  use { 'neovim/nvim-lspconfig', setup = [[require('plugin.nvim-lspconfig')]] }
-
+  -- Colorschemes
+  -- use { 'ChristianChiarulli/nvcode-color-schemes.vim' }
+  use "EdenEast/nightfox.nvim"
+  use 'mjlbach/onedark.nvim'
+  use 'folke/tokyonight.nvim'
+  use { 'embark-theme/vim', as = 'embark' }
+  use 'Domeee/mosel.nvim'
   use {
-    'jose-elias-alvarez/null-ls.nvim',
-    requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    -- setup = [[require('plugin.null-ls')]]
-  }
-  use { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
-
-  use {
-    'RishabhRD/nvim-lsputils',
-    requires = { 'RishabhRD/popfix' },
-    setup = [[require('plugin.nvim-lsputils')]],
-  }
-
-  -- Treesitter
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    setup = [[require('plugin.nvim-treesitter')]],
-    requires = { 'windwp/nvim-ts-autotag' },
+    'sonph/onehalf',
+    rtp = 'vim'
   }
 
   use {
-    'nvim-treesitter/nvim-treesitter-textobjects',
-    setup = [[require('plugin.nvim-treesitter-textobjects')]],
+    'lewis6991/gitsigns.nvim',
+    setup = [[require('plugin.gitsigns')]],
+    requires = { 'nvim-lua/plenary.nvim' },
+    event = 'BufRead',
   }
 
-  -- Autocomplete
-  use 'rafamadriz/friendly-snippets'
   use {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'hrsh7th/cmp-nvim-lua' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/vim-vsnip' },
-      { 'hrsh7th/vim-vsnip-integ' },
-      { 'hrsh7th/cmp-vsnip' },
-      { 'hrsh7th/cmp-calc' },
-      { 'hrsh7th/cmp-cmdline' },
-    },
-    config = function()
-      require 'plugin.nvim-cmp'
-    end,
-    event = 'InsertEnter',
+    'neoclide/coc.nvim',
+    branch = "release",
+    setup = [[require('plugin.coc')]]
   }
-
-  -- use {'github/copilot.vim'}
 
   -- File browser
   use { 'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]] }
@@ -87,34 +61,9 @@ return packer.startup(function(use)
     requires = { 'ryanoasis/vim-devicons' },
   }
 
-  -- Git
-  use { 'tpope/vim-fugitive', setup = [[require('plugin.vim-fugitive')]] }
-
-  use {
-    'lewis6991/gitsigns.nvim',
-    setup = [[require('plugin.gitsigns')]],
-    requires = { 'nvim-lua/plenary.nvim' },
-    event = 'BufRead',
-  }
-
-  -- Stabilize windows
-  use {
-    'luukvbaal/stabilize.nvim',
-    config = function()
-      require('stabilize').setup()
-    end,
-  }
-
   -- Quickfix list
   use 'romainl/vim-qlist'
   use 'romainl/vim-qf'
-
-  -- Show register contents
-  use 'junegunn/vim-peekaboo'
-
-  -- Colorschemes
-  -- use { 'ChristianChiarulli/nvcode-color-schemes.vim' }
-  use { 'folke/tokyonight.nvim' }
 
   -- Movement
   use {
@@ -122,17 +71,19 @@ return packer.startup(function(use)
     setup = [[require('plugin.vim-sneak')]],
     event = 'BufRead',
   }
-
   -- Misc
   -- Statusline
   use { 'nvim-lualine/lualine.nvim', setup = [[require('plugin.lualine')]] }
 
-  -- Complementary pairs of mappings
-  use 'tpope/vim-unimpaired'
   -- Make plugin actions repeatable by .
   use 'tpope/vim-repeat'
+
+  -- Complementary pairs of mappings
+  use 'tpope/vim-unimpaired'
+
   -- Show search result count
   use 'google/vim-searchindex'
+
   -- Pickup and use editor config files
   use 'editorconfig/editorconfig-vim'
 
@@ -144,3 +95,4 @@ return packer.startup(function(use)
     packer.compile()
   end
 end)
+

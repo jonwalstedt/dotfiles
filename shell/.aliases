@@ -27,12 +27,12 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pasteboard.'"
 
 # Neovim
-alias v='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim'
-alias v.='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim .'
-alias vl='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim -u ~/.config/nvim/init-light.vim'
-alias vl.='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim -u ~/.config/nvim/init-light.vim .'
-alias vm='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim -u ~/.config/nvim/init-nvim-lsp.vim'
-alias vm.='NVIM_TUI_ENABLE_TRUE_COLOR=1 nvim -u ~/.config/nvim/init-nvim-lsp.vim .'
+alias v='nvim'
+alias v.='nvim .'
+alias vl='nvim -u ~/.config/nvim/init-light.vim'
+alias vl.='nvim -u ~/.config/nvim/init-light.vim .'
+alias vm='nvim -u ~/.config/nvim/init-nvim-lsp.vim'
+alias vm.='nvim -u ~/.config/nvim/init-nvim-lsp.vim .'
 
 alias th='cat ~/repos/dev-tools/terminal/terminal-cheatsheet/README.md'
 

@@ -30,7 +30,7 @@ local function map_keys(mode, command, value, opts)
   if opts == nil then
     opts = { noremap = true, silent = true }
   end
-  vim.api.nvim_set_keymap(mode, command, value, opts)
+  vim.keymap.set(mode, command, value, opts)
 end
 
 local function map(command, value, opts)

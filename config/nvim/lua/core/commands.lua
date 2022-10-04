@@ -42,8 +42,3 @@ command('GitFileHistory', '0Gclog')
 command('GFileHistory', '0Gclog')
 command('GitDiffWithHash', 'call CustomFugitive#DiffFileWithHash()')
 command('GDiffWithHash', 'call CustomFugitive#DiffFileWithHash()')
-
--- Note taking
-command('NotesBrowse', ':call Notes#Browse()')
-command('NotesTODO', ':call Notes#Todo()')
-command('NotesCreate', ':call Notes#Create()')

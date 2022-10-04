@@ -29,10 +29,6 @@ nmap('<leader>k', '`J')
 -- Close and update buffer
 nmap('<leader>q', 'ZZ<C-w><C-p>')
 
--- Toggle QuickFixList
-nmap('<localleader><cr>', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
-nmap('§<cr>', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
-
 -- Update current buffer and close it without saving (needed to close terminal buffers)
 nmap('<leader>dd', ':bd!<CR>')
 
@@ -144,7 +140,3 @@ nmap(
 
 -- Substitute current search result
 nmap('<leader>s', ':%s//')
-
--- map omni completion to <C-Space>
-imap('<C-Space>', '<C-x><C-o>')
-imap('<C-@>', '<C-Space>')
