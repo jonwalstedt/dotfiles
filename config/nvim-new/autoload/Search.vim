@@ -49,3 +49,5 @@ function! Search#SearchAndGrep(type, local)
 
   let @@ = savedUnnamedRegister
 endfunction
+
+

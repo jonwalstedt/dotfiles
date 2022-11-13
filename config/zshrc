@@ -2,7 +2,7 @@ ZSH_DISABLE_COMPFIX="true"
 source $HOME/.profile
 
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -57,7 +57,23 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666666"
 bindkey '^l' autosuggest-accept
 
 # plugins=(extract git web-search gradle z zsh-autosuggestions)
-plugins=(extract git web-search gradle z)
+plugins=(
+extract
+git
+web-search
+gradle
+z
+fzf-tab
+git
+zsh-autosuggestions
+fzf
+docker
+kubectl
+npm
+kube-ps1
+)
+
+
 
 unsetopt inc_append_history
 unsetopt share_history
