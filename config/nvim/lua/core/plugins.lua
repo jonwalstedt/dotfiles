@@ -39,6 +39,12 @@ return packer.startup(function(use)
   }
 
   use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    setup = [[require('plugin.treesitter')]],
+  }
+
+  use {
     'neoclide/coc.nvim',
     branch = "release",
     setup = [[require('plugin.coc')]]
@@ -71,7 +77,26 @@ return packer.startup(function(use)
     setup = [[require('plugin.vim-sneak')]],
     event = 'BufRead',
   }
+
+  -- using packer.nvim
+  use({
+    'jameshiew/nvim-magic',
+    setup = [[require('plugin.nvim-magic')]],
+    requires = {
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim'
+    }
+  })
+
   -- Misc
+  use { 'othree/html5.vim' }
+  use { 'pangloss/vim-javascript' }
+  use { 'evanleck/vim-svelte' }
+
+  -- Snippets
+  use { 'SirVer/ultisnips' }
+  use { 'honza/vim-snippets' }
+
   -- Statusline
   use { 'nvim-lualine/lualine.nvim', setup = [[require('plugin.lualine')]] }
 
