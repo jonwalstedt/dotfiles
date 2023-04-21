@@ -74,10 +74,12 @@ alias java8="export JAVA_HOME=${JAVA_8_HOME}"
 alias java11="export JAVA_HOME=${JAVA_11_HOME}"
 
 # alias java11='export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home" && echo "Now using java 11"'
-alias java14='export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-14.0.2.jdk/Contents/Home" && echo "Now using java 14"'
-alias java15='export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-15.jdk/Contents/Home" && echo "Now using java 15"'
-alias java17='export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home" && echo "Now using java 17"'
-alias java18='export JAVA_HOME="/Library/Java/JavaVirtualMachines/openjdk-18.jdk/Contents/Home" && echo "Now using java 18"'
+
+# Now using sdkman instead https://sdkman.io/
+# sdk list java
+# sdk install java <version>
+# sdk use java <version> (only in current terminal)
+# sdk default java <version> (setting system default)
 
 # === GO ===
 
@@ -106,3 +108,9 @@ export CC="gcc-11"
 
 # Script Kit
 export PATH=$HOME/.kenv/bin:$PATH
+
+#python
+export PATH=$(pyenv root)/shims:$PATH
+
+#c
+export CC=/usr/bin/clang
