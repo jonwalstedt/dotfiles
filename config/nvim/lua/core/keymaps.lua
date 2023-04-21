@@ -51,10 +51,10 @@ nmap('<leader>d<CR>', ':wa<bar>%bd!<bar>e#<bar>bd#<CR>')
 nmap('<leader>tt', '<C-w>T')
 
 -- Use light theme
-nmap('<leader>tl', ':colorscheme morning<CR>')
+nmap('<leader>tl', ':colorscheme tokyonight-day<CR>')
 
 -- Use dark theme
-nmap('<leader>td', ':colorscheme dracula<CR>')
+nmap('<leader>td', ':colorscheme tokyonight-night<CR>')
 
 -- Select last paste in visual mode
 nmap('gb', "`[' . strpart(getregtype(), 0, 1) . '`]")
