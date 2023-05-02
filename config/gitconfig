@@ -59,6 +59,7 @@
     # A shortcut for the the command 'p-all'
     pa=!git p-all
 
+    df = !git --no-pager diff --shortstat master
     st = status -sb
     ci = commit
     co = checkout
