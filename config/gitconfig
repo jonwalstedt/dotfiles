@@ -31,14 +31,25 @@
     list-commit = diff-tree --no-commit-id --name-only -r
 
     # Log aliases
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=relative
-    la = log --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all --date=relative
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
-    l1 = !git l1 -35
-    l2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)%ad(%ar)%C(red) %an%C(reset)%C(bold yellow)%d%C(reset) — %C(white)%s%C(reset) %C(bold white)' --abbrev-commit --date=iso
-    l3 = log --graph --pretty=format:'%C(bold blue)%h%C(white) - %C(bold green)%cr %C(white)- %C(bold red)%an%C(bold yellow)%d%C(white) - %s' --abbrev-commit --date=relative
-    l4 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
-    l5 = log --graph --oneline
+    l = lg2-specific
+    la = lg2
+    lg1 = lg1-specific --all
+    lg2 = lg2-specific --all
+    lg3 = lg3-specific --all
+
+    lg1-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+    lg2-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lg3-specific = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+
+
+    # l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --date=relative
+    # la = log --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all --date=relative
+    # lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    # l1 = !git l1 -35
+    # l2 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)%ad(%ar)%C(red) %an%C(reset)%C(bold yellow)%d%C(reset) — %C(white)%s%C(reset) %C(bold white)' --abbrev-commit --date=iso
+    # l3 = log --graph --pretty=format:'%C(bold blue)%h%C(white) - %C(bold green)%cr %C(white)- %C(bold red)%an%C(bold yellow)%d%C(white) - %s' --abbrev-commit --date=relative
+    # l4 = log --graph --all --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(bold white)— %an%C(reset)' --abbrev-commit
+    # l5 = log --graph --oneline
 
     # Handfull shortcuts
     ck = checkout

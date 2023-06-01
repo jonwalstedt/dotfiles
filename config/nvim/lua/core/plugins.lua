@@ -1,109 +1,109 @@
-vim.cmd 'packadd packer.nvim | au BufWritePost plugins.lua PackerCompile'
-vim.opt.rtp = vim.opt.rtp + '~/.local/share/nvim/site/pack/packer/opt/*'
-
-local packer = require 'packer'
-local plugin_path = U.os.data .. '/site/pack/packer/opt/'
-local packer_compiled = U.os.data .. '/site/plugin/packer_compiled.vim'
-
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
-
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-return packer.startup(function(use)
-  packer.init { compile_path = packer_compiled, opt_default = true }
-
-  -- Plugin Manager
-  use { 'wbthomason/packer.nvim' }
+require("lazy").setup({
+  { 'wbthomason/packer.nvim' },
 
   -- Git
-  use { 'tpope/vim-fugitive', setup = [[require('plugin.vim-fugitive')]] }
+  {
+    'tpope/vim-fugitive',
+    config = function()
+      require("plugin.vim-fugitive")
+    end,
+  },
 
   -- Colorschemes
-  -- use { 'ChristianChiarulli/nvcode-color-schemes.vim' }
-  use "EdenEast/nightfox.nvim"
-  use 'mjlbach/onedark.nvim'
-  use 'folke/tokyonight.nvim'
-  use { 'embark-theme/vim', as = 'embark' }
-  use 'Domeee/mosel.nvim'
-  use {
+  -- { 'ChristianChiarulli/nvcode-color-schemes.vim' }
+  "EdenEast/nightfox.nvim",
+  'mjlbach/onedark.nvim',
+  'folke/tokyonight.nvim',
+  { 'embark-theme/vim' },
+  'Domeee/mosel.nvim',
+  {
     'sonph/onehalf',
     rtp = 'vim'
-  }
+  },
 
-  use {
+  {
     'lewis6991/gitsigns.nvim',
-    setup = [[require('plugin.gitsigns')]],
-    requires = { 'nvim-lua/plenary.nvim' },
+    config = function()
+      require("plugin.gitsigns")
+    end,
+    dependencies = { 'nvim-lua/plenary.nvim' },
     event = 'BufRead',
-  }
+  },
 
-  use {
+  {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-    setup = [[require('plugin.treesitter')]],
-  }
+    cmd = 'TSUpdate',
+    config = function()
+      require("plugin.treesitter")
+    end,
+  },
 
-  use {
+  {
     'neoclide/coc.nvim',
     branch = "release",
-    setup = [[require('plugin.coc')]]
-  }
+    config = function()
+      require("plugin.coc")
+    end,
+  },
 
   -- File browser
-  use { 'justinmk/vim-dirvish', setup = [[require('plugin.dirvish')]] }
+  {
+    'justinmk/vim-dirvish',
+    config = function()
+      require("plugin.dirvish")
+    end,
+  },
 
   -- FZF file/content search
-  use {
+  'junegunn/fzf',
+  {
     'junegunn/fzf.vim',
-    setup = [[require('plugin.fzf')]],
-    requires = { 'junegunn/fzf' },
+    config = function()
+      require("plugin.fzf")
+    end,
+    dependencies = { 'junegunn/fzf' },
     event = 'BufRead',
-  }
+  },
 
-  use {
+  {
     'chengzeyi/fzf-preview.vim',
-    after = 'fzf.vim',
-    requires = { 'ryanoasis/vim-devicons' },
-  }
+    dependencies = { 'fzf.vim', 'ryanoasis/vim-devicons' },
+  },
 
   -- Quickfix list
-  use 'romainl/vim-qlist'
-  use 'romainl/vim-qf'
+  'romainl/vim-qlist',
+  'romainl/vim-qf',
 
   -- Movement
 
   -- Misc
-  use { "tpope/vim-surround" }
-  use { 'othree/html5.vim' }
-  use { 'pangloss/vim-javascript' }
-  use { 'evanleck/vim-svelte' }
+  { "tpope/vim-surround" },
+  { 'othree/html5.vim' },
+  { 'pangloss/vim-javascript' },
+  { 'evanleck/vim-svelte' },
 
   -- Snippets
-  use { 'SirVer/ultisnips' }
-  use { 'honza/vim-snippets' }
+  { 'SirVer/ultisnips' },
+  { 'honza/vim-snippets' },
 
   -- Statusline
-  use { 'nvim-lualine/lualine.nvim', setup = [[require('plugin.lualine')]] }
+  {
+    'nvim-lualine/lualine.nvim',
+    config = function()
+      require("plugin.lualine")
+    end,
+  },
 
   -- Make plugin actions repeatable by .
-  use 'tpope/vim-repeat'
+  'tpope/vim-repeat',
 
   -- Complementary pairs of mappings
-  use 'tpope/vim-unimpaired'
+  'tpope/vim-unimpaired',
 
   -- Show search result count
-  use 'google/vim-searchindex'
+  'google/vim-searchindex',
 
-  -- Pickup and use editor config files
-  use 'editorconfig/editorconfig-vim'
+  -- Pickup and editor config files
+  'editorconfig/editorconfig-vim',
 
-  -- Autoinstall/compile plugins
-  if vim.fn.isdirectory(vim.fn.glob(plugin_path)) > 0 then
-    packer.install()
-  end
-  if vim.fn.empty(vim.fn.glob(packer_compiled)) > 0 then
-    packer.compile()
-  end
-end)
-
+})
