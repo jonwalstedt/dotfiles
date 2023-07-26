@@ -69,6 +69,30 @@ map("i", "<C-k>", "<Plug>(coc-snippets-expand)", {})
 -- Use <C-j> for select text for visual placeholder of snippet.
 map("v", "<C-j>", "<Plug>(coc-snippets-select)", {})
 
+
+
+
+-- Use <C-l> for trigger snippet expand.
+map("i", "<C-l>", "<Plug>(coc-snippets-expand)", {})
+
+-- Use <C-j> for select text for visual placeholder of snippet.
+map("v", "<C-j>", "<Plug>(coc-snippets-select)", {})
+
+-- Use <C-j> for jump to next placeholder, it's default of coc.nvim
+vim.g.coc_snippet_next = '<c-j>'
+
+-- Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+vim.g.coc_snippet_prev = '<c-k>'
+
+-- Use <C-j> for both expand and jump (make expand higher priority.)
+map("i", "<C-j>", "<Plug>(coc-snippets-expand-jump)", {})
+
+-- Use <leader>x for convert visual selected code to snippet
+map("x", "<leader>x", "<Plug>(coc-convert-snippet)", {})
+
+
+
+
 -- <c-space> triggers completion
 map("i", "<C-space>", "coc#refresh()", { silent = true, noremap = true, expr = true })
 
@@ -99,6 +123,8 @@ map("n", "<leader>af", "<Plug>(coc-fix-current)", { silent = true })
 
 -- Run the Code Lens action on the current line.
 map("n", "<leader>cl", "<Plug>(coc-codelens-action)", { silent = true })
+map("n", "<leader>ar", "<Plug>(coc-rename)", { silent = true })
+map("n", "<leader>ad", ":CocList diagnostics<CR>", { silent = true })
 
 function ShowDocumentation()
   if fn.CocAction("hasProvider", "hover") then

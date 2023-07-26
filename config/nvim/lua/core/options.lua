@@ -11,8 +11,8 @@ local highlight = U.highlight
 
 -- vim.g.python_host_skip_check = 1
 -- vim.g.python3_host_skip_check = 1
-vim.g.python2_host_prog = '/usr/local/bin/python2'
-vim.g.python3_host_prog = '/usr/local/bin/python3'
+vim.g.python2_host_prog = '/Users/jon.walstedt/.pyenv/shims/python'
+vim.g.python3_host_prog = '/Users/jon.walstedt/.pyenv/shims/python3'
 
 -- Include current directory in path
 set 'path=.'
