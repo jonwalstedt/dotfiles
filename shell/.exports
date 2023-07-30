@@ -50,12 +50,12 @@ export SSH_KEY_PATH="~/.ssh/dsa_id"
 
 # === JAVA ===
 
-export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
-export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
-export JAVA_HOME=${JAVA_11_HOME}
-
-alias java8="export JAVA_HOME=${JAVA_8_HOME}"
-alias java11="export JAVA_HOME=${JAVA_11_HOME}"
+#export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+#export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+#export JAVA_HOME=${JAVA_11_HOME}
+#
+#alias java8="export JAVA_HOME=${JAVA_8_HOME}"
+#alias java11="export JAVA_HOME=${JAVA_11_HOME}"
 
 # alias java11='export JAVA_HOME="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home" && echo "Now using java 11"'
 

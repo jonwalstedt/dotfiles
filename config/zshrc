@@ -206,3 +206,11 @@ if [ -f '/Users/jonwalstedt/google-cloud-sdk/completion.zsh.inc' ]; then . '/Use
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="$HOME/.sdkman"
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# fnm
+export PATH="$HOME/Library/Application Support/fnm:$PATH"
+eval "`fnm env`"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+    eval "$(pyenv init -)"
+fi
