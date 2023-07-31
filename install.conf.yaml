@@ -29,7 +29,8 @@
     ~/.editorconfig: config/editorconfig
 
     # Neovim
-    ~/.config/nvim: config/nvim
+    ~/.config/nvim-native-lsp: config/nvim
+    #~/.config/nvim-coc: config/nvim
 
     #Ctags
     ~/.ctags: config/ctags

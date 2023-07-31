@@ -96,6 +96,7 @@ export PATH=$HOME/.kenv/bin:$PATH
 #python
 export PATH=$(pyenv root)/shims:$PATH
 export CLOUDSDK_PYTHON=/usr/bin/python3
+export PATH="~/Library/Python/3.9/bin:$PATH"
 
 #c
 export CC=/usr/bin/clang

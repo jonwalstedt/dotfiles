@@ -1,6 +1,4 @@
 require("lazy").setup({
-  { 'wbthomason/packer.nvim' },
-
   -- Git
   {
     'tpope/vim-fugitive',

@@ -23,7 +23,6 @@ local function toggleFugitiveGit()
 end
 
 nmap('<space><space>', toggleFugitiveGit)
-nmap('§<space>', ':call CustomFugitive#ToggleGStatus()<cr>')
 nmap('<localleader>v', ':Gdiffsplit!<CR>')
 nmap('<localleader>h', ':diffget //2<CR>')
 nmap('<localleader>l', ':diffget //3<CR>')

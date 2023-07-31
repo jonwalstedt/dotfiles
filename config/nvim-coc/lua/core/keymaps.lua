@@ -140,3 +140,7 @@ nmap(
 
 -- Substitute current search result
 nmap('<leader>s', ':%s//')
+
+-- Quick Fix
+nmap('<leader>fl', ':call QuickFix#Toggle("Location List", "l")<CR>')
+nmap('<leader>fq', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
