@@ -1,9 +1,9 @@
-require("lazy").setup({
+require('lazy').setup {
   -- Collection of configurations for built-in LSP client
   {
     'neovim/nvim-lspconfig',
     config = function()
-      require("plugin.nvim-lspconfig")
+      require 'plugin.nvim-lspconfig'
     end,
   },
 
@@ -11,13 +11,13 @@ require("lazy").setup({
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     config = function()
-      require("plugin.null-ls")
+      require 'plugin.null-ls'
     end,
   },
   { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
   {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    'pmizio/typescript-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
   },
 
@@ -26,7 +26,7 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     cmd = 'TSUpdate',
     config = function()
-      require("plugin.nvim-treesitter")
+      require 'plugin.nvim-treesitter'
     end,
   },
 
@@ -37,29 +37,28 @@ require("lazy").setup({
   {
     'tpope/vim-fugitive',
     config = function()
-      require("plugin.vim-fugitive")
+      require 'plugin.vim-fugitive'
     end,
   },
 
   -- UI to select things (files, grep results, open buffers...)
 
   -- Themes
-  "EdenEast/nightfox.nvim",
+  'EdenEast/nightfox.nvim',
   'mjlbach/onedark.nvim',
   'folke/tokyonight.nvim',
   { 'embark-theme/vim' },
   'Domeee/mosel.nvim',
   {
     'sonph/onehalf',
-    rtp = 'vim'
+    rtp = 'vim',
   },
-
 
   -- Movement
   {
     'justinmk/vim-sneak',
     config = function()
-      require("plugin.vim-sneak")
+      require 'plugin.vim-sneak'
     end,
   },
 
@@ -67,7 +66,7 @@ require("lazy").setup({
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-      require("plugin.nvim-indent-blankline")
+      require 'plugin.nvim-indent-blankline'
     end,
   },
 
@@ -75,12 +74,11 @@ require("lazy").setup({
   {
     'lewis6991/gitsigns.nvim',
     config = function()
-      require("plugin.gitsigns")
+      require 'plugin.gitsigns'
     end,
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = 'BufRead',
   },
-
 
   -- Autocomplete
   { 'hrsh7th/cmp-buffer' },
@@ -104,43 +102,31 @@ require("lazy").setup({
   {
     'justinmk/vim-dirvish',
     config = function()
-      require("plugin.dirvish")
+      require 'plugin.dirvish'
     end,
   },
 
-  -- FZF file/content search
-  -- 'junegunn/fzf',
-  -- {
-  --   'junegunn/fzf.vim',
-  --   config = function()
-  --     require("plugin.fzf")
-  --   end,
-  --   dependencies = { 'junegunn/fzf' },
-  --   event = 'BufRead',
-  -- },
-
-  -- {
-  --   'chengzeyi/fzf-preview.vim',
-  --   dependencies = { 'fzf.vim', 'ryanoasis/vim-devicons' },
-  -- },
-  { "junegunn/fzf", build = "./install --bin" },
+  -- FZF file / content search
+  'junegunn/fzf',
   {
-    "ibhagwan/fzf-lua",
-    -- optional for icon support
-    dependencies = {
-      "junegunn/fzf",
-      "nvim-tree/nvim-web-devicons"
-    },
+    'junegunn/fzf.vim',
     config = function()
-       require("plugin.fzf")
-     end,
+      require 'plugin.fzf'
+    end,
+    dependencies = { 'junegunn/fzf' },
+    event = 'BufRead',
+  },
+
+  {
+    'chengzeyi/fzf-preview.vim',
+    dependencies = { 'fzf.vim', 'ryanoasis/vim-devicons' },
   },
 
   -- "gc" to comment visual regions/lines
   {
     'numToStr/Comment.nvim',
     config = function()
-      require("plugin.fzf")
+      require 'plugin.fzf'
     end,
   },
 
@@ -149,7 +135,7 @@ require("lazy").setup({
   'romainl/vim-qf',
 
   -- Misc
-  { "tpope/vim-surround" },
+  { 'tpope/vim-surround' },
   { 'othree/html5.vim' },
   { 'pangloss/vim-javascript' },
   { 'evanleck/vim-svelte' },
@@ -162,7 +148,7 @@ require("lazy").setup({
   {
     'nvim-lualine/lualine.nvim',
     config = function()
-      require("plugin.lualine")
+      require 'plugin.lualine'
     end,
   },
 
@@ -177,5 +163,4 @@ require("lazy").setup({
 
   -- Pickup and editor config files
   'editorconfig/editorconfig-vim',
-
-})
+}
