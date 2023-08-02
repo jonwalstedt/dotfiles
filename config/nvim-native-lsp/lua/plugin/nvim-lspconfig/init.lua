@@ -5,6 +5,15 @@ local on_init_common = require 'plugin.nvim-lspconfig.on-init'
 local capabilities = require 'plugin.nvim-lspconfig.capabilities'
 
 local servers = {
+  eslint = lspconfig.eslint.setup {
+    on_attach = function(client, bufnr)
+      on_attach_common(client)
+      vim.api.nvim_create_autocmd('BufWritePre', {
+        buffer = bufnr,
+        command = 'EslintFixAll',
+      })
+    end,
+  },
   typescript_tools = require('typescript-tools').setup {
     on_init = on_init_common,
     on_attach = on_attach_common,

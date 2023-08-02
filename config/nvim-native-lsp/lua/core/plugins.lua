@@ -6,7 +6,7 @@ require('lazy').setup {
       require 'plugin.nvim-lspconfig'
     end,
   },
-
+  { 'MunifTanjim/prettier.nvim' },
   {
     'jose-elias-alvarez/null-ls.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
@@ -85,14 +85,18 @@ require('lazy').setup {
   { 'hrsh7th/cmp-path' },
   { 'hrsh7th/cmp-nvim-lua' },
   { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/vim-vsnip' },
-  { 'hrsh7th/vim-vsnip-integ' },
-  { 'hrsh7th/cmp-vsnip' },
   { 'hrsh7th/cmp-calc' },
   { 'hrsh7th/cmp-cmdline' },
-
+  { 'quangnguyen30192/cmp-nvim-ultisnips' },
   {
     'hrsh7th/nvim-cmp',
+    requires = {
+      'quangnguyen30192/cmp-nvim-ultisnips',
+      config = function()
+        require('cmp_nvim_ultisnips').setup {}
+      end,
+      requires = { 'nvim-treesitter/nvim-treesitter' },
+    },
     config = function()
       require 'plugin.nvim-cmp'
     end,
