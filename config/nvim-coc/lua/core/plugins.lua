@@ -1,28 +1,29 @@
-require("lazy").setup({
+require('lazy').setup {
   -- Git
   {
     'tpope/vim-fugitive',
     config = function()
-      require("plugin.vim-fugitive")
+      require 'plugin.vim-fugitive'
     end,
   },
 
   -- Colorschemes
   -- { 'ChristianChiarulli/nvcode-color-schemes.vim' }
-  "EdenEast/nightfox.nvim",
+  'Mofiqul/vscode.nvim',
+  'EdenEast/nightfox.nvim',
   'mjlbach/onedark.nvim',
   'folke/tokyonight.nvim',
   { 'embark-theme/vim' },
   'Domeee/mosel.nvim',
   {
     'sonph/onehalf',
-    rtp = 'vim'
+    rtp = 'vim',
   },
 
   {
     'lewis6991/gitsigns.nvim',
     config = function()
-      require("plugin.gitsigns")
+      require 'plugin.gitsigns'
     end,
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = 'BufRead',
@@ -32,15 +33,15 @@ require("lazy").setup({
     'nvim-treesitter/nvim-treesitter',
     cmd = 'TSUpdate',
     config = function()
-      require("plugin.treesitter")
+      require 'plugin.treesitter'
     end,
   },
 
   {
     'neoclide/coc.nvim',
-    branch = "release",
+    branch = 'release',
     config = function()
-      require("plugin.coc")
+      require 'plugin.coc'
     end,
   },
 
@@ -48,7 +49,7 @@ require("lazy").setup({
   {
     'justinmk/vim-dirvish',
     config = function()
-      require("plugin.dirvish")
+      require 'plugin.dirvish'
     end,
   },
 
@@ -57,7 +58,7 @@ require("lazy").setup({
   {
     'junegunn/fzf.vim',
     config = function()
-      require("plugin.fzf")
+      require 'plugin.fzf'
     end,
     dependencies = { 'junegunn/fzf' },
     event = 'BufRead',
@@ -75,7 +76,7 @@ require("lazy").setup({
   -- Movement
 
   -- Misc
-  { "tpope/vim-surround" },
+  { 'tpope/vim-surround' },
   { 'othree/html5.vim' },
   { 'pangloss/vim-javascript' },
   { 'evanleck/vim-svelte' },
@@ -88,7 +89,7 @@ require("lazy").setup({
   {
     'nvim-lualine/lualine.nvim',
     config = function()
-      require("plugin.lualine")
+      require 'plugin.lualine'
     end,
   },
 
@@ -103,5 +104,4 @@ require("lazy").setup({
 
   -- Pickup and editor config files
   'editorconfig/editorconfig-vim',
-
-})
+}

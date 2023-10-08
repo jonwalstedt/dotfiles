@@ -41,6 +41,9 @@ nmap('<leader>er', ':e<CR>')
 -- Execute current file in bash
 nmap('<leader>ee', ':Exec<CR>')
 
+-- Run Prettier
+nmap('<leader>rr', ':Prettier<CR>')
+
 -- Close all other wndows
 nmap('<leader>do', ':only<CR>')
 

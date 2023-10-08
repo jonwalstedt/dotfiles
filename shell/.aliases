@@ -46,7 +46,7 @@ alias close='~/repos/jonwalstedt/chrome-control/chrome.js closeByTitles "$(~/rep
 
 alias closeTabs='~/repos/jonwalstedt/chrome-control/chrome.js close'
 
-weeknumber=`date +%V`
+weeknumber=$(date +%V)
 alias vecka="figlet -c $weeknumber"
 
 alias datum="figlet -c 'v$weeknumber' && date +'%Y-%m-%d' | figlet -c && date +'%H:%M:%S' | figlet -c"
@@ -58,3 +58,6 @@ alias ka='kubectl apply -f '
 
 # Lima ~> Docker
 # alias docker="lima nerdctl"
+
+# FZF
+alias c='fzf-cd-widget'

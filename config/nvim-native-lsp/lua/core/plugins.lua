@@ -44,10 +44,11 @@ require('lazy').setup {
   -- UI to select things (files, grep results, open buffers...)
 
   -- Themes
+  'Mofiqul/vscode.nvim',
   'EdenEast/nightfox.nvim',
   'mjlbach/onedark.nvim',
   'folke/tokyonight.nvim',
-  { 'embark-theme/vim' },
+  'embark-theme/vim',
   'Domeee/mosel.nvim',
   {
     'sonph/onehalf',
@@ -65,6 +66,8 @@ require('lazy').setup {
   -- Add indentation guides even on blank lines
   {
     'lukas-reineke/indent-blankline.nvim',
+    main = 'ibl',
+    opts = {},
     config = function()
       require 'plugin.nvim-indent-blankline'
     end,
