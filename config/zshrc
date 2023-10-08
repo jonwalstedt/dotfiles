@@ -142,7 +142,7 @@ source $ZSH/oh-my-zsh.sh
 source $HOME/.shell_env
 
 bindkey '^v' fzf-file-widget
-bindkey "ç" fzf-cd-widget
+bindkey "^f" fzf-cd-widget
 
 # Auto fetch in git projects
 # chpwd () {

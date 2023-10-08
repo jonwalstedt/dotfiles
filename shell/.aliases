@@ -58,6 +58,3 @@ alias ka='kubectl apply -f '
 
 # Lima ~> Docker
 # alias docker="lima nerdctl"
-
-# FZF
-alias c='fzf-cd-widget'
