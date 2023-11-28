@@ -141,9 +141,15 @@ nmap(
   [[:let @/ = '\<'.expand('<cword>').'\>'|set hlsearch<C-M>]]
 )
 
+nmap('<leader>y', ':call Search#YankPattern()<CR>')
+
 -- Substitute current search result
 nmap('<leader>s', ':%s//')
 
 -- Toggle QuickFixList
 nmap('<leader>fl', ':call QuickFix#Toggle("Location List", "l")<CR>')
-nmap('<leader>fq', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
+nmap('<leader>f<leader>', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
+nmap('<cr>', ':call QuickFix#AddCurrentLineToQuickfixList()<CR>')
+
+-- Diff two open files
+nmap('<leader>df', ':windo diffthis<CR>')

@@ -25,7 +25,6 @@ require('ibl').setup {
   indent = {
     char = '┊',
     highlight = highlight,
-    show_trailing_blankline_indent = false,
   },
   scope = {
     show_start = false,

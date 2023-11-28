@@ -1,4 +1,5 @@
 " Files + devicons
+
 function! CustomFZF#FilesWithDevIcons()
 
   " Adds the lines to the quickfix list

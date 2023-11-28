@@ -29,10 +29,9 @@ require('lazy').setup {
       require 'plugin.nvim-treesitter'
     end,
   },
-
+  'nvim-treesitter/nvim-treesitter-refactor',
   -- Additional textobjects for treesitter
   'nvim-treesitter/nvim-treesitter-textobjects',
-
   -- Git commands in nvim
   {
     'tpope/vim-fugitive',
@@ -90,7 +89,7 @@ require('lazy').setup {
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-calc' },
   { 'hrsh7th/cmp-cmdline' },
-  { 'quangnguyen30192/cmp-nvim-ultisnips' },
+  { 'dcampos/cmp-snippy' },
   {
     'hrsh7th/nvim-cmp',
     requires = {
@@ -138,8 +137,9 @@ require('lazy').setup {
   },
 
   -- Quickfix list
-  'romainl/vim-qlist',
-  'romainl/vim-qf',
+  -- 'romainl/vim-qlist',
+  -- 'romainl/vim-qf',
+  'kevinhwang91/nvim-bqf',
 
   -- Misc
   { 'tpope/vim-surround' },
@@ -148,7 +148,8 @@ require('lazy').setup {
   { 'evanleck/vim-svelte' },
 
   -- Snippets
-  { 'SirVer/ultisnips' },
+  -- { 'SirVer/ultisnips' },
+  { 'dcampos/nvim-snippy' },
   { 'honza/vim-snippets' },
 
   -- Statusline

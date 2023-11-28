@@ -25,3 +25,21 @@ function! QuickFix#Toggle(bufname, pfx)
     wincmd p
   endif
 endfunction
+
+function! QuickFix#AddCurrentLineToQuickfixList()
+    " Get the current line number and file name
+    let l:lnum = getpos('.')[1]
+    let l:fname = expand('%:p')
+
+    " Get the current quickfix list
+    let l:qf_list = getqflist()
+
+    " Add the current line to the quickfix list
+    call add(l:qf_list, {'filename': l:fname, 'lnum': l:lnum})
+
+    " Set the quickfix list
+    call setqflist(l:qf_list)
+
+    " Open the quickfix window
+    " copen
+endfunction
