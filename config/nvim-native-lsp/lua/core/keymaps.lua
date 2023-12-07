@@ -146,10 +146,19 @@ nmap('<leader>y', ':call Search#YankPattern()<CR>')
 -- Substitute current search result
 nmap('<leader>s', ':%s//')
 
--- Toggle QuickFixList
+-- Toggle LocationList
 nmap('<leader>fl', ':call QuickFix#Toggle("Location List", "l")<CR>')
+
+-- Toggle QuickFixList
 nmap('<leader>f<leader>', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
+
+-- Clear QuickFixList
+nmap('<leader>fq', ':call setqflist([])<CR>')
+
+-- Add current line to QuickFixList
 nmap('<cr>', ':call QuickFix#AddCurrentLineToQuickfixList()<CR>')
 
 -- Diff two open files
 nmap('<leader>df', ':windo diffthis<CR>')
+-- Close diff view
+nmap('<leader>fd', ':windo diffoff<CR>')
