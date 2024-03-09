@@ -15,6 +15,7 @@ require('lazy').setup {
     end,
   },
   { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
+  { 'windwp/nvim-ts-autotag' },
   {
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
@@ -28,6 +29,10 @@ require('lazy').setup {
     config = function()
       require 'plugin.nvim-treesitter'
     end,
+    dependencies = {
+      -- { 'andymass/vim-matchup' },
+      { 'windwp/nvim-ts-autotag' },
+    },
   },
   'nvim-treesitter/nvim-treesitter-refactor',
   -- Additional textobjects for treesitter

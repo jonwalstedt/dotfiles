@@ -156,7 +156,7 @@ nmap('<leader>f<leader>', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
 nmap('<leader>fq', ':call setqflist([])<CR>')
 
 -- Add current line to QuickFixList
-nmap('<cr>', ':call QuickFix#AddCurrentLineToQuickfixList()<CR>')
+nmap('<CR>', ':call QuickFix#AddCurrentLineToQuickfixList()<CR>')
 
 -- Diff two open files
 nmap('<leader>df', ':windo diffthis<CR>')
