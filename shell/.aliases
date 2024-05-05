@@ -58,3 +58,6 @@ alias ka='kubectl apply -f '
 
 # Lima ~> Docker
 # alias docker="lima nerdctl"
+
+# Github copilot CLI
+alias explain='gh copilot explain'

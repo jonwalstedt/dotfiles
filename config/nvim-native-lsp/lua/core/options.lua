@@ -12,7 +12,8 @@ vim.g.loaded_python_provider = 0
 vim.g.python_host_skip_check = 1
 vim.g.python3_host_skip_check = 1
 vim.g.python2_host_prog = '/usr/local/bin/python2'
-vim.g.python3_host_prog = '/opt/homebrew/Cellar/python@3.12/3.12.0/bin/python3.12'
+vim.g.python3_host_prog =
+  '/opt/homebrew/Cellar/python@3.12/3.12.0/bin/python3.12'
 
 -- Include current directory in path
 set 'path=.'
@@ -109,7 +110,7 @@ set('foldtext', 'NeatFoldText()')
 vim.g.nvcode_termcolors = 256
 vim.cmd 'syntax on'
 set 'termguicolors'
-vim.cmd 'colorscheme vscode'
+vim.cmd 'colorscheme rose-pine'
 --vim.g.tokyonight_style = 'night'
 -- vim.cmd 'colorscheme onedark'
 
