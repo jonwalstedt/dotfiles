@@ -162,3 +162,5 @@ nmap('<CR>', ':call QuickFix#AddCurrentLineToQuickfixList()<CR>')
 nmap('<leader>df', ':windo diffthis<CR>')
 -- Close diff view
 nmap('<leader>fd', ':windo diffoff<CR>')
+
+nmap('<leader>cc', ':CopilotChatToggle<CR>')
