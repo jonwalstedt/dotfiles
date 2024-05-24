@@ -1,0 +1,90 @@
+let g:mapleader = "\<Space>"
+set ideajoin
+
+set incsearch
+set smartcase
+set hlsearch
+
+inoremap jj <Esc>
+
+" Update and go to previous file with backspace
+nnoremap <BS> :update<CR><C-^>
+
+" Close and update buffer
+nnoremap <leader>q ZZ<C-w><C-p>
+
+" Map <leader>dd to close the current buffer without saving
+nnoremap <leader>dd :bd!<CR>
+
+" Refresh buffer
+nnoremap <leader>er :e<CR>
+
+" Close all other windows
+nnoremap <leader>do :only<CR>
+
+" Update current buffer and close all other buffers
+nnoremap <leader>d<CR> :wa<bar>%bd!<bar>e#<bar>bd#<CR>
+
+" Move to end of line
+nnoremap L $
+vnoremap L $
+onoremap L $
+
+" Move to start of line
+nnoremap H ^
+vnoremap H ^
+onoremap H ^
+
+" Yank to end of line
+nnoremap Y y$
+
+" Smooth way of creating and moving between splits
+sethandler <c-h> a:vim
+sethandler <c-l> a:vim
+sethandler <c-j> a:vim
+sethandler <c-k> a:vim
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+
+" search for word under cursor
+nnoremap <leader><CR> *:hlsearch<CR>
+" ============================================================================
+" Macros
+" ============================================================================
+let @l = "iconsole.log('jjpa:', jjpA);jj=="
+
+" ============================================================================
+" IDE replacements
+" https://gist.github.com/zchee/9c78f91cc5ad771c1f5d
+" ============================================================================
+nnoremap <leader>ep :action GotoNextError<CR>
+nnoremap <leader>en :action GotoPreviousError<CR>
+nnoremap <leader>af :action ShowIntentionActions<CR>
+nnoremap <leader>ar :action RenameElement<CR>
+nnoremap <leader>ad :action GotoImplementation<CR>
+nnoremap <leader><leader> :action Git.Menu<CR>
+nnoremap <leader>p :action RecentFiles<CR>
+nnoremap <leader>w :action SaveDocument<CR>
+nnoremap <leader>rr :action ReformatCode<CR>
+
+" unimpaired mappings
+nnoremap [<space> O<esc>j
+nnoremap ]<space> o<esc>k
+nnoremap [q :action PreviousOccurence<cr>
+nnoremap ]q :action NextOccurence<cr>
+nnoremap [m :action MethodUp<cr>
+nnoremap ]m :action MethodDown<cr>
+nnoremap [c :action VcsShowPrevChangeMarker<cr>
+nnoremap ]c :action VcsShowNextChangeMarker<cr>
+
+nnoremap - :action SelectInProjectView<CR>
+nnoremap g; :action JumpToLastChange<CR>
+nnoremap g, :action JumpToNextChange<CR>
+
+" Terminal
+nnoremap <Leader>t<Leader> :action ActivateTerminalToolWindow<CR>
+
+nnoremap <c-p> :action SearchEverywhere<cr>
+nnoremap <leader>ff :action SearchEverywhere<cr>
