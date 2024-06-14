@@ -1,0 +1,16 @@
+{
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "playwright.reuseBrowser": true,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[html]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "github.copilot.editor.enableAutoCompletions": true,
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "/Users/jon.walstedt/.vscode/.vimrc",
+    "vim.leader": "<space>"
+}

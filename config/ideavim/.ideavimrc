@@ -2,8 +2,12 @@ let g:mapleader = "\<Space>"
 set ideajoin
 
 set incsearch
-set smartcase
 set hlsearch
+set clipboard=unnamedplus
+set wildignorecase
+set ignorecase
+set showmatch
+set smartcase
 
 inoremap jj <Esc>
 
@@ -48,12 +52,14 @@ nnoremap <c-l> <c-w>l
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 
+nnoremap <esc> :nohlsearch<return><esc>
+
 " search for word under cursor
 nnoremap <leader><CR> *:hlsearch<CR>
 " ============================================================================
 " Macros
 " ============================================================================
-let @l = "iconsole.log('jjpa:', jjpA);jj=="
+let @l = "iconsole.log('jjpa:', jjpA;jj=="
 
 " ============================================================================
 " IDE replacements
@@ -68,6 +74,7 @@ nnoremap <leader><leader> :action Git.Menu<CR>
 nnoremap <leader>p :action RecentFiles<CR>
 nnoremap <leader>w :action SaveDocument<CR>
 nnoremap <leader>rr :action ReformatCode<CR>
+nnoremap <leader>gu :action FindUsages<CR>
 
 " unimpaired mappings
 nnoremap [<space> O<esc>j
@@ -86,5 +93,11 @@ nnoremap g, :action JumpToNextChange<CR>
 " Terminal
 nnoremap <Leader>t<Leader> :action ActivateTerminalToolWindow<CR>
 
-nnoremap <c-p> :action SearchEverywhere<cr>
-nnoremap <leader>ff :action SearchEverywhere<cr>
+nnoremap <c-p> :action GotoFile<cr>
+nnoremap <leader>ff :action FindInPath<cr>
+nnoremap <leader><Esc>:action HideActiveWindow<cr>
+nnoremap <S-Space> :action ShowErrorDescription<CR>
+
+
+Plug 'justinmk/vim-sneak'
+Plug 'machakann/vim-highlightedyank'
