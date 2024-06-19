@@ -1,0 +1,36 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.splitEditorRight"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.splitEditorLeft"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.splitEditorDown"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.splitEditorUp"
+  },
+
+  {
+    "key": "alt+h",
+    "command": "workbench.action.moveActiveEditorGroupLeft"
+  },
+  {
+    "key": "alt+l",
+    "command": "workbench.action.moveActiveEditorGroupRight"
+  },
+  {
+    "key": "alt+j",
+    "command": "workbench.action.moveActiveEditorGroupDown"
+  },
+  {
+    "key": "alt+k",
+    "command": "workbench.action.moveActiveEditorGroupUp"
+  }
+]
