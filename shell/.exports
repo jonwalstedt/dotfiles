@@ -4,7 +4,6 @@
 #
 # This file is used as a part of `.shell_env`
 
-
 # === Path modifications ===
 
 # These lines should be the first ones
@@ -17,7 +16,7 @@ export PATH
 # === General ===
 
 # Homebrew:
-export HOMEBREW_NO_ANALYTICS=1  # disables statistics that brew collects
+export HOMEBREW_NO_ANALYTICS=1 # disables statistics that brew collects
 
 # === Version managers ===
 
@@ -27,7 +26,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # jenv:
 export PATH="$HOME/.jenv/bin:$PATH"
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+if which jenv >/dev/null; then eval "$(jenv init -)"; fi
 
 # === FZF ===
 export FZF_DEFAULT_OPTS=" --layout=reverse"
@@ -38,10 +37,10 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 #for more info see fzf/shell/completion.zsh
 _fzf_compgen_path() {
-    fd . "$1"
+  fd . "$1"
 }
 _fzf_compgen_dir() {
-    fd --type d . "$1"
+  fd --type d . "$1"
 }
 
 # === SSH KEY ===
@@ -96,8 +95,7 @@ export PATH=$HOME/.kenv/bin:$PATH
 #python
 export PATH=$(pyenv root)/shims:$PATH
 export CLOUDSDK_PYTHON=/usr/bin/python3
-export PATH="~/Library/Python/3.9/bin:$PATH"
+export PATH="$PATH:~/Library/Python/3.9/bin"
 
 #c
 export CC=/usr/bin/clang
-

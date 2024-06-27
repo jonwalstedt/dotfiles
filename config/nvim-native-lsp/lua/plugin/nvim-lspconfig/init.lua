@@ -5,6 +5,35 @@ local on_init_common = require 'plugin.nvim-lspconfig.on-init'
 local capabilities = require 'plugin.nvim-lspconfig.capabilities'
 
 local servers = {
+  ltex = {
+    on_init = on_init_common,
+    on_attach = on_attach_common,
+    cmd = { 'ltex-ls' },
+    filetypes = {
+      'bib',
+      'gitcommit',
+      'markdown',
+      'org',
+      'plaintex',
+      'rst',
+      'rnoweb',
+      'tex',
+      'pandoc',
+      'quarto',
+      'rmd',
+      'context',
+      'html',
+      'xhtml',
+      'mail',
+      'text',
+      'asciidoc',
+      'md',
+    },
+    settings = {
+      language = 'en-US',
+      flags = { debounce_text_changes = 300 },
+    },
+  },
   eslint = lspconfig.eslint.setup {
     on_attach = function(client, bufnr)
       on_attach_common(client)

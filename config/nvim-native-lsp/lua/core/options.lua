@@ -13,7 +13,7 @@ vim.g.python_host_skip_check = 1
 vim.g.python3_host_skip_check = 1
 vim.g.python2_host_prog = '/usr/local/bin/python2'
 vim.g.python3_host_prog =
-  '/opt/homebrew/Cellar/python@3.12/3.12.0/bin/python3.12'
+'/opt/homebrew/Cellar/python@3.12/3.12.0/bin/python3.12'
 
 -- Include current directory in path
 set 'path=.'
@@ -31,7 +31,8 @@ set 'exrc'
 
 -- Prevetn :autocmd unless owned by me
 set 'secure'
-set('spelllang', 'en_gb')
+-- set('spell', true)
+set('spelllang', 'en_us')
 
 -- Enable mouse.
 set('mouse', 'a')
