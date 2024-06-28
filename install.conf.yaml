@@ -34,6 +34,9 @@
     #Ctags
     ~/.ctags: config/ctags
 
+    # Ideavim
+    ~/.ideavimrc: config/ideavim/.ideavimrc
+
 - shell:
   -
     command: echo Installing Homebrew formulas from Brewfile && brew bundle
