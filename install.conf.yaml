@@ -29,8 +29,7 @@
     ~/.editorconfig: config/editorconfig
 
     # Neovim
-    ~/.config/nvim-native-lsp: config/nvim
-    #~/.config/nvim-coc: config/nvim
+    ~/.config/nvim: config/nvim-native-lsp
 
     #Ctags
     ~/.ctags: config/ctags
@@ -59,6 +58,16 @@
 - shell:
   - [if ! hash bundle 2>/dev/null; then gem install bundler; fi, Installing Bundler]
   - [bundle install, Installing system gems from Gemfile]
+
+- shell:
+  -
+    command: curl -s "https://get.sdkman.io" | bash
+    stdout: true
+
+- shell:
+  -
+    command: source "$HOME/.sdkman/bin/sdkman-init.sh"
+    stdout: true
 
 - shell:
   -

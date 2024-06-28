@@ -37,8 +37,18 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Maximize windows on double clicking them:
 defaults write -g AppleActionOnDoubleClick 'Maximize'
 
-
 # === Dock ===
+# Enable magnification:
+defaults write com.apple.Dock magnification -bool true
+
+# Set the magnification size:
+defaults write com.apple.Dock largesize -int 64
+
+# Change the size of the Dock:
+defaults write com.apple.Dock tilesize -int 24
+
+# Automatically hide and show the Dock:
+defaults write com.apple.Dock autohide -bool true
 
 # Show indicator lights for open apps in Dock:
 defaults write com.apple.dock show-process-indicators -bool true
@@ -46,6 +56,14 @@ defaults write com.apple.dock show-process-indicators -bool true
 # Dock size and location:
 defaults write com.apple.Dock size-immutable -bool yes
 
+# Change the minimize/maximize window effect (options are 'genie', 'scale'):
+defaults write com.apple.Dock mineffect -string "scale"
+
+# Show only active applications in the Dock:
+defaults write com.apple.Dock static-only -bool false
+
+# Put dock on the left side of the screen:
+defaults write com.apple.Dock orientation -string "left"
 
 # === Finder ===
 
@@ -64,13 +82,11 @@ defaults write com.apple.finder AppleShowAllFiles YES
 # Show file extensions in Finder:
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
-
 # === Safari ===
 
 # Privacy: don’t send search queries to Apple
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
-
 
 # === Text editing ===
 
