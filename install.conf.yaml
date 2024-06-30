@@ -34,6 +34,9 @@
     #Ctags
     ~/.ctags: config/ctags
 
+    # VS Code
+    ~/.vscode: config/vscode
+
     # Ideavim
     ~/.ideavimrc: config/ideavim/.ideavimrc
 
@@ -70,7 +73,7 @@
 - shell:
   -
     command: source "$HOME/.sdkman/bin/sdkman-init.sh"
-    stdout: true
+    stdout: false
 
 - shell:
   -

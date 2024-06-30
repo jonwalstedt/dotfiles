@@ -44,7 +44,7 @@ nmap('<leader>ee', ':Exec<CR>')
 -- Run Prettier
 nmap('<leader>rr', ':Prettier<CR>')
 
--- Close all other wndows
+-- Close all other windows
 nmap('<leader>do', ':only<CR>')
 
 -- Update current buffer and close all other buffers

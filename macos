@@ -37,6 +37,9 @@ defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode2 -bool true
 # Maximize windows on double clicking them:
 defaults write -g AppleActionOnDoubleClick 'Maximize'
 
+# Set a fast key repeat.
+defaults write NSGlobalDomain KeyRepeat -int 1
+
 # === Dock ===
 # Enable magnification:
 defaults write com.apple.Dock magnification -bool true
@@ -82,11 +85,21 @@ defaults write com.apple.finder AppleShowAllFiles YES
 # Show file extensions in Finder:
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
+# Always open everything in Finder's list view.
+defaults write com.apple.Finder FXPreferredViewStyle Nlsv
+
 # === Safari ===
 
 # Privacy: don’t send search queries to Apple
 defaults write com.apple.Safari UniversalSearchEnabled -bool false
 defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+# Set up Safari for development.
+defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool true
+defaults write com.apple.Safari.plist IncludeDevelopMenu -bool true
+defaults write com.apple.Safari.plist WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari.plist "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 # === Text editing ===
 

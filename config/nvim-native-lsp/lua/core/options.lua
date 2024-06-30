@@ -13,7 +13,7 @@ vim.g.python_host_skip_check = 1
 vim.g.python3_host_skip_check = 1
 vim.g.python2_host_prog = '/usr/local/bin/python2'
 vim.g.python3_host_prog =
-'/opt/homebrew/Cellar/python@3.12/3.12.0/bin/python3.12'
+  '/opt/homebrew/Cellar/python@3.12/3.12.0/bin/python3.12'
 
 -- Include current directory in path
 set 'path=.'
@@ -109,8 +109,9 @@ set('foldtext', 'NeatFoldText()')
 
 -- Colors
 vim.g.nvcode_termcolors = 256
-vim.cmd 'syntax on'
+set('syntax', 'on')
 set 'termguicolors'
+set('syntax', 'on')
 vim.cmd 'colorscheme rose-pine'
 --vim.g.tokyonight_style = 'night'
 -- vim.cmd 'colorscheme onedark'
@@ -119,9 +120,9 @@ vim.cmd 'colorscheme rose-pine'
 set 'cursorline'
 
 -- Dim inactive buffer
--- highlight('ActiveWindow', { guibg = '#13141c' })
--- highlight('InactiveWindow', { guibg = '#1a1b26' })
--- set('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
+highlight('ActiveWindow', { guibg = '#13141c' })
+highlight('InactiveWindow', { guibg = '#1a1b26' })
+set('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
 
 -- Tabs (whitespace settings)
 -- Render Tabs using this many spaces.

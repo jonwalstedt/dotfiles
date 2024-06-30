@@ -15,7 +15,12 @@ require('lazy').setup {
     end,
   },
   { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
-  { 'windwp/nvim-ts-autotag' },
+  {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require 'plugin.autotag'
+    end,
+  },
   {
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
@@ -27,7 +32,7 @@ require('lazy').setup {
     'nvim-treesitter/nvim-treesitter',
     cmd = 'TSUpdate',
     config = function()
-      require 'plugin.nvim-treesitter'
+      require 'plugin.treesitter'
     end,
     dependencies = {
       -- { 'andymass/vim-matchup' },
@@ -41,7 +46,7 @@ require('lazy').setup {
   {
     'tpope/vim-fugitive',
     config = function()
-      require 'plugin.vim-fugitive'
+      require 'plugin.fugitive'
     end,
   },
   {
@@ -105,7 +110,7 @@ require('lazy').setup {
   {
     'justinmk/vim-sneak',
     config = function()
-      require 'plugin.vim-sneak'
+      require 'plugin.sneak'
     end,
   },
 
@@ -115,7 +120,7 @@ require('lazy').setup {
     main = 'ibl',
     opts = {},
     config = function()
-      require 'plugin.nvim-indent-blankline'
+      require 'plugin.indent-blankline'
     end,
   },
 
@@ -147,7 +152,7 @@ require('lazy').setup {
       requires = { 'nvim-treesitter/nvim-treesitter' },
     },
     config = function()
-      require 'plugin.nvim-cmp'
+      require 'plugin.cmp'
     end,
   },
 
@@ -179,7 +184,7 @@ require('lazy').setup {
   {
     'numToStr/Comment.nvim',
     config = function()
-      require 'plugin.fzf'
+      require 'plugin.comment'
     end,
   },
 

@@ -29,22 +29,8 @@ alias pubkey="cat ~/.ssh/id_rsa.pub | pbcopy | echo '=> Public key copied to pas
 # Neovim
 alias v='nvim'
 alias v.='nvim .'
-alias vl='nvim -u ~/.config/nvim/init-light.vim'
-alias vl.='nvim -u ~/.config/nvim/init-light.vim .'
-alias vm='nvim -u ~/.config/nvim/init-nvim-lsp.vim'
-alias vm.='nvim -u ~/.config/nvim/init-nvim-lsp.vim .'
-
-alias th='cat ~/repos/dev-tools/terminal/terminal-cheatsheet/README.md'
-
-alias fzfh='cat ~/repos/dotfiles/shell/help/fzf.md'
 
 alias tree='tree -C'
-
-alias tabs='~/repos/jonwalstedt/chrome-control/chrome.js focusByTitle "$(~/repos/jonwalstedt/chrome-control/chrome.js titles | fzf --bind change:top)"'
-
-alias close='~/repos/jonwalstedt/chrome-control/chrome.js closeByTitles "$(~/repos/jonwalstedt/chrome-control/chrome.js titles | fzf --bind change:top)"'
-
-alias closeTabs='~/repos/jonwalstedt/chrome-control/chrome.js close'
 
 weeknumber=$(date +%V)
 alias vecka="figlet -c $weeknumber"
