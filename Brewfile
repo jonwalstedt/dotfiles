@@ -73,7 +73,7 @@ brew "junegunn/tap/blsd", args: ["HEAD"]
 brew "mongodb/brew/mongodb-community"
 cask "bitwarden"
 cask "font-hack-nerd-font"
-cask "iterm2-beta"
+cask "iterm2@beta"
 cask "gimp"
 cask "anylist"
 cask "keycastr"
@@ -85,12 +85,8 @@ cask "google-chrome"
 cask "spotify"
 cask "sequel-ace"
 cask "visual-studio-code"
-mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
-mas "LastPass", id: 926036361
 mas "Microsoft To Do", id: 1274495053
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Sequel Ace", id: 1518036000
 mas "XGimp image editor", id: 1645334352
 vscode "avetis.tokyo-night"
