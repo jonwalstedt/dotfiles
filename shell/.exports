@@ -45,7 +45,7 @@ _fzf_compgen_dir() {
 
 # === SSH KEY ===
 
-export SSH_KEY_PATH="~/.ssh/dsa_id"
+export SSH_KEY_PATH="~/.ssh/id_ed25519"
 
 # === JAVA ===
 

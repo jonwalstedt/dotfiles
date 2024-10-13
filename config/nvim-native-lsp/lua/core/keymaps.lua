@@ -147,7 +147,7 @@ nmap('<leader>y', ':call Search#YankPattern()<CR>')
 nmap('<leader>s', ':%s//')
 
 -- Toggle LocationList
-nmap('<leader>fl', ':call QuickFix#Toggle("Location List", "l")<CR>')
+-- nmap('<leader>fl', ':call QuickFix#Toggle("Location List", "l")<CR>')
 
 -- Toggle QuickFixList
 nmap('<leader>f<leader>', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')

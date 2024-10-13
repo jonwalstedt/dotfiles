@@ -1,7 +1,7 @@
 [core]
     excludesfile = ~/.gitignore_global
 [user]
-    email = jon.walstedt@king.com
+    email = jon.walstedt@mentimeter.com
     name = Jon Wålstedt
 [commit]
     template = ~/.stCommitMsg

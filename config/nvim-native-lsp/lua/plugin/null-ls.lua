@@ -14,7 +14,7 @@ M.setup = function()
 
   -- local eslint_root_files = { ".eslintrc", ".eslintrc.js", ".eslintrc.json" }
   local prettier_root_files =
-    { '.prettierrc', '.prettierrc.js', '.prettierrc.json' }
+  { '.prettierrc', '.prettierrc.js', '.prettierrc.json' }
   local stylua_root_files = { 'stylua.toml', '.stylua.toml' }
   local elm_root_files = { 'elm.json' }
 
@@ -74,6 +74,15 @@ M.setup = function()
     debounce = 150,
     autostart = true,
     sources = {
+      -- b.formatting.biome.with {
+      --   args = {
+      --     'check',
+      --     '--apply-unsafe',
+      --     '--formatter-enabled=true',
+      --     '--organize-imports-enabled=true',
+      --     '--skip-errors',
+      --   },
+      -- },
       b.formatting.stylua.with {
         args = {
           '--config-path',
@@ -105,15 +114,12 @@ M.setup = function()
           'markdown',
         },
       },
-      b.formatting.trim_whitespace.with {
-        filetypes = { 'plantuml' },
-      },
       b.formatting.stylua,
       b.diagnostics.selene.with {
         name = 'selene',
       },
-      b.diagnostics.shellcheck,
-      b.code_actions.shellcheck,
+      -- b.diagnostics.shellcheck,
+      -- b.code_actions.shellcheck,
       b.formatting.shfmt,
       b.diagnostics.hadolint,
       b.diagnostics.markdownlint,

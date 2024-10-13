@@ -8,7 +8,7 @@ require('lazy').setup {
   },
   { 'MunifTanjim/prettier.nvim' },
   {
-    'jose-elias-alvarez/null-ls.nvim',
+    'nvimtools/none-ls.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     config = function()
       require 'plugin.null-ls'
@@ -21,11 +21,11 @@ require('lazy').setup {
       require 'plugin.autotag'
     end,
   },
-  {
-    'pmizio/typescript-tools.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
-  },
+  -- {
+  --   'pmizio/typescript-tools.nvim',
+  --   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  --   opts = {},
+  -- },
 
   -- Highlight, edit, and navigate code using a fast incremental parsing library
   {
@@ -52,7 +52,6 @@ require('lazy').setup {
   {
     'folke/trouble.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
-    branch = 'dev', -- IMPORTANT!
     opts = {
       -- your configuration comes here
       -- or leave it empty to use the default settings
@@ -60,32 +59,32 @@ require('lazy').setup {
     },
     keys = {
       {
-        '<leader>xx',
+        '<leader>v<leader>',
         '<cmd>Trouble diagnostics toggle<cr>',
         desc = 'Diagnostics (Trouble)',
       },
       {
-        '<leader>xX',
+        '<leader>vv',
         '<cmd>Trouble diagnostics toggle filter.buf=0<cr>',
         desc = 'Buffer Diagnostics (Trouble)',
       },
       {
-        '<leader>cs',
+        '<leader>vs',
         '<cmd>Trouble symbols toggle focus=false<cr>',
         desc = 'Symbols (Trouble)',
       },
       {
-        '<leader>cl',
+        '<leader>vl',
         '<cmd>Trouble lsp toggle focus=false win.position=right<cr>',
         desc = 'LSP Definitions / references / ... (Trouble)',
       },
       {
-        '<leader>xL',
+        '<leader>vL',
         '<cmd>Trouble loclist toggle<cr>',
         desc = 'Location List (Trouble)',
       },
       {
-        '<leader>xQ',
+        '<leader>v<CR>',
         '<cmd>Trouble qflist toggle<cr>',
         desc = 'Quickfix List (Trouble)',
       },
@@ -194,20 +193,21 @@ require('lazy').setup {
   'kevinhwang91/nvim-bqf',
 
   -- Misc
-  { 'github/copilot.vim' },
-  {
-    'CopilotC-Nvim/CopilotChat.nvim',
-    branch = 'canary',
-    dependencies = {
-      { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
-      { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
-    },
-    opts = {
-      debug = true, -- Enable debugging
-      -- See Configuration section for rest
-    },
-    -- See Commands section for default commands if you want to lazy load on them
-  },
+  -- Skipping copilot for now
+  -- { 'github/copilot.vim' },
+  -- {
+  --   'CopilotC-Nvim/CopilotChat.nvim',
+  --   branch = 'canary',
+  --   dependencies = {
+  --     { 'github/copilot.vim' }, -- or zbirenbaum/copilot.lua
+  --     { 'nvim-lua/plenary.nvim' }, -- for curl, log wrapper
+  --   },
+  --   opts = {
+  --     debug = true, -- Enable debugging
+  --     -- See Configuration section for rest
+  --   },
+  --   -- See Commands section for default commands if you want to lazy load on them
+  -- },
 
   { 'tpope/vim-surround' },
   { 'othree/html5.vim' },
