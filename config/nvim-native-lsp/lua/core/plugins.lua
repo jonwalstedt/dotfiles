@@ -104,7 +104,7 @@ require('lazy').setup {
     'sonph/onehalf',
     rtp = 'vim',
   },
-  { 'rose-pine/neovim', name = 'rose-pine' },
+  { 'rose-pine/neovim',    name = 'rose-pine' },
   -- Movement
   {
     'justinmk/vim-sneak',
@@ -118,9 +118,9 @@ require('lazy').setup {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     opts = {},
-    config = function()
-      require 'plugin.indent-blankline'
-    end,
+    -- config = function()
+    --   require 'plugin.indent-blankline'
+    -- end,
   },
 
   -- Add git related info in the signs columns and popups
@@ -238,4 +238,6 @@ require('lazy').setup {
 
   -- Pickup and editor config files
   'editorconfig/editorconfig-vim',
+
+  'terrastruct/d2-vim',
 }
