@@ -71,7 +71,10 @@
           ],
           "= =": "editor::Format",
           "-": "pane::RevealInProjectPanel",
-          // +LSP
+          // "-": [
+          //   "workspace::SendKeystroke",
+          //   ": c r p enter : new center terminal enter ya_zed cmd-v enter"
+          // ],
           "g d": "editor::GoToDefinition",
           "g D": "editor::GoToDefinitionSplit",
           "g i": "editor::GoToImplementation",

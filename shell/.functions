@@ -4,28 +4,34 @@
 #
 # This file is used as a part of `.shell_env`
 
-git-dowloadfolder () {
+git-dowloadfolder() {
   # Downloads folder from git repository.
   url="$1"
   svn checkout ${url/tree\/master/trunk}
 }
 
-
-transfer () {
+transfer() {
   # Transfers text file as sharable link.
   # See https://transfer.sh/
-  if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi
-tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile;
+  if [ $# -eq 0 ]; then
+    echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
+    return 1
+  fi
+  tmpfile=$(mktemp -t transferXXX)
+  if tty -s; then
+    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
+    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >>$tmpfile
+  else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >>$tmpfile; fi
+  cat $tmpfile
+  rm -f $tmpfile
 }
 
-
-mk () {
+mk() {
   # Create a new directory and enter it
   mkdir -p "$@" && cd "$@"
 }
 
-
-cdf () {
+cdf() {
   # cd into whatever is the forefront Finder window.
   local path=$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')
   echo "$path"
@@ -35,8 +41,8 @@ cdf () {
 # find-in-file - usage: fif <SEARCH_TERM>
 fif() {
   if [ ! "$#" -gt 0 ]; then
-    echo "Need a string to search for!";
-    return 1;
+    echo "Need a string to search for!"
+    return 1
   fi
   rg --files-with-matches --no-messages "$1" | fzf $FZF_PREVIEW_WINDOW --preview "rg --ignore-case --pretty --context 10 '$1' {}"
 }
@@ -44,15 +50,15 @@ fif() {
 # like normal z when used with arguments but displays an fzf prompt when used without.
 #unalias z 2> /dev/null
 f() {
-    [ $# -gt 0 ] && _z "$*" && return
-    cd "$(z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
+  [ $# -gt 0 ] && _z "$*" && return
+  cd "$(z -l 2>&1 | fzf --height 40% --nth 2.. --reverse --inline-info +s --tac --query "${*##-* }" | sed 's/^[0-9,.]* *//')"
 }
 
 fbr() {
   local branches branch
   branches=$(git --no-pager branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+    branch=$(echo "$branches" | fzf +m) &&
+    git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
 }
 
 # fco - FZF fuzzy checkout git branch/tag
@@ -60,26 +66,52 @@ fco() {
   local tags branches target
   branches=$(
     git --no-pager branch --all \
-      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" \
-    | sed '/^$/d') || return
+      --format="%(if)%(HEAD)%(then)%(else)%(if:equals=HEAD)%(refname:strip=3)%(then)%(else)%1B[0;34;1mbranch%09%1B[m%(refname:short)%(end)%(end)" |
+      sed '/^$/d'
+  ) || return
   tags=$(
-    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}') || return
+    git --no-pager tag | awk '{print "\x1b[35;1mtag\x1b[m\t" $1}'
+  ) || return
   target=$(
-    (echo "$branches"; echo "$tags") |
-    fzf --no-hscroll --no-multi -n 2 \
-        --ansi) || return
-  git checkout $(awk '{print $2}' <<<"$target" )
+    (
+      echo "$branches"
+      echo "$tags"
+    ) |
+      fzf --no-hscroll --no-multi -n 2 \
+        --ansi
+  ) || return
+  git checkout $(awk '{print $2}' <<<"$target")
 }
 
 bindkey -s "^ p" "fbr^J"
 
 # git pull (ctrl-g+p)
 function gitPull() {
-  git pull;
+  git pull
 }
 
 bindkey -s "^ g" "gitPull^J"
 
 killport() {
   kill $(lsof -ti:$1)
+}
+#Yazi
+function y() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+  yazi "$@" --cwd-file="$tmp"
+  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+    builtin cd -- "$cwd"
+  fi
+  rm -f -- "$tmp"
+}
+
+function ya_zed() {
+  local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
+  yazi "$@" --chooser-file="$tmp"
+
+  local opened_file=$(cat -- "$tmp" | head -n 1)
+  zed -- "$opened_file"
+
+  rm -f -- "$tmp"
+  exit
 }

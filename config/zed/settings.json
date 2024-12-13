@@ -28,7 +28,7 @@
   // },
   "soft_wrap": "editor_width",
   "inlay_hints": {
-    "enabled": true
+    "enabled": false
   },
   "telemetry": {
     "diagnostics": false,

@@ -56,19 +56,19 @@ setopt share_history
 
 # plugins=(extract git web-search gradle z zsh-autosuggestions)
 plugins=(
-extract
+# extract
 git
-web-search
-gradle
-z
+# web-search
+# gradle
+# z
 fzf-tab
 git
 zsh-autosuggestions
 fzf
-docker
-kubectl
-npm
-kube-ps1
+# docker
+# kubectl
+# npm
+# kube-ps1
 )
 
 
@@ -132,7 +132,7 @@ load-nvmrc() {
 }
 
 add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# load-nvmrc
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -221,3 +221,4 @@ if [ -f '/Users/jon.walstedt/bin/google-cloud-sdk/completion.zsh.inc' ]; then . 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
