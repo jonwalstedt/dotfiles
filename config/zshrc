@@ -60,7 +60,7 @@ plugins=(
 git
 # web-search
 # gradle
-# z
+z
 fzf-tab
 git
 zsh-autosuggestions

@@ -36,7 +36,11 @@
   },
   "vim_mode": true,
   "ui_font_size": 14,
+  "buffer_font_family": "Hack Nerd Font",
   "buffer_font_size": 12,
+  "buffer_font_features": {
+    "calt": false
+  },
   "theme": {
     "mode": "system",
     "light": "One Light",
@@ -68,10 +72,10 @@
     "TypeScript": {
       // Refer https://github.com/jellydn/ts-inlay-hints for how to setup for Neovim and VSCode
       "inlay_hints": {
-        "enabled": true,
+        "enabled": false,
         "show_parameter_hints": false,
-        "show_other_hints": true,
-        "show_type_hints": true
+        "show_other_hints": false,
+        "show_type_hints": false
       }
     }
   },

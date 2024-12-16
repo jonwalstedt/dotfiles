@@ -1,1 +1,7 @@
-[]
+[
+	{
+		"label": "ya_zed",
+		"command": "ya_zed",
+		"hide": "on_success"
+	}
+]

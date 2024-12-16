@@ -58,39 +58,43 @@
       "] e n": "editor::GoToDiagnostic",
       "space e n": "editor::GoToDiagnostic",
       "[ e n": "editor::GoToPrevDiagnostic",
-        "space e p": "editor::GoToPrevDiagnostic",
-        "[ space": ["workspace::SendKeystrokes", "k o escape j"],
-          "] space": ["workspace::SendKeystrokes", "o escape k"],
-          "@ l": [
-            "workspace::SendKeystrokes",
-            "i console.log(' escape p a : ', space escape p a ); escape"
-          ],
-          "Y": [
-            "workspace::SendKeystrokes",
-            "v $ y"
-          ],
-          "= =": "editor::Format",
-          "-": "pane::RevealInProjectPanel",
-          // "-": [
-          //   "workspace::SendKeystroke",
-          //   ": c r p enter : new center terminal enter ya_zed cmd-v enter"
-          // ],
-          "g d": "editor::GoToDefinition",
-          "g D": "editor::GoToDefinitionSplit",
-          "g i": "editor::GoToImplementation",
-          "g I": "editor::GoToImplementationSplit",
-          "g t": "editor::GoToTypeDefinition",
-          "g T": "editor::GoToTypeDefinitionSplit",
-          "g r": "editor::FindAllReferences",
-          "] d": "editor::GoToDiagnostic",
-          "[ d": "editor::GoToPrevDiagnostic",
+      "space e p": "editor::GoToPrevDiagnostic",
+      "[ space": ["workspace::SendKeystrokes", "k o escape j"],
+      "] space": ["workspace::SendKeystrokes", "o escape k"],
+      "@ l": [
+        "workspace::SendKeystrokes",
+        "i console.log(' escape p a : ', space escape p a ); escape"
+      ],
+      "Y": [
+        "workspace::SendKeystrokes",
+        "v $ y"
+      ],
+      "= =": "editor::Format",
+      //"-": "pane::RevealInProjectPanel",
+      "-": [
+        "task::Spawn",
+        { "task_name": "ya_zed", "target": "center" }
+      ],
+      // "-": [
+      //   "workspace::SendKeystroke",
+      //   ": c r p enter : new center terminal enter ya_zed cmd-v enter"
+      // ],
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDefinitionSplit",
+      "g i": "editor::GoToImplementation",
+      "g I": "editor::GoToImplementationSplit",
+      "g t": "editor::GoToTypeDefinition",
+      "g T": "editor::GoToTypeDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPrevDiagnostic",
 
-            // +Git
-            // Git prev/next hunk
-            "] h": "editor::GoToHunk",
-            "[ h": "editor::GoToPrevHunk"
+      // +Git
+      // Git prev/next hunk
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPrevHunk"
 
-              // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
+      // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
     }
   },
   {
@@ -120,4 +124,4 @@
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
     }
   }
-            ]
+]
