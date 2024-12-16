@@ -1,7 +1,7 @@
 [
 	{
 		"label": "ya_zed",
-		"command": "ya_zed",
+		"command": "ya_zed $ZED_FILE",
 		"hide": "on_success"
 	}
 ]

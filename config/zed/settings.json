@@ -47,11 +47,11 @@
     "dark": "Ayu Dark"
   },
   "tab_bar": {
-    "show": true,
+    "show": false,
     "show_nav_history_buttons": false
   },
   "toolbar": {
-    "breadcrumbs": false,
+    "breadcrumbs": true,
     "quick_actions": false
   },
   "indent_guides": {
