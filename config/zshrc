@@ -1,224 +1,182 @@
+# -----------------------------------------------------------------------------
+# Start Profiling
+# -----------------------------------------------------------------------------
+# zmodload zsh/zprof  # Load zprof to analyze performance
 ZSH_DISABLE_COMPFIX="true"
-source $HOME/.profile
 
-# Path to your oh-my-zsh installation.
+# -----------------------------------------------------------------------------
+# Cursor Shape for iTerm2
+# -----------------------------------------------------------------------------
+ZVM_CURSOR_STYLE_ENABLED=false
+
+# -----------------------------------------------------------------------------
+# Path to Oh-My-Zsh Installation and Plugin Defer Loading
+# -----------------------------------------------------------------------------
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# ZSH_THEME="dracula"
+# Lazy-load Oh-My-Zsh
+# https://github.com/romkatv/zsh-defer
+source ~/zsh-defer/zsh-defer.plugin.zsh
+zsh-defer source $ZSH/oh-my-zsh.sh
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-HYPHEN_INSENSITIVE="false"
+# -----------------------------------------------------------------------------
+# Source env
+# -----------------------------------------------------------------------------
+source $HOME/.profile
+source $HOME/.shell_env
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="false"
+# -----------------------------------------------------------------------------
+# Optimize Completion Initialization (compinit)
+# -----------------------------------------------------------------------------
+autoload -Uz compinit
+if [[ -f ~/.zcompdump.zwc ]]; then
+  zcompile ~/.zcompdump  # Precompile zcompdump for faster startup
+fi
+compinit -C -d ~/.zcompdump  # Use cached completions, skip security checks
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-HIST_STAMPS="yyyy-mm-dd"
-HIST_IGNORE_SPACE="true"
-
-setopt auto_cd
-setopt auto_list
-setopt auto_menu
-setopt auto_param_keys
-setopt auto_param_slash
-setopt auto_pushd
-setopt complete_aliases
-setopt correct
-setopt equals
-setopt extended_glob
-setopt hist_ignore_all_dups
-setopt hist_save_nodups
-setopt hist_find_no_dups
-setopt list_packed
-setopt list_types
-setopt mark_dirs
-setopt magic_equal_subst
-setopt no_flow_control
-setopt no_hup
-setopt noautoremoveslash
-setopt nolistbeep
-setopt prompt_subst
-setopt auto_remove_slash
-setopt share_history
-
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-
-# zstyle :omz:plugins:ssh-agent agent-forwarding on
-# zstyle :omz:plugins:ssh-agent identities id_rsa
-# plugins=(extract git web-search gradle ssh-agent)
-
-# plugins=(extract git web-search gradle z zsh-autosuggestions)
+# -----------------------------------------------------------------------------
+# Plugins
+# -----------------------------------------------------------------------------
+# Defer loading heavy plugins
 plugins=(
-# extract
-git
-# web-search
-# gradle
-z
-fzf-tab
-git
-zsh-autosuggestions
-fzf
-# docker
-# kubectl
-# npm
-# kube-ps1
+  git
+  fzf
 )
 
+zsh-defer source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+zsh-defer source $HOME/.fzf.zsh
+zsh-defer source $ZSH/custom/plugins/fzf-tab/fzf-tab.zsh
+zsh-defer source $ZSH/plugins/z/z.plugin.zsh
+
+# -----------------------------------------------------------------------------
+# Disable Auto-Update for Oh-My-Zsh
+# -----------------------------------------------------------------------------
+DISABLE_AUTO_UPDATE="true"
+
+# -----------------------------------------------------------------------------
+# Minimal Prompt for Faster Rendering
+# -----------------------------------------------------------------------------
+PROMPT='%{$fg[green]%}%~%{$reset_color%} '
+# PROMPT='%{$fg[green]%}%~%{$fg_bold[blue]%}$(git_prompt_info)%{$reset_color%} '
+
+ZSH_THEME_GIT_PROMPT_PREFIX="("
+ZSH_THEME_GIT_PROMPT_SUFFIX=")"
+ZSH_THEME_GIT_PROMPT_DIRTY=" +"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666666"
+
+# -----------------------------------------------------------------------------
+# Shell Options
+# -----------------------------------------------------------------------------
+
+# Todo remove
+setopt hist_ignore_all_dups
+setopt share_history
+setopt autocd
+setopt prompt_subst
+
+# setopt auto_cd
+# setopt auto_list
+# setopt auto_menu
+# setopt auto_param_keys
+# setopt auto_param_slash
+# setopt auto_pushd
+# setopt complete_aliases
+# setopt correct
+# setopt equals
+# setopt extended_glob
+# setopt hist_ignore_all_dups
+# setopt hist_save_nodups
+# setopt hist_find_no_dups
+# setopt list_packed
+# setopt list_types
+# setopt mark_dirs
+# setopt magic_equal_subst
+# setopt no_flow_control
+# setopt no_hup
+# setopt noautoremoveslash
+# setopt nolistbeep
+# setopt prompt_subst
+# setopt auto_remove_slash
+# setopt share_history
 
 
-unsetopt inc_append_history
-unsetopt share_history
-
-# User configuration
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
-fi
-
-# Terminal vim binding setup
-set shell=bash\ -i
-bindkey -v
+# -----------------------------------------------------------------------------
+# Keybindings
+# -----------------------------------------------------------------------------
+bindkey -v  # Use Vim keybindings
 bindkey '^P' up-history
 bindkey '^N' down-history
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
-bindkey -M viins 'jj' vi-cmd-mode
-
-function zle-keymap-select zle-line-init {
-  # change cursor shape in iTerm2
-  case $KEYMAP in
-      vicmd)      print -n -- "\E]50;CursorShape=0\C-G";;  # block cursor
-      viins|main) print -n -- "\E]50;CursorShape=1\C-G";;  # line cursor
-  esac
-
-  zle reset-prompt
-  zle -R
-}
-
-function zle-line-finish {
-  print -n -- "\E]50;CursorShape=0\C-G"  # block cursor
-}
-
-zle -N zle-line-init
-zle -N zle-line-finish
-zle -N zle-keymap-select
-export KEYTIMEOUT=100
-
-# setup fnm (alternative to nvm)
-eval "$(fnm env)"
-
-autoload -U add-zsh-hook
-
-# place default node version under $HOME/.node-version
-load-nvmrc() {
-  DEFAULT_NODE_VERSION=`cat $HOME/.node-version`
-  if [[ -f .nvmrc && -r .nvmrc ]]; then
-    fnm use
-  elif [[ `node -v` != $DEFAULT_NODE_VERSION ]]; then
-    echo Reverting to node from "`node -v`" to "$DEFAULT_NODE_VERSION"
-    fnm use $DEFAULT_NODE_VERSION
-  fi
-}
-
-add-zsh-hook chpwd load-nvmrc
-# load-nvmrc
-
-# FZF
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-
-source $ZSH/oh-my-zsh.sh
-source $HOME/.shell_env
-
+bindkey '^l' autosuggest-accept
 bindkey '^v' fzf-file-widget
 bindkey "^f" fzf-cd-widget
 
-# Auto fetch in git projects
-# chpwd () {
-#   if [[ -z $VIMRUNTIME ]]; then
-#     if git rev-parse --git-dir > /dev/null 2>&1; then
-#       set -- "$(git rev-parse --show-toplevel)" 2>/dev/null
-#       # If cd'ing into a git working copy and not within the same working copy
-#         if [ -n "$1" ] && [ "$1" != "$vc_root" ]; then
-#           vc_root="$1"
-#           git fetch --all
-#           git --no-pager log -n 20 --graph --pretty=format:'%Cgreen%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all --date=relative
-#         fi
-#     fi
-#   fi
-# }
-# chpwd
+# -----------------------------------------------------------------------------
+# Setup Node Version Management (fnm) - Lazy Loaded
+# -----------------------------------------------------------------------------
+eval "$(fnm env --use-on-cd)"
 
-# uncomment to update oh_my_zsh on load
-# upgrade_oh_my_zsh
-
-# Change line prefix
-# PS1="$ [%~] "
-# PS1="%n@%m:%%# "
-PROMPT='%{$fg[green]%}%~%{$fg_bold[blue]%}$(git_prompt_info)%{$reset_color%} '
-
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(buffer-empty bracketed-paste accept-line push-line-or-edit)
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-ZSH_AUTOSUGGEST_USE_ASYNC=true
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#666666"
-bindkey '^l' autosuggest-accept
-ZSH_THEME_GIT_PROMPT_PREFIX="("
-ZSH_THEME_GIT_PROMPT_SUFFIX=")"
-ZSH_THEME_GIT_PROMPT_DIRTY=" +"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
-
-enable-fzf-tab
-
-[[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
-
-export PNPM_HOME="/Users/jonwalstedt/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
-
-# fnm
-export PATH="$HOME/Library/Application Support/fnm:$PATH"
-eval "`fnm env`"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-    eval "$(pyenv init -)"
+# -----------------------------------------------------------------------------
+# Load pyenv - Lazy Loaded
+# -----------------------------------------------------------------------------
+if command -v pyenv 1>/dev/null; then
+  export PYENV_ROOT="$HOME/.pyenv"
+  path+=("$PYENV_ROOT/bin")
+  load_pyenv() { eval "$(pyenv init --path)"; }
+  add-zsh-hook precmd load_pyenv
 fi
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/jon.walstedt/bin/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/jon.walstedt/bin/google-cloud-sdk/path.zsh.inc'; fi
+# -----------------------------------------------------------------------------
+# SDKMAN for Java Management
+# -----------------------------------------------------------------------------
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/jon.walstedt/bin/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/jon.walstedt/bin/google-cloud-sdk/completion.zsh.inc'; fi
-
-# bun completions
-[ -s "/Users/jon.walstedt/.bun/_bun" ] && source "/Users/jon.walstedt/.bun/_bun"
-
-# bun
+# -----------------------------------------------------------------------------
+# Bun (JavaScript Runtime) Setup
+# -----------------------------------------------------------------------------
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# -----------------------------------------------------------------------------
+# Google Cloud SDK
+# -----------------------------------------------------------------------------
+if [ -f '/Users/jon.walstedt/bin/google-cloud-sdk/path.zsh.inc' ]; then
+  . '/Users/jon.walstedt/bin/google-cloud-sdk/path.zsh.inc'
+fi
+if [ -f '/Users/jon.walstedt/bin/google-cloud-sdk/completion.zsh.inc' ]; then
+  . '/Users/jon.walstedt/bin/google-cloud-sdk/completion.zsh.inc'
+fi
+
+# -----------------------------------------------------------------------------
+# PNPM Setup
+# -----------------------------------------------------------------------------
+export PNPM_HOME="$HOME/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+# -----------------------------------------------------------------------------
+# FZF Keybindings
+# -----------------------------------------------------------------------------
+bindkey '^v' fzf-file-widget
+bindkey "^f" fzf-cd-widget
+
+# -----------------------------------------------------------------------------
+# Recompile Zsh Configuration for Faster Execution
+# -----------------------------------------------------------------------------
+if [[ ! ~/.zshrc.zwc -nt ~/.zshrc ]]; then
+  zcompile ~/.zshrc
+fi
+
+# -----------------------------------------------------------------------------
+# End Profiling and Display Results
+# -----------------------------------------------------------------------------
+# zprof
 
