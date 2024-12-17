@@ -43,6 +43,16 @@ plugins=(
   fzf
 )
 
+# -----------------------------------------------------------------------------
+# Fix for zsh-autosuggestions Keybinding
+# -----------------------------------------------------------------------------
+
+# zsh-autosuggestions with post-load bindkey
+zsh-defer () {
+  source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+  bindkey '^l' autosuggest-accept  # Rebind ^l after loading autosuggestions
+}
+
 zsh-defer source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 zsh-defer source $HOME/.fzf.zsh
 zsh-defer source $ZSH/custom/plugins/fzf-tab/fzf-tab.zsh
@@ -78,32 +88,6 @@ setopt hist_ignore_all_dups
 setopt share_history
 setopt autocd
 setopt prompt_subst
-
-# setopt auto_cd
-# setopt auto_list
-# setopt auto_menu
-# setopt auto_param_keys
-# setopt auto_param_slash
-# setopt auto_pushd
-# setopt complete_aliases
-# setopt correct
-# setopt equals
-# setopt extended_glob
-# setopt hist_ignore_all_dups
-# setopt hist_save_nodups
-# setopt hist_find_no_dups
-# setopt list_packed
-# setopt list_types
-# setopt mark_dirs
-# setopt magic_equal_subst
-# setopt no_flow_control
-# setopt no_hup
-# setopt noautoremoveslash
-# setopt nolistbeep
-# setopt prompt_subst
-# setopt auto_remove_slash
-# setopt share_history
-
 
 # -----------------------------------------------------------------------------
 # Keybindings
