@@ -47,14 +47,8 @@ plugins=(
 # Fix for zsh-autosuggestions Keybinding
 # -----------------------------------------------------------------------------
 
-# zsh-autosuggestions with post-load bindkey
-zsh-defer () {
-  source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-  bindkey '^l' autosuggest-accept  # Rebind ^l after loading autosuggestions
-}
-
-zsh-defer source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 zsh-defer source $HOME/.fzf.zsh
+zsh-defer source $ZSH/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 zsh-defer source $ZSH/custom/plugins/fzf-tab/fzf-tab.zsh
 zsh-defer source $ZSH/plugins/z/z.plugin.zsh
 
@@ -99,9 +93,9 @@ bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
-bindkey '^l' autosuggest-accept
 bindkey '^v' fzf-file-widget
 bindkey "^f" fzf-cd-widget
+
 
 # -----------------------------------------------------------------------------
 # Setup Node Version Management (fnm) - Lazy Loaded
@@ -163,4 +157,3 @@ fi
 # End Profiling and Display Results
 # -----------------------------------------------------------------------------
 # zprof
-
