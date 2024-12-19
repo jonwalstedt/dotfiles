@@ -115,3 +115,15 @@ function ya_zed() {
   rm -f -- "$tmp"
   exit
 }
+
+git_branch_and_status() {
+  local branch dirty
+  # Check if in a git repository
+  if git rev-parse --is-inside-work-tree &> /dev/null; then
+    # Get branch name
+    branch=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD)
+    # Check for dirty state
+    dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null || echo " +")
+    echo "(${branch}${dirty})"
+  fi
+}

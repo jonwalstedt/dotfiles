@@ -47,11 +47,18 @@
     "dark": "Ayu Dark"
   },
   "tab_bar": {
-    "show": false,
+    "show": true,
     "show_nav_history_buttons": false
   },
+  "collaboration_panel": {
+    "button": false
+  },
+  "project_panel": {
+    "button": false,
+    "indent_size": 24
+  },
   "toolbar": {
-    "breadcrumbs": true,
+    "breadcrumbs": false,
     "quick_actions": false
   },
   "indent_guides": {

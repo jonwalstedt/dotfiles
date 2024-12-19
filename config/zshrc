@@ -60,8 +60,9 @@ DISABLE_AUTO_UPDATE="true"
 # -----------------------------------------------------------------------------
 # Minimal Prompt for Faster Rendering
 # -----------------------------------------------------------------------------
-PROMPT='%{$fg[green]%}%~%{$reset_color%} '
-# PROMPT='%{$fg[green]%}%~%{$fg_bold[blue]%}$(git_prompt_info)%{$reset_color%} '
+#
+# Function to get the current branch and dirty state
+PROMPT='%{$fg[green]%}%~ %{$fg[blue]%}$(git_branch_and_status)%{$reset_color%} '
 
 ZSH_THEME_GIT_PROMPT_PREFIX="("
 ZSH_THEME_GIT_PROMPT_SUFFIX=")"

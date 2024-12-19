@@ -1,7 +1,17 @@
 [
-	{
-		"label": "ya_zed",
-		"command": "ya_zed $ZED_FILE",
-		"hide": "on_success"
-	}
+  {
+    "label": "lazygit",
+    "command": "lazygit",
+    "use_new_terminal": true,
+    "shell": "system",
+    "hide": "on_success"
+  },
+  {
+    "label": "ya_zed",
+    "command": "ya_zed",
+    "use_new_terminal": true,
+    "args": ["$ZED_FILE"],
+    "shell": "system",
+    "hide": "on_success"
+  }
 ]
