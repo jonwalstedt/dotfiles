@@ -47,7 +47,7 @@
     "dark": "Ayu Dark"
   },
   "tab_bar": {
-    "show": true,
+    "show": false,
     "show_nav_history_buttons": false
   },
   "collaboration_panel": {

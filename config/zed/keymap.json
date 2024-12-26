@@ -31,6 +31,13 @@
     }
   },
   {
+    "context": "Editor && vim_mode == visual && !menu",
+    "bindings": {
+      "v": "editor::SelectLargerSyntaxNode",
+      "V": "editor::SelectSmallerSyntaxNode"
+    }
+  },
+  {
     "context": "Editor && vim_mode == normal && !menu",
     "bindings": {
       "space tab": "tab_switcher::Toggle",
@@ -46,7 +53,8 @@
       "space a r": "editor::Rename",
       "space a f": "editor::ToggleCodeActions",
       "backspace": "pane::AlternateFile",
-      "ctrl-p": "file_finder::Toggle",
+      "ctrl-p": ["file_finder::Toggle", { "separate_history": true }],
+      "cmd-p": ["file_finder::Toggle", { "separate_history": true }],
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
       "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
