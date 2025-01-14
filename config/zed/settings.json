@@ -36,18 +36,31 @@
   },
   "vim_mode": true,
   "ui_font_size": 14,
+  "ui_font_family": "Hack Nerd Font",
   "buffer_font_family": "Hack Nerd Font",
   "buffer_font_size": 12,
   "buffer_font_features": {
     "calt": false
   },
+  "active_pane_modifiers": {
+    // The factor to grow the active pane by. Defaults to 1.0
+    // which gives the same size as all other panes.
+    "magnification": 1.0,
+    // Inset border size of the active pane, in pixels.
+    "border_size": 1.0,
+    // Opacity of the inactive panes. 0 means transparent, 1 means opaque.
+    // Values are clamped to the [0.0, 1.0] range.
+    "inactive_opacity": 1.0
+  },
+  "confirm_quit": true,
+  "cursor_blink": true,
   "theme": {
     "mode": "system",
     "light": "One Light",
     "dark": "Ayu Dark"
   },
   "tab_bar": {
-    "show": false,
+    "show": true,
     "show_nav_history_buttons": false
   },
   "collaboration_panel": {
@@ -89,7 +102,7 @@
   "terminal": {
      "shell": "system",
      "env": {
-       "EDITOR": "nvim"
+       "EDITOR": "zed"
      }
   },
   // File scan exclusions, hide on the file explorer and search

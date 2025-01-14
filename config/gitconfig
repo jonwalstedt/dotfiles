@@ -26,8 +26,10 @@
 [alias]
     # list all aliases
     aliases = !git config --get-regexp ^alias\\. | sed -e s/^alias.// -e s/\\ /\\ $(printf \"\\043\")--\\>\\ / | column -t -s $(printf \"\\043\") | sort -k 1
-    # undo last commit
-    undo = reset --soft HEAD~1
+    # undo last commit but keep changes staged
+    undo-soft = reset --soft HEAD~1
+    # undo and unstage last commit
+    undo = reset HEAD~1
     tags = log --no-walk --tags --oneline
     list-merged = ! git branch --merged master | grep --invert-match "master"
     remove-merged = ! git branch --merged master | grep --invert-match "master" | xargs -n 1 git branch -d

@@ -110,7 +110,7 @@ function ya_zed() {
   yazi "$@" --chooser-file="$tmp"
 
   local opened_file=$(cat -- "$tmp" | head -n 1)
-  zed-preview -- "$opened_file"
+  zed -- "$opened_file"
 
   rm -f -- "$tmp"
   exit
