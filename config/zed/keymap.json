@@ -73,6 +73,8 @@
         "workspace::SendKeystrokes",
         "i console.log(' escape p a : ', space escape p a ); escape"
       ],
+      "s": ["vim::PushOperator", { "Sneak": {} }],
+      "S": ["vim::PushOperator", { "SneakBackward": {} }],
       "Y": [
         "workspace::SendKeystrokes",
         "v $ y"

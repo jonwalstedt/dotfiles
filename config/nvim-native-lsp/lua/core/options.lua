@@ -28,6 +28,9 @@ set('include', 'from')
 -- Look for project specific settings in /project/.nvimrc
 set 'exrc'
 
+-- Disable autochangin director
+set 'noautochdir'
+
 -- Prevetn :autocmd unless owned by me
 set 'secure'
 -- set('spell', true)
@@ -75,7 +78,7 @@ set('timeoutlen', 800)
 -- Enable virtualedit when in Visual Block mode.
 set('virtualedit', 'block')
 
--- Allow for unsaved changes when switchin buffers (use confirm if you want to be prompted for save)
+-- Allow for unsaved changes when switching buffers (use confirm if you want to be prompted for save)
 set 'hidden'
 
 -- Better display for messages
@@ -110,7 +113,7 @@ set('foldtext', 'NeatFoldText()')
 vim.g.nvcode_termcolors = 256
 set 'termguicolors'
 set('syntax', 'on')
-vim.cmd 'colorscheme rose-pine'
+vim.cmd 'colorscheme ayu-dark'
 --vim.g.tokyonight_style = 'night'
 -- vim.cmd 'colorscheme onedark'
 
@@ -118,9 +121,9 @@ vim.cmd 'colorscheme rose-pine'
 set 'cursorline'
 
 -- Dim inactive buffer
-highlight('ActiveWindow', { guibg = '#13141c' })
-highlight('InactiveWindow', { guibg = '#1a1b26' })
-set('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
+-- highlight('ActiveWindow', { guibg = '#13141c' })
+-- highlight('InactiveWindow', { guibg = '#1a1b26' })
+-- set('winhighlight', 'Normal:ActiveWindow,NormalNC:InactiveWindow')
 
 -- Tabs (whitespace settings)
 -- Render Tabs using this many spaces.
@@ -146,7 +149,7 @@ set 'smartindent'
 set 'number'
 
 -- Gutter width for line numbers
-set('numberwidth', 3)
+set('numberwidth', 5)
 
 -- Decrease update time
 set('updatetime', 250)

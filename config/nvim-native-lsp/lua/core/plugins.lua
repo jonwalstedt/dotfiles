@@ -94,7 +94,8 @@ require('lazy').setup {
   -- UI to select things (files, grep results, open buffers...)
 
   -- Themes
-  'Mofiqul/vscode.nvim',
+  'Shatur/neovim-ayu',
+  -- 'Mofiqul/vscode.nvim',
   'EdenEast/nightfox.nvim',
   'mjlbach/onedark.nvim',
   'folke/tokyonight.nvim',
@@ -104,7 +105,7 @@ require('lazy').setup {
     'sonph/onehalf',
     rtp = 'vim',
   },
-  { 'rose-pine/neovim',    name = 'rose-pine' },
+  { 'rose-pine/neovim', name = 'rose-pine' },
   -- Movement
   {
     'justinmk/vim-sneak',
@@ -113,14 +114,14 @@ require('lazy').setup {
     end,
   },
 
-  -- Add indentation guides even on blank lines
+  --Add indentation guides even on blank lines
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
     opts = {},
-    -- config = function()
-    --   require 'plugin.indent-blankline'
-    -- end,
+    config = function()
+      require 'plugin.indent-blankline'
+    end,
   },
 
   -- Add git related info in the signs columns and popups

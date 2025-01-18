@@ -7,5 +7,7 @@ vim.g.dirvish_mode = vim.api.nvim_replace_termcodes(
   false,
   true
 )
-vim.g.loaded_netrwPlugin = 0
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
 nmap('<leader>f<CR>', 'Z!')
