@@ -34,6 +34,7 @@
     list-merged = ! git branch --merged master | grep --invert-match "master"
     remove-merged = ! git branch --merged master | grep --invert-match "master" | xargs -n 1 git branch -d
     list-commit = diff-tree --no-commit-id --name-only -r
+    pf = push --force-with-lease
 
     # Log aliases
     l = lg2-specific

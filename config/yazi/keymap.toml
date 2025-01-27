@@ -4,4 +4,5 @@ prepend_keymap = [
   # https://github.com/yazi-rs/plugins/tree/main/smart-enter.yazi
   { on = "l", run = "plugin smart-enter", desc = "Enter the child derectory, or open the file" },
   { on = "<Enter>", run = "plugin smart-enter", desc = "Enter the child derectory, or open the file" },
+  { on = ["g", "i"], run = "plugin lazygit", desc = "Run lazygit" },
 ]

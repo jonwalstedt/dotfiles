@@ -45,6 +45,16 @@ local servers = {
   },
   biome = lspconfig.biome.setup {},
   ts_ls = lspconfig.ts_ls.setup {
+    -- cmd = {
+    --   'typescript-language-server',
+    --   '--stdio',
+    --   '--max-old-space-size=8192',
+    -- },
+    -- cmd = {
+    --   'node',
+    --   '--max-old-space-size=8192',
+    --   '~/.local/share/fnm/node-versions/v22.6.0/installation/lib/node_modules/typescript-language-server/lib/cli.mjs',
+    -- },
     on_attach = function(client, bufnr)
       on_attach_common(client, bufnr)
       if client.server_capabilities.documentFormattingProvider then

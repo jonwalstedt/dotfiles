@@ -31,6 +31,7 @@ nmap('<leader>q', 'ZZ<C-w><C-p>')
 
 -- Update current buffer and close it without saving (needed to close terminal buffers)
 nmap('<leader>dd', ':bd!<CR>')
+-- nmap('bd', ':<C-u>call DeleteCurBufferNotCloseWindow()<CR>')
 
 -- Write buffer and close window
 nmap('<leader>w', ':update<CR>')
@@ -48,7 +49,7 @@ nmap('<leader>rr', ':Prettier<CR>')
 nmap('<leader>do', ':only<CR>')
 
 -- Update current buffer and close all other buffers
-nmap('<leader>d<CR>', ':wa<bar>%bd!<bar>e#<bar>bd#<CR>')
+nmap('<leader>d<CR>', ':wa<bar>lua FilterAndCloseBuffers()<CR>')
 
 -- Move window to new tab
 nmap('<leader>tt', '<C-w>T')

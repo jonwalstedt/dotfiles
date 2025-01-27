@@ -94,7 +94,13 @@ require('lazy').setup {
   -- UI to select things (files, grep results, open buffers...)
 
   -- Themes
-  'Shatur/neovim-ayu',
+  {
+    'Shatur/neovim-ayu',
+    config = function()
+      require 'plugin.ayu'
+    end,
+  },
+
   -- 'Mofiqul/vscode.nvim',
   'EdenEast/nightfox.nvim',
   'mjlbach/onedark.nvim',
@@ -194,8 +200,7 @@ require('lazy').setup {
   'kevinhwang91/nvim-bqf',
 
   -- Misc
-  -- Skipping copilot for now
-  -- { 'github/copilot.vim' },
+  { 'github/copilot.vim' },
   -- {
   --   'CopilotC-Nvim/CopilotChat.nvim',
   --   branch = 'canary',
