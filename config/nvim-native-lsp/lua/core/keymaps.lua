@@ -37,7 +37,7 @@ nmap('<leader>dd', ':bd!<CR>')
 nmap('<leader>w', ':update<CR>')
 
 -- Refresh buffer
-nmap('<leader>er', ':e<CR>')
+nmap('<leader>er', ':e<CR>:syntax on<CR>')
 
 -- Execute current file in bash
 nmap('<leader>ee', ':Exec<CR>')
@@ -157,7 +157,9 @@ nmap('<leader>f<leader>', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
 nmap('<leader>fq', ':call setqflist([])<CR>')
 
 -- Add current line to QuickFixList
-nmap('<CR>', ':call QuickFix#AddCurrentLineToQuickfixList()<CR>')
+nmap('<leader><tab>', ':call QuickFix#AddCurrentLineToQuickfixList()<CR>')
+
+nmap('<leader>§', ":call setqflist([], 'r')<CR>")
 
 -- Diff two open files
 nmap('<leader>df', ':windo diffthis<CR>')

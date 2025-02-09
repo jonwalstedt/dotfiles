@@ -21,6 +21,42 @@ require('lazy').setup {
       require 'plugin.autotag'
     end,
   },
+  {
+    'olimorris/codecompanion.nvim',
+    dependencies = {
+      { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+      { 'nvim-lua/plenary.nvim' },
+      -- Test with blink.cmp
+      {
+        'saghen/blink.cmp',
+        lazy = false,
+        version = '*',
+        dependencies = 'rafamadriz/friendly-snippets',
+        opts = {
+          keymap = {
+            preset = 'enter',
+            ['<S-Tab>'] = { 'select_prev', 'fallback' },
+            ['<Tab>'] = { 'select_next', 'fallback' },
+          },
+          appearance = {
+            use_nvim_cmp_as_default = true,
+            nerd_font_variant = 'mono',
+          },
+          sources = {
+            default = { 'lsp', 'path', 'buffer', 'codecompanion' },
+            per_filetype = {
+              codecompanion = { 'codecompanion' },
+            },
+            cmdline = {},
+          },
+        },
+      },
+      opts_extend = { 'sources.default' },
+    },
+    config = function()
+      require 'plugin.codecompanion'
+    end,
+  },
   -- {
   --   'pmizio/typescript-tools.nvim',
   --   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
@@ -92,7 +128,22 @@ require('lazy').setup {
   },
 
   -- UI to select things (files, grep results, open buffers...)
-
+  {
+    'MeanderingProgrammer/render-markdown.nvim',
+    ft = { 'markdown', 'codecompanion' },
+  },
+  {
+    'stevearc/dressing.nvim', -- Utilises Neovim UI hooks to manage inputs, selects etc
+    opts = {
+      input = {
+        default_prompt = '> ',
+        relative = 'editor',
+        prefer_width = 50,
+        prompt_align = 'center',
+        win_options = { winblend = 0 },
+      },
+    },
+  },
   -- Themes
   {
     'Shatur/neovim-ayu',
@@ -138,28 +189,6 @@ require('lazy').setup {
     end,
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = 'BufRead',
-  },
-
-  -- Autocomplete
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
-  { 'hrsh7th/cmp-nvim-lua' },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-calc' },
-  { 'hrsh7th/cmp-cmdline' },
-  { 'dcampos/cmp-snippy' },
-  {
-    'hrsh7th/nvim-cmp',
-    requires = {
-      'quangnguyen30192/cmp-nvim-ultisnips',
-      config = function()
-        require('cmp_nvim_ultisnips').setup {}
-      end,
-      requires = { 'nvim-treesitter/nvim-treesitter' },
-    },
-    config = function()
-      require 'plugin.cmp'
-    end,
   },
 
   -- File browser

@@ -110,10 +110,10 @@ set('foldtext', 'NeatFoldText()')
 -- set('laststatus', 3)
 
 -- Colors
-vim.g.nvcode_termcolors = 256
 set 'termguicolors'
-set('syntax', 'on')
+vim.g.nvcode_termcolors = 256
 vim.cmd 'colorscheme ayu-dark'
+vim.cmd('syntax', 'on')
 --vim.g.tokyonight_style = 'night'
 -- vim.cmd 'colorscheme onedark'
 

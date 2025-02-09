@@ -1,4 +1,4 @@
-require('nvim-ts-autotag').setup {
+require('nvim-treesitter.configs').setup {
   highlight = { enable = true, additional_vim_regex_highlighting = false },
   ensure_installed = 'all',
   indent = { enable = true },
@@ -23,10 +23,10 @@ require('nvim-ts-autotag').setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = 'gnn',
-      scope_incremental = 'grc',
-      node_incremental = 'grn',
-      node_decremental = 'grm',
+      init_selection = '<CR>', -- Start selection
+      node_incremental = '<CR>', -- Expand to the next node
+      scope_incremental = '<CR>', -- Also using <CR> for expanding to scope
+      node_decremental = '<S-CR>', -- Shrink to the previous node
     },
   },
   textobjects = {

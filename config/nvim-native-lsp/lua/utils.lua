@@ -119,23 +119,38 @@ function U.set(key, value)
   end
 end
 
+-- function FilterAndCloseBuffers()
+--   local terminal_buffers = {}
+--   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+--     if vim.bo[bufnr].buftype == 'terminal' then
+--       table.insert(terminal_buffers, bufnr)
+--     elseif vim.bo[bufnr].buflisted then
+--       vim.api.nvim_buf_delete(bufnr, { force = true })
+--     end
+--   end
+--
+--   -- Check if there is an alternate file before executing 'e#'
+--   if vim.fn.bufnr '#' ~= -1 then
+--     vim.cmd 'e#' -- Open the alternate file
+--     vim.cmd 'bd#' -- Close the alternate buffer
+--   elseif #terminal_buffers > 0 then
+--     -- Switch to a terminal buffer if no alternate file exists
+--     vim.api.nvim_set_current_buf(terminal_buffers[1])
+--   end
+-- end
+
 function FilterAndCloseBuffers()
-  local terminal_buffers = {}
+  local current_buf = vim.api.nvim_get_current_buf()
+
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.bo[bufnr].buftype == 'terminal' then
-      table.insert(terminal_buffers, bufnr)
-    elseif vim.bo[bufnr].buflisted then
+    -- Skip the current buffer and terminal buffers
+    if
+      bufnr ~= current_buf
+      and vim.bo[bufnr].buftype ~= 'terminal'
+      and vim.bo[bufnr].buflisted
+    then
       vim.api.nvim_buf_delete(bufnr, { force = true })
     end
-  end
-
-  -- Check if there is an alternate file before executing 'e#'
-  if vim.fn.bufnr '#' ~= -1 then
-    vim.cmd 'e#' -- Open the alternate file
-    vim.cmd 'bd#' -- Close the alternate buffer
-  elseif #terminal_buffers > 0 then
-    -- Switch to a terminal buffer if no alternate file exists
-    vim.api.nvim_set_current_buf(terminal_buffers[1])
   end
 end
 

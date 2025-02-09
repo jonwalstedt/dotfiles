@@ -40,6 +40,7 @@
   {
     "context": "Editor && vim_mode == normal && !menu",
     "bindings": {
+      "ctrl-g": "vim::ShowLocation",
       "space tab": "workspace::ToggleZoom",
       "space w": "workspace::Save",
       "space q": "pane::CloseActiveItem",

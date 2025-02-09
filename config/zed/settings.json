@@ -38,7 +38,7 @@
   "ui_font_size": 14,
   "ui_font_family": "Hack Nerd Font",
   "buffer_font_family": "Hack Nerd Font",
-  "buffer_font_size": 12,
+  "buffer_font_size": null,
   "buffer_font_features": {
     "calt": false
   },
@@ -60,7 +60,7 @@
     "dark": "Ayu Dark"
   },
   "tab_bar": {
-    "show": true,
+    "show": false,
     "show_nav_history_buttons": false
   },
   "collaboration_panel": {
@@ -102,7 +102,7 @@
   "terminal": {
      "shell": "system",
      "env": {
-       "EDITOR": "zed"
+       "EDITOR": "zed-preview"
      }
   },
   // File scan exclusions, hide on the file explorer and search

@@ -158,3 +158,6 @@ fi
 # End Profiling and Display Results
 # -----------------------------------------------------------------------------
 # zprof
+
+# Created by `pipx` on 2025-02-08 17:33:40
+export PATH="$PATH:/Users/jon.walstedt/.local/bin"
