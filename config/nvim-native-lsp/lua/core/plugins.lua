@@ -229,6 +229,8 @@ require('lazy').setup {
   'kevinhwang91/nvim-bqf',
 
   -- Misc
+  -- { 'echasnovski/mini.nvim', version = '*' },
+  { 'echasnovski/mini.diff', version = '*' },
   { 'github/copilot.vim' },
   -- {
   --   'CopilotC-Nvim/CopilotChat.nvim',
@@ -251,8 +253,8 @@ require('lazy').setup {
 
   -- Snippets
   -- { 'SirVer/ultisnips' },
-  { 'dcampos/nvim-snippy' },
-  { 'honza/vim-snippets' },
+  -- { 'dcampos/nvim-snippy' },
+  -- { 'honza/vim-snippets' },
 
   -- Statusline
   {

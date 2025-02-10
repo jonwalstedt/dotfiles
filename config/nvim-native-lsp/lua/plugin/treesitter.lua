@@ -3,6 +3,7 @@ require('nvim-treesitter.configs').setup {
   ensure_installed = 'all',
   indent = { enable = true },
   autopairs = { enable = true },
+  -- autotag = { enable = true },
   rainbow = {
     enable = true,
     extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
@@ -17,7 +18,6 @@ require('nvim-treesitter.configs').setup {
       '#b48ead',
     },
   },
-  autotag = { enable = true },
   context_commentstring = { enable = true, enable_autocmd = true },
 
   incremental_selection = {
@@ -25,7 +25,7 @@ require('nvim-treesitter.configs').setup {
     keymaps = {
       init_selection = '<CR>', -- Start selection
       node_incremental = '<CR>', -- Expand to the next node
-      scope_incremental = '<CR>', -- Also using <CR> for expanding to scope
+      -- scope_incremental = '<CR>', -- Also using <CR> for expanding to scope
       node_decremental = '<S-CR>', -- Shrink to the previous node
     },
   },
@@ -61,6 +61,15 @@ require('nvim-treesitter.configs').setup {
         ['[]'] = '@class.outer',
       },
     },
+  },
+}
+
+require('nvim-ts-autotag').setup {
+  opts = {
+    -- Defaults
+    enable_close = true, -- Auto close tags
+    enable_rename = true, -- Auto rename pairs of tags
+    enable_close_on_slash = true, -- Auto close on trailing </
   },
 }
 
