@@ -1,11 +1,15 @@
 " Create missing folders when creating new file
 function! Folders#MkNonExDir(file, buf)
-  if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
-    let dir=fnamemodify(a:file, ':h')
+  " Ensure the buffer is not an internal one
+  if empty(getbufvar(a:buf, '&buftype'))
+        \ && a:file !~# '^\w\+:/' " Exclude remote files like scp:// or http://
+    let dir = simplify(fnamemodify(a:file, ':h'))
     if !isdirectory(dir)
-      call mkdir(dir, 'p')
+      try
+        call mkdir(dir, 'p')
+      catch
+        echohl WarningMsg | echom "Failed to create directory: " . dir | echohl None
+      endtry
     endif
   endif
 endfunction
-
-

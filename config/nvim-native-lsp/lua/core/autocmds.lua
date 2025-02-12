@@ -3,7 +3,11 @@ U.nvim_create_augroup {
     { 'FileType', 'man', 'setl laststatus=0 noruler' },
     { 'FileType', 'NvimTree', 'setl scl=no' },
     { 'FileType', 'vim,lua,css,javascript', 'setl sw=2' },
-    { 'TermOpen', 'term://*', 'setl nornu nonu nocul so=0 scl=no' },
+    {
+      'TermOpen',
+      'term://*',
+      'setl nornu nonu nocul so=0 scl=no',
+    },
   },
 
   on_save = { { 'BufWritePost', '*.vim,*.lua', 'source %' } },
@@ -36,10 +40,8 @@ U.nvim_create_augroup {
 }
 
 -- Highlight on yank
-local highlight_group = vim.api.nvim_create_augroup(
-  'YankHighlight',
-  { clear = true }
-)
+local highlight_group =
+  vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
