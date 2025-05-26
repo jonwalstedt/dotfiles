@@ -167,3 +167,9 @@ nmap('<leader>df', ':windo diffthis<CR>')
 nmap('<leader>fd', ':windo diffoff<CR>')
 
 nmap('<leader>cc', ':CopilotChatToggle<CR>')
+
+-- Find next snake case word
+nmap('<leader>[', 'f_xv~n')
+nmap('<leader>]', '/\\w_<CR>')
+
+tmap('›', '<Esc>b', { noremap = true })

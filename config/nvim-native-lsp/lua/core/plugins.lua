@@ -27,30 +27,32 @@ require('lazy').setup {
       { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
       { 'nvim-lua/plenary.nvim' },
       -- Test with blink.cmp
-      {
-        'saghen/blink.cmp',
-        lazy = false,
-        version = '*',
-        dependencies = 'rafamadriz/friendly-snippets',
-        opts = {
-          keymap = {
-            preset = 'enter',
-            ['<S-Tab>'] = { 'select_prev', 'fallback' },
-            ['<Tab>'] = { 'select_next', 'fallback' },
-          },
-          appearance = {
-            use_nvim_cmp_as_default = true,
-            nerd_font_variant = 'mono',
-          },
-          sources = {
-            default = { 'lsp', 'path', 'buffer', 'codecompanion' },
-            per_filetype = {
-              codecompanion = { 'codecompanion' },
-            },
-            cmdline = {},
-          },
-        },
-      },
+      -- {
+      --   'saghen/blink.cmp',
+      --   lazy = false,
+      --   version = '*',
+      --   dependencies = 'rafamadriz/friendly-snippets',
+      --   opts = {
+      --     menu = {
+      --       auto_show = false,
+      --     },
+      --     keymap = {
+      --       preset = 'enter',
+      --       ['<S-Tab>'] = { 'select_prev', 'fallback' },
+      --       ['<Tab>'] = { 'select_next', 'fallback' },
+      --     },
+      --     appearance = {
+      --       use_nvim_cmp_as_default = true,
+      --       nerd_font_variant = 'mono',
+      --     },
+      --     sources = {
+      --       default = { 'lsp', 'path', 'buffer', 'codecompanion' },
+      --       per_filetype = {
+      --         codecompanion = { 'codecompanion' },
+      --       },
+      --     },
+      --   },
+      -- },
       opts_extend = { 'sources.default' },
     },
     config = function()
@@ -226,7 +228,12 @@ require('lazy').setup {
   -- Quickfix list
   -- 'romainl/vim-qlist',
   -- 'romainl/vim-qf',
-  'kevinhwang91/nvim-bqf',
+  {
+    'kevinhwang91/nvim-bqf',
+    config = function()
+      require 'plugin.bqf'
+    end,
+  },
 
   -- Misc
   -- { 'echasnovski/mini.nvim', version = '*' },

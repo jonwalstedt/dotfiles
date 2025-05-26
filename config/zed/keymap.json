@@ -9,8 +9,8 @@
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
       "alt-b": null,
       "alt-f": null,
       "cmd-t": "workspace::NewTerminal",
@@ -22,8 +22,8 @@
   {
     "context": "Workspace > Pane > Terminal",
     "bindings": {
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-alt-h": "pane::SplitLeft",
       "ctrl-alt-j": "pane::SplitDown",
       "ctrl-alt-l": "pane::SplitRight",
@@ -56,26 +56,26 @@
       "backspace": "pane::AlternateFile",
       "ctrl-p": ["file_finder::Toggle", { "separate_history": true }],
       "cmd-p": ["file_finder::Toggle", { "separate_history": true }],
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
       "ctrl-alt-h": "pane::SplitLeft",
       "ctrl-alt-j": "pane::SplitDown",
       "ctrl-alt-l": "pane::SplitRight",
       "ctrl-alt-k": "pane::SplitUp",
       "] e n": "editor::GoToDiagnostic",
       "space e n": "editor::GoToDiagnostic",
-      "[ e n": "editor::GoToPrevDiagnostic",
-      "space e p": "editor::GoToPrevDiagnostic",
+      "[ e n": "editor::GoToPreviousDiagnostic",
+      "space e p": "editor::GoToPreviousDiagnostic",
       "[ space": ["workspace::SendKeystrokes", "k o escape j"],
       "] space": ["workspace::SendKeystrokes", "o escape k"],
       "@ l": [
         "workspace::SendKeystrokes",
         "i console.log(' escape p a : ', space escape p a ); escape"
       ],
-      "s": ["vim::PushOperator", { "Sneak": {} }],
-      "S": ["vim::PushOperator", { "SneakBackward": {} }],
+      "s": ["vim::PushSneak", {}],
+      "S": ["vim::PushSneakBackward", {}],
       "Y": [
         "workspace::SendKeystrokes",
         "v $ y"
@@ -98,12 +98,12 @@
       "g T": "editor::GoToTypeDefinitionSplit",
       "g r": "editor::FindAllReferences",
       "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPrevDiagnostic",
+      "[ d": "editor::GoToPreviousDiagnostic",
 
       // +Git
       // Git prev/next hunk
       "] h": "editor::GoToHunk",
-      "[ h": "editor::GoToPrevHunk"
+      "[ h": "editor::GoToPreviousHunk"
 
       // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
     }
@@ -111,7 +111,7 @@
   {
     "context": "Editor && vim_mode == insert",
     "bindings": {
-      "ctrl-l": "editor::ShowInlineCompletion",
+      "ctrl-l": "editor::ShowEditPrediction",
       "j j": ["workspace::SendKeystrokes", "escape"]
     }
   },
@@ -129,10 +129,10 @@
       "q": "workspace::ToggleRightDock",
       "space e": "workspace::ToggleRightDock",
       // Navigate between panel
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
     }
   }
 ]

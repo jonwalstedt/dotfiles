@@ -1,0 +1,66 @@
+// Place your key bindings in this file to override the defaults
+[
+  // AI Chat
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  // Splits and split navigation
+  {
+    "key": "ctrl+alt+l",
+    "command": "workbench.action.splitEditorRight",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.splitEditorLeft",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.splitEditorDown",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.splitEditorUp",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.focusNextGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.focusPreviousGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+alt+j",
+    "command": "workbench.action.splitEditorToBelowGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+alt+k",
+    "command": "workbench.action.splitEditorToAboveGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  }
+
+  // // Log
+  // {
+  //   "key": "shift+2 l",
+  //   "command": "macros.log",
+  //   "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  // }
+]

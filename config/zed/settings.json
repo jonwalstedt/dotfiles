@@ -7,7 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "assistant": {
+  "agent": {
     "default_model": {
       "provider": "openai",
       "model": "gpt-4o"
@@ -15,7 +15,7 @@
     "version": "2"
   },
   "features": {
-    "inline_completion_provider": "copilot"
+    "edit_prediction_provider": "copilot"
   },
   // Uncomment below to use local AI with Ollama, refer https://zed.dev/docs/language-model-integration?highlight=ollama#using-ollama-on-macos
   // "assistant": {
@@ -38,7 +38,7 @@
   "ui_font_size": 14,
   "ui_font_family": "Hack Nerd Font",
   "buffer_font_family": "Hack Nerd Font",
-  "buffer_font_size": null,
+  "buffer_font_size": 12.0,
   "buffer_font_features": {
     "calt": false
   },

@@ -24,6 +24,7 @@ zsh-defer source $ZSH/oh-my-zsh.sh
 # -----------------------------------------------------------------------------
 source $HOME/.profile
 source $HOME/.shell_env
+source $HOME/.zprofile
 
 # -----------------------------------------------------------------------------
 # Optimize Completion Initialization (compinit)
