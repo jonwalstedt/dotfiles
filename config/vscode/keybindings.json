@@ -1,36 +1,75 @@
 // Place your key bindings in this file to override the defaults
 [
   {
-    "key": "ctrl+l",
-    "command": "workbench.action.splitEditorRight"
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "workbench.action.closeQuickOpen",
+    "when": "inQuickOpen"
+  },
+  // Splits and split navigation
+  {
+    "key": "ctrl+alt+l",
+    "command": "workbench.action.splitEditorRight",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
   },
   {
     "key": "ctrl+h",
-    "command": "workbench.action.splitEditorLeft"
+    "command": "workbench.action.splitEditorLeft",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
   },
   {
     "key": "ctrl+j",
-    "command": "workbench.action.splitEditorDown"
+    "command": "workbench.action.splitEditorDown",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
   },
   {
     "key": "ctrl+k",
-    "command": "workbench.action.splitEditorUp"
-  },
-
-  {
-    "key": "alt+h",
-    "command": "workbench.action.moveActiveEditorGroupLeft"
+    "command": "workbench.action.splitEditorUp",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
   },
   {
-    "key": "alt+l",
-    "command": "workbench.action.moveActiveEditorGroupRight"
+    "key": "ctrl+l",
+    "command": "workbench.action.focusNextGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
   },
   {
-    "key": "alt+j",
-    "command": "workbench.action.moveActiveEditorGroupDown"
+    "key": "ctrl+h",
+    "command": "workbench.action.focusPreviousGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
   },
   {
-    "key": "alt+k",
-    "command": "workbench.action.moveActiveEditorGroupUp"
+    "key": "ctrl+k",
+    "command": "workbench.action.focusAboveGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.focusBelowGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+alt+j",
+    "command": "workbench.action.splitEditorToBelowGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+alt+k",
+    "command": "workbench.action.splitEditorToAboveGroup",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+p",
+    "command": "folder-quickopen.open"
   }
+
+  // // Log
+  // {
+  //   "key": "shift+2 l",
+  //   "command": "macros.log",
+  //   "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  // }
 ]

@@ -1,0 +1,138 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "*": null,
+      "§": "editor::ToggleTabBar"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "alt-b": null,
+      "alt-f": null,
+      "cmd-t": "workspace::NewTerminal",
+      "ctrl-u": "terminal::ScrollPageUp",
+      "ctrl-d": "terminal::ScrollPageDown",
+      "alt-tab": "workspace::ToggleZoom"
+    }
+  },
+  {
+    "context": "Workspace > Pane > Terminal",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-alt-h": "pane::SplitLeft",
+      "ctrl-alt-j": "pane::SplitDown",
+      "ctrl-alt-l": "pane::SplitRight",
+      "ctrl-alt-k": "pane::SplitUp"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == visual && !menu",
+    "bindings": {
+      "v": "editor::SelectLargerSyntaxNode",
+      "V": "editor::SelectSmallerSyntaxNode"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "ctrl-g": "vim::ShowLocation",
+      "space tab": "workspace::ToggleZoom",
+      "space w": "workspace::Save",
+      "space q": "pane::CloseActiveItem",
+      "space t space": "workspace::NewCenterTerminal",
+      "space f f": "workspace::NewSearch",
+      "space space": "assistant::InlineAssist",
+      "space i": "project_symbols::Toggle",
+      "space p": "tab_switcher::Toggle",
+      "space o": "outline::Toggle",
+      "space enter": ["workspace::SendKeystrokes", "* N"],
+      "space a r": "editor::Rename",
+      "space a f": "editor::ToggleCodeActions",
+      "backspace": "pane::AlternateFile",
+      "ctrl-p": ["file_finder::Toggle", { "separate_history": true }],
+      "cmd-p": ["file_finder::Toggle", { "separate_history": true }],
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-alt-h": "pane::SplitLeft",
+      "ctrl-alt-j": "pane::SplitDown",
+      "ctrl-alt-l": "pane::SplitRight",
+      "ctrl-alt-k": "pane::SplitUp",
+      "] e n": "editor::GoToDiagnostic",
+      "space e n": "editor::GoToDiagnostic",
+      "[ e n": "editor::GoToPrevDiagnostic",
+      "space e p": "editor::GoToPrevDiagnostic",
+      "[ space": ["workspace::SendKeystrokes", "k o escape j"],
+      "] space": ["workspace::SendKeystrokes", "o escape k"],
+      "@ l": [
+        "workspace::SendKeystrokes",
+        "i console.log(' escape p a : ', space escape p a ); escape"
+      ],
+      "s": ["vim::PushOperator", { "Sneak": {} }],
+      "S": ["vim::PushOperator", { "SneakBackward": {} }],
+      "Y": [
+        "workspace::SendKeystrokes",
+        "v $ y"
+      ],
+      "= =": "editor::Format",
+      //"-": "pane::RevealInProjectPanel",
+      "-": [
+        "task::Spawn",
+        { "task_name": "ya_zed", "reveal_target": "center"}
+      ],
+      "space g": [
+        "task::Spawn",
+        { "task_name": "lazygit", "reveal_target": "center"}
+      ],
+      "g d": "editor::GoToDefinition",
+      "g D": "editor::GoToDefinitionSplit",
+      "g i": "editor::GoToImplementation",
+      "g I": "editor::GoToImplementationSplit",
+      "g t": "editor::GoToTypeDefinition",
+      "g T": "editor::GoToTypeDefinitionSplit",
+      "g r": "editor::FindAllReferences",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPrevDiagnostic",
+
+      // +Git
+      // Git prev/next hunk
+      "] h": "editor::GoToHunk",
+      "[ h": "editor::GoToPrevHunk"
+
+      // TODO: git diff is not ready yet, refer https://github.com/zed-industries/zed/issues/8665#issuecomment-2194000497
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-l": "editor::ShowInlineCompletion",
+      "j j": ["workspace::SendKeystrokes", "escape"]
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "A": "project_panel::NewDirectory",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      // Close project panel as project file panel on the right
+      "q": "workspace::ToggleRightDock",
+      "space e": "workspace::ToggleRightDock",
+      // Navigate between panel
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  }
+]

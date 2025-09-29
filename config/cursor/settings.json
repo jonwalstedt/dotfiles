@@ -38,6 +38,11 @@
   // "vim.commandLineModeKeyBindings": [],
   // "vim.normalModeKeyBindings": [],
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "i"],
+      "commands": ["workbench.action.editor.chat.viewInChat"]
+    },
+
     // vsnetrw
     {
       "before": ["-"],
@@ -82,7 +87,8 @@
     },
     {
       "before": ["<leader>", "t", "<leader>"],
-      "commands": ["workbench.action.terminal.new"]
+      "commands": ["workbench.action.createTerminalEditor"],
+      "when": "terminalProcessSupported"
     },
     {
       "before": ["<leader>", "d", "o"],
@@ -301,5 +307,7 @@
       "workbench.action.acceptSelectedQuickOpenItem"
     ]
   },
-  "workbench.colorTheme": "Ayu Dark"
+  "workbench.colorTheme": "Cursor Dark High Contrast",
+  "folderquickopen.onEnterCommand": "vsnetrw.open",
+  "workbench.editor.showTabs": "none"
 }

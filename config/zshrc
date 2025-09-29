@@ -35,6 +35,11 @@ if [[ -f ~/.zcompdump.zwc ]]; then
 fi
 compinit -C -d ~/.zcompdump  # Use cached completions, skip security checks
 
+# Vim mode in terminal
+# if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+#   set -o vi
+# fi
+
 # -----------------------------------------------------------------------------
 # Plugins
 # -----------------------------------------------------------------------------

@@ -5,6 +5,16 @@
     "key": "cmd+i",
     "command": "composerMode.agent"
   },
+  {
+    "key": "ctrl+p",
+    "command": "workbench.action.quickOpen",
+    "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "workbench.action.closeQuickOpen",
+    "when": "inQuickOpen"
+  },
   // Splits and split navigation
   {
     "key": "ctrl+alt+l",
@@ -55,6 +65,10 @@
     "key": "ctrl+alt+k",
     "command": "workbench.action.splitEditorToAboveGroup",
     "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+  },
+  {
+    "key": "alt+p",
+    "command": "folder-quickopen.open"
   }
 
   // // Log
