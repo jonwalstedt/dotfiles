@@ -167,3 +167,6 @@ fi
 
 # Created by `pipx` on 2025-02-08 17:33:40
 export PATH="$PATH:/Users/jon.walstedt/.local/bin"
+
+# Added by Antigravity
+export PATH="/Users/jon.walstedt/.antigravity/antigravity/bin:$PATH"
