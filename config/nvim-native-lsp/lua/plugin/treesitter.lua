@@ -1,6 +1,7 @@
 require('nvim-treesitter.configs').setup {
   highlight = { enable = true, additional_vim_regex_highlighting = false },
   ensure_installed = 'all',
+  ignore_install = { "ipkg" },
   indent = { enable = true },
   autopairs = { enable = true },
   -- autotag = { enable = true },
@@ -23,8 +24,8 @@ require('nvim-treesitter.configs').setup {
   incremental_selection = {
     enable = true,
     keymaps = {
-      init_selection = '<CR>', -- Start selection
-      node_incremental = '<CR>', -- Expand to the next node
+      init_selection = '<CR>',     -- Start selection
+      node_incremental = '<CR>',   -- Expand to the next node
       -- scope_incremental = '<CR>', -- Also using <CR> for expanding to scope
       node_decremental = '<S-CR>', -- Shrink to the previous node
     },
@@ -67,8 +68,8 @@ require('nvim-treesitter.configs').setup {
 require('nvim-ts-autotag').setup {
   opts = {
     -- Defaults
-    enable_close = true, -- Auto close tags
-    enable_rename = true, -- Auto rename pairs of tags
+    enable_close = true,          -- Auto close tags
+    enable_rename = true,         -- Auto rename pairs of tags
     enable_close_on_slash = true, -- Auto close on trailing </
   },
 }

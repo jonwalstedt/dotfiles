@@ -21,6 +21,12 @@ local typescriptFileTypes = {
 -- vtsls (preferred)
 local vtsls = {
   filetypes = typescriptFileTypes,
+  root_markers = {
+    "tsconfig.json",
+    "tsconfig.base.json",
+    "package.json",
+    ".git"
+  },
   commands = {
     OrganizeImports = {
       organize_imports,
