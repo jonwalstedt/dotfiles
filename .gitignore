@@ -2,3 +2,4 @@ config/vscode/extensions
 config/zed/conversations
 config/zed/prompts
 .repro
+shell/.elastic
