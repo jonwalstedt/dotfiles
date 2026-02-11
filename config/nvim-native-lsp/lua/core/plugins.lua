@@ -54,14 +54,14 @@ require('lazy').setup {
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
       --- The below dependencies are optional,
-      'echasnovski/mini.pick', -- for file_selector provider mini.pick
-      'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
-      'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
-      'ibhagwan/fzf-lua', -- for file_selector provider fzf
-      'stevearc/dressing.nvim', -- for input provider dressing
+      'echasnovski/mini.pick',                                -- for file_selector provider mini.pick
+      'nvim-telescope/telescope.nvim',                        -- for file_selector provider telescope
+      'hrsh7th/nvim-cmp',                                     -- autocompletion for avante commands and mentions
+      'ibhagwan/fzf-lua',                                     -- for file_selector provider fzf
+      'stevearc/dressing.nvim',                               -- for input provider dressing
       { 'folke/snacks.nvim', lazy = false, priority = 1000 }, -- for input provider snacks
-      'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
-      'zbirenbaum/copilot.lua', -- for providers='copilot'
+      'nvim-tree/nvim-web-devicons',                          -- or echasnovski/mini.icons
+      'zbirenbaum/copilot.lua',                               -- for providers='copilot'
       {
         -- support for image pasting
         'HakonHarnes/img-clip.nvim',
@@ -98,19 +98,19 @@ require('lazy').setup {
 
   -- Highlight, edit, and navigate code using a fast incremental parsing library
   {
-    'nvim-treesitter/nvim-treesitter',
-    cmd = 'TSUpdate',
-    config = function()
-      require 'plugin.treesitter'
-    end,
+    "nvim-treesitter/nvim-treesitter",
+    branch = "master",
+    build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
     dependencies = {
-      -- { 'andymass/vim-matchup' },
-      { 'windwp/nvim-ts-autotag' },
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "master" },
+      { "nvim-treesitter/nvim-treesitter-refactor",    branch = "master" },
+      { "windwp/nvim-ts-autotag" },
     },
+    config = function()
+      require("plugin.treesitter")
+    end,
   },
-  'nvim-treesitter/nvim-treesitter-refactor',
-  -- Additional textobjects for treesitter
-  'nvim-treesitter/nvim-treesitter-textobjects',
   -- Git commands in nvim
   {
     'tpope/vim-fugitive',
@@ -196,7 +196,7 @@ require('lazy').setup {
     'sonph/onehalf',
     rtp = 'vim',
   },
-  { 'rose-pine/neovim', name = 'rose-pine' },
+  { 'rose-pine/neovim',            name = 'rose-pine' },
   -- Movement
   {
     'justinmk/vim-sneak',
@@ -269,7 +269,7 @@ require('lazy').setup {
 
   -- Misc
   -- { 'echasnovski/mini.nvim', version = '*' },
-  { 'echasnovski/mini.diff', version = '*' },
+  { 'echasnovski/mini.diff',  version = '*' },
   { 'github/copilot.vim' },
   -- {
   --   'CopilotC-Nvim/CopilotChat.nvim',

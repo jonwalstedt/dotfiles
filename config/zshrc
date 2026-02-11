@@ -1,3 +1,10 @@
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+fpath=("/Users/jonwalstedt/.oh-my-zsh/custom/completions" $fpath)
+autoload -Uz compinit
+compinit
+# OPENSPEC:END
+
 # -----------------------------------------------------------------------------
 # Start Profiling
 # -----------------------------------------------------------------------------
@@ -112,12 +119,17 @@ eval "$(fnm env --use-on-cd)"
 # -----------------------------------------------------------------------------
 # Load pyenv - Lazy Loaded
 # -----------------------------------------------------------------------------
-if command -v pyenv 1>/dev/null; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  path+=("$PYENV_ROOT/bin")
-  load_pyenv() { eval "$(pyenv init --path)"; }
-  add-zsh-hook precmd load_pyenv
-fi
+# Load pyenv (once per shell)
+# if command -v pyenv >/dev/null 2>&1; then
+#   export PYENV_ROOT="$HOME/.pyenv"
+#   export PATH="$PYENV_ROOT/bin:$PATH"
+# 
+#   # Interactive shell: enable shims + auto-switching
+#   eval "$(pyenv init - zsh)"
+# fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
 
 # -----------------------------------------------------------------------------
 # SDKMAN for Java Management
@@ -170,3 +182,4 @@ export PATH="$PATH:/Users/jon.walstedt/.local/bin"
 
 # Added by Antigravity
 export PATH="/Users/jon.walstedt/.antigravity/antigravity/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"

@@ -55,7 +55,7 @@ local plugins = {
 require("lazy.minit").repro({ spec = plugins })
 
 -- Setup Tree-sitter
-local ts_status, treesitter = pcall(require, "nvim-treesitter.configs")
+local ts_status, treesitter = pcall(require, "nvim-treesitter").config
 if ts_status then
   treesitter.setup({
     ensure_installed = { "lua", "markdown", "markdown_inline", "yaml" },

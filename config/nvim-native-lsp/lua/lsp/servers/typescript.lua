@@ -36,8 +36,16 @@ local vtsls = {
   settings = {
     complete_function_calls = true,
     vtsls = {},
+    javascript = {
+      tsserver = {
+        maxTsServerMemory = 8192,
+      },
+    },
     typescript = {
       updateImportsOnFileMove = { enabled = "always" },
+      tsserver = {
+        maxTsServerMemory = 8192,
+      },
       suggest = {
         completeFunctionCalls = true,
       },

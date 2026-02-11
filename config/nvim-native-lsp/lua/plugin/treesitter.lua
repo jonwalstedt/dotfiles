@@ -1,4 +1,4 @@
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter').setup {
   highlight = { enable = true, additional_vim_regex_highlighting = false },
   ensure_installed = 'all',
   ignore_install = { "ipkg" },

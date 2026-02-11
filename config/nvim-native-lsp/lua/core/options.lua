@@ -103,7 +103,12 @@ set 'undofile'
 set('undodir', '~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp')
 
 -- Folding
-set('foldmethod', 'manual')
+-- set('foldmethod', 'manual')
+set('foldmethod', 'expr')
+set('foldlevel', 99)
+set('foldlevelstart', 99)
+set('foldenable', true)
+set('foldexpr', 'v:lua.vim.treesitter.foldexpr()')
 set('foldtext', 'NeatFoldText()')
 
 -- Global statusline

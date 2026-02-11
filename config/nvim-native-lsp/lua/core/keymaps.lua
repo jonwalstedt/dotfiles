@@ -173,3 +173,13 @@ nmap('<leader>[', 'f_xv~n')
 nmap('<leader>]', '/\\w_<CR>')
 
 tmap('›', '<Esc>b', { noremap = true })
+
+-- Folding
+vim.keymap.set("n", "<Space><Tab>", function()
+  if vim.fn.foldlevel(".") == 0 then
+    return
+  end
+
+  -- toggle fold under cursor, but don't error
+  pcall(vim.cmd, "normal! za")
+end, { desc = "Toggle fold under cursor", silent = true })
