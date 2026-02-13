@@ -103,3 +103,6 @@ export PATH="$PATH:~/Library/Python/3.9/bin"
 
 #c
 export CC=/usr/bin/clang
+
+# Neovim as git editor
+export GIT_EDITOR=nvim
