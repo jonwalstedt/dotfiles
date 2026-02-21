@@ -97,7 +97,7 @@ export PATH=$(pyenv root)/shims:$PATH
 export CLOUDSDK_PYTHON=/usr/bin/python3
 
 # Increase node heap size
-export NODE_OPTIONS="--max-old-space-size=8192"
+export NODE_OPTIONS="--max-old-space-size=16384"
 
 export PATH="$PATH:~/Library/Python/3.9/bin"
 

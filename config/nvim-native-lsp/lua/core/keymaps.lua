@@ -183,3 +183,5 @@ vim.keymap.set("n", "<Space><Tab>", function()
   -- toggle fold under cursor, but don't error
   pcall(vim.cmd, "normal! za")
 end, { desc = "Toggle fold under cursor", silent = true })
+
+nmap('<leader>kb', ':Kibana<CR>')

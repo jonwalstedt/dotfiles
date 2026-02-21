@@ -22,5 +22,6 @@ require 'core.macros'
 require 'core.keymaps'
 require 'core.autocmds'
 require 'core.options'
+require('scripts.work.kibana').setup()
 
 vim.cmd [[autocmd FocusGained * set termguicolors]]
