@@ -6,24 +6,9 @@ U.os = {
   data = vim.fn.stdpath 'data',
   cache = vim.fn.stdpath 'cache',
   config = vim.fn.stdpath 'config',
-  name = vim.loop.os_uname().sysname,
+  name = (vim.uv or vim.loop).os_uname().sysname,
   is_git_dir = os.execute 'git rev-parse --is-inside-work-tree >> /dev/null 2>&1',
 }
-
--- Autocmds
-function U.nvim_create_augroup(definitions) -- {{{1
-  for group_name, definition in pairs(definitions) do
-    vim.cmd('augroup ' .. group_name)
-    vim.cmd 'autocmd!'
-
-    for _, def in pairs(definition) do
-      local command = table.concat(vim.tbl_flatten { 'autocmd', def }, ' ')
-      vim.cmd(command)
-    end
-
-    vim.cmd 'augroup END'
-  end
-end
 
 -- Keybindings
 local function map_keys(mode, command, value, opts)
@@ -69,10 +54,6 @@ local function smap(command, value, opts)
   map_keys('s', command, value, opts)
 end
 
-local function buf_nmap(lhs, rhs, opts)
-  return map_keys('n', lhs, rhs, opts, 'buffer')
-end
-
 U.keymap = {
   map = map,
   nmap = nmap,
@@ -83,7 +64,6 @@ U.keymap = {
   xmap = xmap,
   omap = omap,
   smap = smap,
-  buf_nmap = buf_nmap,
 }
 
 local function isempty(s)
@@ -105,8 +85,12 @@ U.palette = {
   red = '#f52727',
 }
 
-function U.command(key, value)
-  vim.cmd(string.format('command! %s %s', key, value))
+function U.command(name, cmd, opts)
+  if type(cmd) == 'function' then
+    vim.api.nvim_create_user_command(name, cmd, opts or {})
+  else
+    vim.cmd(string.format('command! %s %s', name, cmd))
+  end
 end
 
 function U.set(key, value)

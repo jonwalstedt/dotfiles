@@ -76,7 +76,7 @@ nmap('[t', ':tabp<CR>')
 nmap(']t', ':tabn<CR>')
 
 -- Run macro over selected rows using @
-xmap('@', ':<C-u>call Macros#ExecuteMacroOverVisualRange()<CR>')
+xmap('@', function() require('lib.macros').execute_over_visual_range() end)
 
 -- Emacs style movement in commandline (as in bash or Zsh)
 -- cmap('<C-a>', '<Home>', {})
@@ -111,27 +111,29 @@ tmap('jj', '<C-\\><C-n>')
 nmap('Y', 'y$')
 
 -- Smooth way of creating and moving between splits
-nmap('<C-h>', ':call Windows#Move("h")<CR>')
-nmap('<C-j>', ':call Windows#Move("j")<CR>')
-nmap('<C-k>', ':call Windows#Move("k")<CR>')
-nmap('<C-l>', ':call Windows#Move("l")<CR>')
+nmap('<C-h>', function() require('lib.windows').move('h') end)
+nmap('<C-j>', function() require('lib.windows').move('j') end)
+nmap('<C-k>', function() require('lib.windows').move('k') end)
+nmap('<C-l>', function() require('lib.windows').move('l') end)
 
 -- Search within selection
-vmap(
-  '<leader>/',
-  ':<C-U>call Search#RangeSearch("/")<CR>:if strlen(g:srchstr) > 0|exec "/".g:srchstr|endif<CR>'
-)
-vmap(
-  '<leader>?',
-  ':<C-U>call Search#RangeSearch("?")<CR>:if strlen(g:srchstr) > 0|exec "?".g:srchstr|endif<CR>'
-)
+vmap('<leader>/', function()
+  local s = require('lib.search')
+  s.range_search('/')
+  if #(vim.g.srchstr or '') > 0 then vim.cmd('/' .. vim.g.srchstr) end
+end)
+vmap('<leader>?', function()
+  local s = require('lib.search')
+  s.range_search('?')
+  if #(vim.g.srchstr or '') > 0 then vim.cmd('?' .. vim.g.srchstr) end
+end)
 
 -- Grep word under cursor
-nmap('<leader>g', ':call Search#SearchAndGrep("normal", 0)<CR>')
-vmap('<leader>g', ':<c-u>call Search#SearchAndGrep(visualmode(), 0)<CR>')
+nmap('<leader>g', function() require('lib.search').search_and_grep('normal', 0) end)
+vmap('<leader>g', function() require('lib.search').search_and_grep(vim.fn.visualmode(), 0) end)
 
-nmap('<leader>l', ':call Search#SearchAndGrep("normal", 1)<CR>')
-vmap('<leader>l', ':<c-u>call Search#SearchAndGrep(visualmode(), 1)<CR>')
+nmap('<leader>l', function() require('lib.search').search_and_grep('normal', 1) end)
+vmap('<leader>l', function() require('lib.search').search_and_grep(vim.fn.visualmode(), 1) end)
 
 -- Search for selection
 vmap('*', 'y/\\V<C-R>=escape(@","/")<CR><CR>')
@@ -142,8 +144,6 @@ nmap(
   [[:let @/ = '\<'.expand('<cword>').'\>'|set hlsearch<C-M>]]
 )
 
-nmap('<leader>y', ':call Search#YankPattern()<CR>')
-
 -- Substitute current search result
 nmap('<leader>s', ':%s//')
 
@@ -151,13 +151,13 @@ nmap('<leader>s', ':%s//')
 -- nmap('<leader>fl', ':call QuickFix#Toggle("Location List", "l")<CR>')
 
 -- Toggle QuickFixList
-nmap('<leader>f<leader>', ':call QuickFix#Toggle("Quickfix List", "c")<CR>')
+nmap('<leader>f<leader>', function() require('lib.quickfix').toggle('c') end)
 
 -- Clear QuickFixList
 nmap('<leader>fq', ':call setqflist([])<CR>')
 
 -- Add current line to QuickFixList
-nmap('<leader><tab>', ':call QuickFix#AddCurrentLineToQuickfixList()<CR>')
+nmap('<leader><tab>', function() require('lib.quickfix').add_current_line() end)
 
 nmap('<leader>§', ":call setqflist([], 'r')<CR>")
 
@@ -166,8 +166,6 @@ nmap('<leader>df', ':windo diffthis<CR>')
 -- Close diff view
 nmap('<leader>fd', ':windo diffoff<CR>')
 
-nmap('<leader>cc', ':CopilotChatToggle<CR>')
-
 -- Find next snake case word
 nmap('<leader>[', 'f_xv~n')
 nmap('<leader>]', '/\\w_<CR>')
@@ -175,13 +173,9 @@ nmap('<leader>]', '/\\w_<CR>')
 tmap('›', '<Esc>b', { noremap = true })
 
 -- Folding
-vim.keymap.set("n", "<Space><Tab>", function()
-  if vim.fn.foldlevel(".") == 0 then
-    return
-  end
-
-  -- toggle fold under cursor, but don't error
-  pcall(vim.cmd, "normal! za")
-end, { desc = "Toggle fold under cursor", silent = true })
+nmap('<Space><Tab>', function()
+  if vim.fn.foldlevel('.') == 0 then return end
+  pcall(vim.cmd, 'normal! za')
+end)
 
 nmap('<leader>kb', ':Kibana<CR>')

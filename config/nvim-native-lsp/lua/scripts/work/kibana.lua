@@ -1,4 +1,4 @@
-local U = {}
+local M = {}
 
 local function start_hidden_terminal(cmd, name)
   -- create fresh split to safely attach terminal
@@ -33,7 +33,7 @@ end
 --- Deterministic 2-column layout
 --- Left: explorer
 --- Right: visible terminal
-function U.start(steps)
+function M.start(steps)
   local visible_term = nil
   local explorer_cmd = nil
 
@@ -79,15 +79,15 @@ local function kibana_steps()
   return {
     { "terminal", "yarn es snapshot --license trial", "elasticsearch", { hide = true } },
     { "terminal", "yarn start --no-base-path",        "kibana",        { hide = true } },
-    { "terminal", "agent .",                          "assistant" },
+    { "terminal", "claude",                           "claude" },
     { "Dirvish" },
   }
 end
 
-function U.setup()
-  vim.api.nvim_create_user_command("Kibana", function()
-    U.start(kibana_steps())
-  end, { desc = "Start Kibana dev env (ES+Kibana hidden, agent visible, Dirvish left)" })
+function M.setup()
+  U.command('Kibana', function()
+    M.start(kibana_steps())
+  end, { desc = 'Start Kibana dev env (ES+Kibana hidden, agent visible, Dirvish left)' })
 end
 
-return U
+return M

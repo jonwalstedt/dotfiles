@@ -1,11 +1,12 @@
 local cmp = require 'cmp'
+local luasnip = require 'luasnip'
+
 cmp.setup {
   snippet = {
     expand = function(args)
-      require('snippy').expand_snippet(args.body)
+      luasnip.lsp_expand(args.body)
     end,
   },
-
   completion = { completeopt = 'menu,menuone,noinsert' },
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -14,39 +15,31 @@ cmp.setup {
     ['<C-e>'] = cmp.mapping.close(),
     ['<Esc>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm { select = false },
-    -- ['<Tab>'] = function(fallback)
-    --   if cmp.visible() then
-    --     cmp.select_next_item()
-    --   else
-    --     fallback()
-    --   end
-    -- end,
-
-    -- ['<Tab>'] = cmp.mapping(function(fallback)
-    --   cmp_ultisnips_mappings.expand_or_jump_forwards(fallback)
-    -- end, {
-    --   'i',
-    --   's', --[[ "c" (to enable the mapping in command mode) ]]
-    -- }),
-    -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-    --   cmp_ultisnips_mappings.jump_backwards(fallback)
-    -- end, {
-    --   'i',
-    --   's', --[[ "c" (to enable the mapping in command mode) ]]
-    -- }),
+    ['<Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
+    ['<S-Tab>'] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { 'i', 's' }),
   },
   sources = {
     { name = 'nvim_lua' },
     { name = 'nvim_lsp', priority = 10 },
+    { name = 'luasnip' },
     { name = 'path' },
-    { name = 'snippy' },
-    -- { name = 'ultisnips' },
-    {
-      name = 'buffer',
-      priority = 2,
-      keyword_length = 5,
-      max_item_count = 10,
-    },
+    { name = 'buffer', priority = 2, keyword_length = 5, max_item_count = 10 },
     { name = 'calc' },
   },
   view = {
@@ -57,10 +50,3 @@ cmp.setup {
     debounce_text_changes = 150,
   },
 }
--- Use buffer source for `/`.
--- cmp.setup.cmdline('/', {sources = {{name = 'buffer'}}})
-
--- Use cmdline & path source for ':'.
--- cmp.setup.cmdline(':', {
---     sources = cmp.config.sources({{name = 'path'}}, {{name = 'cmdline'}})
--- })

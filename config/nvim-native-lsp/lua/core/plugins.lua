@@ -18,7 +18,6 @@ require('lazy').setup {
       require 'plugin.null-ls'
     end,
   },
-  { 'jose-elias-alvarez/nvim-lsp-ts-utils' },
   {
     'windwp/nvim-ts-autotag',
     config = function()
@@ -54,14 +53,11 @@ require('lazy').setup {
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
       --- The below dependencies are optional,
-      'echasnovski/mini.pick',                                -- for file_selector provider mini.pick
-      'nvim-telescope/telescope.nvim',                        -- for file_selector provider telescope
       'hrsh7th/nvim-cmp',                                     -- autocompletion for avante commands and mentions
       'ibhagwan/fzf-lua',                                     -- for file_selector provider fzf
       'stevearc/dressing.nvim',                               -- for input provider dressing
       { 'folke/snacks.nvim', lazy = false, priority = 1000 }, -- for input provider snacks
       'nvim-tree/nvim-web-devicons',                          -- or echasnovski/mini.icons
-      'zbirenbaum/copilot.lua',                               -- for providers='copilot'
       {
         -- support for image pasting
         'HakonHarnes/img-clip.nvim',
@@ -80,12 +76,11 @@ require('lazy').setup {
         },
       },
       {
-        -- Make sure to set this up properly if you have lazy=true
         'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { 'markdown', 'Avante' },
-        },
         ft = { 'markdown', 'Avante' },
+        config = function()
+          require('plugin.render-markdown')
+        end,
       },
     },
   },
@@ -139,7 +134,7 @@ require('lazy').setup {
         desc = 'Buffer Diagnostics (Trouble)',
       },
       {
-        '<leader>vs',
+        '<leader>vb',
         '<cmd>Trouble symbols toggle focus=false<cr>',
         desc = 'Symbols (Trouble)',
       },
@@ -161,11 +156,6 @@ require('lazy').setup {
     },
   },
 
-  -- UI to select things (files, grep results, open buffers...)
-  {
-    'MeanderingProgrammer/render-markdown.nvim',
-    ft = { 'markdown', 'codecompanion' },
-  },
   {
     'stevearc/dressing.nvim', -- Utilises Neovim UI hooks to manage inputs, selects etc
     opts = {
@@ -186,17 +176,7 @@ require('lazy').setup {
     end,
   },
 
-  -- 'Mofiqul/vscode.nvim',
-  'EdenEast/nightfox.nvim',
-  'mjlbach/onedark.nvim',
-  'folke/tokyonight.nvim',
-  'embark-theme/vim',
-  'Domeee/mosel.nvim',
-  {
-    'sonph/onehalf',
-    rtp = 'vim',
-  },
-  { 'rose-pine/neovim',            name = 'rose-pine' },
+  { 'rose-pine/neovim', name = 'rose-pine' },
   -- Movement
   {
     'justinmk/vim-sneak',
@@ -268,8 +248,6 @@ require('lazy').setup {
   },
 
   -- Misc
-  -- { 'echasnovski/mini.nvim', version = '*' },
-  { 'echasnovski/mini.diff',  version = '*' },
   { 'github/copilot.vim' },
   -- {
   --   'CopilotC-Nvim/CopilotChat.nvim',
@@ -291,9 +269,12 @@ require('lazy').setup {
   { 'evanleck/vim-svelte' },
 
   -- Snippets
-  -- { 'SirVer/ultisnips' },
-  -- { 'dcampos/nvim-snippy' },
-  -- { 'honza/vim-snippets' },
+  {
+    'L3MON4D3/LuaSnip',
+    version = 'v2.*',
+    build = 'make install_jsregexp',
+    dependencies = { 'saadparwaiz1/cmp_luasnip' },
+  },
 
   -- Statusline
   {
@@ -316,4 +297,39 @@ require('lazy').setup {
   'editorconfig/editorconfig-vim',
 
   'terrastruct/d2-vim',
+
+  -- Test runner
+  {
+    'nvim-neotest/neotest',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-neotest/neotest-jest',
+      'nvim-neotest/neotest-go',
+      'nvim-neotest/neotest-python',
+    },
+    keys = {
+      { '<leader>Tt', function() require('neotest').run.run() end,                  desc = 'Run nearest test' },
+      { '<leader>Tf', function() require('neotest').run.run(vim.fn.expand('%')) end, desc = 'Run test file' },
+      { '<leader>Tl', function() require('neotest').run.run_last() end,             desc = 'Run last test' },
+      { '<leader>Ts', function() require('neotest').summary.toggle() end,           desc = 'Toggle test summary' },
+      { '<leader>To', function() require('neotest').output_panel.toggle() end,      desc = 'Toggle output panel' },
+    },
+    config = function()
+      require('plugin.neotest')
+    end,
+  },
+
+  -- UI: replace cmdline and notifications with floating UI
+  {
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    dependencies = {
+      'MunifTanjim/nui.nvim',
+      'rcarriga/nvim-notify',
+    },
+    config = function()
+      require('plugin.noice')
+    end,
+  },
 }

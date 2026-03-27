@@ -20,7 +20,6 @@ command('Exec', 'set splitright | vnew | set filetype=sh | read !sh #')
 command('CopyBufferPath', ":let @+ = expand('%:p')")
 
 -- Git
-command('ToggleGStatus', 'call CustomFugitive#ToggleGStatus()')
 command(
   '-nargs=* Glg',
   "vertical Git --paginate log --graph --pretty=format:'%h - (%ad)%d %s <%an>' --abbrev-commit --date=local <args>"
@@ -31,5 +30,5 @@ command(
 )
 command('GitFileHistory', '0Gclog')
 command('GFileHistory', '0Gclog')
-command('GitDiffWithHash', 'call CustomFugitive#DiffFileWithHash()')
-command('GDiffWithHash', 'call CustomFugitive#DiffFileWithHash()')
+command('GitDiffWithHash', function() require('lib.fugitive').diff_with_hash() end)
+command('GDiffWithHash', function() require('lib.fugitive').diff_with_hash() end)

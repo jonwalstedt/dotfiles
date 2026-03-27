@@ -12,7 +12,7 @@ vim.g.loaded_python_provider = 0
 vim.g.python_host_skip_check = 1
 vim.g.python3_host_skip_check = 1
 vim.g.python2_host_prog = '/usr/local/bin/python2'
-vim.g.python3_host_prog = '/opt/homebrew/Cellar/python@3.12/3.12.5/bin/python3'
+vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
 
 -- Include current directory in path
 set 'path=.'
@@ -44,9 +44,6 @@ set 'breakindent'
 
 -- set 'wildmenu'
 set('wildoptions', 'pum')
-
--- Only redraw when needed
-set 'lazyredraw'
 
 -- Do not jump to first character with page commands.
 set 'nostartofline'
@@ -82,7 +79,7 @@ set('virtualedit', 'block')
 set 'hidden'
 
 -- Better display for messages
-set('cmdheight', 2)
+set('cmdheight', 1)
 
 -- don't give ins-completion-menu messages.
 -- set shortmess+=c
@@ -161,7 +158,7 @@ set('updatetime', 250)
 set('signcolumn', 'yes')
 
 -- Search
-set('grepprg', 'ag\\ --vimgrep\\ --nogroup\\ --nocolor')
+set('grepprg', 'rg\\ --vimgrep\\ --no-heading\\ --smart-case')
 
 -- Make searching case insensitive.
 set 'ignorecase'

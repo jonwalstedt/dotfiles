@@ -1,30 +1,44 @@
-local buf_nmap = U.keymap.buf_nmap
-local function lua_nmap(lhs, rhs, opts)
-  buf_nmap(lhs, '<cmd>lua  ' .. rhs .. '<CR>', opts)
-end
+local format_group = vim.api.nvim_create_augroup('lsp_format_on_save', { clear = false })
 
-return function(client)
-  print 'LSP started.'
+return function(client, bufnr)
+  local function map(lhs, rhs, desc)
+    vim.keymap.set('n', lhs, rhs, { buffer = bufnr, desc = desc })
+  end
 
-  -- GOTO mappings
-  lua_nmap('gD', 'vim.lsp.buf.declaration()')
-  lua_nmap('gd', 'vim.lsp.buf.definition()')
-  lua_nmap('K', 'vim.lsp.buf.hover()')
-  lua_nmap('gr', 'vim.lsp.buf.references()')
-  lua_nmap('<space>gh', 'vim.lsp.buf.signature_help()')
-  lua_nmap('gi', 'vim.lsp.buf.implementation()')
-  -- ACTION mappings
-  lua_nmap('<leader>af', 'vim.lsp.buf.code_action()')
-  lua_nmap('<leader>ar', 'vim.lsp.buf.rename()')
-  -- lua_map('<leader>ar',  'vim.lsp.buf.rename()')
-  -- Few language severs support these three
-  lua_nmap('<leader>ai', 'vim.lsp.buf.incoming_calls()')
-  lua_nmap('<leader>ao', 'vim.lsp.buf.outgoing_calls()')
+  -- Navigation
+  map('gD', vim.lsp.buf.declaration, 'LSP declaration')
+  map('gd', vim.lsp.buf.definition, 'LSP definition')
+  map('K', vim.lsp.buf.hover, 'LSP hover')
+  map('gr', vim.lsp.buf.references, 'LSP references')
+  map('<space>gh', vim.lsp.buf.signature_help, 'LSP signature help')
+  map('gi', vim.lsp.buf.implementation, 'LSP implementation')
 
-  -- Diagnostics mapping
-  lua_nmap('<leader>ed', 'vim.lsp.diagnostic.show_line_diagnostics()')
-  lua_nmap('<leader>en', 'vim.diagnostic.goto_next()')
-  lua_nmap('<leader>ep', 'vim.diagnostic.goto_prev()')
+  -- Actions
+  map('<leader>af', vim.lsp.buf.code_action, 'LSP code action')
+  map('<leader>ar', vim.lsp.buf.rename, 'LSP rename')
+  map('<leader>ai', vim.lsp.buf.incoming_calls, 'LSP incoming calls')
+  map('<leader>ao', vim.lsp.buf.outgoing_calls, 'LSP outgoing calls')
 
-  vim.cmd [[autocmd! BufWritePre <buffer> lua vim.lsp.buf.format(nil, 1000)]]
+  -- Diagnostics
+  map('<leader>ed', vim.diagnostic.open_float, 'Show diagnostics')
+  map('<leader>en', vim.diagnostic.goto_next, 'Next diagnostic')
+  map('<leader>ep', vim.diagnostic.goto_prev, 'Prev diagnostic')
+
+  -- Format on save: prefer null-ls when attached, fall back to this client
+  if client.supports_method('textDocument/formatting') then
+    vim.api.nvim_clear_autocmds({ buffer = bufnr, group = format_group })
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      buffer = bufnr,
+      group = format_group,
+      callback = function()
+        local null_ls = vim.lsp.get_clients({ bufnr = bufnr, name = 'null-ls' })
+        vim.lsp.buf.format({
+          async = false,
+          timeout_ms = 2000,
+          bufnr = bufnr,
+          filter = #null_ls > 0 and function(c) return c.name == 'null-ls' end or nil,
+        })
+      end,
+    })
+  end
 end
