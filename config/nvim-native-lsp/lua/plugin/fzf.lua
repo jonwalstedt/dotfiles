@@ -5,6 +5,12 @@ local imap = U.keymap.imap
 vim.env.FZF_DEFAULT_OPTS =
   '--bind alt-p:up,alt-n:down,ctrl-a:select-all --layout=reverse --multi'
 
+if vim.fn.executable('fd') == 1 then
+  vim.env.FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --exclude .git --exclude .DS_Store'
+else
+  vim.env.FZF_DEFAULT_COMMAND = 'find . -type f -not -name ".DS_Store"'
+end
+
 vim.g.fzf_command_extra_args = '--bind="alt-p:preview-up,alt-n:preview-down"'
 vim.g.fzf_history_dir = vim.env.HOME .. '/.local/share/fzf-history'
 
@@ -28,12 +34,28 @@ vim.g.fzf_action = {
 -- Files + devicons + bat/tree preview.
 -- Single selection → open directly. Tab multi-select → quickfix.
 local function files_with_devicons()
+  local ESC = string.char(27)
+  local gold  = ESC .. '[38;2;229;180;80m'
+  local muted = ESC .. '[38;2;90;100;110m'
+  local reset = ESC .. '[0m'
+
+  local function strip_ansi(s)
+    return s:gsub(ESC .. '%[[%d;]*m', '')
+  end
+
   local function prepend_icon(candidates)
     local result = {}
     for _, candidate in ipairs(candidates) do
-      local filename = vim.fn.fnamemodify(candidate, ':p:t')
+      local filename = vim.fn.fnamemodify(candidate, ':t')
+      local dir      = vim.fn.fnamemodify(candidate, ':h')
       local icon = vim.fn.WebDevIconsGetFileTypeSymbol(filename, vim.fn.isdirectory(filename))
-      table.insert(result, string.format('%s %s', icon, candidate))
+      local display
+      if dir == '.' then
+        display = gold .. filename .. reset
+      else
+        display = muted .. dir .. '/' .. reset .. gold .. filename .. reset
+      end
+      table.insert(result, string.format('%s %s', icon, display))
     end
     return result
   end
@@ -52,6 +74,7 @@ local function files_with_devicons()
   local opts = vim.fn['fzf#wrap']('files', {
     source = candidates,
     options = {
+      '--ansi',
       '--preview', preview_cmd,
       '--multi',
       '--header', '? toggle preview | ctrl-a select all | ctrl-d deselect all | ctrl-q quickfix',
@@ -61,9 +84,9 @@ local function files_with_devicons()
 
   opts['sink*'] = function(items)
     local key = table.remove(items, 1)
-    -- Strip "icon " prefix — icon is the first non-whitespace field
+    -- Strip icon prefix and ANSI color codes to recover the plain file path
     for i, item in ipairs(items) do
-      items[i] = item:match('^%S+%s+(.+)$') or item
+      items[i] = strip_ansi(item:match('^%S+%s+(.+)$') or item)
     end
     if #items == 0 then return end
     if #items == 1 then

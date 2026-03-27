@@ -177,6 +177,41 @@ require('lazy').setup {
   },
 
   { 'rose-pine/neovim', name = 'rose-pine' },
+
+  {
+    'folke/zen-mode.nvim',
+    cmd = 'ZenMode',
+    opts = {
+      window = {
+        backdrop = 1,
+        width = 82,
+        height = 1,
+        options = {
+          signcolumn = 'no',
+          number = false,
+          relativenumber = false,
+          cursorline = false,
+          foldcolumn = '0',
+          list = false,
+          statuscolumn = '',
+          wrapmargin = 0,
+        },
+      },
+      plugins = {
+        options = {
+          enabled = true,
+          ruler = false,
+          showcmd = false,
+          laststatus = 0,
+        },
+        gitsigns = { enabled = false },
+      },
+      on_open = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+      end,
+    },
+  },
   -- Movement
   {
     'justinmk/vim-sneak',

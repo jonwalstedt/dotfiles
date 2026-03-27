@@ -11,27 +11,16 @@ local function is_prose_buffer(bufnr)
   return prose_filetypes[ft] == true
 end
 
-local function clamp(n, min, max)
-  if n < min then
-    return min
-  end
-  if n > max then
-    return max
-  end
-  return n
-end
-
 function M.apply_to_current_window()
   local bufnr = vim.api.nvim_get_current_buf()
   if not is_prose_buffer(bufnr) then
     return
   end
 
-  local target_width = 100
+  local target_width = 80
   local win_width = vim.api.nvim_win_get_width(0)
 
-  local pad = math.floor((win_width - target_width) / 2)
-  pad = clamp(pad, 0, 20)
+  local pad = math.max(0, math.floor((win_width - target_width) / 2))
 
   vim.opt_local.wrap = true
   vim.opt_local.linebreak = true
