@@ -179,3 +179,6 @@ nmap('<Space><Tab>', function()
 end)
 
 nmap('<leader>kb', ':Kibana<CR>')
+
+-- Toggle zen mode
+nmap('<leader>z', '<cmd>ZenMode<cr>')

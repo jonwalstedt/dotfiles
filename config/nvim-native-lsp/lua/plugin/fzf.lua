@@ -37,6 +37,7 @@ local function files_with_devicons()
   local ESC = string.char(27)
   local gold  = ESC .. '[38;2;229;180;80m'
   local muted = ESC .. '[38;2;90;100;110m'
+  local blue  = ESC .. '[38;2;100;149;237m'
   local reset = ESC .. '[0m'
 
   local function strip_ansi(s)
@@ -48,9 +49,12 @@ local function files_with_devicons()
     for _, candidate in ipairs(candidates) do
       local filename = vim.fn.fnamemodify(candidate, ':t')
       local dir      = vim.fn.fnamemodify(candidate, ':h')
-      local icon = vim.fn.WebDevIconsGetFileTypeSymbol(filename, vim.fn.isdirectory(filename))
+      local is_dir   = vim.fn.isdirectory(candidate) == 1
+      local icon = vim.fn.WebDevIconsGetFileTypeSymbol(filename, is_dir)
       local display
-      if dir == '.' then
+      if is_dir then
+        display = blue .. candidate .. reset
+      elseif dir == '.' then
         display = gold .. filename .. reset
       else
         display = muted .. dir .. '/' .. reset .. gold .. filename .. reset
@@ -60,13 +64,19 @@ local function files_with_devicons()
     return result
   end
 
-  local fzf_cmd = vim.env.FZF_DEFAULT_COMMAND or 'find . -type f'
-  local candidates = prepend_icon(vim.fn.systemlist(fzf_cmd))
+  -- Include both files and directories (no --type f restriction)
+  local fd_cmd
+  if vim.fn.executable('fd') == 1 then
+    fd_cmd = 'fd --hidden --follow --exclude .git --exclude .DS_Store'
+  else
+    fd_cmd = 'find . -not -name ".DS_Store" -not -path "*/.git/*"'
+  end
+  local candidates = prepend_icon(vim.fn.systemlist(fd_cmd))
 
-  -- bat for files (no inner quotes needed), tree for directories
+  -- directories → tree, files → bat
   -- {2..-1} skips field 1 (the icon) and uses the rest as the file path
   local preview_cmd = string.format(
-    '[[ -f {2..-1} ]] && (bat --theme=Dracula --style=numbers,changes --color=always {2..-1} | head -%d) || tree -C {2..-1} || echo {} 2>/dev/null | head -200',
+    '[[ -d {2..-1} ]] && tree -C {2..-1} || (bat --theme=Dracula --style=numbers,changes --color=always {2..-1} | head -%d) 2>/dev/null | head -200',
     vim.o.lines
   )
 
