@@ -1,3 +1,4 @@
+local U = require('utils')
 local nmap = U.keymap.nmap
 local highlight = U.highlight
 local palette = U.palette

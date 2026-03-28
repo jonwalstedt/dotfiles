@@ -63,14 +63,5 @@ local vtsls = {
 
 return {
   __multi = true,
-  tsserver = {
-    enabled = false,
-    filetypes = typescriptFileTypes,
-    single_file_support = false,
-  },
-  ts_ls = {
-    enabled = false,
-    filetypes = typescriptFileTypes,
-  },
   vtsls = vtsls,
 }

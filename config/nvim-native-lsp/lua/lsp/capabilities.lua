@@ -1,26 +1,11 @@
 local M = {}
 
 function M.setup()
-  -- Capabilities
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-  capabilities.textDocument.completion.completionItem.documentationFormat = {
-    'markdown',
-  }
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities.textDocument.completion.completionItem.preselectSupport = true
-  capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
-  capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
-  capabilities.textDocument.completion.completionItem.deprecatedSupport = true
-  capabilities.textDocument.completion.completionItem.commitCharactersSupport =
-    true
-  capabilities.textDocument.completion.completionItem.tagSupport = {
-    valueSet = { 1 },
-  }
-  capabilities.textDocument.completion.completionItem.resolveSupport = {
-    properties = { 'documentation', 'detail', 'additionalTextEdits' },
-  }
-  return capabilities;
+  local ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
+  if ok then
+    return cmp_lsp.default_capabilities()
+  end
+  return vim.lsp.protocol.make_client_capabilities()
 end
 
 return M

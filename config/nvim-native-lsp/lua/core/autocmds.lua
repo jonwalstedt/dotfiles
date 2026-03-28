@@ -13,11 +13,6 @@ autocmd('FileType', {
 })
 autocmd('FileType', {
   group = ftplugin,
-  pattern = 'NvimTree',
-  callback = function() vim.opt_local.signcolumn = 'no' end,
-})
-autocmd('FileType', {
-  group = ftplugin,
   pattern = { 'vim', 'lua', 'css', 'javascript' },
   callback = function() vim.opt_local.shiftwidth = 2 end,
 })
@@ -33,10 +28,10 @@ autocmd('TermOpen', {
   end,
 })
 
--- Source vim/lua config files immediately on save
+-- Source vimscript config files immediately on save
 autocmd('BufWritePost', {
   group = augroup('on_save', { clear = true }),
-  pattern = { '*.vim', '*.lua' },
+  pattern = { '*.vim' },
   command = 'source %',
 })
 

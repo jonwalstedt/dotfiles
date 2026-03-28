@@ -52,7 +52,6 @@ M.setup = function()
           'lua', 'python', 'markdown',
         },
       },
-      b.diagnostics.selene,
       b.diagnostics.hadolint,
       b.diagnostics.markdownlint,
       b.diagnostics.write_good,

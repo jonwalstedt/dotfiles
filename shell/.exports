@@ -72,9 +72,6 @@ export GOPATH=$HOME/go
 # Neovim true color support
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
-# Neovim cursor shape support
-export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
 # To Avoid: JavaScript heap out of memory
 export NODE_OPTIONS=--max-old-space-size=8192
 

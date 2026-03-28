@@ -1,10 +1,9 @@
+local U = require('utils')
 local command = U.command
 
 -- Lsp
-command('LspReload', "lua require'lsp_config'.lsp_reload(0)")
-command('LspStop', "lua require'lsp_config'.lsp_stop(0)")
-command('LspClearDiagnostics', 'lua vim.lsp.diagnostic.clear(0)')
-command('LspPrint', 'lua print(vim.inspect(vim.lsp.buf_get_clients()))')
+command('LspClearDiagnostics', function() vim.diagnostic.reset(0) end)
+command('LspPrint', function() print(vim.inspect(vim.lsp.get_clients())) end)
 
 -- Profiling
 command(

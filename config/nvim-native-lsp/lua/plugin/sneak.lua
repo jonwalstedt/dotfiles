@@ -1,3 +1,4 @@
+local U = require('utils')
 local nmap = U.keymap.nmap
 local xmap = U.keymap.xmap
 local omap = U.keymap.omap

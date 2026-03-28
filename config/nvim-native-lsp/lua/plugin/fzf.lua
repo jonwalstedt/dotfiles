@@ -1,3 +1,4 @@
+local U = require('utils')
 local nmap = U.keymap.nmap
 local imap = U.keymap.imap
 
@@ -31,58 +32,39 @@ vim.g.fzf_action = {
   ['ctrl-v'] = 'vsplit',
 }
 
--- Files + devicons + bat/tree preview.
+-- Files + colored paths + bat/tree preview.
+-- Source is a shell pipeline so fzf opens instantly and results stream in.
 -- Single selection → open directly. Tab multi-select → quickfix.
 local function files_with_devicons()
   local ESC = string.char(27)
-  local gold  = ESC .. '[38;2;229;180;80m'
-  local muted = ESC .. '[38;2;90;100;110m'
-  local blue  = ESC .. '[38;2;100;149;237m'
-  local reset = ESC .. '[0m'
 
   local function strip_ansi(s)
     return s:gsub(ESC .. '%[[%d;]*m', '')
   end
 
-  local function prepend_icon(candidates)
-    local result = {}
-    for _, candidate in ipairs(candidates) do
-      local filename = vim.fn.fnamemodify(candidate, ':t')
-      local dir      = vim.fn.fnamemodify(candidate, ':h')
-      local is_dir   = vim.fn.isdirectory(candidate) == 1
-      local icon = vim.fn.WebDevIconsGetFileTypeSymbol(filename, is_dir)
-      local display
-      if is_dir then
-        display = blue .. candidate .. reset
-      elseif dir == '.' then
-        display = gold .. filename .. reset
-      else
-        display = muted .. dir .. '/' .. reset .. gold .. filename .. reset
-      end
-      table.insert(result, string.format('%s %s', icon, display))
-    end
-    return result
-  end
+  -- awk programs that colorize fd output in the shell (no Lua per-entry work)
+  local file_awk = [[awk 'BEGIN{G="\033[38;2;229;180;80m";M="\033[38;2;90;100;110m";R="\033[0m"}{n=split($0,a,"/");if(n==1)print G $0 R;else{f=a[n];d=substr($0,1,length($0)-length(f)-1);print M d "/" R G f R}}']]
+  local dir_awk  = [[awk 'BEGIN{B="\033[38;2;100;149;237m";R="\033[0m"}{print B $0 R}']]
 
-  -- Include both files and directories (no --type f restriction)
-  local fd_cmd
+  local source
   if vim.fn.executable('fd') == 1 then
-    fd_cmd = 'fd --hidden --follow --exclude .git --exclude .DS_Store'
+    local base = 'fd --hidden --follow --exclude .git --exclude .DS_Store'
+    source = string.format(
+      '{ %s --type f | %s; %s --type d --max-depth 4 | %s; }',
+      base, file_awk, base, dir_awk
+    )
   else
-    fd_cmd = 'find . -not -name ".DS_Store" -not -path "*/.git/*"'
+    source = 'find . -not -name ".DS_Store" -not -path "*/.git/*" | sort'
   end
-  local candidates = prepend_icon(vim.fn.systemlist(fd_cmd))
 
-  -- directories → tree, files → bat
-  -- {2..-1} skips field 1 (the icon) and uses the rest as the file path
+  -- Strip ANSI from {} in the preview to get the raw path
   local preview_cmd = string.format(
-    '[[ -d {2..-1} ]] && tree -C {2..-1} || (bat --theme=Dracula --style=numbers,changes --color=always {2..-1} | head -%d) 2>/dev/null | head -200',
+    'p=$(printf "%%s" {} | sed "s/\\x1b\\[[0-9;]*m//g"); [[ -d "$p" ]] && tree -C "$p" || (bat --theme=Dracula --style=numbers,changes --color=always "$p" | head -%d) 2>/dev/null',
     vim.o.lines
   )
 
-  -- Pass options as a list so fzf.vim handles shell escaping correctly
   local opts = vim.fn['fzf#wrap']('files', {
-    source = candidates,
+    source = source,
     options = {
       '--ansi',
       '--preview', preview_cmd,
@@ -94,9 +76,8 @@ local function files_with_devicons()
 
   opts['sink*'] = function(items)
     local key = table.remove(items, 1)
-    -- Strip icon prefix and ANSI color codes to recover the plain file path
     for i, item in ipairs(items) do
-      items[i] = strip_ansi(item:match('^%S+%s+(.+)$') or item)
+      items[i] = strip_ansi(item)
     end
     if #items == 0 then return end
     if #items == 1 then

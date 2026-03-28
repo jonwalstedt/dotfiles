@@ -1,3 +1,4 @@
+local U = require('utils')
 local nmap = U.keymap.nmap
 
 require('codecompanion').setup {

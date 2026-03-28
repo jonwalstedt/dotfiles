@@ -38,20 +38,6 @@ function M.setup()
   vim.api.nvim_create_autocmd("FileType", {
     pattern = { "markdown" },
     callback = function(args)
-      vim.opt_local.wrap = true
-      vim.opt_local.linebreak = true
-      vim.opt_local.breakindent = true
-      vim.opt_local.spell = true
-      vim.opt_local.spelllang = { "en", "sv" }
-      vim.opt_local.conceallevel = 2
-      vim.opt_local.textwidth = 0
-      vim.opt_local.colorcolumn = ""
-      vim.opt_local.signcolumn = "no"
-      vim.opt_local.number = false
-      vim.opt_local.relativenumber = false
-      vim.opt_local.cursorline = false
-      vim.opt_local.list = false
-
       -- Ensure treesitter highlighting is active (required for inline rendering)
       vim.treesitter.start(args.buf, "markdown")
 
@@ -90,7 +76,6 @@ function M.setup()
   pcall(require, "core.note_keymaps")
   pcall(require, "plugin.dirvish_notes")
   pcall(require, "plugin.lualine_notes")
-  pcall(require, "core.writing_layout")
   pcall(function()
     require("core.writing_layout").setup()
   end)

@@ -1,26 +1,20 @@
-local fn, lsp = vim.fn, vim.lsp
 local M = {}
 
 function M.setup()
-  -- Configure diagnostics
-  local signs = {
-    Error = ' ',
-    Warn = ' ',
-    Hint = ' ',
-    Info = ' ',
-  }
-
-  for type, icon in pairs(signs) do
-    local hl = 'DiagnosticSign' .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl })
-  end
-
+  -- Configure diagnostics (signs API — no deprecated sign_define)
   vim.diagnostic.config {
     underline = true,
-    signs = true,
     severity_sort = true,
     update_in_insert = false,
     virtual_text = false,
+    signs = {
+      text = {
+        [vim.diagnostic.severity.ERROR] = ' ',
+        [vim.diagnostic.severity.WARN]  = ' ',
+        [vim.diagnostic.severity.HINT]  = ' ',
+        [vim.diagnostic.severity.INFO]  = ' ',
+      },
+    },
   }
 
   -- Rounded borders for hover/signature windows

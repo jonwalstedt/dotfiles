@@ -1,3 +1,4 @@
+local U = require('utils')
 local nmap = U.keymap.nmap
 local imap = U.keymap.imap
 local vmap = U.keymap.vmap
@@ -49,7 +50,7 @@ nmap('<leader>rr', ':Prettier<CR>')
 nmap('<leader>do', ':only<CR>')
 
 -- Update current buffer and close all other buffers
-nmap('<leader>d<CR>', ':wa<bar>lua FilterAndCloseBuffers()<CR>')
+nmap('<leader>d<CR>', function() vim.cmd('wa'); U.close_other_buffers() end)
 
 -- Move window to new tab
 nmap('<leader>tt', '<C-w>T')

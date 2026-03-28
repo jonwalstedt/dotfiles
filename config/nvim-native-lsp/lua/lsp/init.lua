@@ -4,6 +4,7 @@ local capabilities = require("lsp.capabilities")
 handlers.setup()
 
 local on_attach = require("lsp.on_attach")
+local lsp_capabilities = capabilities.setup()
 
 -- list of servers
 local servers = {
@@ -25,7 +26,7 @@ local function extend_config(cfg)
   end
   local new_cfg = vim.tbl_deep_extend("force", {}, cfg)
   new_cfg.on_attach = on_attach
-  new_cfg.capabilities = capabilities.setup()
+  new_cfg.capabilities = lsp_capabilities
   return new_cfg
 end
 

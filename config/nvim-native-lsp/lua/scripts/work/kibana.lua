@@ -85,6 +85,7 @@ local function kibana_steps()
 end
 
 function M.setup()
+  local U = require('utils')
   U.command('Kibana', function()
     M.start(kibana_steps())
   end, { desc = 'Start Kibana dev env (ES+Kibana hidden, agent visible, Dirvish left)' })
