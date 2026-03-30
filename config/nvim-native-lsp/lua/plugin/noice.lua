@@ -14,5 +14,7 @@ require('noice').setup({
     -- Suppress noisy write confirmations and LSP startup messages
     { filter = { event = 'msg_show', find = 'written' }, opts = { skip = true } },
     { filter = { event = 'msg_show', find = 'LSP started' }, opts = { skip = true } },
+    -- Send shell command output to a split
+    { filter = { event = 'msg_show', kind = { 'shell_out', 'shell_err' } }, view = 'split' },
   },
 })
