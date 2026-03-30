@@ -25,7 +25,7 @@ return function(client, bufnr)
   map('<leader>ep', vim.diagnostic.goto_prev, 'Prev diagnostic')
 
   -- Format on save: prefer null-ls when attached, fall back to this client
-  if client.supports_method('textDocument/formatting') then
+  if client:supports_method('textDocument/formatting') then
     vim.api.nvim_clear_autocmds({ buffer = bufnr, group = format_group })
     vim.api.nvim_create_autocmd('BufWritePre', {
       buffer = bufnr,

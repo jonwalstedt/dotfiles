@@ -17,13 +17,13 @@ M.setup = function()
 
   -- Manual format keymap (format on save is wired in lsp/on_attach.lua)
   local function on_attach(client, bufnr)
-    if client.supports_method('textDocument/formatting') then
+    if client:supports_method('textDocument/formatting') then
       vim.keymap.set('n', '<Leader>fr', function()
         vim.lsp.buf.format({ bufnr = bufnr })
       end, { buffer = bufnr, desc = '[lsp] format' })
     end
 
-    if client.supports_method('textDocument/rangeFormatting') then
+    if client:supports_method('textDocument/rangeFormatting') then
       vim.keymap.set('x', '<Leader>fr', function()
         vim.lsp.buf.format({ bufnr = bufnr })
       end, { buffer = bufnr, desc = '[lsp] format range' })

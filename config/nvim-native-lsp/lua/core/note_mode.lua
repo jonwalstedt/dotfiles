@@ -1,5 +1,15 @@
 local M = {}
 
+local function set_terminal_bg(color)
+  io.write("\027]11;" .. color .. "\007")
+  io.flush()
+end
+
+local function reset_terminal_bg()
+  io.write("\027]111\007")
+  io.flush()
+end
+
 function M.setup()
   vim.opt.number = false
   vim.opt.relativenumber = false
@@ -55,23 +65,27 @@ function M.setup()
     end,
   })
 
+  vim.api.nvim_set_hl(0, "Normal",      { bg = "#1e1e1e" })
+  vim.api.nvim_set_hl(0, "NormalNC",   { bg = "#1e1e1e" })
   vim.api.nvim_set_hl(0, "EndOfBuffer", { fg = "bg" })
   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
   vim.api.nvim_set_hl(0, "FloatBorder", { bg = "NONE" })
 
-  -- Heading levels: distinct colors + bold on H1/H2, softer on lower levels
-  vim.api.nvim_set_hl(0, "RenderMarkdownH1",   { fg = "#E6B450", bold = true })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH2",   { fg = "#7FD962", bold = true })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH3",   { fg = "#39BAE6" })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH4",   { fg = "#FF8F40" })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH5",   { fg = "#D2A6FF" })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH6",   { fg = "#95E6CB" })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH1Bg", { bg = "#2d2a1a" })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH2Bg", { bg = "#1e2d1a" })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { bg = "#192530" })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH4Bg", { bg = "#2d2318" })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH5Bg", { bg = "#27212d" })
-  vim.api.nvim_set_hl(0, "RenderMarkdownH6Bg", { bg = "#1a2d28" })
+  -- Heading levels: monochromatic palette — white → gray, bold on H1/H2
+  vim.api.nvim_set_hl(0, "RenderMarkdownH1",   { fg = "#FFFFFF", bold = true })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH2",   { fg = "#DDDDDD", bold = true })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH3",   { fg = "#C0C0C0" })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH4",   { fg = "#AAAAAA" })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH5",   { fg = "#888888" })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH6",   { fg = "#666666" })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH1Bg", { bg = "#262626" })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH2Bg", { bg = "#242424" })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH3Bg", { bg = "#222222" })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH4Bg", { bg = "#222222" })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH5Bg", { bg = "#222222" })
+  vim.api.nvim_set_hl(0, "RenderMarkdownH6Bg", { bg = "#222222" })
+  -- Link accent: muted purple/periwinkle
+  vim.api.nvim_set_hl(0, "RenderMarkdownLink", { fg = "#8080C8" })
 
   pcall(require, "core.note_keymaps")
   pcall(require, "plugin.dirvish_notes")
@@ -79,6 +93,11 @@ function M.setup()
   pcall(function()
     require("core.writing_layout").setup()
   end)
+
+  set_terminal_bg("#1e1e1e")
+  vim.api.nvim_create_autocmd("VimLeavePre", {
+    callback = reset_terminal_bg,
+  })
 end
 
 return M

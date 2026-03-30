@@ -29,7 +29,9 @@ export PATH="$HOME/.jenv/bin:$PATH"
 if which jenv >/dev/null; then eval "$(jenv init -)"; fi
 
 # === FZF ===
-export FZF_DEFAULT_OPTS=" --layout=reverse"
+export FZF_DEFAULT_OPTS=" --layout=reverse \
+  --color=bg+:#2d2d2d,fg+:#ffffff,hl:#5294e2,hl+:#5294e2 \
+  --color=pointer:#5294e2,marker:#87c96a,prompt:#888888,info:#888888"
 export FZF_DEFAULT_COMMAND="fd --hidden --follow --exclude '.git' --exclude 'node_modules' --exclude 'Library'"
 export FZF_ALT_C_COMMAND='blsd'
 # To apply the command to CTRL-T as well

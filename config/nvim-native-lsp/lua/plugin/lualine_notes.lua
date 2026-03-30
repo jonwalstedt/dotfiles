@@ -1,7 +1,19 @@
+local bg = "#1e1e1e"
+local fg = "#1e1e1e"
+
+local notes_theme = {
+  normal  = { a = { bg = "#5294e2", fg = fg, gui = "bold" }, b = { bg = bg }, c = { bg = bg } },
+  insert  = { a = { bg = "#87c96a", fg = fg, gui = "bold" }, b = { bg = bg }, c = { bg = bg } },
+  visual  = { a = { bg = "#e5c07b", fg = fg, gui = "bold" }, b = { bg = bg }, c = { bg = bg } },
+  replace = { a = { bg = "#e06c75", fg = fg, gui = "bold" }, b = { bg = bg }, c = { bg = bg } },
+  command = { a = { bg = "#c678dd", fg = fg, gui = "bold" }, b = { bg = bg }, c = { bg = bg } },
+  inactive = { a = { bg = bg }, b = { bg = bg }, c = { bg = bg } },
+}
+
 require("lualine").setup({
   options = {
     icons_enabled = false,
-    theme = "ayu",
+    theme = notes_theme,
     component_separators = "",
     section_separators = "",
     globalstatus = true,
