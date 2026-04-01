@@ -10,6 +10,15 @@ require('noice').setup({
     bottom_search = true,       -- keep / and ? in the classic bottom position
     long_message_to_split = true,
   },
+  views = {
+    notify = {
+      position = {
+        row = -2,
+        col = 1,
+      },
+      anchor = 'SW',
+    },
+  },
   routes = {
     -- Suppress noisy write confirmations and LSP startup messages
     { filter = { event = 'msg_show', find = 'written' }, opts = { skip = true } },

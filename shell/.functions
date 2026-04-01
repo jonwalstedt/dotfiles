@@ -33,9 +33,9 @@ mk() {
 
 cdf() {
   # cd into whatever is the forefront Finder window.
-  local path=$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')
-  echo "$path"
-  cd "$path"
+  local finder_path=$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')
+  echo "$finder_path"
+  cd "$finder_path"
 }
 
 # find-in-file - usage: fif <SEARCH_TERM>
@@ -126,4 +126,145 @@ git_branch_and_status() {
     dirty=$(git diff --quiet --ignore-submodules HEAD &>/dev/null || echo " +")
     echo "(${branch}${dirty})"
   fi
+}
+
+# Worktrees
+# Usage:
+# cd ~/repos/kibana/kibana-main
+# wt jon/fix-esql-label  → creates ../jon/fix-esql-label
+
+wt () {
+  local name="$1"
+  local base="${2:-upstream/main}"
+  git fetch upstream &&
+  git worktree add "../$name" -b "$name" "$base"
+}
+
+# Worktrees for existing branches
+# Usage:
+# cd ~/repos/kibana/kibana-main
+# wtexisting jon/fix-alert-bug  → creates ../fix-alert-bug
+wtexisting () {
+  local branch="$1"
+  local dir="${2:-../${branch##*/}}"
+
+  if [ -z "$branch" ]; then
+    echo "usage: wtexisting <branch> [dir]"
+    return 1
+  fi
+
+  git show-ref --verify --quiet "refs/heads/$branch" || {
+    echo "local branch does not exist: $branch"
+    return 1
+  }
+
+  git worktree add "$dir" "$branch"
+}
+
+# Worktrees for fetch a remote branch, create a local tracking branch, and open it as a worktree
+# Usage:
+# cd ~/repos/kibana/kibana-main
+# wttrack origin jon/fix-alert-bug          → creates ../fix-alert-bug
+# wttrack jane my-branch jane/my-branch ../my-branch
+wttrack () {
+  local remote="$1"
+  local branch="$2"
+  local local_branch="${3:-$branch}"
+  local dir="${4:-../${local_branch##*/}}"
+
+  if [ -z "$remote" ] || [ -z "$branch" ]; then
+    echo "usage: wttrack <remote> <remote-branch> [local-branch] [dir]"
+    return 1
+  fi
+
+  git fetch "$remote" || return 1
+
+  if ! git show-ref --verify --quiet "refs/heads/$local_branch"; then
+    git branch --track "$local_branch" "$remote/$branch" || return 1
+  fi
+
+  git worktree add "$dir" "$local_branch"
+}
+
+# Worktrees for fetch a PR, create a local tracking branch, and open it as a worktree
+# Usage:
+# cd ~/repos/kibana/kibana-main
+# wtpr 12345                      → creates ../pr-12345
+# wtpr 12345 pr/12345-jane ../pr-12345-jane
+
+wtpr () {
+  local pr="$1"
+  local local_branch="${2:-pr/$pr}"
+  local dir="${3:-../pr-$pr}"
+
+  if [ -z "$pr" ]; then
+    echo "usage: wtpr <pr-number> [local-branch] [dir]"
+    return 1
+  fi
+
+  git fetch upstream "pull/$pr/head:$local_branch" || return 1
+  git worktree add "$dir" "$local_branch"
+}
+
+# Cleanup worktree and optionally delete branch
+# Usage:
+# Normal cleanup
+# wtrm fix-alert-bug
+#
+# Force remove (if dirty worktree)
+# wtrm fix-alert-bug --force
+#
+# Remove + delete branch
+# wtrm fix-alert-bug --force --delete-branch
+
+wtrm () {
+  local wt_path="$1"
+  local force="$2"   # optional: --force
+  local delete_branch="$3"  # optional: --delete-branch
+
+  if [ -z "$wt_path" ]; then
+    echo "usage: wtrm <name> [--force] [--delete-branch]"
+    return 1
+  fi
+
+  # Normalize path (remove trailing slash)
+  wt_path="${wt_path%/}"
+
+  # Prepend ../ if no path separators given
+  if [[ "$wt_path" != */* ]]; then
+    wt_path="../${wt_path}"
+  fi
+
+  # Try to detect branch from worktree
+  local branch=""
+  if [ -d "$wt_path/.git" ] || [ -f "$wt_path/.git" ]; then
+    branch=$(git -C "$wt_path" branch --show-current 2>/dev/null)
+  fi
+
+  # Attempt proper removal first
+  if git worktree list | grep -q "$wt_path"; then
+    echo "Removing worktree via git: $wt_path"
+    if [ "$force" = "--force" ]; then
+      git worktree remove --force "$wt_path"
+    else
+      git worktree remove "$wt_path" || {
+        echo "Failed (maybe uncommitted changes). Retry with --force"
+        return 1
+      }
+    fi
+  else
+    echo "Worktree not registered, removing manually: $wt_path"
+    rm -rf "$wt_path"
+  fi
+
+  # Always prune to clean stale metadata
+  git worktree prune
+
+  # Optionally delete branch
+  if [ "$delete_branch" = "--delete-branch" ] && [ -n "$branch" ]; then
+    echo "Deleting branch: $branch"
+    git branch -D "$branch"
+  fi
+
+  echo "Done."
 }

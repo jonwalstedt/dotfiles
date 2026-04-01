@@ -133,8 +133,9 @@ local function rebuild_cache()
   end, 200)
 end
 
--- Rebuild on startup, directory change, or after saving a file (new file detection)
-vim.api.nvim_create_autocmd({ 'VimEnter', 'DirChanged', 'BufWritePost' }, {
+-- Rebuild on startup, directory change, after saving a file, when nvim regains focus,
+-- or when a terminal session closes (files may have been created inside :term)
+vim.api.nvim_create_autocmd({ 'VimEnter', 'DirChanged', 'BufWritePost', 'FocusGained', 'TermClose' }, {
   callback = rebuild_cache,
 })
 
@@ -207,6 +208,9 @@ local function files_with_devicons()
   opts['sink'] = nil
 
   vim.fn['fzf#run'](opts)
+
+  -- Always kick off a background refresh so the next invocation has fresh data
+  rebuild_cache()
 end
 
 nmap('<C-p>', files_with_devicons)

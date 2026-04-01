@@ -74,6 +74,11 @@ require('nvim-ts-autotag').setup {
   },
 }
 
+-- Workaround: nvim-treesitter query_predicates calls range() on a nil node
+-- when parsing markdown injections on nvim 0.12. Clear the injection query
+-- until nvim-treesitter ships a proper fix. Remove once upstream is patched.
+vim.treesitter.query.set('markdown', 'injections', '')
+
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 parser_config.d2 = {
   install_info = {
