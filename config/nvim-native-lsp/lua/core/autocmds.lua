@@ -52,11 +52,6 @@ autocmd('TermOpen', {
   end,
 })
 
--- Dirvish: remove default C-p/C-n mappings
-local dirvish_config = augroup('dirvish_config', { clear = true })
-autocmd('FileType', { group = dirvish_config, pattern = 'dirvish', command = 'silent! unmap <buffer> <C-p>' })
-autocmd('FileType', { group = dirvish_config, pattern = 'dirvish', command = 'silent! unmap <buffer> <C-n>' })
-
 -- Create missing parent directories on write
 autocmd('BufWritePre', {
   group = augroup('bwc_create_dir', { clear = true }),

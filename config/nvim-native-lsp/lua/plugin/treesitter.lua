@@ -75,9 +75,32 @@ require('nvim-ts-autotag').setup {
 }
 
 -- Workaround: nvim-treesitter query_predicates calls range() on a nil node
--- when parsing markdown injections on nvim 0.12. Clear the injection query
--- until nvim-treesitter ships a proper fix. Remove once upstream is patched.
-vim.treesitter.query.set('markdown', 'injections', '')
+-- when parsing markdown injections on nvim 0.12. The crash is in the
+-- fenced_code_block injection (#set-lang-from-info-string!), so only remove
+-- that part and keep markdown_inline injection for bold/italic concealment.
+-- Remove once upstream is patched.
+vim.treesitter.query.set('markdown', 'injections', [[
+((html_block) @injection.content
+  (#set! injection.language "html")
+  (#set! injection.combined)
+  (#set! injection.include-children))
+
+((minus_metadata) @injection.content
+  (#set! injection.language "yaml")
+  (#offset! @injection.content 1 0 -1 0)
+  (#set! injection.include-children))
+
+((plus_metadata) @injection.content
+  (#set! injection.language "toml")
+  (#offset! @injection.content 1 0 -1 0)
+  (#set! injection.include-children))
+
+([
+  (inline)
+  (pipe_table_cell)
+] @injection.content
+  (#set! injection.language "markdown_inline"))
+]])
 
 local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
 parser_config.d2 = {

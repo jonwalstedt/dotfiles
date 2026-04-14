@@ -183,9 +183,10 @@ require('lazy').setup {
 
   -- File browser
   {
-    'justinmk/vim-dirvish',
+    'stevearc/oil.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
-      require 'plugin.dirvish'
+      require 'plugin.oil'
     end,
   },
 

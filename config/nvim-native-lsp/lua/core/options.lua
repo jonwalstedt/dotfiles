@@ -186,18 +186,5 @@ vim.cmd 'set diffopt+=vertical'
 vim.cmd 'set diffopt+=indent-heuristic'
 vim.cmd 'set diffopt+=algorithm:patience'
 
--- Netrw
-vim.g.netrw_liststyle = 4
-vim.g.netrw_preview = 1
-vim.g.netrw_alto = 0
-vim.g.netrw_winsize = 50
-vim.g.netrw_keepdir = 1
-vim.g.netrw_menu = 0
-vim.g.netrw_banner = 0
-
--- Allow netrw to remove non-empty local directories
-vim.g.netrw_localrmdir = 'rm -r'
-vim.g.netrw_bufsettings = 'noma nomod nu nowrap ro nobl'
-
 -- Tags
 set('tags', './.tags,.tags')

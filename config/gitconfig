@@ -85,6 +85,7 @@
     hist = log --graph --oneline --decorate --date=relative --all
     surec = submodule update --recursive
     rbm = "!git fetch upstream && git rebase upstream/main"
+    mm = "!git fetch upstream && git merge upstream/main"
 
 [color "diff-highlight"]
     oldNormal = red bold
