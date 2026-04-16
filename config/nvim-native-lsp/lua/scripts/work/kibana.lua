@@ -95,7 +95,7 @@ local function kibana_steps()
       { hide = not needs_bootstrap },
     },
     { 'terminal', 'claude', 'claude', { hide = needs_bootstrap } },
-    { 'Dirvish' },
+    { 'Oil' },
   }
 end
 
@@ -107,7 +107,7 @@ function M.setup()
       M.start(kibana_steps())
     end,
     {
-      desc = 'Start Kibana dev env (ES+Kibana hidden, agent visible, Dirvish left)',
+      desc = 'Start Kibana dev env (ES+Kibana hidden, agent visible, Oil left)',
     }
   )
 end

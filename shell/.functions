@@ -163,7 +163,7 @@ wtv () {
     return 1
   fi
 
-  git fetch upstream "refs/tags/$tag:refs/tags/$tag" || return 1
+  git fetch upstream tag "$tag" || return 1
 
   if ! git show-ref --verify --quiet "refs/heads/$tag"; then
     git branch "$tag" "refs/tags/$tag" || return 1
