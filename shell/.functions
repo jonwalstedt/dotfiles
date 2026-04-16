@@ -136,8 +136,40 @@ git_branch_and_status() {
 wt () {
   local name="$1"
   local base="${2:-upstream/main}"
-  git fetch upstream &&
-  git worktree add "../$name" -b "$name" "$base"
+
+  git fetch upstream || return 1
+
+  # If upstream/$name exists, track it rather than branching off $base
+  if git show-ref --verify --quiet "refs/remotes/upstream/$name"; then
+    if ! git show-ref --verify --quiet "refs/heads/$name"; then
+      git branch --track "$name" "upstream/$name" || return 1
+    fi
+    git worktree add "../$name" "$name"
+  else
+    git worktree add "../$name" -b "$name" "$base"
+  fi
+}
+
+# Worktree for a tag
+# Usage:
+# cd ~/repos/kibana/kibana-main
+# wtv v9.3.1  → fetches tag, creates local branch, opens worktree at ../v9.3.1
+wtv () {
+  local tag="$1"
+  local dir="${2:-../$tag}"
+
+  if [ -z "$tag" ]; then
+    echo "usage: wtv <tag> [dir]"
+    return 1
+  fi
+
+  git fetch upstream "refs/tags/$tag:refs/tags/$tag" || return 1
+
+  if ! git show-ref --verify --quiet "refs/heads/$tag"; then
+    git branch "$tag" "refs/tags/$tag" || return 1
+  fi
+
+  git worktree add "$dir" "$tag"
 }
 
 # Worktrees for existing branches

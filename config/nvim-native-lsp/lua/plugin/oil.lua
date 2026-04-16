@@ -3,7 +3,7 @@ require('oil').setup {
   default_file_explorer = true,
   -- Show hidden files
   view_options = {
-    show_hidden = false,
+    show_hidden = true,
     -- Sort directories first
     sort = {
       { 'type', 'asc' },
