@@ -76,7 +76,8 @@ function M.start(steps)
 end
 
 local function kibana_steps()
-  local needs_bootstrap = vim.fn.isdirectory 'node_modules/@kbn/setup-node-env' == 0
+  local cwd = vim.fn.getcwd()
+  local needs_bootstrap = vim.fn.isdirectory(cwd .. '/node_modules/@kbn/setup-node-env') == 0
   local kibana_cmd = needs_bootstrap
       and 'yarn kbn bootstrap && yarn start --no-base-path'
     or 'yarn start --no-base-path'
@@ -95,7 +96,7 @@ local function kibana_steps()
       { hide = not needs_bootstrap },
     },
     { 'terminal', 'claude', 'claude', { hide = needs_bootstrap } },
-    { 'Oil' },
+    { 'Oil ' .. cwd },
   }
 end
 
