@@ -33,6 +33,26 @@ require('oil').setup {
     ['gx'] = 'actions.open_external',
     ['g.'] = 'actions.toggle_hidden',
     ['g\\'] = 'actions.toggle_trash',
+    ['yy'] = function()
+      local entry = require('oil').get_cursor_entry()
+      local dir = require('oil').get_current_dir()
+      if entry and dir then
+        local path = dir .. entry.name
+        vim.fn.setreg('+', path)
+        vim.fn.setreg('"', path)
+        vim.notify('Copied: ' .. path)
+      end
+    end,
+    ['yY'] = function()
+      local entry = require('oil').get_cursor_entry()
+      local dir = require('oil').get_current_dir()
+      if entry and dir then
+        local path = vim.fn.fnamemodify(dir .. entry.name, ':.')
+        vim.fn.setreg('+', path)
+        vim.fn.setreg('"', path)
+        vim.notify('Copied: ' .. path)
+      end
+    end,
   },
   use_default_keymaps = false,
 }

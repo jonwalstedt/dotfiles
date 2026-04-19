@@ -329,6 +329,14 @@ require('lazy').setup {
     end,
   },
 
+  -- AI agent chat (ACP-compatible, uses claude CLI)
+  {
+    'carlos-algms/agentic.nvim',
+    config = function()
+      require 'plugin.agentic'
+    end,
+  },
+
   -- UI: replace cmdline and notifications with floating UI
   {
     'folke/noice.nvim',
