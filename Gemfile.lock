@@ -1,7 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    msgpack (1.2.4)
+    msgpack (1.8.2)
     multi_json (1.13.1)
     neovim (0.8.0)
       msgpack (~> 1.1)
