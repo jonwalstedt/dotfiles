@@ -54,7 +54,9 @@ M.setup = function()
       },
       b.diagnostics.hadolint,
       b.diagnostics.markdownlint,
-      b.diagnostics.write_good,
+      b.diagnostics.write_good.with {
+        filetypes = { 'markdown' },
+      },
     },
     on_attach = on_attach,
   }

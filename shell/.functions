@@ -105,15 +105,25 @@ function y() {
   rm -f -- "$tmp"
 }
 
-function ya_zed() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-  yazi "$@" --chooser-file="$tmp"
+function nnn_zed() {
+  local tmp="$(mktemp -t "nnn-choice.XXXXX")"
+  local start="."
+  if [ -n "$1" ] && [ -e "$1" ]; then
+    start="$1"
+  fi
+  nnn -p "$tmp" "$start"
 
   local opened_file=$(cat -- "$tmp" | head -n 1)
-  zed-preview -- "$opened_file"
+  if [ -n "$opened_file" ]; then
+    zed-dev -- "$opened_file"
+  fi
 
   rm -f -- "$tmp"
   exit
+}
+
+function ya_zed() {
+  nnn_zed "$@"
 }
 
 git_branch_and_status() {

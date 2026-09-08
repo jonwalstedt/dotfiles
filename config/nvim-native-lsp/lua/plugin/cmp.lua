@@ -50,3 +50,13 @@ cmp.setup {
     debounce_text_changes = 150,
   },
 }
+
+require('cmp').register_source('agentic_slash', require('plugin.cmp_agentic_source'))
+
+cmp.setup.filetype('AgenticInput', {
+  sources = { { name = 'agentic_slash' } },
+  window = {
+    completion = cmp.config.window.bordered({ col_offset = 0, side_padding = 1 }),
+    documentation = cmp.config.window.bordered({ max_width = 40, max_height = 8 }),
+  },
+})

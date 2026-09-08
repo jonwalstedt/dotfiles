@@ -184,3 +184,14 @@ export PATH="$PATH:/Users/jon.walstedt/.local/bin"
 export PATH="/Users/jon.walstedt/.antigravity/antigravity/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jonwalstedt/.lmstudio/bin"
+# End of LM Studio CLI section
+
+
+# opencode
+export PATH=/Users/jonwalstedt/.opencode/bin:$PATH
+
+# Added by codebase-memory-mcp install
+export PATH="/Users/jonwalstedt/.local/bin:$PATH"

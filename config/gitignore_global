@@ -8,3 +8,5 @@ tags.temp
 .nvimrc
 Session.vim
 .agents/skills/jw-*/
+
+**/.claude/settings.local.json

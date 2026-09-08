@@ -105,3 +105,8 @@ export CC=/usr/bin/clang
 
 # Neovim as git editor
 export GIT_EDITOR=nvim
+
+# Language settings
+export LANGUAGE=en_US.UTF-8
+
+export CLOUDSDK_PYTHON=/opt/homebrew/bin/python3.14

@@ -33,7 +33,7 @@ require('oil').setup {
     ['gx'] = 'actions.open_external',
     ['g.'] = 'actions.toggle_hidden',
     ['g\\'] = 'actions.toggle_trash',
-    ['yy'] = function()
+    ['yY'] = function()
       local entry = require('oil').get_cursor_entry()
       local dir = require('oil').get_current_dir()
       if entry and dir then
@@ -43,7 +43,7 @@ require('oil').setup {
         vim.notify('Copied: ' .. path)
       end
     end,
-    ['yY'] = function()
+    ['yy'] = function()
       local entry = require('oil').get_cursor_entry()
       local dir = require('oil').get_current_dir()
       if entry and dir then

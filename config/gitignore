@@ -3,3 +3,6 @@ bundle
 User/Package Control.cache/
 node_modules/
 Session.vim
+.aider.chat.history.md
+.aider.input.history
+.aider.tags.cache.v4/

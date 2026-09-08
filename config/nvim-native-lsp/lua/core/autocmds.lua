@@ -67,3 +67,30 @@ autocmd('TextYankPost', {
   pattern = '*',
   callback = function() vim.hl.on_yank() end,
 })
+
+-- Prose display: word-boundary wrapping + no link underlines
+autocmd('FileType', {
+  group = ftplugin,
+  pattern = { 'markdown', 'text' },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
+    -- Strip underline/undercurl from treesitter markdown link highlights
+    -- (preserves fg/bg/bold; only removes the decoration)
+    local groups = {
+      '@markup.link',
+      '@markup.link.label',
+      '@markup.link.label.markdown_inline',
+      '@markup.link.url',
+      '@markup.underline',
+    }
+    for _, group in ipairs(groups) do
+      local hl = vim.api.nvim_get_hl(0, { name = group, link = false })
+      if next(hl) ~= nil then
+        hl.underline = nil
+        hl.undercurl = nil
+        vim.api.nvim_set_hl(0, group, hl)
+      end
+    end
+  end,
+})

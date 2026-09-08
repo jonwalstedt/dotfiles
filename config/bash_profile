@@ -16,3 +16,8 @@ export SDKMAN_DIR="$HOME/.sdkman"
 
 # Fix too many open files issue
 ulimit -n 10240
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/jonwalstedt/.lmstudio/bin"
+# End of LM Studio CLI section
+
