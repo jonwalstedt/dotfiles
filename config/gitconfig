@@ -30,10 +30,12 @@
     undo-soft = reset --soft HEAD~1
     # undo and unstage last commit
     undo = reset HEAD~1
-    branch-changes-files-short = git log --oneline $(git merge-base HEAD origin/main)..HEAD
-    bcfs = git log --oneline $(git merge-base HEAD origin/main)..HEAD
-    branch-changes-files = git log $(git merge-base HEAD origin/main)..HEAD
-    bcf = git log $(git merge-base HEAD origin/main)..HEAD
+    branch-changes-files-short =   "!f() { git log --oneline $(git merge-base HEAD origin/main)..HEAD; }; f"
+    bcfs =  "!f() { git log --oneline $(git merge-base HEAD origin/main)..HEAD; }; f"
+    branch-changes-files =  "!f() { git log $(git merge-base HEAD origin/main)..HEAD; }; f"
+    bcf = "!f() { git log $(git merge-base HEAD origin/main)..HEAD; }; f"
+    branch-diff-files = "!git diff $(git merge-base HEAD origin/main)..HEAD"
+    bdf = "!git diff $(git merge-base HEAD origin/main)..HEAD"
     tags = log --no-walk --tags --oneline
     list-merged = ! git branch --merged master | grep --invert-match "master"
     remove-merged = ! git branch --merged master | grep --invert-match "master" | xargs -n 1 git branch -d
