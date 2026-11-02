@@ -1,5 +1,10 @@
 local M = {}
 
+-- Linting/diagnostics (codespell, hadolint, markdownlint, write_good) are
+-- gated behind DevMode: agents run their own dedicated lint/typecheck
+-- commands directly, so the editor's own diagnostics are redundant noise
+-- until a human is actively driving. Formatters (stylua, prettierd,
+-- gofumpt, shfmt, elm_format) stay always-on — see core.dev_mode.
 M.setup = function()
   local null_ls = require 'null-ls'
   local b = null_ls.builtins
@@ -60,6 +65,25 @@ M.setup = function()
     },
     on_attach = on_attach,
   }
+
+  -- Off by default — core.dev_mode turns this on via M.enable_linting().
+  null_ls.disable { method = null_ls.methods.DIAGNOSTICS }
+end
+
+-- Toggled by core.dev_mode (:DevStart / :DevStop). Safe to call even if
+-- M.setup() hasn't run yet (none-ls loads eagerly, so in practice it has).
+function M.enable_linting()
+  local ok, null_ls = pcall(require, 'null-ls')
+  if ok then
+    null_ls.enable { method = null_ls.methods.DIAGNOSTICS }
+  end
+end
+
+function M.disable_linting()
+  local ok, null_ls = pcall(require, 'null-ls')
+  if ok then
+    null_ls.disable { method = null_ls.methods.DIAGNOSTICS }
+  end
 end
 
 return M

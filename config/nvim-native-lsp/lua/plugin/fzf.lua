@@ -6,8 +6,20 @@ local imap = U.keymap.imap
 vim.env.FZF_DEFAULT_OPTS =
   '--bind alt-p:up,alt-n:down,ctrl-a:select-all --layout=reverse --multi'
 
+-- No --follow: symlink cycles in large repos (kibana, bazel, node_modules/.bin)
+-- pin the CPU and balloon nvim's RAM. fd still respects .gitignore by default.
+local fd_excludes = table.concat({
+  '--exclude .git',
+  '--exclude .DS_Store',
+  '--exclude node_modules',
+  '--exclude target',
+  '--exclude dist',
+  '--exclude coverage',
+}, ' ')
+local fd_base = 'fd --hidden ' .. fd_excludes
+
 if vim.fn.executable('fd') == 1 then
-  vim.env.FZF_DEFAULT_COMMAND = 'fd --type f --hidden --follow --exclude .git --exclude .DS_Store'
+  vim.env.FZF_DEFAULT_COMMAND = fd_base .. ' --type f'
 else
   vim.env.FZF_DEFAULT_COMMAND = 'find . -type f -not -name ".DS_Store"'
 end
@@ -34,19 +46,34 @@ vim.g.fzf_action = {
 
 -- ---------------------------------------------------------------------------
 -- Background icon cache
--- Two jobstart calls (files + dirs) run after VimEnter / DirChanged.
+-- Two jobstart calls (files + dirs) run on plugin load / DirChanged.
 -- Results are written to a per-directory cache file.
 -- ctrl+p uses `cat <cache>` when ready (icons + instant), falls back to a
 -- streaming shell pipeline while the cache is still building.
 -- ---------------------------------------------------------------------------
 local _cache = { path = nil, cwd = nil, ready = false }
+local _jobs = {}
+local _generation = 0
+local _rebuild_timer = nil
+local MAX_CACHE_ENTRIES = 40000
 
 local function cache_path_for(cwd)
   return vim.fn.stdpath('cache') .. '/fzf_files_' .. vim.fn.sha256(cwd):sub(1, 12)
 end
 
+local function stop_cache_jobs()
+  for _, id in ipairs(_jobs) do
+    pcall(vim.fn.jobstop, id)
+  end
+  _jobs = {}
+end
+
 local function build_icon_cache_async()
   if vim.fn.executable('fd') ~= 1 then return end
+
+  _generation = _generation + 1
+  local gen = _generation
+  stop_cache_jobs()
 
   local cwd  = vim.fn.getcwd()
   local dest = cache_path_for(cwd)
@@ -74,6 +101,10 @@ local function build_icon_cache_async()
   local file_results, dir_results, done = {}, {}, 0
 
   local function finalize()
+    if #file_results + #dir_results > MAX_CACHE_ENTRIES then
+      -- Too large to decorate in Lua; ctrl-p will keep using the streaming fd source
+      return
+    end
     local lines = {}
     for _, p in ipairs(file_results) do
       local fn   = basename(p)
@@ -94,50 +125,56 @@ local function build_icon_cache_async()
     _cache.ready = true
   end
 
-  local base = 'fd --hidden --follow --exclude .git --exclude .DS_Store'
-
-  vim.fn.jobstart(base .. ' --type f', {
-    stdout_buffered = true,
-    on_stdout = function(_, data)
+  local function on_chunk(bucket)
+    return function(_, data)
+      if gen ~= _generation then return end
       for _, line in ipairs(data) do
-        if line ~= '' then file_results[#file_results + 1] = line end
+        if line ~= '' then bucket[#bucket + 1] = line end
       end
-    end,
-    on_exit = function()
-      done = done + 1
-      if done == 2 then finalize() end
-    end,
-  })
+    end
+  end
 
-  vim.fn.jobstart(base .. ' --type d', {
-    stdout_buffered = true,
-    on_stdout = function(_, data)
-      for _, p in ipairs(data) do
-        if p ~= '' then dir_results[#dir_results + 1] = p end
-      end
-    end,
-    on_exit = function()
+  local function on_done()
+    return function()
+      if gen ~= _generation then return end
       done = done + 1
-      if done == 2 then finalize() end
-    end,
-  })
+      if done == 2 then
+        _jobs = {}
+        finalize()
+      end
+    end
+  end
+
+  local opts = { cwd = cwd, stdout_buffered = true }
+  _jobs = {
+    vim.fn.jobstart(fd_base .. ' --type f', vim.tbl_extend('keep', {
+      on_stdout = on_chunk(file_results),
+      on_exit = on_done(),
+    }, opts)),
+    vim.fn.jobstart(fd_base .. ' --type d', vim.tbl_extend('keep', {
+      on_stdout = on_chunk(dir_results),
+      on_exit = on_done(),
+    }, opts)),
+  }
 end
 
-local _rebuilding = false
 local function rebuild_cache()
-  if _rebuilding then return end
-  _rebuilding = true
-  vim.defer_fn(function()
+  if _rebuild_timer then
+    _rebuild_timer:stop()
+  end
+  _rebuild_timer = vim.defer_fn(function()
+    _rebuild_timer = nil
     build_icon_cache_async()
-    _rebuilding = false
-  end, 200)
+  end, 300)
 end
 
--- Rebuild on startup, directory change, after saving a file, when nvim regains focus,
--- or when a terminal session closes (files may have been created inside :term)
-vim.api.nvim_create_autocmd({ 'VimEnter', 'DirChanged', 'BufWritePost', 'FocusGained', 'TermClose' }, {
+-- fzf.vim is lazy-loaded on BufRead, so VimEnter has already fired.
+-- Rebuild when cwd changes; <leader>r refreshes manually. Do not scan on
+-- BufWritePost / FocusGained — that stacked overlapping fd jobs in kibana.
+vim.api.nvim_create_autocmd('DirChanged', {
   callback = rebuild_cache,
 })
+rebuild_cache()
 
 -- Manual rebuild (e.g. after git pull, file deletions)
 nmap('<leader>r', function()
@@ -165,7 +202,7 @@ local function files_with_devicons()
     -- Fallback: streaming shell pipeline (instant popup, no icons)
     local file_awk = [[awk 'BEGIN{G="\033[38;2;229;180;80m";M="\033[38;2;90;100;110m";R="\033[0m"}{n=split($0,a,"/");if(n==1)print G $0 R;else{f=a[n];d=substr($0,1,length($0)-length(f)-1);print M d "/" R G f R}}']]
     local dir_awk  = [[awk 'BEGIN{B="\033[38;2;100;149;237m";R="\033[0m"}{print B $0 R}']]
-    local base     = 'fd --hidden --follow --exclude .git --exclude .DS_Store'
+    local base     = fd_base
     source = string.format(
       '{ %s --type f | %s; %s --type d | %s; }',
       base, file_awk, base, dir_awk
@@ -208,9 +245,6 @@ local function files_with_devicons()
   opts['sink'] = nil
 
   vim.fn['fzf#run'](opts)
-
-  -- Always kick off a background refresh so the next invocation has fresh data
-  rebuild_cache()
 end
 
 nmap('<C-p>', files_with_devicons)

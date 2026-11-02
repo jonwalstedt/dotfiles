@@ -5,6 +5,12 @@ local command = U.command
 command('LspClearDiagnostics', function() vim.diagnostic.reset(0) end)
 command('LspPrint', function() print(vim.inspect(vim.lsp.get_clients())) end)
 
+-- DevMode: LSP servers, nvim-cmp, LuaSnip & nvim-ts-autotag are off by
+-- default (see core.dev_mode) — turn them on/off on demand.
+command('DevStart', function() require('core.dev_mode').start() end)
+command('DevStop', function() require('core.dev_mode').stop() end)
+command('DevToggle', function() require('core.dev_mode').toggle() end)
+
 -- Profiling
 command(
   'ProfileMe',

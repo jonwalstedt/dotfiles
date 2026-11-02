@@ -7,7 +7,6 @@ U.os = {
   cache = vim.fn.stdpath 'cache',
   config = vim.fn.stdpath 'config',
   name = (vim.uv or vim.loop).os_uname().sysname,
-  is_git_dir = os.execute 'git rev-parse --is-inside-work-tree >> /dev/null 2>&1',
 }
 
 -- Keybindings

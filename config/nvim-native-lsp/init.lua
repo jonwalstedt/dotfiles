@@ -1,3 +1,7 @@
+-- Cache compiled Lua bytecode for faster `require()` on every subsequent
+-- startup. Must run before any requires below to cover them too.
+vim.loader.enable()
+
 -- vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = " "

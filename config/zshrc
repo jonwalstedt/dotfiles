@@ -195,3 +195,11 @@ export PATH=/Users/jonwalstedt/.opencode/bin:$PATH
 
 # Added by codebase-memory-mcp install
 export PATH="/Users/jonwalstedt/.local/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/Users/jonwalstedt/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME/bin:"*) ;;
+  *) export PATH="$PNPM_HOME/bin:$PATH" ;;
+esac
+# pnpm end

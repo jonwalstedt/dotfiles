@@ -2,27 +2,28 @@ require('lazy').setup {
   -- Collection of configurations for built-in LSP client
   {
     'neovim/nvim-lspconfig',
-    config = function()
-      require 'lsp'
-    end,
-  },
-  {
-    'b0o/schemastore.nvim',
+    -- Gated behind DevMode (see core.dev_mode / :DevStart). Loading the
+    -- plugin just registers its default configs on the rtp; nothing starts
+    -- until core.dev_mode calls require('lsp').setup().
     lazy = true,
+    dependencies = { 'b0o/schemastore.nvim' },
   },
-  { 'MunifTanjim/prettier.nvim' },
+  { 'MunifTanjim/prettier.nvim', cmd = 'Prettier' },
   {
     'nvimtools/none-ls.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+    -- NOTE: intentionally not depending on 'neovim/nvim-lspconfig' here —
+    -- that plugin is gated behind DevMode (see above) and listing it as a
+    -- dependency would force it to load eagerly again.
+    dependencies = { 'nvim-lua/plenary.nvim' },
     config = function()
       require('plugin.null-ls').setup()
     end,
   },
   {
+    -- Gated behind DevMode. `require 'plugin.autotag'` runs the setup call,
+    -- triggered from core.dev_mode on :DevStart.
     'windwp/nvim-ts-autotag',
-    config = function()
-      require 'plugin.autotag'
-    end,
+    lazy = true,
   },
   {
     'MeanderingProgrammer/render-markdown.nvim',
@@ -41,7 +42,10 @@ require('lazy').setup {
     dependencies = {
       { 'nvim-treesitter/nvim-treesitter-textobjects', branch = 'master' },
       { 'nvim-treesitter/nvim-treesitter-refactor', branch = 'master' },
-      { 'windwp/nvim-ts-autotag' },
+      -- NOTE: nvim-ts-autotag is intentionally NOT listed here — it has its
+      -- own spec further up and stays `lazy = true` behind DevMode. Listing
+      -- it as a dependency here would force it to load eagerly with
+      -- treesitter regardless of its own lazy setting.
     },
     config = function()
       require 'plugin.treesitter'
@@ -99,6 +103,7 @@ require('lazy').setup {
 
   {
     'stevearc/dressing.nvim', -- Utilises Neovim UI hooks to manage inputs, selects etc
+    event = 'VeryLazy',
     opts = {
       input = {
         default_prompt = '> ',
@@ -165,6 +170,7 @@ require('lazy').setup {
   {
     'lukas-reineke/indent-blankline.nvim',
     main = 'ibl',
+    event = { 'BufReadPost', 'BufNewFile' },
     opts = {},
     config = function()
       require 'plugin.indent-blankline'
@@ -219,6 +225,7 @@ require('lazy').setup {
   -- 'romainl/vim-qf',
   {
     'kevinhwang91/nvim-bqf',
+    ft = 'qf', -- only ever needed inside the quickfix window
     config = function()
       require 'plugin.bqf'
     end,
@@ -227,14 +234,16 @@ require('lazy').setup {
   -- Misc
   { 'github/copilot.vim' },
   { 'tpope/vim-surround' },
-  { 'othree/html5.vim' },
-  { 'pangloss/vim-javascript' },
-  { 'evanleck/vim-svelte' },
+  { 'othree/html5.vim', ft = { 'html', 'templ' } },
+  { 'pangloss/vim-javascript', ft = { 'javascript', 'javascriptreact', 'javascript.jsx' } },
+  { 'evanleck/vim-svelte', ft = 'svelte' },
 
-  -- Completion
+  -- Completion — gated behind DevMode (see core.dev_mode / :DevStart).
+  -- No `event`/`cmd` trigger on purpose: stays fully unloaded until
+  -- core.dev_mode explicitly loads + requires 'plugin.cmp'.
   {
     'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    lazy = true,
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-nvim-lua',
@@ -243,16 +252,14 @@ require('lazy').setup {
       'hrsh7th/cmp-calc',
       'saadparwaiz1/cmp_luasnip',
     },
-    config = function()
-      require 'plugin.cmp'
-    end,
   },
 
-  -- Snippets
+  -- Snippets — gated behind DevMode.
   {
     'L3MON4D3/LuaSnip',
     version = 'v2.*',
     build = 'make install_jsregexp',
+    lazy = true,
   },
 
   -- Statusline
@@ -275,78 +282,16 @@ require('lazy').setup {
   -- Pickup and editor config files
   'editorconfig/editorconfig-vim',
 
-  'terrastruct/d2-vim',
+  { 'terrastruct/d2-vim', ft = 'd2' },
 
-  -- Test runner
+  -- Ordna Today / Worktrees TUI (same vault as the desktop app)
   {
-    'nvim-neotest/neotest',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
-      'nvim-neotest/neotest-jest',
-      'nvim-neotest/neotest-go',
-      'nvim-neotest/neotest-python',
+    dir = vim.fn.expand '~/repos/jonwalstedt/ordna/extensions/ordna.nvim',
+    name = 'ordna.nvim',
+    lazy = false,
+    opts = {
+      open_on_startup = true,
+      open_worktree = 'auto',
     },
-    keys = {
-      {
-        '<leader>Tt',
-        function()
-          require('neotest').run.run()
-        end,
-        desc = 'Run nearest test',
-      },
-      {
-        '<leader>Tf',
-        function()
-          require('neotest').run.run(vim.fn.expand '%')
-        end,
-        desc = 'Run test file',
-      },
-      {
-        '<leader>Tl',
-        function()
-          require('neotest').run.run_last()
-        end,
-        desc = 'Run last test',
-      },
-      {
-        '<leader>Ts',
-        function()
-          require('neotest').summary.toggle()
-        end,
-        desc = 'Toggle test summary',
-      },
-      {
-        '<leader>To',
-        function()
-          require('neotest').output_panel.toggle()
-        end,
-        desc = 'Toggle output panel',
-      },
-    },
-    config = function()
-      require 'plugin.neotest'
-    end,
-  },
-
-  -- AI agent chat (ACP-compatible, uses claude CLI)
-  {
-    'carlos-algms/agentic.nvim',
-    config = function()
-      require 'plugin.agentic'
-    end,
-  },
-
-  -- UI: replace cmdline and notifications with floating UI
-  {
-    'folke/noice.nvim',
-    event = 'VeryLazy',
-    dependencies = {
-      'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
-    },
-    config = function()
-      require 'plugin.noice'
-    end,
   },
 }

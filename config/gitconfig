@@ -36,6 +36,7 @@
     bcf = "!f() { git log $(git merge-base HEAD origin/main)..HEAD; }; f"
     branch-diff-files = "!git diff $(git merge-base HEAD origin/main)..HEAD"
     bdf = "!git diff $(git merge-base HEAD origin/main)..HEAD"
+    bdfs = "!git diff --name-status $(git merge-base HEAD origin/main)..HEAD"
     tags = log --no-walk --tags --oneline
     list-merged = ! git branch --merged master | grep --invert-match "master"
     remove-merged = ! git branch --merged master | grep --invert-match "master" | xargs -n 1 git branch -d
